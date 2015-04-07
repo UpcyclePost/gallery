@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<schema name="search" version="1.5">
+	<types>
+		<fieldType name="integer" class="solr.TrieIntField" precisionStep="0" omitNorms="true" positionIncrementGap="0"/>
+		<fieldType name="text" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
+			<analyzer>
+				<tokenizer class="solr.WhitespaceTokenizerFactory"/>
+				<filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
+				<filter class="solr.LowerCaseFilterFactory"/>
+				<filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+				<filter class="solr.DoubleMetaphoneFilterFactory" inject="true" maxCodeLength="4"/>
+			</analyzer>
+		</fieldType>
+		<fieldType name="text_general" class="solr.TextField" positionIncrementGap="100" />
+		<fieldType name="long" class="solr.TrieLongField" precisionStep="0" omitNorms="true" positionIncrementGap="0" />
+		<fieldType name="float" class="solr.TrieFloatField" precisionStep="0" positionIncrementGap="0"/>
+	</types>
+
+	<fields>
+		<field name="ik" type="integer" indexed="true" stored="true" multiValued="false" required="true" />
+		<field name="id" type="text_general" indexed="true" stored="true" multiValued="false" />
+		<field name="category" type="integer" indexed="true" stored="true" multiValued="false" required="true" />
+		<field name="categoryTitle" type="text" indexed="false" stored="true" multiValued="false" required="true" />
+		<field name="user" type="integer" indexed="true" stored="true" multiValued="false" required="true" />
+		<field name="userName" type="text" indexed="false" stored="true" multiValued="false" required="true" />
+		<field name="tags" type="text" indexed="false" stored="true" multiValued="true" />
+		<field name="title" type="text" indexed="false" stored="true" multiValued="false" />
+		<field name="description" type="text" indexed="false" stored="true" multiValued="false" />
+		<field name="visible" type="integer" indexed="true" stored="false" multiValued="false" />
+		<field name="views" type="integer" indexed="true" stored="true" multiValued="false" />
+		<field name="likes" type="integer" indexed="true" stored="true" multiValued="false" />
+		<field name="comments" type="integer" indexed="true" stored="true" multiValued="false" />
+		<field name="influence" type="float" indexed="true" stored="false" multiValued="false" />
+		<field name="_version_" type="long" indexed="true" stored="true" multiValued="false"/>
+		<field name="text" type="text_general" indexed="true" stored="false" multiValued="true"/>
+		<field name="search" type="text" indexed="true" stored="false" multiValued="true" />
+	</fields>
+
+	<uniqueKey>ik</uniqueKey>
+	<defaultSearchField>search</defaultSearchField>
+	<solrQueryParser defaultOperator="OR"/>
+	<copyField source="tags" dest="search" />
+	<copyField source="title" dest="search" />
+	<copyField source="description" dest="search" />
+	<copyField source="categoryTitle" dest="search" />
+</schema>
