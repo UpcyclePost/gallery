@@ -1,10 +1,10 @@
 {% if !isLoggedIn %}
         <a href="{{ url('profile/login') }}" class="btn btn-blue"><i class="fa fa-sign-in"></i> Sign In</a>
         <a href="{{ url('profile/register') }}" class="btn btn-blue"><i class="fa fa-user"></i> Sign Up</a>
-        <a href="{{ url('blog') }}" class="btn btn-blue hidden-md"><i class="fa fa-rss"></i> Blog</a>
+        <a href="{{ url('search/users') }}" class="btn btn-blue hidden-md"><i class="fa fa-users"></i> Profile Gallery</a>
 {% else %}
         <a href="{{ url('post/idea') }}" class="btn btn-green"><i class="fa fa-camera"></i> Post Ideas</a>
-        <a href="{{ url('blog') }}" class="btn btn-blue hidden-md"><i class="fa fa-rss"></i> Blog</a>
+        <a href="{{ url('search/users') }}" class="btn btn-blue hidden-md"><i class="fa fa-users"></i> Profile Gallery</a>
         <div class="btn-group">
             <button type="button" class="btn btn-user dropdown-toggle" data-toggle="dropdown">
                 <span>You</span> <i class="fa fa-chevron-down"></i>

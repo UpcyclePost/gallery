@@ -35,6 +35,7 @@
                 {% endfor %}
             </ul>
         </li>
+        <li><a href="{{ url('search/users') }}"><i class="fa fa-users"></i> Profile Gallery</a></li>
         {% if !isLoggedIn %}
         <li><a href="{{ url('profile/login') }}"><i class="fa fa-sign-in"></i> Login</a></li>
         <li><a href="{{ url('profile/register') }}"><i class="fa fa-user"></i> Signup</a></li>

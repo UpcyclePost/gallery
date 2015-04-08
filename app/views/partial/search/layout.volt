@@ -2,7 +2,7 @@
     <div class="content-header">
         <h1>
             {% if searchTerm is not defined or searchTerm is empty %}
-                Browse Users
+                Profile Gallery
             {% else %}
                 "{{ searchTerm }}" in Users
             {% endif %}
