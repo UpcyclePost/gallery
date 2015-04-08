@@ -164,6 +164,13 @@ class User extends Model
 		return $url->get(sprintf('/profile/%s', $this->custom_background));
 	}
 
+	public function backgroundThumbUrl()
+	{
+		$url = Phalcon\DI::getDefault()->get('imageUrl');
+
+		return $url->get(sprintf('/profile/thumb-%s', $this->custom_background));
+	}
+
 	/**
 	 * Validations and business logic
 	 */

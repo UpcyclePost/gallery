@@ -184,8 +184,11 @@ class ProfileController extends ControllerBase
 						if ($file->getType() == 'image/gif' || $file->getType() == 'image/png' || $file->getType() == 'image/jpeg')
 						{
 							$fileName = sprintf('%s-%s-%s%s', $profile->ik, Helpers::createShortCode($profile->ik), time(), strrchr($file->getName(), '.'));
+							$thumbnailFileName = sprintf('thumb-%s', $fileName);
+
 							//profileImageDir
 							$permanentFile = $this->config->application->profileImageDir . $fileName;
+							$thumbnailFile = sprintf('%s%s', $this->config->application->profileImageDir, $thumbnailFileName);
 							if ($profile->custom_background)
 							{
 								unlink(sprintf('%s%s', $this->config->application->profileImageDir, $profile->custom_background));
@@ -194,6 +197,12 @@ class ProfileController extends ControllerBase
 							if ($file->moveTo($permanentFile))
 							{
 								$profile->custom_background = $fileName;
+
+								// Create a thumbnail of the profile background
+								$imageProcessingService = new ImageProcessingService($permanentFile);
+								list($width, $height, $type, $attr) = @getimagesize($permanentFile);
+
+								$imageProcessingService->createThumbnail($thumbnailFile, ($width >= 244) ? 244 : $width);
 							}
 
 							// Let's plan to have more than one background image in the future - perhaps rotating?
@@ -435,7 +444,7 @@ class ProfileController extends ControllerBase
 		}
 	}
 
-	public function viewAction($userId)
+	public function viewAction($userId = \false)
 	{
 		$this->assets->addJs('js/gallery/layout.js')
 		             ->addJs('js/social/follow.js')

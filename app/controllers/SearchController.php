@@ -34,7 +34,7 @@ class SearchController extends ControllerBase
 			{
 				$results[ ] = [
 					'url'       => $user->url(),
-					'thumbnail' => $user->backgroundUrl(),
+					'thumbnail' => $user->backgroundThumbUrl(),
 					'title'     => $user->user_name,
 					'user'      => $user->ik,
 					'userName'  => $user->user_name

@@ -55,11 +55,41 @@ class RestController extends ControllerBase
         }
     }
 
+    public function createThumbnailsAction()
+    {
+        $this->view->disable();
+        return;
+        die();
+
+        $users = User::find([
+                       'conditions' => 'custom_background IS NOT NULL'
+                   ]);
+
+        if ($users)
+        {
+            foreach ($users AS $user)
+            {
+                $currentBackground = sprintf('%s%s', $this->config->application->profileImageDir, $user->custom_background);
+
+                $thumbnailFile = sprintf('%sthumb-%s', $this->config->application->profileImageDir, $user->custom_background);
+                if (!file_exists($thumbnailFile))
+                {
+                    $imageProcessingService = new ImageProcessingService($currentBackground);
+                    list($width, $height, $type, $attr) = @getimagesize($currentBackground);
+
+                    $imageProcessingService->createThumbnail($thumbnailFile, ($width >= 244) ? 244 : $width);
+                }
+            }
+        }
+    }
+
     public function importAction() {
+        $this->view->disable();
+        return;
+        die();
+
         $str = 'basketball & misc junk yard fountain';
         echo preg_replace('/[^a-zA-Z0-9 ]/', '-', $str);
-        die();
-        $this->view->disable();
 
         $dir = $this->config->application->uploadDir . 'import/';
         $file = $dir . 'update.csv';
