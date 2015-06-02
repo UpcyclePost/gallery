@@ -43,11 +43,7 @@
                 <div class="avatar">
 
                 </div>
-                {% if post.type is 'market' %}
-                    <div class="author-name"><span>Post By</span><a href="{{ url('shops/') ~ post.User.Shop.url }}">{{ post.User.Shop.name }}</a></div>
-                {% else %}
-                    <div class="author-name"><span>Post By</span><a href="{{ url('profile/view/') ~ post.User.ik }}">{{ post.User.user_name }}</a></div>
-                {% endif %}
+                <div class="author-name"><span>Post By</span><a href="{{ url('profile/view/') ~ post.User.ik }}">{{ post.User.user_name }}</a></div>
             </div>
             <ul class="post-actions col-2 clearfix">
                 {% if isLoggedIn %}

@@ -12,7 +12,8 @@ $(function() {
 
     $('.tm-input').tagsManager({
         tagsContainer: '.tags-container',
-        tagCloseIcon: '<i class="fa fa-fw"></i>'
+        tagCloseIcon: '<i class="fa fa-fw"></i>',
+        preventSubmitOnEnter: true
     });
 
     $("#primary ul li").click(function () {

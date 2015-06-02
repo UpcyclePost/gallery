@@ -15,10 +15,11 @@ class ImageProcessingService
 	/**
 	 * @param $thumbnailPath
 	 * @param $width
+	 * @param $height
 	 *
 	 * @return bool
 	 */
-	public function createThumbnail($thumbnailPath, $width)
+	public function createThumbnail($thumbnailPath, $width, $height = \false)
 	{
 		$result = false;
 
@@ -26,6 +27,10 @@ class ImageProcessingService
 		$phpThumb->setSourceData(file_get_contents($this->__sourceFile));
 
 		$phpThumb->setParameter('w', $width);
+		if ($height !== \false)
+		{
+			$phpThumb->setParameter('h', $height);
+		}
 
 		if ($phpThumb->GenerateThumbnail()) {
 			$phpThumb->RenderToFile($thumbnailPath);

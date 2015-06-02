@@ -26,7 +26,8 @@ class Security extends Plugin
 
         $privateResources = [
             'post'    => ['post', 'remove'],
-            'profile' => ['index', 'me', 'logout', 'settings', 'messages', 'messageSend', 'message', 'dashboard', 'edit', 'feed'],
+            'profile' => ['index', 'me', 'logout', 'settings', 'dashboard', 'edit', 'feed', 'uploadAvatar', 'uploadBackground', 'registerThankYou'],
+            'message' => ['inbox', 'sent', 'view', 'send'],
             'buy'     => ['index', 'process', 'success'],
             'shop'    => ['open', 'dashboard', 'balance', 'settings', 'survey', 'listings', 'stock', 'terms', 'getPaid', 'list', 'ship'],
             'listing' => ['upload', 'thumbnail', 'edit', 'delete', 'publish', 'submit', 'details'],
@@ -50,7 +51,7 @@ class Security extends Plugin
             'terms'      => ['*'],
             'privacy'    => ['*'],
             'newsletter' => ['subscribe'],
-            'shop'       => ['view'],
+            'shop'       => ['view','shops','redirect'],
             'search'     => ['*']
         ];
 

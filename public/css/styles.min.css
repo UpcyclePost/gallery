@@ -2750,6 +2750,21 @@ header {
     border-radius: 0 0 4px 4px;
     background-clip: padding-box;
 }
+.header-container .buttons .cart {
+    border-left: 1px solid #eee;
+    padding-left: 10px;
+    margin-left: 10px;
+    display: block;
+}
+.header-container .buttons .cart span.items {
+    position: absolute;
+    top: -5px;
+    right: 2px;
+    padding: 0 7px 0 7px;
+    background-color: #85c125;
+    color: white;
+    font-size: .75em;
+}
 .header-container .search {
     border: 1px solid #ccc;
     display: inline-block;
@@ -3023,6 +3038,12 @@ header {
 .btn-header:last-of-type {
     margin-left: 6px;
 }
+@media (max-width: 415px) {
+    .btn-header:last-of-type {
+        margin-top:5px;margin-left:-2px;
+    }
+}
+
 #gallery div {
     width: 100%;
     min-height: 300px;
@@ -3049,6 +3070,9 @@ header {
     -moz-background-clip: padding;
     border-radius: 4px;
     background-clip: padding-box;
+}
+.gallery-post.is-shop {
+    border: 1px solid #85c125;
 }
 .gallery-post .gallery-img img {
     -webkit-border-radius: 4px 4px 0 0;
@@ -3194,6 +3218,29 @@ header {
      border: 2px dashed #ddd;
      margin-bottom: 20px;
  }
+.upload-profile-image {
+    width: 104px;
+    height: 104px;
+    min-width: 104px;
+    max-width: 104px;
+    min-height: 104px;
+    max-height: 104px;
+    margin: 0;
+}
+.upload-background-image {
+    width: 268px;
+    min-width: 268px;
+    max-width: 268px;
+    min-height: 186px;
+    margin: 0;
+}
+.circular img {
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.6);
+    -o-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.6);
+}
 @media(max-width:767px) {
     .upload-image {
         width: 100%;
@@ -3204,6 +3251,9 @@ header {
      color: #999;
      margin: 25% 0 0;
  }
+.upload-profile-image p {
+    font-size: 16px;
+}
 .upload-panel-body .row .col-sm-5 img {
     margin-bottom: 20px;
 }
@@ -3520,6 +3570,21 @@ form div:last-child.form-group {
     margin: auto;
     padding-left: 15px;
     padding-right: 15px;
+}
+.content {
+    min-height: 500px;
+}
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
 }
 @media(max-width:1620px) {
     .content-container, .header-container {
@@ -5259,10 +5324,10 @@ p {
     margin-left: 200px;
     width: auto;
 }
-.profile-view-container div.login-panel
+/*.profile-view-container div.login-panel
 {
     width: 400px;
-}
+}*/
 @media (max-width: 824px)
 {
     .profile-view-container {
@@ -5280,6 +5345,12 @@ p {
 div.profile-board, div.profile-board div.login-panel-header
 {
     background: rgba(255, 255, 255, .7);
+}
+.semi-opaque-7 {
+    background: rgba(255, 255, 255, .7);
+}
+.profile-image {
+    padding-bottom: 24px;
 }
 .full-screen {
     margin-left: 15px;
@@ -5319,6 +5390,34 @@ nav.tabs li .btn {
 
 .fa.icon-only {
     margin: auto;
+}
+
+a.profile-gallery:hover::after {
+    content: 'Profile Gallery';
+}
+a.profile-gallery:hover > .fa {
+    margin-right: 4px;
+}
+
+a.shops-gallery:hover::after {
+    content: 'Shop Gallery';
+}
+a.shops-gallery:hover > .fa {
+    margin-right: 4px;
+}
+
+a.post-idea:hover::after {
+    content: 'Post Ideas';
+}
+a.post-idea:hover > .fa {
+    margin-right: 4px!important;
+}
+
+a.idea-gallery:hover::after {
+    content: 'Idea Gallery';
+}
+a.idea-gallery:hover > .fa {
+    margin-right: 4px!important;
 }
 
 nav.tabs li .btn.btn-blue
@@ -5420,4 +5519,16 @@ button.search-icon:active {
 
 .gallery-engagement .fa-trash-o {
     color: red!important;
+}
+
+.fa-xs {
+    font-size: 8px;
+    vertical-align: top;
+}
+
+header .buttons font.items {
+    background-color: orange;
+    color: white;
+    padding: 0 7px 0 7px;
+    margin-left: 5px;
 }

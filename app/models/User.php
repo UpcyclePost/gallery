@@ -26,6 +26,10 @@ class User extends Model
 	 */
 	public $user_name;
 
+	/**
+	 *
+	 */
+	public $shop_name;
 
 	/**
 	 *
@@ -146,9 +150,24 @@ class User extends Model
 	public $custom_background;
 
 	/**
+	 * @var string
+	 */
+	public $avatar;
+
+	/**
 	 * @var int
 	 */
 	public $contact_for_marketplace;
+
+	/**
+	 * @var int
+	 */
+	public $views;
+
+	/**
+	 * @var int
+	 */
+	public $followers;
 
 	public function url()
 	{
@@ -157,18 +176,42 @@ class User extends Model
 		return $url->get('profile/view/') . $this->ik;
 	}
 
+	public function shopUrl()
+	{
+		$url = Phalcon\DI::getDefault()->get('url');
+
+		return $url->get('shops/') . Helpers::url($this->user_name);
+	}
+
 	public function backgroundUrl()
 	{
 		$url = Phalcon\DI::getDefault()->get('imageUrl');
 
-		return $url->get(sprintf('/profile/%s', $this->custom_background));
+		return $url->get(sprintf('profile/%s', $this->custom_background));
 	}
 
 	public function backgroundThumbUrl()
 	{
 		$url = Phalcon\DI::getDefault()->get('imageUrl');
 
-		return $url->get(sprintf('/profile/thumb-%s', $this->custom_background));
+		if ($this->custom_background)
+		{
+			return $url->get(sprintf('profile/thumb-%s', $this->custom_background));
+		}
+
+		return \false;
+	}
+
+	public function avatarUrl()
+	{
+		$url = Phalcon\DI::getDefault()->get('imageUrl');
+
+		if ($this->avatar)
+		{
+			return $url->get(sprintf('profile/avatar/%s', $this->avatar));
+		}
+
+		return $url->get(sprintf('profile/avatar/person.png'));
 	}
 
 	/**
@@ -236,7 +279,11 @@ class User extends Model
 			'contact_for_marketplace' => 'contact_for_marketplace',
 			'first_name'              => 'first_name',
 			'last_name'               => 'last_name',
-			'user_name'               => 'user_name'
+			'user_name'               => 'user_name',
+			'shop_name'               => 'shop_name',
+			'avatar'                  => 'avatar',
+			'views'                   => 'views',
+			'followers'               => 'followers'
 		];
 	}
 }

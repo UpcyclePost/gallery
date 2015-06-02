@@ -4,18 +4,9 @@
     <div class="login-panel">
         <div class="login-panel-header">
             <font class="btn btn-blue">{{ name }}</font>
-            {% if shop_url %}
-            <a class="btn btn-gray" href="http://www.upcyclepost.com/shops/{{ shop_url }}">http://www.upcyclepost.com/shops/{{ shop_url }}</a>
-            {% else %}
             <a class="btn btn-gray" href="http://www.upcyclepost.com/profile/view/{{ auth['ik'] }}">Visit my profile</a>
-            {% endif %}
         </div>
         <div class="login-panel-header">
-            {% if auth['type'] is not 'seller' %}
-            <a class="btn btn-green" href="{{ url('shop/open') }}">Open a shop</a>
-            {% else %}
-            <a class="btn btn-green" href="{{ url('shop/dashboard') }}">Shop dashboard</a>
-            {% endif %}
             <a class="btn btn-gray" href="{{ url('profile/settings') }}">Settings</a>
             <a class="btn btn-blue" href="{{ url('profile/messages') }}" style="float: right">Private Messages</a>
             <br />

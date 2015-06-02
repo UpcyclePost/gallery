@@ -21,7 +21,9 @@ class SearchService
 		$term = $this->sanitize($searchTerm);
 		$term = ($term && strlen($term) > 0) ? $term : \false;
 
-		return Post::searchIndex($start, 50, $category, \false, $term);
+		// When there is no search term, we want to only sort on "Influence"
+		$sort = ($term) ? ['score' => 'desc', 'influence' => 'desc'] : ['ik' => 'desc', 'influence' => 'desc'];
+		return Post::searchIndex($start, 50, $category, \false, $term, \false, $sort);
 	}
 
 	/**

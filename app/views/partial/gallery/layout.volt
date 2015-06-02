@@ -1,7 +1,7 @@
 <?php
 $searchCategory = ($category == 'New') ? '' : $category;
 ?>
-<form id="more" data-url="{{ url('gallery/' ~ searchCategory|url) ~ '/more' }}" data-search-term="{% if searchTerm is defined %}{{ searchTerm }}{% endif %}"></form>
+<form id="more" data-start="{% if start is defined %}{{ start }}{% else %}50{% endif %}" data-url="{{ url('gallery/' ~ searchCategory|url) ~ '/more' }}" data-search-term="{% if searchTerm is defined %}{{ searchTerm }}{% endif %}"></form>
 <div class="content-container">
     <div class="content-header">
         <h1>
@@ -12,9 +12,11 @@ $searchCategory = ($category == 'New') ? '' : $category;
             {% endif %}
         </h1>
     </div>
+    {% if hideCategories is not defined %}
     <aside class="cat-sidebar" data-spy="affix" data-offset-top="{{ offsetTop }}">
         {{ partial('partial/menu/sidebar') }}
     </aside>
+    {% endif %}
     <div class="content">
         <div class="posts-container">
             {% set isodiv = "iso" %}

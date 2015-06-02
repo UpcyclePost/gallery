@@ -1,4 +1,4 @@
-<?php
+<?php namespace Up\Models;
 
 class Shop extends \Phalcon\Mvc\Model
 {

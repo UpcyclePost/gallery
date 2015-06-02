@@ -186,7 +186,12 @@ class Post extends \Phalcon\Mvc\Model
             $post = Post::findFirst(["ik <> ?0 AND category_ik is not null AND status = 'posted' AND visible = 1", 'bind' => [$this->ik], 'order' => 'ik asc']);
         }
 
-        return $post->url();
+        if ($post)
+        {
+            return $post->url();
+        }
+
+        return '';
     }
 
     public function previous() {
@@ -195,7 +200,12 @@ class Post extends \Phalcon\Mvc\Model
             $post = Post::findFirst(["ik <> ?0 AND category_ik is not null AND status = 'posted' AND visible = 1", 'bind' => [$this->ik], 'order' => 'ik desc']);
         }
 
-        return $post->url();
+        if ($post)
+        {
+            return $post->url();
+        }
+
+        return '';
     }
 
     public function index() {

@@ -54,6 +54,7 @@ class Message extends \Phalcon\Mvc\Model
 	public function initialize()
 	{
 		$this->belongsTo('from_user_ik', 'User', 'ik');
+		$this->belongsTo('to_user_ik', 'User', 'ik', ['alias' => 'Recipient']);
 	}
 
 	public function slug()

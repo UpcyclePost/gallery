@@ -7,120 +7,12 @@ class ProfileController extends ControllerBase
 
 	}
 
-	public function messagesAction()
-	{
-		$auth = $this->session->get('auth');
-
-		$messages = Message::find([
-			                          'conditions' => 'to_user_ik = ?0',
-			                          'order'      => 'ik DESC',
-			                          'bind'       => [$auth[ 'ik' ]]
-		                          ]);
-
-		$this->view->messages = $messages;
-	}
-
-	public function messageAction($messageIk)
-	{
-		$this->assets->addJs('js/libraries/validate/jquery.validate.min.js');
-		$message = Message::findFirst(['conditions' => 'ik = ?0 AND to_user_ik = ?1', 'bind' => [$messageIk, $this->session->get('auth')[ 'ik' ]]]);
-
-		if ($message === false)
-		{
-			$this->flash->error('The message selected was not found.');
-
-			return $this->response->redirect('profile/messages');
-		}
-		else
-		{
-			if ($message->read == null)
-			{
-				$message->read = date('Y-m-d H:i:s');
-				$message->update();
-			}
-		}
-
-		$this->view->message = $message;
-	}
-
-	public function messageSendAction($userIk)
-	{
-		$this->session->set('redirectTo', $this->router->getRewriteUri());
-		$this->assets->addJs('js/libraries/validate/jquery.validate.min.js');
-
-		if ($userIk == $this->session->get('auth')[ 'ik' ])
-		{
-			$this->view->disable();
-
-			$this->flash->error('Are you sure you want to send yourself a message?');
-
-			return $this->response->redirect('profile/messages');
-		}
-
-		$user = User::findFirst($userIk);
-
-		if ($user === false)
-		{
-			return $this->response->redirect('profile/messages');
-		}
-
-		if ($this->request->isPost())
-		{
-			$this->view->disable();
-
-			$message = new Message();
-			$message->from_user_ik = $this->session->get('auth')[ 'ik' ];
-			$message->to_user_ik = $userIk;
-			$message->subject = strip_tags($this->request->getPost('subject'));
-			$message->message = strip_tags($this->request->getPost('message'));
-			$message->sent = date('Y-m-d H:i:s');
-
-			if ($this->request->hasPost('reply-to'))
-			{
-				$message->reply_to_ik = (int)$this->request->getPost('reply-to');
-			}
-
-			if ($message->save())
-			{
-				$this->flash->success('Your message has been sent.');
-				$this->eventManager->fire('user:whenPrivateMessageHasBeenSent', $this, ['sender' => $this->auth[ 'ik' ], 'recipient' => $userIk, 'messageIk' => $message->ik]);
-
-				// Notify the user that they have received a new message
-				try
-				{
-					ob_start();
-					$this->view->partial('emails/profile/message-received', [
-						'who'  => $user->name,
-						'from' => $this->auth[ 'user_name' ],
-						'slug' => $message->slug(),
-					]);
-					$body = ob_get_contents();
-					ob_end_clean();
-
-					//Send
-					Helpers::sendEmail($user->email, sprintf('%s sent you a message on UpcyclePost', $this->auth[ 'user_name' ]), $body, 'UpcyclePost', 'noreply@upcyclepost.com');
-				}
-				catch (Exception $e)
-				{
-				}
-			}
-			else
-			{
-				$this->flash->error('An error occurred while sending your message.');
-			}
-
-			return $this->response->redirect('profile/messages');
-		}
-
-		$this->assets->addJs('js/gallery/layout.js');
-		$this->view->profile = $user;
-	}
-
 	public function editAction()
 	{
 		$this->assets->addJs('js/libraries/validate/jquery.validate.min.js')
 		             ->addJs('js/profile/edit.js')
-		             ->addJs('js/libraries/jquery/jquery.blockUI.js');
+		             ->addJs('js/libraries/jquery/jquery.blockUI.js')
+		             ->addJs('js/libraries/dropzone/dropzone.js');
 
 		if (($profile = $this->__getProfile()) !== \false)
 		{
@@ -165,50 +57,33 @@ class ProfileController extends ControllerBase
 					$profile->facebook = strip_tags($this->request->getPost('facebook'));
 				}
 
-				if ($this->request->hasPost('marketplace'))
+				/*if ($this->request->hasPost('marketplace'))
 				{
 					$profile->contact_for_marketplace = 1;
 				}
 				else
 				{
 					$profile->contact_for_marketplace = 0;
+				}*/
+
+				if ($this->request->hasPost('background'))
+				{
+					if ($profile->custom_background)
+					{
+						unlink(sprintf('%s%s', $this->config->application->profileImageDir, $profile->custom_background));
+					}
+
+					$profile->custom_background = $this->request->getPost('background');
 				}
 
-				$profile->update();
-
-				if ($this->request->hasFiles())
+				if ($this->request->hasPost('avatar'))
 				{
-					// Let's upload a background image.
-					foreach ($this->request->getUploadedFiles() AS $file)
+					if ($profile->avatar)
 					{
-						if ($file->getType() == 'image/gif' || $file->getType() == 'image/png' || $file->getType() == 'image/jpeg')
-						{
-							$fileName = sprintf('%s-%s-%s%s', $profile->ik, Helpers::createShortCode($profile->ik), time(), strrchr($file->getName(), '.'));
-							$thumbnailFileName = sprintf('thumb-%s', $fileName);
-
-							//profileImageDir
-							$permanentFile = $this->config->application->profileImageDir . $fileName;
-							$thumbnailFile = sprintf('%s%s', $this->config->application->profileImageDir, $thumbnailFileName);
-							if ($profile->custom_background)
-							{
-								unlink(sprintf('%s%s', $this->config->application->profileImageDir, $profile->custom_background));
-							}
-
-							if ($file->moveTo($permanentFile))
-							{
-								$profile->custom_background = $fileName;
-
-								// Create a thumbnail of the profile background
-								$imageProcessingService = new ImageProcessingService($permanentFile);
-								list($width, $height, $type, $attr) = @getimagesize($permanentFile);
-
-								$imageProcessingService->createThumbnail($thumbnailFile, ($width >= 244) ? 244 : $width);
-							}
-
-							// Let's plan to have more than one background image in the future - perhaps rotating?
-							break;
-						}
+						unlink(sprintf('%s%s', $this->config->application->profileAvatarDir, $profile->avatar));
 					}
+
+					$profile->avatar = $this->request->getPost('avatar');
 				}
 
 				if ($profile->update())
@@ -221,7 +96,7 @@ class ProfileController extends ControllerBase
 						$this->session->set('auth', $this->auth);
 					}
 
-					return $this->response->redirect('http://www.upcyclepost.com/profile/view/' . $this->auth[ 'ik' ], true);
+					return $this->response->redirect('http://beta.upcyclepost.com/profile/view/' . $this->auth[ 'ik' ], true);
 				}
 				else
 				{
@@ -237,6 +112,110 @@ class ProfileController extends ControllerBase
 		{
 			return $this->response->redirect('profile/edit');
 		}
+	}
+
+	public function uploadAvatarAction()
+	{
+		if (!$this->request->isPost() || !$this->request->isAjax())
+		{
+			// This function only accepts POSTed requests
+			return $this->response->redirect('profile/edit');
+		}
+		else
+		{
+			// Nothing to see here
+			$this->view->disable();
+
+			if (!$this->request->hasFiles())
+			{
+				echo json_encode(['success' => false]);
+			}
+			else
+			{
+				if (($profile = $this->__getProfile()) !== \false)
+				{
+					foreach ($this->request->getUploadedFiles() AS $file)
+					{
+						if ($file->getType() == 'image/gif' || $file->getType() == 'image/png' || $file->getType() == 'image/jpeg')
+						{
+							$fileName = sprintf('%s-%s-%s%s', $profile->ik, Helpers::createShortCode($profile->ik), time(), strrchr($file->getName(), '.'));
+
+							//profileImageDir
+							$permanentFile = $this->config->application->profileAvatarDir . $fileName;
+
+							if ($file->moveTo($permanentFile))
+							{
+								// Create a thumbnail of the profile background
+								$imageProcessingService = new ImageProcessingService($permanentFile);
+
+								$imageProcessingService->createThumbnail($permanentFile, 100, 100);
+
+								echo json_encode(['success' => true, 'data' => ['file' => $fileName, 'preview' => $this->imageUrl->get(sprintf('profile/avatar/%s', $fileName))]]);
+								return;
+							}
+						}
+
+						break;
+					}
+				}
+			}
+		}
+
+		echo json_encode(['success' => false]);
+	}
+
+	public function uploadBackgroundAction()
+	{
+		if (!$this->request->isPost() || !$this->request->isAjax())
+		{
+			// This function only accepts POSTed requests
+			return $this->response->redirect('profile/edit');
+		}
+		else
+		{
+			// Nothing to see here
+			$this->view->disable();
+
+			if (!$this->request->hasFiles())
+			{
+				echo json_encode(['success' => false]);
+			}
+			else
+			{
+				if (($profile = $this->__getProfile()) !== \false)
+				{
+					foreach ($this->request->getUploadedFiles() AS $file)
+					{
+						if ($file->getType() == 'image/gif' || $file->getType() == 'image/png' || $file->getType() == 'image/jpeg')
+						{
+							$fileName = sprintf('%s-%s-%s%s', $profile->ik, Helpers::createShortCode($profile->ik), time(), strrchr($file->getName(), '.'));
+							$thumbnailFileName = sprintf('thumb-%s', $fileName);
+
+							//profileImageDir
+							$permanentFile = $this->config->application->profileImageDir . $fileName;
+							$thumbnailFile = sprintf('%s%s', $this->config->application->profileImageDir, $thumbnailFileName);
+
+							if ($file->moveTo($permanentFile))
+							{
+								// Create a thumbnail of the profile background
+								$imageProcessingService = new ImageProcessingService($permanentFile);
+								list($width, $height, $type, $attr) = @getimagesize($permanentFile);
+
+								$imageProcessingService->createThumbnail($thumbnailFile, ($width >= 244) ? 244 : $width);
+
+								echo json_encode(['success' => true, 'data' => ['file' => $fileName, 'preview' => $this->imageUrl->get(sprintf('profile/%s', $thumbnailFileName))]]);
+								return;
+							}
+
+							// Let's plan to have more than one background image in the future - perhaps rotating?
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		echo json_encode(['success' => false]);
 	}
 
 	public function settingsAction()
@@ -335,6 +314,9 @@ class ProfileController extends ControllerBase
 		$this->cookies->set('disqus', base64_encode(json_encode([])), time() + 15 * 86400);
 		$this->cookies->delete('disqus');
 		$this->session->destroy();
+
+		$prestashopIntegrationService = new \Up\Services\PrestashopIntegrationService();
+		$prestashopIntegrationService->logoutOfPrestashop();
 
 		return $this->response->redirect('profile/login');
 	}
@@ -470,19 +452,22 @@ class ProfileController extends ControllerBase
 			return $this->response->redirect('gallery');
 		}
 
-		$this->view->title = $user->user_name . ' | UpcyclePost';
+		$this->view->title = sprintf('%s | Upcycling Ideas, Articles and Products | UpcyclePost', $user->user_name);
+		$this->view->metaDescription = sprintf("Discover the greatest upcycled products and post what inspires you. %s, %s : %s",
+		                                       $user->user_name, $user->location, str_replace('"', "'", Helpers::tokenTruncate($user->about, 65)));
 
 		$this->view->profile = $user;
 
 		if ($user->custom_background)
 		{
-			$this->view->og_img = 'http://i.upcyclepost.com/profile/' . $user->custom_background;
+			$this->view->og_img = $user->backgroundUrl();
 			list($width, $height, $type, $attr) = @getimagesize($this->config->application->profileImageDir . $user->custom_background);
 			$this->view->og_img_size = [$width, $height];
-			$this->view->og_description = $user->about;
+			$this->view->og_description = $this->view->metaDescription;
 		}
 
 		$this->view->results = Post::searchIndex(0, 150, false, $user->ik);
+		$this->view->shop_results = (new \Up\Services\PrestashopIntegrationService())->findRecentProducts(20, $user);
 
 		$subscriptionService = new SubscriptionService();
 		$this->view->following = $subscriptionService->userIsSubscribed(
@@ -490,6 +475,15 @@ class ProfileController extends ControllerBase
 			$this->auth[ 'ik' ],
 			$user->ik
 		);
+
+		$this->view->canonical_url = $user->url();
+		$this->view->isOwnProfile = ($this->view->isLoggedIn && $this->auth['ik'] == $user->ik);
+
+		if (!$this->view->isOwnProfile)
+		{
+			$user->views = $user->views + 1;
+			$user->save();
+		}
 	}
 
 	public function registerAction()
@@ -598,6 +592,10 @@ class ProfileController extends ControllerBase
 
 								$marketing->save();
 							}
+
+							// Register Prestahop account
+							$psService = new \Up\Services\PrestashopIntegrationService();
+							$psService->registerPrestashopUser($user);
 						}
 					}
 				}
@@ -627,7 +625,7 @@ class ProfileController extends ControllerBase
 				}
 				else
 				{
-					$path = '';
+					$path = 'profile/register/thankyou';
 				}
 			}
 			else
@@ -637,6 +635,14 @@ class ProfileController extends ControllerBase
 
 			return $this->response->redirect($path);
 		}
+	}
+
+	public function registerThankYouAction()
+	{
+		$this->view->title = 'Thank You | UpcyclePost';
+		$profile = $this->__getProfile();
+
+		$this->view->profile_url = $profile->url();
 	}
 
 	public function loginAction()
@@ -650,6 +656,11 @@ class ProfileController extends ControllerBase
 				// Already logged in, redirect to settings
 				return $this->response->redirect('profile/settings');
 			}
+		}
+
+		if ($this->request->get('redirect') && $this->request->get('redirect') == 'cart')
+		{
+			$this->session->set('requested-resource', '/shop/quick-order');
 		}
 
 		$this->assets->addJs('js/libraries/validate/jquery.validate.min.js')
@@ -751,8 +762,26 @@ class ProfileController extends ControllerBase
 				// Set cookie variables
 				$this->cookies->set('disqus', base64_encode(json_encode(['id' => $user->ik, 'username' => $user->name, 'email' => $user->email])), time() + 15 * 86400);
 
+				$authArray = [
+					'ik'        => $user->ik,
+					'email'     => $user->email,
+					'name'      => $user->name,
+					'user_name' => $user->user_name,
+					'role'      => $user->role,
+					'type'      => $user->type
+				];
+
+				$psService = new \Up\Services\PrestashopIntegrationService();
+				$psService->loginToPrestashop($user);
+
+				if (($shopId = $psService->getShopId($user)) !== \false)
+				{
+					$authArray['shopId'] = $shopId;
+				}
+
 				// Set session variables
-				$this->session->set('auth', ['ik' => $user->ik, 'email' => $user->email, 'name' => $user->name, 'user_name' => $user->user_name, 'role' => $user->role, 'type' => $user->type]);
+				$this->session->set('auth', $authArray);
+
 
 				return \true;
 			}
@@ -775,9 +804,9 @@ class ProfileController extends ControllerBase
 		// We only update session variables that existed when logging in.
 		if ($auth)
 		{
-			if (isset($auth[$var]))
+			if (isset($auth[ $var ]))
 			{
-				$auth[$var] = $data;
+				$auth[ $var ] = $data;
 
 				$this->session->set('auth', $auth);
 			}
@@ -793,7 +822,7 @@ class ProfileController extends ControllerBase
 
 		if ($this->request->hasPost('userName'))
 		{
-			return preg_replace('/[^a-zA-Z0-9\- ]/', '', $this->request->getPost('userName'));
+			return preg_replace('/[^a-zA-Z0-9]/', '', $this->request->getPost('userName'));
 		}
 
 		return $username;

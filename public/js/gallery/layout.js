@@ -13,5 +13,19 @@ $(function() {
         $container.isotope('layout');
     });
 
+    if ($('#shop-iso').length)
+    {
+        $shopContainer = $('#shop-iso').isotope({
+            masonry: {
+                gutter: 20
+            }
+        });
 
+        $shopContainer.isotope('option', { animationEngine: 'css' }).addClass('transitions-disabled');
+
+        // layout Isotope again after all images have loaded
+        $shopContainer.imagesLoaded(function () {
+            $shopContainer.isotope('layout');
+        });
+    }
 });

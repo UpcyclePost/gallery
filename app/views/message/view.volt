@@ -3,7 +3,16 @@
 <div class="account-settings-container">
     <div class="login-panel">
         <div class="login-panel-header">
-            <h1>Message Center</h1>
+            <div style="float: left;">
+                <h1>Message Center</h1>
+            </div>
+            <div style="float: left;">
+                <nav class="slug tabs clearfix feed-menu">
+                    <li><a href="{{ url('profile/messages/sent') }}" class="btn btn-gray">Sent Messages</a></li>
+                    <li><a href="{{ url('profile/messages') }}" class="btn btn-gray">Inbox</a></li>
+                </nav>
+            </div>
+            <br clear="all" />
         </div>
         <div class="login-panel-header messages">
             <h4>{{ message.subject }}</h4>
@@ -11,7 +20,11 @@
             <?php
             echo (new Carbon\Carbon($message->sent))->diffForHumans();
             ?>
+            {% if message.User.ik != auth['ik'] %}
             by <a href="{{ url('profile/view/') ~ message.User.ik }}">{{ message.User.user_name }}</a>
+            {% else %}
+            to <a href="{{ url('profile/view/') ~ message.Recipient.ik }}">{{ message.Recipient.user_name }}</a>
+            {% endif %}
         </div>
         <form class="form-horizontal">
         <div class="login-panel-body">
@@ -30,6 +43,12 @@
         </div>
         </form>
     </div>
+
+<?php
+    if ($message->User->ik != $auth['ik'])
+    {
+
+?>
 
 <?php
     $subject = (substr($message->subject, 0, 3) == 'Re:') ? $message->subject : 'Re: ' . $message->subject;
@@ -72,4 +91,5 @@
         </div>
         </form>
     </div>
+    <?php } ?>
 </div>

@@ -2,7 +2,7 @@
     <div class="content-container">
         <div class="menu-container clearfix">
             <div class="main-menu menu-categories clearfix">
-                <h4 class="blue">Browse Categories</h4>
+                <h4 class="blue">Browse Ideas</h4>
                 <?php $categories = Helpers::getCategoryList(); ?>
                 <div class="col-sm-3">
                     <ul>

@@ -11,6 +11,9 @@
 
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    {% if canonical_url is defined %}
+        <link rel="canonical" href="{{ canonical_url }}" />
+    {% endif %}
 
     <!-- Bootstrap -->
     <link href="{{ static_url('css/styles.min.css') }}" rel="stylesheet">
@@ -20,6 +23,9 @@
 
     <!-- Font Awesome Icons -->
     <link href="{{ static_url('css/font-awesome.min.css') }}" rel="stylesheet">
+
+    <!-- UpcyclePost Icons -->
+    <link href="{{ static_url('css/upcyclepost/css/upcyclepost.css') }}" rel="stylesheet">
 
     <!-- mmenu -->
     <link href="{{ static_url('css/libraries/mobile-slide-menu/jquery.mmenu.positioning.css') }}" rel="stylesheet">
@@ -41,6 +47,18 @@
     {% if og_description is defined %}
         <meta property="og:description" content="{{ og_description }}" />
     {% endif %}
+    {% if canonical_url is defined %}
+        <meta property="og:url" content="{{ canonical_url }}" />
+    {% endif %}
+    <meta property="og:title" content="{{ title }}" />
+    <script type='text/javascript'>
+        (function (d, t) {
+          var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
+          bh.type = 'text/javascript';
+          bh.src = '//www.bugherd.com/sidebarv2.js?apikey=rxgaf7pdds4czpwbvynsea';
+          s.parentNode.insertBefore(bh, s);
+          })(document, 'script');
+    </script>
 </head>
 <body>
 <div id="page">
@@ -56,7 +74,7 @@
                 </form>
             </div>
 
-            <div class="logo"><a href="{{ url('') }}"><img class="hidden-xs" src="{{ static_url('img/logo.png') }}" /><img class="visible-xs" src="{{ static_url('img/micro-logo.png') }}" /></a></div>
+            <div class="logo"><a href="{{ url('') }}"><img class="hidden-xs" src="{{ static_url('img/logo.jpg') }}" /><img class="visible-xs" src="{{ static_url('img/micro-logo.png') }}" /></a></div>
             <div class="buttons hidden-xs hidden-sm">
                 {{ partial('partial/menu/login') }}
             </div>

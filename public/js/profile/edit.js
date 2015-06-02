@@ -70,4 +70,116 @@ $(function() {
             })
         }
     });
+
+    var dropzone = new Dropzone('fieldset#avatar-dropzone', {
+        url: '/profile/edit/upload/avatar',
+        paramName: "file", // The name that will be used to transfer the file
+        maxFilesize: 10, // MB
+        maxFiles: 1,
+        acceptedFiles: "image/*",
+        addRemoveLinks: false,
+        init: function() {
+            var _this = this;
+
+            var selectFile = document.querySelector('#choose-avatar');
+            selectFile.addEventListener('click', function() {
+                _this.hiddenFileInput.click();
+            });
+
+            this.on("thumbnail", function(file) {
+                if (file.acceptDimensions) {
+                    file.acceptDimensions();
+                }
+            });
+
+            this.on("complete", function(file) {
+                $('#avatar-error').hide();
+                $('#choose-avatar').hide();
+
+                if (file.accepted) {
+                    var a = $.parseJSON(file.xhr.responseText);
+                    if (a.success) {
+                        var img = new Image();
+                        img.onload = function() {
+                            $('#avatar-dropzone').html('<img id="upload-profile-image-preview" src="' + a.data.preview + '" /><input type="hidden" name="avatar" value="'+ a.data.file+'">');
+                        };
+                        img.src = a.data.preview;
+                        dropzone.disable(); // Disable the dropzone on successful upload
+                    } else {
+                        this.removeFile(file);
+                    }
+                } else {
+                    $('#avatar-error').show();
+                    $('#avatar-error').html($('.dz-error-message span').html());
+                    this.removeFile(file);
+                }
+            });
+
+            this.on('uploadprogress', function(file, progress) {
+                $('#avatar-dropzone').html('<p>Uploading your image, ' + Math.round(progress) + '%</p>');
+            });
+        },
+
+        accept: function(file, done) {
+            $('#avatar-error').hide();
+
+            file.acceptDimensions = done;
+        }
+    });
+
+    var backgroundDropzone = new Dropzone('fieldset#background-dropzone', {
+        url: '/profile/edit/upload/background',
+        paramName: "file", // The name that will be used to transfer the file
+        maxFilesize: 50, // MB
+        maxFiles: 1,
+        acceptedFiles: "image/*",
+        addRemoveLinks: false,
+        init: function() {
+            var _this = this;
+
+            var selectFile = document.querySelector('#choose-background');
+            selectFile.addEventListener('click', function() {
+                _this.hiddenFileInput.click();
+            });
+
+            this.on("thumbnail", function(file) {
+                if (file.acceptDimensions) {
+                    file.acceptDimensions();
+                }
+            });
+
+            this.on("complete", function(file) {
+                $('#background-error').hide();
+                $('#choose-background').hide();
+
+                if (file.accepted) {
+                    var a = $.parseJSON(file.xhr.responseText);
+                    if (a.success) {
+                        var img = new Image();
+                        img.onload = function() {
+                            $('#background-dropzone').html('<img id="upload-background-image-preview" src="' + a.data.preview + '" /><input type="hidden" name="background" value="'+ a.data.file+'">');
+                        };
+                        img.src = a.data.preview;
+                        dropzone.disable(); // Disable the dropzone on successful upload
+                    } else {
+                        this.removeFile(file);
+                    }
+                } else {
+                    $('#background-error').show();
+                    $('#background-error').html($('.dz-error-message span').html());
+                    this.removeFile(file);
+                }
+            });
+
+            this.on('uploadprogress', function(file, progress) {
+                $('#background-dropzone').html('<p>Uploading your background, ' + Math.round(progress) + '%</p>');
+            });
+        },
+
+        accept: function(file, done) {
+            $('#background-error').hide();
+
+            file.acceptDimensions = done;
+        }
+    });
 });

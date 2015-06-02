@@ -13,6 +13,9 @@
                             <div class="author-category">
                                 <span><a href="{{ url('profile/view/') ~ user.ik }}">{{ user.user_name }}</a></span>
                             </div>
+                            <ul class="gallery-engagement clearfix">
+                                <li><i class="fa fa-eye"></i> {{ user.views|pretty }}</li>
+                            </ul>
                         </div>
                     </article>
                 {% endif %}
@@ -24,7 +27,7 @@
                     <article class="gallery-post">
                         <a href="{{ post['url'] }}">
                             <div class="gallery-img">
-                                <img class="img-responsive" src="//i.upcyclepost.com/{{ post['thumbnail'] }}" alt="{{ post['title'] }}" />
+                                <img class="img-responsive" src="//i.beta.upcyclepost.com/{{ post['thumbnail'] }}" alt="{{ post['title'] }}" />
                             </div>
                         </a>
                         <div class="gallery-meta">
@@ -33,11 +36,32 @@
                             </div>
                         </div>
                     </article>
+                {% elseif post['market'] is defined %}
+                    <article class="gallery-post">
+                        <a href="{{ post['url'] }}">
+                            <div class="gallery-img" style="position: relative;">
+                                <img class="img-responsive" src="{{ post['image'] }}" alt="{{ post['title'] }}" />
+                            </div>
+                        </a>
+                        <div class="gallery-meta">
+                            <div class="author-category" style="line-height: 1.8em;">
+                                <strong><a href="{{ post['url'] }}"><?=Helpers::Truncate($post['title'], 40)?></a></strong>
+                                <br>
+                                <div class="pull-left">
+                                    <a href="{{ url('shops/') ~ post['userName'] }}" style="color:#999">{{ post['shopName'] }}</a>
+                                </div>
+                                <div class="pull-right">
+                                    <strong><a href="{{ post['url'] }}">${{ post['price']|pretty }}</a></strong>
+                                </div>
+                                <br clear="all">
+                            </div>
+                        </div>
+                    </article>
                 {% else %}
                     <article class="gallery-post">
                         <a href="{{ url('gallery/' ~ post['categoryTitle']|url ~ '/' ~ post['title']|url ~ '-' ~ post['ik']) }}">
                             <div class="gallery-img">
-                                <img class="img-responsive" src="//i.upcyclepost.com/post/{{ post['id'] }}-{{ post['ik'] }}.small.png" alt="{{ post['title'] }}" />
+                                <img class="img-responsive" src="//i.beta.upcyclepost.com/post/{{ post['id'] }}-{{ post['ik'] }}.small.png" alt="{{ post['title'] }}" />
                             </div>
                         </a>
                         <div class="gallery-meta">

@@ -58,8 +58,6 @@ class RestController extends ControllerBase
     public function createThumbnailsAction()
     {
         $this->view->disable();
-        return;
-        die();
 
         $users = User::find([
                        'conditions' => 'custom_background IS NOT NULL'

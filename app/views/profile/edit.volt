@@ -20,23 +20,33 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-xs-12 col-sm-2 control-label">Background</label>
+                    <label class="col-xs-12 col-sm-2 control-label">Profile Image</label>
                     <div class="col-xs-6 col-sm-5">
-                        {% if profile.custom_background %}
-                        <label class="control-label" id="choose-new-image-label">
-                        <a id="choose-new-image">Click here to choose a new background image</a>
-                        </label>
-                        {% endif %}
-                        <div id="background-upload"{% if profile.custom_background %} style="display: none;"{% endif %}>
-                            <input type="file" name="background" class="form-control file-input" id="background">
+                        <div id="avatar-error" style="display: none;"></div>
+                        <div id="avatar-upload">
+                            <fieldset class="upload-image upload-profile-image" id="avatar-dropzone">
+                                {% if profile.avatar %}
+                                    <img id="upload-profile-image-preview" src="{{ profile.avatarUrl() }}" />
+                                {% endif %}
+                            </fieldset>
+                            <button class="btn btn-blue" type="button" id="choose-avatar">Select File</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-2 control-label">Background</label>
+                    <div class="col-sm-10">
+                        <div id="background-error" style="display: none;"></div>
+                        <div id="background-upload">
+                            <fieldset class="upload-image upload-background-image" id="background-dropzone">
+                                {% if profile.custom_background %}
+                                    <img id="upload-background-image-preview" src="{{ profile.backgroundThumbUrl() }}" />
+                                {% endif %}
+                            </fieldset>
+                            <button class="btn btn-blue" type="button" id="choose-background">Select File</button>
                             For optimal display image should be at least 1200 pixels wide by 800 pixels tall
                         </div>
                     </div>
-                    {% if profile.custom_background %}
-                    <div class="col-xs-6 col-sm-5" style="text-align: center;">
-                        <img src="//i.upcyclepost.com/profile/{{ profile.custom_background }}" height="100">
-                    </div>
-                    {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">Gender</label>
@@ -88,13 +98,7 @@
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">About You</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" rows="3" name="about">{{ profile.about }}</textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">&nbsp;</label>
-                    <div class="col-sm-10">
-                        <input type="checkbox"{% if profile.contact_for_marketplace is 1 %} checked{% endif %} name="marketplace" id="marketplace"> <label for="marketplace" style="padding-left: 2px;">Contact me regarding selling products when the Marketplace launches shortly</label>
+                        <textarea class="form-control" rows="3" name="about" required maxlength="4096">{{ profile.about }}</textarea>
                     </div>
                 </div>
         </div>

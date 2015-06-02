@@ -16,6 +16,7 @@ class SearchController extends ControllerBase
 
 	public function usersAction()
 	{
+		$this->view->title = 'Profile Gallery | Upcycling Ideas, Articles and Products | UpcyclePost';
 		$this->assets->addJs('js/gallery/layout.js');
 
 		$term = \false;
@@ -28,16 +29,22 @@ class SearchController extends ControllerBase
 		$users = $this->__searchService->findUsers($term);
 		$results = [];
 
+		$prestashopService = new \Up\Services\PrestashopIntegrationService();
+
 		if ($users)
 		{
 			foreach ($users AS $user)
 			{
-				$results[ ] = [
+				$results[] = [
 					'url'       => $user->url(),
 					'thumbnail' => $user->backgroundThumbUrl(),
 					'title'     => $user->user_name,
 					'user'      => $user->ik,
-					'userName'  => $user->user_name
+					'userName'  => $user->user_name,
+					'views'     => $user->views,
+					'followers' => $user->followers,
+					'shopName'  => $prestashopService->getShopNameByEmail($user->email),
+					'shopUrl'   => $user->shopUrl()
 				];
 			}
 		}

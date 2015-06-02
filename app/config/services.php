@@ -28,6 +28,16 @@ $di->set('db', function () use ($config)
                          ]);
 });
 
+$di->set('prestashopDb', function () use ($config)
+{
+	return new DbAdapter([
+		                     'host'     => $config->prestashop->database->host,
+		                     'username' => $config->prestashop->database->username,
+		                     'password' => $config->prestashop->database->password,
+		                     'dbname'   => $config->prestashop->database->dbname
+	                     ]);
+});
+
 /**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise
  */
@@ -118,3 +128,6 @@ include $config->application->get('servicePluginsDir') . 'url.php';
 include $config->application->get('servicePluginsDir') . 'eventManager.php';
 include $config->application->get('servicePluginsDir') . 'solr.php';
 include $config->application->get('servicePluginsDir') . 'stripe.php';
+
+// Prestashop specific plugins
+include $config->application->get('servicePluginsDir') . 'prestashop.php';

@@ -18,6 +18,10 @@ $(function () {
         return temp1;
     }, "Please enter a valid email address.");
 
+    jQuery.validator.addMethod("validUsername", function (value, element) {
+        return /^[a-zA-Z0-9]+$/.test(value);
+    }, "Username may only contain numbers and letters");
+
     $('#register-form').validate({
         highlight: function (el) {
             $(el).parent('div').addClass('has-error');
@@ -37,6 +41,11 @@ $(function () {
             email: {
                 required: true,
                 validEmail: true
+            },
+            userName: {
+                required: true,
+                validUsername: true,
+                minlength:5
             }
         }
     });

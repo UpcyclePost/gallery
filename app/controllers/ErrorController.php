@@ -2,7 +2,8 @@
 
 class ErrorController extends ControllerBase
 {
-    public function indexAction() {
+    public function indexAction()
+    {
         //$this->view->setMainView('layouts/error');
         $this->tag->setTitle('Error');
         $this->response->setHeader(404, 'Not Found');
@@ -13,8 +14,7 @@ class ErrorController extends ControllerBase
     public function show404Action()
     {
         $this->view->disable();
+
         return $this->response->redirect('error');
     }
-
 }
-

@@ -8,6 +8,32 @@ class Helpers {
         return number_format($argument);
     }
 
+    public static function tokenTruncate($string, $desiredLength, $ellipsis = \false)
+    {
+        $parts = preg_split('/([\s\n\r]+)/', $string, null, PREG_SPLIT_DELIM_CAPTURE);
+        $parts_count = count($parts);
+
+        $length = 0;
+        $last_part = 0;
+        for (; $last_part < $parts_count; ++$last_part)
+        {
+            $length += strlen($parts[ $last_part ]);
+            if ($length > $desiredLength)
+            {
+                break;
+            }
+        }
+
+        $result = trim(implode(array_slice($parts, 0, $last_part)));
+
+        if ($ellipsis && strlen($result) < strlen(trim($string)))
+        {
+            $result = sprintf('%s...', $result);
+        }
+
+        return $result;
+    }
+
     public static function dateFormat($argument)
     {
         return date('n/d/Y g:i a', strtotime($argument));
@@ -27,14 +53,14 @@ class Helpers {
         return $carbon->diffForHumans();
     }
 
-    public static function truncate($string)
+    public static function truncate($string, $length = 45)
     {
-        if (strlen($string)> 45)
+        if (strlen($string) >= $length)
         {
-            return substr($string, 0, 42) . '...';
+            $string = sprintf('%s...', trim(substr($string, 0, ($length-3))));
         }
 
-        return $string;
+        return htmlentities($string, ENT_QUOTES, 'ISO-8859-1');
     }
 
     public static function url($argument) {

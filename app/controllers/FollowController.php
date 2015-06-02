@@ -60,14 +60,20 @@ class FollowController extends ControllerBase
 
 					if ($subscribed)
 					{
-						$result['text'] = 'Following ' . $userModel->name;
+						$result['text'] = 'Following ' . $userModel->user_name;
 						// Notify any listeners that this user has been followed.
 						$this->eventManager->fire('user:whenUserHasBeenFollowed', $this, ['subscriber' => $this->auth['ik'], 'subscribed_to' => $userModel->ik]);
+
+						$userModel->followers = $userModel->followers + 1;
 					}
 					else
 					{
-						$result['text'] = 'Follow ' . $userModel->name;
+						$result['text'] = 'Follow ' . $userModel->user_name;
+
+						$userModel->followers = $userModel->followers - 1;
 					}
+
+					$userModel->save();
 				}
 			}
 		}

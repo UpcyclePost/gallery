@@ -4,9 +4,10 @@
         <div id="bg-slide" class="slider">
             <div class="container">
                 <div class="intro">
-                    <h1>Welcome to the gallery, your place to discover the world's greatest upcycled products and to post
-                        what inspires you</h1>
-                    <a href="{{ url('post/idea') }}" class="btn btn-green btn-lg btn-header"><i class="fa fa-camera"></i> Post Ideas</a>
+                    <h1>Welcome to UpcyclePost
+                        your place to discover the world's
+                        greatest upcycled products</h1>
+                    <a href="{{ url('shops') }}" class="btn btn-green btn-lg btn-header"><i class="fa fa-camera"></i> Shop Gallery</a>
                     {% if !isLoggedIn %}
                         <a href="{{ url('profile/login') }}" class="btn btn-blue btn-lg btn-header"><i class="fa fa-user"></i> Create Account</a>
                     {% endif %}
@@ -17,8 +18,10 @@
 
     <div class="content-wrapper">
         {% set offsetTop = 440 %}
-        {{ partial('partial/gallery/layout') }}
-        <div class="text-center"><a href="{{ url('gallery') }}" class="btn btn-green btn-lg"><i class="fa fa-chevron-right"></i> See More</a></div>
+        <div class="content-container">
+            {% set isodiv = "iso" %}
+            {{ partial('partial/gallery/layout') }}
+        </div>
     </div>
 
 {% if !isLoggedIn and showSubscribe %}

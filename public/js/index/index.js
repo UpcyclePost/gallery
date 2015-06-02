@@ -1,9 +1,9 @@
 $("#bg-slide").backstretch([
-    "/img/slider/2015/mar/1.jpg",
-    "/img/slider/2015/mar/2.jpg",
-    "/img/slider/2015/mar/3.jpg",
-    "/img/slider/2015/mar/4.jpg",
-    "/img/slider/2015/mar/5.jpg"
+    "/img/slider/2015/apr/1.jpg",
+    "/img/slider/2015/apr/2.jpg",
+    "/img/slider/2015/apr/3.jpg",
+    "/img/slider/2015/apr/4.jpg",
+    "/img/slider/2015/apr/5.jpg"
 ], {duration: 3000, fade: 750});
 
 $(window).load(function(){

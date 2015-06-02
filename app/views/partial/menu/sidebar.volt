@@ -15,6 +15,6 @@
     </div>
 
     <div class="sidebar-panel-header clearfix text-center">
-        <a class="btn btn-green" href="{{ url('search/users') }}"><i class="fa fa-users"></i> Profile Gallery</a>
+        <a class="btn btn-green" href="{{ url('blog') }}"><i class="fa fa-rss"></i> Blog</a>
     </div>
 </div>

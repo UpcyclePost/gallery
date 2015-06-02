@@ -18,6 +18,10 @@ $(function() {
         }
     });
 
+    jQuery.validator.addMethod("validUsername", function (value, element) {
+        return /^[a-zA-Z0-9]+$/.test(value);
+    }, "Username may only contain numbers and letters");
+
     $('#account-settings-form').validate({
         highlight: function (el) {
             $(el).parent('div').addClass('has-error');
@@ -26,5 +30,13 @@ $(function() {
             $(el).parent('div').removeClass('has-error');
         },
         errorClass: "help-block",
+
+        rules: {
+            userName: {
+                required: true,
+                validUsername: true,
+                minlength:5
+            }
+        }
     });
 });
