@@ -30,12 +30,13 @@ class ShopController extends ControllerBase
 		{
 			$prestashopService = new PrestashopIntegrationService();
 
-			if (($shop_name = $prestashopService->getShopNameByEmail($user->email)) !== \false)
+			if (($shop_info = $prestashopService->getShopByEmail($user->email)) !== \false)
 			{
 				$this->view->results = $prestashopService->findRecentProducts(\false, $user);
-				$this->view->shopName = $shop_name;
+				$this->view->shopName = $shop_info['shop_name'];
 				$this->view->title = sprintf('%s | Upcycling Ideas, Articles and Products | UpcyclePost', $user->user_name);
 				$this->view->profile = $user;
+				$this->view->shopAbout = $shop_info['shop_about'];
 
 				if ($user->custom_background)
 				{

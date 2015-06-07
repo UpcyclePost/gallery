@@ -34,14 +34,14 @@
     <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
         <div class="login-panel semi-opaque-7">
             <div class="login-panel-header">
-                <h1>{{ profile.user_name }}</h1>
+                <h1>About {{ shopName }}</h1>
             </div>
             <div class="login-panel-body">
                 <div class="row text-center profile-image circular">
                     <img src="{{ profile.avatarUrl() }}" height="100" width="100">
                 </div>
                 <div class="row">
-                    <?=nl2br($profile->about)?>
+                    {{ shopAbout }}
                 </div>
                 <div class="row">
 

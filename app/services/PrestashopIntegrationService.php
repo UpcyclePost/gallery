@@ -68,6 +68,17 @@ class PrestashopIntegrationService
 		return \false;
 	}
 
+	public function getShopByEmail($email)
+	{
+		$shopsResult = $this->__shopConnection->query('SELECT id AS shop_id, shop_name, link_rewrite AS shop_link_rewrite, c.id_customer AS shop_ps_id, about_us AS shop_about FROM upshop.up_marketplace_shop u INNER JOIN upshop.up_customer c ON c.id_customer = u.id_customer WHERE email = ?', [$email]);
+		while ($r = $shopsResult->fetchArray())
+		{
+			return $r;
+		}
+
+		return \false;
+	}
+
 	public function findCategories()
 	{
 		$result = [];
