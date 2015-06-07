@@ -14,9 +14,6 @@ $(function() {
             },
             facebook: {
                 url: true
-            },
-            etsy: {
-                url: true
             }
         },
         errorClass: "help-block",

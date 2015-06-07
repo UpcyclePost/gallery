@@ -44,10 +44,6 @@ class ProfileController extends ControllerBase
 				{
 					$profile->about = strip_tags($this->request->getPost('about'));
 				}
-				if ($this->request->has('etsy'))
-				{
-					$profile->etsy = strip_tags($this->request->getPost('etsy'));
-				}
 				if ($this->request->has('twitter'))
 				{
 					$profile->twitter = strip_tags($this->request->getPost('twitter'));

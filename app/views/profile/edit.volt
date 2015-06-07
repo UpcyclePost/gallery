@@ -73,16 +73,10 @@
                     <label class="col-sm-2 control-label">&nbsp;</label>
                     <div class="col-sm-10">
                         <strong>Follow Me</strong><br />
-                        Copy and paste the links to your Etsy and social media profiles.
+                        Copy and paste the links to your social media profiles.
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="username" class="col-sm-2 control-label">Etsy</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control social-url" id="etsy" name="etsy" value="{{ profile.etsy }}" data-placeholder-length="13" placeholder="https://www.etsy.com/shop/yourstorename">
-                    </div>
-                </div>
+                
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">Twitter</label>
                     <div class="col-sm-10">

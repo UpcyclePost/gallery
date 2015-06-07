@@ -93,7 +93,7 @@
                 </div>
             </div>
         </div>
-        {% if profile.etsy is not '' or profile.twitter is not '' or profile.facebook is not '' or shop_results[0] is defined or isOwnProfile %}
+        {% if profile.twitter is not '' or profile.facebook is not '' or shop_results[0] is defined or isOwnProfile %}
         <div class="login-panel">
             <div class="login-panel-header">
                 <h1>Find me on</h1>
@@ -103,10 +103,6 @@
                     <div class="form-group">
                         {% if shop_results[0] is defined %}
                             <h4><a href="{{ profile.shopUrl() }}">UpcyclePost</a></h4>
-                        {% endif %}
-                        {% if profile.etsy is not '' %}
-                            <a href="{{ profile.etsy }}" target="_blank">Etsy</a>
-                            <br />
                         {% endif %}
                         {% if profile.twitter is not '' %}
                             <a href="{{ profile.twitter }}" target="_blank">Twitter</a>
