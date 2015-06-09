@@ -6,6 +6,7 @@
             <h1>Edit Your Profile</h1>
         </div>
         <form class="form-horizontal" role="form" method="post" id="edit-form" enctype="multipart/form-data">
+        <input type="hidden" name="flow" value="{{ flow }}">
         <div class="login-panel-body">
                 <div class="form-group">
                     <label class="col-xs-12 col-sm-2 control-label">First Name</label>
@@ -76,7 +77,7 @@
                         Copy and paste the links to your social media profiles.
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">Twitter</label>
                     <div class="col-sm-10">

@@ -14,6 +14,23 @@ class ProfileController extends ControllerBase
 		             ->addJs('js/libraries/jquery/jquery.blockUI.js')
 		             ->addJs('js/libraries/dropzone/dropzone.js');
 
+		$this->view->flow = 'member';
+		if ($this->request->has('flow'))
+		{
+			$this->view->flow = $this->request->get('flow');
+		}
+		else if ($this->request->hasPost('flow'))
+		{
+			$this->view->flow = $this->request->getPost('flow');
+		}
+
+		// If the variables were changed either through direct action or accident
+		// reset the flow to member.
+		if ($this->view->flow != 'member' && $this->view->flow != 'shop')
+		{
+			$this->view->flow = 'member';
+		}
+
 		if (($profile = $this->__getProfile()) !== \false)
 		{
 			if ($this->request->isPost())
@@ -90,6 +107,14 @@ class ProfileController extends ControllerBase
 					{
 						$this->auth[ 'name' ] = $profile->name;
 						$this->session->set('auth', $this->auth);
+					}
+
+					if ($this->request->hasPost('flow'))
+					{
+						if ($this->request->getPost('flow') == 'shop')
+						{
+							return $this->response->redirect('shop/module/marketplace/sellerrequest');
+						}
 					}
 
 					return $this->response->redirect('http://beta.upcyclepost.com/profile/view/' . $this->auth[ 'ik' ], true);
