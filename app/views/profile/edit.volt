@@ -98,7 +98,7 @@
                 </div>
         </div>
         <div class="login-panel-footer text-right">
-            <button type="reset" class="btn btn-gray">Reset</button> <button type="submit" class="btn btn-green"><i class="fa fa-check"></i> Save Changes</button>
+            <button type="reset" class="btn btn-gray">Reset</button> <button type="submit" class="btn btn-green">{% if flow is 'shop' %}<i class="fa fa-angle-double-right"></i> Continue{% else %}<i class="fa fa-check"></i> Save Changes{% endif %}</button>
         </div>
         </form>
     </div>
