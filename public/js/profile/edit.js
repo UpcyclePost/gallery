@@ -44,6 +44,65 @@ $(function() {
 
             form.submit();
         }
+    });
+
+    $('.find-me-on button').prop('disabled', false);
+    $('.link-remove').prop('disabled', false);
+
+    $('#edit-form').on('click', '.find-me-on li', function(event) {
+        event.preventDefault();
+
+        if ($(event.target).is('a'))
+        {
+            var val = $(event.target).html();
+            var type = $(event.target).data('website-type');
+
+            var btn = $(event.target).closest('div').children('button');
+            btn.html(val + ' <span class="caret"></span>');
+            var hidden = $(event.target).closest('div').children('input[type=hidden]');
+            hidden.val(type);
+
+            $(event.target).parent().parent().parent().parent().parent().children('input[type=text]').prop('placeholder', $(event.target).data('placeholder'));
+            $(event.target).parent().parent().parent().parent().parent().children('input[type=text]').attr('data-placeholder-length', $(event.target).data('placeholder-length'));
+        }
+    });
+
+    $('#edit-form').on('click', '.link-remove', function(event) {
+        event.preventDefault();
+
+        if ($('.social-item').length == 1)
+        {
+            var group = $('.social-item')[0];
+
+            $(group).find('input[type=text]').val('').prop('placeholder', '').attr('data-placeholder-length', 0);
+            $(group).find('button').html('Select <span class="caret"></span>').val('');
+            $(group).find('input[type=hidden]').val('');
+        }
+        else
+        {
+            $(this).parent().parent().parent().remove();
+        }
+
+        return false;
+    });
+
+    $('#add-website').click(function(event) {
+        event.preventDefault();
+        var group = $($(this).parent().parent().siblings().find('div.input-group')[0]).clone();
+
+        $(group).find('input[type=text]').val('').prop('placeholder', '').attr('data-placeholder-length', 0);
+        $(group).find('button').html('Select <span class="caret"></span>').val('');
+        $(group).find('input[type=hidden]').val('');
+
+
+        var div = document.createElement('div');
+        $(div).addClass('form-group').addClass('social-item');
+        var spacer = document.createElement('label');
+        $(spacer).addClass('col-sm-2').addClass('control-label');
+        $(div).append(spacer);
+        $(div).append(group);
+
+        $(this).parent().parent().before(div);
     })
 
     $('#choose-new-image').click(function() {
@@ -55,7 +114,7 @@ $(function() {
         __uploading = true;
     });
 
-    $('.social-url').focus(function(e) {
+    $('#edit-form').on('focus', '.social-url', function(e) {
         var target = $(e.target);
         if (target.val() == '' || target.val() == target.prop('placeholder'))
         {

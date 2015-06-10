@@ -71,6 +71,12 @@ class User extends Model
 	 *
 	 * @var string
 	 */
+	public $websites;
+
+	/**
+	 *
+	 * @var string
+	 */
 	public $name;
 
 	/**
@@ -264,6 +270,7 @@ class User extends Model
 			'twitter'                 => 'twitter',
 			'etsy'                    => 'etsy',
 			'facebook'                => 'facebook',
+			'websites'                => 'websites',
 			'name'                    => 'name',
 			'role'                    => 'role',
 			'type'                    => 'type',

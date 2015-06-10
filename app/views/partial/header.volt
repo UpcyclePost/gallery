@@ -22,7 +22,7 @@
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,600' rel='stylesheet' type='text/css'>
 
     <!-- Font Awesome Icons -->
-    <link href="{{ static_url('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <!-- UpcyclePost Icons -->
     <link href="{{ static_url('css/upcyclepost/css/upcyclepost.css') }}" rel="stylesheet">

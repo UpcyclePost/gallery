@@ -33,6 +33,8 @@ class ProfileController extends ControllerBase
 
 		if (($profile = $this->__getProfile()) !== \false)
 		{
+			$this->view->websites = json_decode($profile->websites, \true) ?: [];
+
 			if ($this->request->isPost())
 			{
 				$this->view->disable();
@@ -61,13 +63,27 @@ class ProfileController extends ControllerBase
 				{
 					$profile->about = strip_tags($this->request->getPost('about'));
 				}
-				if ($this->request->has('twitter'))
+
+				if ($this->request->hasPost('website') && $this->request->hasPost('website_url'))
 				{
-					$profile->twitter = strip_tags($this->request->getPost('twitter'));
-				}
-				if ($this->request->has('facebook'))
-				{
-					$profile->facebook = strip_tags($this->request->getPost('facebook'));
+					$websites = [];
+					$postWebsites = $this->request->getPost('website');
+					$postUrls = $this->request->getPost('website_url');
+					for ($i = 0; $i < count($postWebsites); $i++)
+					{
+						if (trim($postWebsites[$i]) != '')
+						{
+							if (isset($postUrls[$i]) && trim($postUrls[$i]) != '')
+							{
+								$websites[] = ['type' => $postWebsites[$i], 'url' => $postUrls[$i]];
+							}
+						}
+					}
+
+					if (!empty($websites))
+					{
+						$profile->websites = json_encode($websites);
+					}
 				}
 
 				/*if ($this->request->hasPost('marketplace'))
@@ -478,6 +494,8 @@ class ProfileController extends ControllerBase
 		                                       $user->user_name, $user->location, str_replace('"', "'", Helpers::tokenTruncate($user->about, 65)));
 
 		$this->view->profile = $user;
+
+		$this->view->websites = json_decode($user->websites, \true) ?: [];
 
 		if ($user->custom_background)
 		{

@@ -30,13 +30,17 @@
                                     <img id="upload-profile-image-preview" src="{{ profile.avatarUrl() }}" />
                                 {% endif %}
                             </fieldset>
+                            <br />
                             <button class="btn btn-blue" type="button" id="choose-avatar">Select File</button>
                         </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-5">
+                        Pick a great shot of yourself, your pet, or a favorite character and upload it.
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-xs-12 col-sm-2 control-label">Background</label>
-                    <div class="col-sm-10">
+                    <div class="col-xs-6 col-sm-5">
                         <div id="background-error" style="display: none;"></div>
                         <div id="background-upload">
                             <fieldset class="upload-image upload-background-image" id="background-dropzone">
@@ -44,9 +48,12 @@
                                     <img id="upload-background-image-preview" src="{{ profile.backgroundThumbUrl() }}" />
                                 {% endif %}
                             </fieldset>
+                            <br />
                             <button class="btn btn-blue" type="button" id="choose-background">Select File</button>
-                            For optimal display image should be at least 1200 pixels wide by 800 pixels tall
                         </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-5">
+                        This high resolution image will fill the entire screen and should be a landscape, not a portrait, image if possible. Pick something that reflects what you love about upcycling, how you work, what you like to collect, etc.
                     </div>
                 </div>
                 <div class="form-group">
@@ -70,30 +77,78 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">&nbsp;</label>
-                    <div class="col-sm-10">
-                        <strong>Follow Me</strong><br />
-                        Copy and paste the links to your social media profiles.
+                {% for index, website in websites %}
+                    <div class="form-group social-item">
+                        <label for="username" class="col-sm-2 control-label">{% if loop.first %}Find me on{% endif %}</label>
+                        <div class="col-sm-10 input-group">
+                            <font class="input-group-addon" style="width: 125px;">
+                                <div class="btn-group find-me-on" style="width: 100%;">
+                                    <input type="hidden" name="website[]" value>
+                                    <button class="btn btn-sm dropdown-toggle find-me-dropdown" disabled="disabled" data-toggle="dropdown" style="padding: 4px; background-color: inherit; width:100%;">
+                                      {% if website['type'] == 'twitter' %}
+                                        <i class="fa fa-fw fa-twitter"></i> Twitter
+                                      {% elseif website['type'] == 'facebook' %}
+                                        <i class="fa fa-fw fa-facebook"></i> Facebook
+                                      {% elseif website['type'] == 'pinterest' %}
+                                        <i class="fa fa-fw fa-pinterest-p"></i> Pinterest
+                                      {% elseif website['type'] == 'website' %}
+                                        <i class="fa fa-fw fa-external-link"></i> My Website
+                                      {% else %}
+                                        Select
+                                      {% endif %}
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu text-left">
+                                      <li><a data-website-type="twitter" href="" data-placeholder-length="11" data-placeholder="https://twitter.com/youraccount"><i class="fa fa-fw fa-twitter"></i> Twitter</a></li>
+                                      <li><a data-website-type="facebook" href="" data-placeholder-length="11" data-placeholder="https://www.facebook.com/youraccount"><i class="fa fa-fw fa-facebook"></i> Facebook</a></li>
+                                      <li><a data-website-type="pinterest" href=""><i class="fa fa-fw fa-pinterest-p"></i> Pinterest</a></li>
+                                      <li><a data-website-type="website" href=""><i class="fa fa-fw fa-external-link"></i> My Website</a></li>
+                                    </ul>
+                                  </div>
+                            </font>
+                            <input type="text" class="form-control social-url" name="website_url[]" value="{{ website['url'] }}">
+                            <font class="input-group-addon" style="background-color:white;border:none;">
+                                <a class="link-remove" disabled="disabled" href=""><i class="fa fa-fw fa-times" style="color: red;"></i></a>
+                            </font>
+                        </div>
                     </div>
-                </div>
+                {% else %}
+                    <div class="form-group social-item">
+                        <label for="username" class="col-sm-2 control-label">Find me on</label>
+                        <div class="col-sm-10 input-group">
+                            <font class="input-group-addon" style="width: 125px;">
+                                <div class="btn-group find-me-on" style="width: 100%;">
+                                    <input type="hidden" name="website[]" value>
+                                    <button class="btn btn-sm dropdown-toggle find-me-dropdown" disabled="disabled" data-toggle="dropdown" style="padding: 4px; background-color: inherit; width: 100%;">
+                                      Select
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu text-left">
+                                      <li><a data-website-type="twitter" href="" data-placeholder-length="11" data-placeholder="https://twitter.com/youraccount"><i class="fa fa-fw fa-twitter"></i> Twitter</a></li>
+                                      <li><a data-website-type="facebook" href="" data-placeholder-length="11" data-placeholder="https://www.facebook.com/youraccount"><i class="fa fa-fw fa-facebook"></i> Facebook</a></li>
+                                      <li><a data-website-type="pinterest" href=""><i class="fa fa-fw fa-pinterest-p"></i> Pinterest</a></li>
+                                      <li><a data-website-type="website" href=""><i class="fa fa-fw fa-external-link"></i> My Website</a></li>
+                                    </ul>
+                                  </div>
+                            </font>
+                            <input type="text" class="form-control social-url" name="website_url[]" value="">
+                            <font class="input-group-addon" style="background-color:white;border:none;">
+                                <a class="link-remove" disabled="disabled" href=""><i class="fa fa-fw fa-times" style="color: red;"></i></a>
+                            </font>
+                        </div>
+                    </div>
+                {% endfor %}
 
                 <div class="form-group">
-                    <label for="username" class="col-sm-2 control-label">Twitter</label>
+                    <div class="col-sm-2"></div>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control social-url" id="twitter" name="twitter" data-placeholder-length="11" value="{{ profile.twitter }}" placeholder="https://twitter.com/youraccount">
+                        <a id="add-website" href=""><i class="fa fa-plus"></i> Add another place</a>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="username" class="col-sm-2 control-label">Facebook</label>
+                    <label for="username" class="col-sm-2 control-label">About me</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control social-url" id="facebook" name="facebook" data-placeholder-length="11" value="{{ profile.facebook }}" placeholder="https://www.facebook.com/youraccount">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="username" class="col-sm-2 control-label">About You</label>
-                    <div class="col-sm-10">
-                        <textarea class="form-control" rows="3" name="about" required maxlength="4096">{{ profile.about }}</textarea>
+                        <textarea class="form-control" rows="10" name="about" required maxlength="4096">{{ profile.about }}</textarea>
                     </div>
                 </div>
         </div>

@@ -65,7 +65,7 @@
             </div>
             <div class="login-panel-body">
                 <form class="form-horizontal" role="form">
-                    <div class="form-group">
+                    <div class="form-group" style="word-break: break-word;">
                         <?=nl2br($profile->about)?>
                     </div>
                 </form>
@@ -93,7 +93,8 @@
                 </div>
             </div>
         </div>
-        {% if profile.twitter is not '' or profile.facebook is not '' or shop_results[0] is defined or isOwnProfile %}
+
+        {% if websites|length > 0 %}
         <div class="login-panel">
             <div class="login-panel-header">
                 <h1>Find me on</h1>
@@ -101,6 +102,34 @@
             <div class="login-panel-body">
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
+                        {% for index, website in websites %}
+                            <?php
+                                if (substr($website['url'], 0, 4) != 'http')
+                                {
+                                    $website['url'] = sprintf('http://%s', $website['url']);
+                                }
+                            ?>
+                            <div>
+                            <a href="{{ website['url'] }}" target="_blank">
+                            <div class="col-lg-2">
+                            {% if website['type'] == 'twitter' %}
+                                <i class="fa fa-fw fa-twitter"></i> Twitter
+                            {% elseif website['type'] == 'facebook' %}
+                                <i class="fa fa-fw fa-facebook"></i> Facebook
+                            {% elseif website['type'] == 'pinterest' %}
+                                <i class="fa fa-fw fa-pinterest-p"></i> Pinterest
+                            {% else %}
+                                <i class="fa fa-fw fa-external-link"></i> My Website
+                            {% endif %}
+                            </div>
+                            <div class="col-lg-8">
+                            {{ website['url'] }}
+                            </div>
+                            <br clear="all">
+                            </a>
+                            </div>
+                        {% endfor %}
+
                         {% if shop_results[0] is defined %}
                             <h4><a href="{{ profile.shopUrl() }}">UpcyclePost</a></h4>
                         {% endif %}
@@ -116,6 +145,7 @@
             </div>
         </div>
         {% endif %}
+
     </div>
     {% if shop_results[0] is defined %}
         <div class="col-sm-4 col-lg-2 col-xs-12">
