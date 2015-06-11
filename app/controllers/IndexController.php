@@ -25,7 +25,7 @@ class IndexController extends ControllerBase
 			$i++;
 		}
 		unset($results);*/
-		$this->view->results = (new \Up\Services\PrestashopIntegrationService())->findRecentProducts();
+		$this->view->results = (new \Up\Services\PrestashopIntegrationService())->findFrontPageProducts();
 
 		$this->view->title = 'UpcyclePost: Discover Upcycled Products & Post Ideas';
 
@@ -38,8 +38,5 @@ class IndexController extends ControllerBase
 
 			$this->assets->addJs('js/libraries/ajaxchimp/jquery.ajaxchimp.min.js');
 		}
-
-		$prestashopService = new \Up\Services\PrestashopIntegrationService();
-		$prestashopService->findRecentProducts();
 	}
 }

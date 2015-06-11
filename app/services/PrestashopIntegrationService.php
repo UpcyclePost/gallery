@@ -14,6 +14,18 @@ class PrestashopIntegrationService
 		$this->__shopConnection = \Phalcon\DI::getDefault()->get('prestashopDb');
 	}
 
+	public function getCMSBlock($id)
+	{
+		$cmsResult = $this->__shopConnection->query('SELECT meta_title AS title, content FROM upshop.up_cms_lang WHERE id_cms = ? AND id_lang = 1 AND id_shop = 1 LIMIT 1', [$id]);
+
+		while ($r = $cmsResult->fetchArray())
+		{
+			return $r;
+		}
+
+		return ['title' => '', 'content' => ''];
+	}
+
 	public function findShops()
 	{
 		$result = [];
@@ -109,23 +121,16 @@ class PrestashopIntegrationService
 		return $result;
 	}
 
-	/**
-	 * @param mixed $limit
-	 * @param bool  $user
-	 *
-	 * @return array
-	 */
-	public function findRecentProducts($limit = 49, $user = \false)
+	public function findFrontPageProducts()
 	{
 		$result = [];
 		$users = [];
-		$shopConnection = \Phalcon\DI::getDefault()->get('prestashopDb');
 
-		// Lookup Prestashop categories
 		$categories = $this->findCategories();
 
-		// Build the query to find products
-		$sql = "SELECT product.id_product, ps_customer.id_customer AS id_user, product_name, ps_customer.email, category.id_category, product_shop.price, image.id_image, lang.link_rewrite, shop_name,
+		foreach ($categories AS $id => $category)
+		{
+			$sql = "SELECT product.id_product, ps_customer.id_customer AS id_user, product_name, ps_customer.email, category.id_category, product_shop.price, image.id_image, lang.link_rewrite, shop_name,
 				ifnull((SELECT sum(counter) FROM upshop.up_page page INNER JOIN upshop.up_page_viewed viewed ON viewed.id_page = page.id_page WHERE id_page_type = 3 AND id_object = product.id_product), 0) AS counter
 				  FROM upshop.up_marketplace_shop shop
 				  INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer
@@ -135,30 +140,23 @@ class PrestashopIntegrationService
 				  LEFT OUTER JOIN upshop.up_category_product category on category.id_product = product.id_product and category.id_category <> 2
 				  LEFT OUTER JOIN upshop.up_image image on image.id_product = product.id_product
 				  INNER JOIN upshop.up_product_lang lang on lang.id_product = product.id_product
-				  WHERE redirect_type <> '404' AND seller_product.quantity > 0";
+				  WHERE redirect_type <> '404' AND seller_product.quantity > 0 AND category.id_category = ? GROUP BY product.id ORDER BY product.id DESC LIMIT 1";
 
-		if ($user)
-		{
-			$sql = sprintf('%s AND ps_customer.email=?', $sql);
+			$productsResult = $this->__shopConnection->query($sql, [$id]);
+
+			$this->getProductsFromResult($productsResult, $result, $users, $categories);
 		}
 
-		$sql = sprintf('%s GROUP BY product.id ORDER BY product.id desc', $sql);
+		return $result;
+	}
 
-		if ($limit)
-		{
-			$sql = sprintf('%s LIMIT %s', $sql, (int)$limit);
-		}
-
-		if ($user)
-		{
-			$productsResult = $shopConnection->query($sql, [$user->email]);
-		}
-		else
-		{
-			$productsResult = $shopConnection->query($sql);
-		}
-
+	protected function getProductsFromResult($productsResult, Array &$result, Array &$users, $categories = \false)
+	{
 		$url = \Phalcon\DI::getDefault()->get('imageUrl');
+		if (!$categories)
+		{
+			$categories = $this->findCategories();
+		}
 
 		while ($productInformation = $productsResult->fetchArray())
 		{
@@ -244,6 +242,59 @@ class PrestashopIntegrationService
 				];
 			}
 		}
+
+		return $result;
+	}
+
+	/**
+	 * @param mixed $limit
+	 * @param bool  $user
+	 *
+	 * @return array
+	 */
+	public function findRecentProducts($limit = 49, $user = \false)
+	{
+		$result = [];
+		$users = [];
+
+		// Lookup Prestashop categories
+		$categories = $this->findCategories();
+
+		// Build the query to find products
+		$sql = "SELECT product.id_product, ps_customer.id_customer AS id_user, product_name, ps_customer.email, category.id_category, product_shop.price, image.id_image, lang.link_rewrite, shop_name,
+				ifnull((SELECT sum(counter) FROM upshop.up_page page INNER JOIN upshop.up_page_viewed viewed ON viewed.id_page = page.id_page WHERE id_page_type = 3 AND id_object = product.id_product), 0) AS counter
+				  FROM upshop.up_marketplace_shop shop
+				  INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer
+				  INNER JOIN upshop.up_marketplace_shop_product product ON product.id_shop = shop.id
+				  INNER JOIN upshop.up_marketplace_seller_product seller_product ON seller_product.id = product.marketplace_seller_id_product
+				  INNER JOIN upshop.up_product_shop product_shop ON product_shop.id_product = product.id_product
+				  LEFT OUTER JOIN upshop.up_category_product category on category.id_product = product.id_product and category.id_category <> 2
+				  LEFT OUTER JOIN upshop.up_image image on image.id_product = product.id_product
+				  INNER JOIN upshop.up_product_lang lang on lang.id_product = product.id_product
+				  WHERE redirect_type <> '404' AND seller_product.quantity > 0";
+
+		if ($user)
+		{
+			$sql = sprintf('%s AND ps_customer.email=?', $sql);
+		}
+
+		$sql = sprintf('%s GROUP BY product.id ORDER BY product.id desc', $sql);
+
+		if ($limit)
+		{
+			$sql = sprintf('%s LIMIT %s', $sql, (int)$limit);
+		}
+
+		if ($user)
+		{
+			$productsResult = $this->__shopConnection->query($sql, [$user->email]);
+		}
+		else
+		{
+			$productsResult = $this->__shopConnection->query($sql);
+		}
+
+		$this->getProductsFromResult($productsResult, $result, $users, $categories);
 
 		return $result;
 	}

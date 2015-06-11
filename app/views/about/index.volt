@@ -1,7 +1,7 @@
 <div class="content-container" style="max-width: 1000px;">
     <div class="login-panel">
         <div class="login-panel-header">
-            <h1>About Us</h1>
+            <h1>{{ pageTitle }}</h1>
         </div>
         <div class="login-panel-body">
             <p>Inspiration comes in many forms, from an epiphany in the shower, to a conversation on a plane, train or bus, or even from an upcycled product someone has ingeniously created that demonstrates a total commitment to, and passion for, a better world. At UpcyclePost we have a desire to help re-shape commerce today, towards something more sustainable, taking in to account all of the ramifications of our consumption choices. We want to inspire shoppers and artisans of all kinds to take up reusing, repurposing and recycling items to create a better product, to upcycle.</p>
