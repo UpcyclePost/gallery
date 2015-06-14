@@ -14,6 +14,18 @@ class PrestashopIntegrationService
 		$this->__shopConnection = \Phalcon\DI::getDefault()->get('prestashopDb');
 	}
 
+	public function isPrestashopAvailable()
+	{
+		$result = $this->__shopConnection->query('SELECT `value` FROM upshop.up_configuration WHERE name = ?', ['PS_CATALOG_MODE']);
+
+		while ($r = $result->fetchArray())
+		{
+			return ($r['value'] == '1') ? \false : \true;
+		}
+
+		return \false;
+	}
+
 	public function getCMSBlock($id)
 	{
 		$cmsResult = $this->__shopConnection->query('SELECT meta_title AS title, content FROM upshop.up_cms_lang WHERE id_cms = ? AND id_lang = 1 AND id_shop = 1 LIMIT 1', [$id]);

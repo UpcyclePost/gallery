@@ -46,6 +46,7 @@ class ControllerBase extends Controller
         }
 
 	    $this->view->totalCartItems = $prestashopIntegrationService->getTotalItemsInCart();
+        $this->view->ps_Available = $prestashopIntegrationService->isPrestashopAvailable();
         $this->view->unread = $unread;
 
         $this->flash->output();

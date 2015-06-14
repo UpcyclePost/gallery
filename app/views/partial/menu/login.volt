@@ -50,6 +50,8 @@
     </div>
 {% endif %}
 
+{% if ps_Available %}
 <div class="pull-right text-center cart">
     <a style="margin: 0; padding: 0" href="{{ url('shop/quick-order') }}"><i class="fa fa-fw fa-shopping-cart"></i><br>Cart{% if totalCartItems > 0 %}<span class="items">{{ totalCartItems|pretty }}</span>{% endif %}</a>
 </div>
+{% endif %}
