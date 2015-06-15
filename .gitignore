@@ -101,3 +101,4 @@ crashlytics.properties
 crashlytics-build.properties
 
 shop/
+app/config/config-beta.php
