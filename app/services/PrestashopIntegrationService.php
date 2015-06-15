@@ -9,7 +9,7 @@ class PrestashopIntegrationService
 
 	public function __construct()
 	{
-		$this->__service = new \PrestaShopWebservice('http://beta.upcyclepost.com/shop', 'QPB2Y4CGYQWYCEA1WXQ13W6M865NKPEU', \false);
+		$this->__service = new \PrestaShopWebservice('http://www.upcyclepost.com/shop', 'QPB2Y4CGYQWYCEA1WXQ13W6M865NKPEU', \false);
 		$this->__config = \Phalcon\DI::getDefault()->get('config');
 		$this->__shopConnection = \Phalcon\DI::getDefault()->get('prestashopDb');
 	}
@@ -244,7 +244,7 @@ class PrestashopIntegrationService
 					'title'         => $productInformation[ 'product_name' ],
 					'categoryTitle' => $category[ 'name' ],
 					'categoryUrl'   => sprintf('%s/%s-%s', $this->__config->prestashop->get('baseUrl'), $category[ 'id' ], $category[ 'url' ]),
-					'image'         => ($hasImage) ? $imageUrl : 'http://beta.upcyclepost.com/shop/img/p/en-default-home_default.jpg',
+					'image'         => ($hasImage) ? $imageUrl : 'http://www.upcyclepost.com/shop/img/p/en-default-home_default.jpg',
 					'user'          => $userIk,
 					'userName'      => $userName,
 					'shopName'      => $productInformation[ 'shop_name' ],
@@ -461,16 +461,20 @@ class PrestashopIntegrationService
 			{
 				// We found this user
 				$customer = $response->customers[0]->customer;
-				// We convert all of the SimpleXMLElement objects to strings to get their values
-				$this->__customer = [
-					(string)$customer->id,
-					(string)$customer->lastname,
-					(string)$customer->firstname,
-					(string)$customer->passwd,
-					(string)$customer->email
-				];
 
-				return $this->__customer;
+				if (!is_null($customer->id))
+				{
+					// We convert all of the SimpleXMLElement objects to strings to get their values
+					$this->__customer = [
+						(string)$customer->id,
+						(string)$customer->lastname,
+						(string)$customer->firstname,
+						(string)$customer->passwd,
+						(string)$customer->email
+					];
+
+					return $this->__customer;
+				}
 			}
 			else if ($response->customers->count() == 0)
 			{

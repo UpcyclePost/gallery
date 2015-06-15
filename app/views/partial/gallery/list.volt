@@ -27,7 +27,7 @@
                     <article class="gallery-post">
                         <a href="{{ post['url'] }}">
                             <div class="gallery-img">
-                                <img class="img-responsive" src="//i.beta.upcyclepost.com/{{ post['thumbnail'] }}" alt="{{ post['title'] }}" />
+                                <img class="img-responsive" src="//i.upcyclepost.com/{{ post['thumbnail'] }}" alt="{{ post['title'] }}" />
                             </div>
                         </a>
                         <div class="gallery-meta">
@@ -61,7 +61,7 @@
                     <article class="gallery-post">
                         <a href="{{ url('gallery/' ~ post['categoryTitle']|url ~ '/' ~ post['title']|url ~ '-' ~ post['ik']) }}">
                             <div class="gallery-img">
-                                <img class="img-responsive" src="//i.beta.upcyclepost.com/post/{{ post['id'] }}-{{ post['ik'] }}.small.png" alt="{{ post['title'] }}" />
+                                <img class="img-responsive" src="//i.upcyclepost.com/post/{{ post['id'] }}-{{ post['ik'] }}.small.png" alt="{{ post['title'] }}" />
                             </div>
                         </a>
                         <div class="gallery-meta">
