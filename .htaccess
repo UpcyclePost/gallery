@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+
+	RewriteRule  ^$ public/    [L]
+	RewriteRule  (.*) public/$1 [L]
+	<If "%{REMOTE_ADDR} != '52.10.28.208'">
+		AuthType Basic
+		AuthName "UpcyclePost Test"
+		AuthBasicProvider file
+		AuthUserFile /var/www/html/.htpasswd
+		Require user test
+	</If>
+</IfModule>

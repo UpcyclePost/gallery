@@ -1,0 +1,74 @@
+<?php
+
+function isSecure()
+{
+    return (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443 || strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) == 'https';
+}
+
+return new \Phalcon\Config([
+                               'database'    => [
+                                   'adapter'  => 'Mysql',
+                                   'host'     => '',
+                                   'username' => '',
+                                   'password' => '',
+                                   'dbname'   => '',
+                               ],
+                               'solr'        => [
+                                   'host' => '',
+                                   'port' => '8080',
+                                   'path' => ''
+                               ],
+                               'session'     => [
+                                   'database' => [
+                                       'host'     => '',
+                                       'username' => '',
+                                       'password' => '',
+                                       'dbname'   => '',
+                                       'table'    => ''
+                                   ]
+                               ],
+                               'SES'         => [
+                                   'smtp' => [
+                                       'host'     => '',
+                                       'port'     => 587,
+                                       'username' => '',
+                                       'password' => ''
+                                   ]
+                               ],
+                               'stripe'      => [
+                                   'test'        => [
+                                       'public_key'  => '',
+                                       'private_key' => ''
+                                   ],
+                                   'live'        => [
+                                       'public_key'  => '',
+                                       'private_key' => ''
+                                   ],
+                                   'public_key'  => '',
+                                   'private_key' => ''
+                               ],
+                               'disqus'      => [
+                                   'public_key'  => '',
+                                   'private_key' => ''
+                               ],
+                               'application' => [
+                                   'controllersDir'    => __DIR__ . '/../../app/controllers/',
+                                   'modelsDir'         => __DIR__ . '/../../app/models/',
+                                   'viewsDir'          => __DIR__ . '/../../app/views/',
+                                   'emailsDir'         => __DIR__ . '/../../app/emails/',
+                                   'pluginsDir'        => __DIR__ . '/../../app/plugins/',
+                                   'servicesDir'       => __DIR__ . '/../../app/services/',
+                                   'cacheDir'          => __DIR__ . '/../../cache/',
+                                   'uploadDir'         => __DIR__ . '/../../files/posts/',
+                                   'thumbnailDir'      => __DIR__ . '/../../files/posts/thumbnails/',
+                                   'eventingDir'       => __DIR__ . '/../../app/eventing/',
+                                   'servicePluginsDir' => __DIR__ . '/../../app/config/plugins/',
+                                   'baseUri'           => ((isSecure()) ? 'https' : 'http') . '://www.upcyclepost.com/',
+                                   'imageUri'          => ((isSecure()) ? 'https' : 'http') . '://i.upcyclepost.com/',
+                                   'autoloadPath'      => __DIR__ . '/../../vendor/autoload.php',
+                                   'prices'            => [
+                                       'minimumListingPrice'  => 5.00,
+                                       'minimumShoppingPrice' => 0
+                                   ]
+                               ]
+                           ]);
