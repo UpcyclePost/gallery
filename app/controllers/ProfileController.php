@@ -15,7 +15,7 @@ class ProfileController extends ControllerBase
 			{
 				$this->session->set('originalAuth', $this->auth);
 
-				$user = User::findFirst(['email = ?0 OR user_name = ?0', 'bind' => [$this->request->getPost('user')]]);
+				$user = User::findFirst(['(email = ?0 OR user_name = ?0) AND role != ?1', 'bind' => [$this->request->getPost('user'), 'Admins']]);
 
 				if ($user)
 				{
