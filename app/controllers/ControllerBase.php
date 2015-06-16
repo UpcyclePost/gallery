@@ -19,6 +19,8 @@ class ControllerBase extends Controller
 
         if ($auth !== false)
         {
+            $this->view->actualRole = (isset($auth[ 'originalRole' ])) ? $auth[ 'originalRole' ] : $auth[ 'role' ];
+
             $this->auth = $auth;
             $this->view->auth = $auth;
             $unread = Message::count(['conditions' => 'to_user_ik=?0 AND read is null', 'bind' => [$auth[ 'ik' ]]]);
@@ -27,11 +29,11 @@ class ControllerBase extends Controller
             {
                 $prestashopIntegrationService->loginToPrestashop($profile);
 
-	            $this->view->avatar = $profile->avatarUrl();
+                $this->view->avatar = $profile->avatarUrl();
 
-                if (isset($auth['shopId']))
+                if (isset($auth[ 'shopId' ]))
                 {
-                    $this->view->myShopId = $auth['shopId'];
+                    $this->view->myShopId = $auth[ 'shopId' ];
                     $this->view->totalUnshippedItems = $prestashopIntegrationService->getTotalOrdersWaitingToShip($profile) ?: 0;
                 }
                 else
@@ -45,7 +47,7 @@ class ControllerBase extends Controller
             }
         }
 
-	    $this->view->totalCartItems = $prestashopIntegrationService->getTotalItemsInCart();
+        $this->view->totalCartItems = $prestashopIntegrationService->getTotalItemsInCart();
         $this->view->ps_Available = $prestashopIntegrationService->isPrestashopAvailable();
         $this->view->unread = $unread;
 
