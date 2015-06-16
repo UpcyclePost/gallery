@@ -111,7 +111,7 @@
                             ?>
                             <div>
                             <a href="{{ website['url'] }}" target="_blank">
-                            <div class="col-lg-2">
+                            <div class="col-lg-3">
                             {% if website['type'] == 'twitter' %}
                                 <i class="fa fa-fw fa-twitter"></i> Twitter
                             {% elseif website['type'] == 'facebook' %}
@@ -129,17 +129,6 @@
                             </a>
                             </div>
                         {% endfor %}
-
-                        {% if shop_results[0] is defined %}
-                            <h4><a href="{{ profile.shopUrl() }}">UpcyclePost</a></h4>
-                        {% endif %}
-                        {% if profile.twitter is not '' %}
-                            <a href="{{ profile.twitter }}" target="_blank">Twitter</a>
-                            <br />
-                        {% endif %}
-                        {% if profile.facebook is not '' %}
-                            <a href="{{ profile.facebook }}" target="_blank">Facebook</a>
-                        {% endif %}
                     </div>
                 </form>
             </div>
