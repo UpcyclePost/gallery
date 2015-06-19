@@ -35,9 +35,24 @@
 
     <div class="btn-group">
         <button type="button" class="btn btn-user dropdown-toggle circular" data-toggle="dropdown">
-            <span>You</span> <i class="fa fa-user"></i>
+            <span>
+            {% if impersonating %}
+                <font class="items">{{ auth['user_name'] }}</font>
+            {% else %}
+                You
+            {% endif %}
+            </span>
+            <i {% if auth['impersonating'] %}style="color:#85c125;" {% endif %}class="fa fa-user"></i>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            {% if actualRole == 'Admins' or actualRole == 'Moderators' %}
+                {% if impersonating %}
+                    <li><a href="{{ url('profile/impersonate/end') }}"><i class="fa fa-fw fa-minus-circle"></i> End Impersonation</a></li>
+                {% else %}
+                    <li><a href="{{ url('profile/impersonate') }}"><i class="fa fa-fw fa-paper-plane-o"></i> Impersonate</a></li>
+                {% endif %}
+                <li class="divider"></li>
+            {% endif %}
             <li><a href="{{ url('shop/order-history') }}"><i class="fa fa-fw fa-tags"></i> Purchases</a></li>
             <li class="divider"></li>
             <li><a href="{{ url('profile/view/' ~ auth['ik']) }}"><i class="fa fa-fw fa-user"></i> Profile</a></li>

@@ -20,7 +20,7 @@ class ShopController extends ControllerBase
 
 	public function viewAction($userName)
 	{
-		$user = \User::findFirst(['user_name = ?0', 'bind' => [$userName]]);
+		$user = \User::findFirst(['slugify(user_name) = ?0', 'bind' => [$userName]]);
 
 		if (!$user)
 		{

@@ -7,6 +7,52 @@ class ProfileController extends ControllerBase
 
 	}
 
+	public function impersonateAction()
+	{
+		if ($this->auth[ 'role' ] == 'Moderators' || $this->auth[ 'role' ] == 'Admins')
+		{
+			if ($this->request->isPost() && $this->request->has('user'))
+			{
+				$this->session->set('originalAuth', $this->auth);
+
+				$user = User::findFirst(['(email = ?0 OR user_name = ?0) AND role != ?1', 'bind' => [$this->request->getPost('user'), 'Admins']]);
+
+				if ($user)
+				{
+					$this->__setLogin($user, \true);
+
+					return $this->response->redirect('');
+				}
+				else
+				{
+					$this->flash->error('The specified user was not found.');
+
+					return $this->response->redirect('profile/impersonate');
+				}
+			}
+		}
+		else
+		{
+			return $this->response->redirect('error/404');
+		}
+	}
+
+	public function stopImpersonatingAction()
+	{
+		if ($this->session->has('originalAuth'))
+		{
+			$this->session->set('auth', $this->session->get('originalAuth'));
+
+			return $this->response->redirect('');
+		}
+		else
+		{
+			die('here');
+			// How did we get here?
+			return $this->logoutAction();
+		}
+	}
+
 	public function editAction()
 	{
 		$this->assets->addJs('js/libraries/validate/jquery.validate.min.js')
@@ -71,11 +117,11 @@ class ProfileController extends ControllerBase
 					$postUrls = $this->request->getPost('website_url');
 					for ($i = 0; $i < count($postWebsites); $i++)
 					{
-						if (trim($postWebsites[$i]) != '')
+						if (trim($postWebsites[ $i ]) != '')
 						{
-							if (isset($postUrls[$i]) && trim($postUrls[$i]) != '')
+							if (isset($postUrls[ $i ]) && trim($postUrls[ $i ]) != '')
 							{
-								$websites[] = ['type' => $postWebsites[$i], 'url' => $postUrls[$i]];
+								$websites[] = ['type' => $postWebsites[ $i ], 'url' => $postUrls[ $i ]];
 							}
 						}
 					}
@@ -85,15 +131,6 @@ class ProfileController extends ControllerBase
 						$profile->websites = json_encode($websites);
 					}
 				}
-
-				/*if ($this->request->hasPost('marketplace'))
-				{
-					$profile->contact_for_marketplace = 1;
-				}
-				else
-				{
-					$profile->contact_for_marketplace = 0;
-				}*/
 
 				if ($this->request->hasPost('background'))
 				{
@@ -188,6 +225,7 @@ class ProfileController extends ControllerBase
 								$imageProcessingService->createThumbnail($permanentFile, 100, 100);
 
 								echo json_encode(['success' => true, 'data' => ['file' => $fileName, 'preview' => $this->imageUrl->get(sprintf('profile/avatar/%s', $fileName))]]);
+
 								return;
 							}
 						}
@@ -241,6 +279,7 @@ class ProfileController extends ControllerBase
 								$imageProcessingService->createThumbnail($thumbnailFile, ($width >= 244) ? 244 : $width);
 
 								echo json_encode(['success' => true, 'data' => ['file' => $fileName, 'preview' => $this->imageUrl->get(sprintf('profile/%s', $thumbnailFileName))]]);
+
 								return;
 							}
 
@@ -516,7 +555,7 @@ class ProfileController extends ControllerBase
 		);
 
 		$this->view->canonical_url = $user->url();
-		$this->view->isOwnProfile = ($this->view->isLoggedIn && $this->auth['ik'] == $user->ik);
+		$this->view->isOwnProfile = ($this->view->isLoggedIn && $this->auth[ 'ik' ] == $user->ik);
 
 		if (!$this->view->isOwnProfile)
 		{
@@ -617,6 +656,12 @@ class ProfileController extends ControllerBase
 						}
 						else
 						{
+							// Save User Referral
+							$referral = new Referral();
+							$referral->user_ik = $user->ik;
+							$referral->source = $this->request->getPost('source');
+							$referral->save();
+
 							// Subscribe to MC
 							if ($this->request->hasPost('mcRegister'))
 							{
@@ -786,6 +831,48 @@ class ProfileController extends ControllerBase
 		$this->view->viewing = ($type) ? $type : 'everything';
 	}
 
+	protected function __setLogin(User $user, $impersonating = \false)
+	{
+		// We only set the disqus and login times when not impersonating.
+		if (!$impersonating)
+		{
+			// Authentication success
+			$user->login = date('Y-m-d H:i:s');
+			$user->save();
+
+			// Set cookie variables
+			$this->cookies->set('disqus', base64_encode(json_encode(['id' => $user->ik, 'username' => $user->name, 'email' => $user->email])), time() + 15 * 86400);
+		}
+
+		$authArray = [
+			'ik'            => $user->ik,
+			'email'         => $user->email,
+			'name'          => $user->name,
+			'user_name'     => $user->user_name,
+			'role'          => $user->role,
+			'type'          => $user->type,
+			'impersonating' => $impersonating
+		];
+
+		if ($impersonating)
+		{
+			$authArray[ 'originalRole' ] = $this->auth[ 'role' ];
+		}
+
+		$psService = new \Up\Services\PrestashopIntegrationService();
+		$psService->loginToPrestashop($user);
+
+		if (($shopId = $psService->getShopId($user)) !== \false)
+		{
+			$authArray[ 'shopId' ] = $shopId;
+		}
+
+		// Set session variables
+		$this->session->set('auth', $authArray);
+		$this->auth = $authArray;
+		$this->view->auth = $authArray;
+	}
+
 	protected function __signIn($email, $password)
 	{
 		$user = User::findFirst(['email = ?0', 'bind' => [$email]]);
@@ -794,33 +881,7 @@ class ProfileController extends ControllerBase
 		{
 			if ($user->password == password_hash($password, PASSWORD_BCRYPT, ['cost' => 11, 'salt' => $user->salt]))
 			{
-				// Authentication success
-				$user->login = date('Y-m-d H:i:s');
-				$user->save();
-
-				// Set cookie variables
-				$this->cookies->set('disqus', base64_encode(json_encode(['id' => $user->ik, 'username' => $user->name, 'email' => $user->email])), time() + 15 * 86400);
-
-				$authArray = [
-					'ik'        => $user->ik,
-					'email'     => $user->email,
-					'name'      => $user->name,
-					'user_name' => $user->user_name,
-					'role'      => $user->role,
-					'type'      => $user->type
-				];
-
-				$psService = new \Up\Services\PrestashopIntegrationService();
-				$psService->loginToPrestashop($user);
-
-				if (($shopId = $psService->getShopId($user)) !== \false)
-				{
-					$authArray['shopId'] = $shopId;
-				}
-
-				// Set session variables
-				$this->session->set('auth', $authArray);
-
+				$this->__setLogin($user);
 
 				return \true;
 			}

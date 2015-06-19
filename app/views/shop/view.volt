@@ -48,9 +48,14 @@
                 </div>
             </div>
             <div class="login-panel-footer">
-                <span class="pull-right">
-                    <i class="fa fa-envelope"></i> <a href="{{ url('profile/messages/send/') ~ profile.ik }}">Contact</a>
-                </span>
+                <div>
+                    <div class="col-lg-4 pull-right text-right">
+                        <i class="fa fa-envelope"></i> <a href="{{ url('profile/messages/send/') ~ profile.ik }}">Contact</a>
+                    </div>
+                    <div class="col-lg-4 pull-right text-right">
+                        <i class="fa fa-user"></i> <a href="{{ url('profile/view/') ~ profile.ik }}">Profile</a>
+                    </div>
+                </div>
                 <br clear="all">
             </div>
         </div>

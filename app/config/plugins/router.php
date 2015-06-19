@@ -12,6 +12,7 @@ $di->set('router', function ()
 
 	$router->add('/profile/view/:params', ['controller' => 'profile', 'action' => 'view', 'params' => 1]);
 	$router->add('/profile/register/thankyou', ['controller' => 'profile', 'action' => 'registerThankYou']);
+	$router->add('/profile/impersonate/end', ['controller' => 'profile', 'action' => 'stopImpersonating']);
 	$router->add('/profiles/:params', ['controller' => 'profile', 'action' => 'view', 'params' => 1]);
 
 	$router->add('/profile/edit/upload/avatar', ['controller' => 'profile', 'action' => 'uploadAvatar']);
