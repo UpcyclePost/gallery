@@ -656,6 +656,12 @@ class ProfileController extends ControllerBase
 						}
 						else
 						{
+							// Save User Referral
+							$referral = new Referral();
+							$referral->user_ik = $user->ik;
+							$referral->source = $this->request->getPost('source');
+							$referral->save();
+
 							// Subscribe to MC
 							if ($this->request->hasPost('mcRegister'))
 							{

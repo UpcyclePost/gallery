@@ -36,7 +36,7 @@
     <div class="btn-group">
         <button type="button" class="btn btn-user dropdown-toggle circular" data-toggle="dropdown">
             <span>
-            {% if auth['impersonating'] %}
+            {% if impersonating %}
                 <font class="items">{{ auth['user_name'] }}</font>
             {% else %}
                 You
@@ -46,7 +46,7 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
             {% if actualRole == 'Admins' or actualRole == 'Moderators' %}
-                {% if auth['impersonating'] %}
+                {% if impersonating %}
                     <li><a href="{{ url('profile/impersonate/end') }}"><i class="fa fa-fw fa-minus-circle"></i> End Impersonation</a></li>
                 {% else %}
                     <li><a href="{{ url('profile/impersonate') }}"><i class="fa fa-fw fa-paper-plane-o"></i> Impersonate</a></li>

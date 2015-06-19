@@ -9,9 +9,9 @@ class PrestashopIntegrationService
 
 	public function __construct()
 	{
-		$this->__service = new \PrestaShopWebservice('http://www.upcyclepost.com/shop', 'QPB2Y4CGYQWYCEA1WXQ13W6M865NKPEU', \false);
 		$this->__config = \Phalcon\DI::getDefault()->get('config');
 		$this->__shopConnection = \Phalcon\DI::getDefault()->get('prestashopDb');
+		$this->__service = new \PrestaShopWebservice($this->__config->prestashop->get('baseUrl'), 'QPB2Y4CGYQWYCEA1WXQ13W6M865NKPEU', \false);
 	}
 
 	public function isPrestashopAvailable()

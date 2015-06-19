@@ -249,6 +249,7 @@ class User extends Model
 		$this->hasOne('ik', 'Shipping', 'user_ik');
 		$this->hasMany('ik', 'Sales', 'sold_to_user_ik');
 		$this->hasMany('ik', 'Post', 'user_ik');
+		$this->hasOne('ik', 'Referral', 'user_ik');
 		$this->hasOne('ik', 'Shop', 'user_ik', [
 			'foreignKey' => [
 				'action' => Relation::ACTION_CASCADE
