@@ -71,7 +71,8 @@ class Security extends Plugin
 		}
 
 		$adminResources = [
-			'post' => ['delete']
+			'post' => ['delete'],
+		    'test' => ['*']
 		];
 
 		foreach ($adminResources as $resource => $actions)

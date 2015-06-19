@@ -373,14 +373,22 @@ class PrestashopIntegrationService
 		                             ]);
 		$resources = $xml->children()->children();
 
+		$firstName = $user->first_name;
+		$lastName = $user->last_name;
+
+		if (!$firstName && !$lastName)
+		{
+			list($firstName, $lastName) = explode(' ', $user->name);
+		}
+
 		$details = [
 			'id_default_group'         => 3,
 			'id_lang'                  => 1,
 			'secure_key'               => md5(time()),
 			'deleted'                  => 0,
 			'passwd'                   => md5($user->password),
-			'lastname'                 => $user->last_name,
-			'firstname'                => $user->first_name,
+			'lastname'                 => $firstName,
+			'firstname'                => $lastName,
 			'email'                    => $user->email,
 			'newsletter'               => $user->contact_for_marketplace == 1 ? 1 : 0,
 			'optin'                    => $user->contact_for_marketplace == 1 ? 1 : 0,
