@@ -47,7 +47,6 @@ class ProfileController extends ControllerBase
 		}
 		else
 		{
-			die('here');
 			// How did we get here?
 			return $this->logoutAction();
 		}

@@ -83,7 +83,7 @@
                         <div class="col-sm-10 input-group">
                             <font class="input-group-addon" style="width: 125px;">
                                 <div class="btn-group find-me-on" style="width: 100%;">
-                                    <input type="hidden" name="website[]" value>
+                                    <input type="hidden" name="website[]" value="{{ website['type'] }}">
                                     <button class="btn btn-sm dropdown-toggle find-me-dropdown" disabled="disabled" data-toggle="dropdown" style="padding: 4px; background-color: inherit; width:100%;">
                                       {% if website['type'] == 'twitter' %}
                                         <i class="fa fa-fw fa-twitter"></i> Twitter

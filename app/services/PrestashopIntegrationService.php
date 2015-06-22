@@ -143,7 +143,9 @@ class PrestashopIntegrationService
 		foreach ($categories AS $id => $category)
 		{
 			$sql = "SELECT product.id_product, ps_customer.id_customer AS id_user, product_name, ps_customer.email, category.id_category, product_shop.price, image.id_image, lang.link_rewrite, shop_name,
-				ifnull((SELECT sum(counter) FROM upshop.up_page page INNER JOIN upshop.up_page_viewed viewed ON viewed.id_page = page.id_page WHERE id_page_type = 3 AND id_object = product.id_product), 0) AS counter
+				if(lang.meta_description = '', if(lang.description = '', lang.description_short, lang.description), lang.meta_description) AS description,
+				ifnull((SELECT sum(counter) FROM upshop.up_page page INNER JOIN upshop.up_page_viewed viewed ON viewed.id_page = page.id_page WHERE id_page_type = 3 AND id_object = product.id_product), 0) AS counter,
+		        ifnull((SELECT group_concat(DISTINCT tag.name) AS tags FROM upshop.up_product_tag product_tag INNER JOIN upshop.up_tag tag ON tag.id_tag = product_tag.id_tag WHERE product_tag.id_product = product.id_product), '') AS tags
 				  FROM upshop.up_marketplace_shop shop
 				  INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer
 				  INNER JOIN upshop.up_marketplace_shop_product product ON product.id_shop = shop.id
@@ -244,13 +246,16 @@ class PrestashopIntegrationService
 					'title'         => $productInformation[ 'product_name' ],
 					'categoryTitle' => $category[ 'name' ],
 					'categoryUrl'   => sprintf('%s/%s-%s', $this->__config->prestashop->get('baseUrl'), $category[ 'id' ], $category[ 'url' ]),
+					'categoryIk'    => $category['id'],
 					'image'         => ($hasImage) ? $imageUrl : 'http://www.upcyclepost.com/shop/img/p/en-default-home_default.jpg',
 					'user'          => $userIk,
 					'userName'      => $userName,
 					'shopName'      => $productInformation[ 'shop_name' ],
 					'price'         => money_format('%i', $productInformation[ 'price' ]),
 					'views'         => $productInformation[ 'counter' ],
-					'market'        => \true
+					'market'        => \true,
+				    'description'   => $productInformation['description'],
+				    'tags'          => $productInformation['tags']
 				];
 			}
 		}
@@ -274,7 +279,9 @@ class PrestashopIntegrationService
 
 		// Build the query to find products
 		$sql = "SELECT product.id_product, ps_customer.id_customer AS id_user, product_name, ps_customer.email, category.id_category, product_shop.price, image.id_image, lang.link_rewrite, shop_name,
-				ifnull((SELECT sum(counter) FROM upshop.up_page page INNER JOIN upshop.up_page_viewed viewed ON viewed.id_page = page.id_page WHERE id_page_type = 3 AND id_object = product.id_product), 0) AS counter
+				if(lang.meta_description = '', if(lang.description = '', lang.description_short, lang.description), lang.meta_description) AS description,
+				ifnull((SELECT sum(counter) FROM upshop.up_page page INNER JOIN upshop.up_page_viewed viewed ON viewed.id_page = page.id_page WHERE id_page_type = 3 AND id_object = product.id_product), 0) AS counter,
+		        ifnull((SELECT group_concat(DISTINCT tag.name) AS tags FROM upshop.up_product_tag product_tag INNER JOIN upshop.up_tag tag ON tag.id_tag = product_tag.id_tag WHERE product_tag.id_product = product.id_product), '') AS tags
 				  FROM upshop.up_marketplace_shop shop
 				  INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer
 				  INNER JOIN upshop.up_marketplace_shop_product product ON product.id_shop = shop.id
