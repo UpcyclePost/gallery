@@ -23,7 +23,31 @@ class SearchService
 
 		// When there is no search term, we want to only sort on "Influence"
 		$sort = ($term) ? ['score' => 'desc', 'influence' => 'desc'] : ['ik' => 'desc', 'influence' => 'desc'];
-		return Post::searchIndex($start, 50, $category, \false, $term, \false, $sort);
+		$result = Post::searchIndex($start, 50, $category, \false, $term, \false, $sort);
+
+		$posts = [];
+		$products = [];
+
+		$marketIk = [];
+		foreach ($result AS $post)
+		{
+			if ($post['type'] == 'market')
+			{
+				$marketIk[] = $post['id'];
+			}
+			else
+			{
+				$posts[] = $post;
+			}
+		}
+
+		if (count($marketIk) > 0)
+		{
+			$prestashopService = new \Up\Services\PrestashopIntegrationService();
+			$products = $prestashopService->findProductsByIds($marketIk);
+		}
+
+		return array_merge($products, $posts);
 	}
 
 	/**
