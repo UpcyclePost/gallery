@@ -22,7 +22,7 @@ class SearchService
 		$term = ($term && strlen($term) > 0) ? $term : \false;
 
 		// When there is no search term, we want to only sort on "Influence"
-		$sort = ($term) ? ['score' => 'desc', 'influence' => 'desc'] : ['ik' => 'desc', 'influence' => 'desc'];
+		$sort = ($term) ? ['type' => 'desc', 'score' => 'desc', 'influence' => 'desc'] : ['type' => 'desc', 'ik' => 'desc', 'influence' => 'desc'];
 		$result = Post::searchIndex($start, 50, $category, \false, $term, \false, $sort);
 
 		$posts = [];
