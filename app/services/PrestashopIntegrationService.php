@@ -42,7 +42,7 @@ class PrestashopIntegrationService
 	{
 		$result = [];
 
-		$shopsResult = $this->__shopConnection->query('SELECT shop_name, email FROM upshop.up_marketplace_shop u INNER JOIN upshop.up_customer c ON c.id_customer = u.id_customer ORDER BY u.id DESC');
+		$shopsResult = $this->__shopConnection->query('SELECT shop_name, email FROM upshop.up_marketplace_shop u INNER JOIN upshop.up_customer c ON c.id_customer = u.id_customer WHERE u.is_active = 1 ORDER BY u.id DESC');
 		while ($r = $shopsResult->fetchArray())
 		{
 			if (($user = \User::findFirst(['email = ?0', 'bind' => [$r[ 'email' ]]])))
