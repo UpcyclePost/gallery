@@ -152,7 +152,7 @@ class PrestashopIntegrationService
 				  LEFT OUTER JOIN upshop.up_category_product category on category.id_product = product.id_product and category.id_category <> 2
 				  LEFT OUTER JOIN upshop.up_image image on image.id_product = product.id_product
 				  INNER JOIN upshop.up_product_lang lang on lang.id_product = product.id_product
-				  WHERE seller_product.quantity > 0 AND product.id_product IN(%s) GROUP BY product.id ORDER BY product.id DESC LIMIT 1", implode(',', $ids));
+				  WHERE seller_product.quantity > 0 AND product.id_product IN(%s) GROUP BY product.id ORDER BY product.id DESC", implode(',', $ids));
 
 		$productsResult = $this->__shopConnection->query($sql);
 
