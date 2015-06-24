@@ -168,7 +168,19 @@ class PrestashopIntegrationService
 
 		$categories = $this->findCategories();
 
-		foreach ($categories AS $id => $category)
+		$sortedCategories = [];
+		$sortOrder = ['Art', 'Fashion', 'Home', 'Metal', 'Furniture', 'Jewelry', 'Crafts', 'Vintage', 'Glass', 'Wood', 'Office', 'Holidays', 'Outdoors', 'Yard', 'Hardware', 'Plastic', 'Automotive', 'Electronics', 'Toys', 'Pets', 'Paper', 'Musical', 'Sporting Goods'];
+
+		foreach ($sortOrder AS $sortedCategory)
+		{
+			if (($key = array_search($sortedCategory, array_column($categories, 'name', 'id'))) !== \false)
+			{
+				$sortedCategories[$key] = $categories[$key];
+			}
+		}
+
+		$foundIds = [];
+		foreach ($sortedCategories AS $id => $category)
 		{
 			$sql = "SELECT product.id_product, ps_customer.id_customer AS id_user, product_name, ps_customer.email, category.id_category, product_shop.price, image.id_image, lang.link_rewrite, shop_name,
 				if(lang.meta_description = '', if(lang.description = '', lang.description_short, lang.description), lang.meta_description) AS description,
@@ -182,11 +194,20 @@ class PrestashopIntegrationService
 				  LEFT OUTER JOIN upshop.up_category_product category on category.id_product = product.id_product and category.id_category <> 2
 				  LEFT OUTER JOIN upshop.up_image image on image.id_product = product.id_product
 				  INNER JOIN upshop.up_product_lang lang on lang.id_product = product.id_product
-				  WHERE seller_product.quantity > 0 AND category.id_category = ? GROUP BY product.id ORDER BY product.id DESC LIMIT 1";
+				  WHERE seller_product.quantity > 0 AND category.id_category = ?";
+
+			if (!empty($foundIds))
+			{
+				$sql .= sprintf(" AND product.id_product NOT IN(%s)", implode(',', $foundIds));
+			}
+
+			$sql .= " GROUP BY product.id ORDER BY product.id DESC LIMIT 1";
 
 			$productsResult = $this->__shopConnection->query($sql, [$id]);
 
 			$this->getProductsFromResult($productsResult, $result, $users, $categories);
+
+			$foundIds[] = $result[count($result) - 1]['ik'];
 		}
 
 		return $result;
