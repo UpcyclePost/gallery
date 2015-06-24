@@ -543,7 +543,7 @@ class ProfileController extends ControllerBase
 			$this->view->og_description = $this->view->metaDescription;
 		}
 
-		$this->view->results = Post::searchIndex(0, 150, false, $user->ik);
+		$this->view->results = (new SearchService())->findPosts(\false, \false, 0, 150, $user->ik);
 		$this->view->shop_results = (new \Up\Services\PrestashopIntegrationService())->findRecentProducts(20, $user);
 
 		$subscriptionService = new SubscriptionService();
