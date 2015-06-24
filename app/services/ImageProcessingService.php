@@ -16,10 +16,11 @@ class ImageProcessingService
 	 * @param $thumbnailPath
 	 * @param $width
 	 * @param $height
+	 * @param $crop
 	 *
 	 * @return bool
 	 */
-	public function createThumbnail($thumbnailPath, $width, $height = \false)
+	public function createThumbnail($thumbnailPath, $width, $height = \false, $crop = \false)
 	{
 		$result = false;
 
@@ -30,6 +31,12 @@ class ImageProcessingService
 		if ($height !== \false)
 		{
 			$phpThumb->setParameter('h', $height);
+		}
+
+		if ($crop)
+		{
+			$phpThumb->setParameter('far', 'C');
+			$phpThumb->setParameter('zc', 'C');
 		}
 
 		if ($phpThumb->GenerateThumbnail()) {
