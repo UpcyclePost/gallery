@@ -102,7 +102,7 @@ class ProfileController extends ControllerBase
 				}
 				if ($this->request->has('location'))
 				{
-					$profile->location = strip_tags($this->request->getPost('location'));
+					$profile->location = substr(strip_tags($this->request->getPost('location')), 0, 35);
 				}
 				if ($this->request->has('about'))
 				{
