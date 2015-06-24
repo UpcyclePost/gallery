@@ -47,8 +47,6 @@
                     <p>
                         <strong>Location:</strong> Issaquah, WA
                         <br/>
-                        <strong>Tel:</strong> 425-363-2255
-                        <br/>
                         <strong>Email:</strong> info@upcyclepost.com
                     </p>
                 </div>
