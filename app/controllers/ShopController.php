@@ -179,6 +179,18 @@ class ShopController extends ControllerBase
 		}
 		else
 		{
+			if (!$user->Shop)
+			{
+				$shop = new \Up\Models\Shop();
+				$shop->user_ik = $user->ik;
+				$shop->views = 1;
+				$shop->save();
+			}
+			else
+			{
+				$user->Shop->views = ($user->Shop->views) ? $user->Shop->views++ : 1;
+			}
+
 			$prestashopService = new PrestashopIntegrationService();
 
 			if (($shop_info = $prestashopService->getShopByEmail($user->email)) !== \false)

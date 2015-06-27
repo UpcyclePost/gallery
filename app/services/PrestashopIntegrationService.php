@@ -48,9 +48,11 @@ class PrestashopIntegrationService
 			if (($user = \User::findFirst(['email = ?0', 'bind' => [$r[ 'email' ]]])))
 			{
 				$shopThumbnail = \false;
+				$views = 0;
 				if ($user->Shop)
 				{
 					$shopThumbnail = $user->Shop->backgroundThumbUrl();
+					$views = $user->Shop->views;
 				}
 
 				$result[ ] = [
@@ -58,7 +60,8 @@ class PrestashopIntegrationService
 					'thumbnail' => $shopThumbnail,
 					'title'     => $r['shop_name'],
 					'user'      => $user->ik,
-					'userName'  => $r['shop_name']
+					'userName'  => $r['shop_name'],
+				    'views'     => $views
 				];
 			}
 		}
