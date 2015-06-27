@@ -189,6 +189,7 @@ class ShopController extends ControllerBase
 			else
 			{
 				$user->Shop->views = ($user->Shop->views) ? $user->Shop->views++ : 1;
+				$shop->save();
 			}
 
 			$prestashopService = new PrestashopIntegrationService();
