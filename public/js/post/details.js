@@ -10,7 +10,14 @@ $(function() {
         errorClass: "help-block"
     });
 
+    var theTags = [];
+    if (typeof _tags !== 'undefined')
+    {
+        theTags = _tags.split(',');
+    }
+
     $('.tm-input').tagsManager({
+        prefilled: theTags,
         tagsContainer: '.tags-container',
         tagCloseIcon: '<i class="fa fa-fw"></i>',
         preventSubmitOnEnter: true

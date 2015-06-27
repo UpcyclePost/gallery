@@ -53,6 +53,8 @@
                             <i class="fa {% if following %}fa-check{%else%}fa-plus{% endif %}"></i>
                             {% if following %}Following{%else%}Follow{% endif %} {{ post.User.user_name }}
                         </a>
+                    {% else %}
+                        <a href="{{ url('post/edit/' ~ post.ik) }}"><i class="fa fa-pencil"></i> Edit it</a>
                     {% endif %}
                     </li>
                 {% endif %}

@@ -72,6 +72,7 @@
                                 <li><i class="fa fa-eye"></i> {{ post['views']|pretty }}</li>
                                 <li><i class="fa fa-heart"></i> {{ post['likes']|pretty }}</li>
                                 {% if isLoggedIn and post['user'] == auth['ik'] and deleteable is defined and deleteable === true %}
+                                    <li><i class="fa fa-pencil"></i> <a href="{{ url('post/edit/' ~ post['ik']) }}">Edit</a></li>
                                     <li><i class="fa fa-trash-o"></i> <a class="deletePost" data-url="{{ url('post/remove/' ~ post['ik']) }}">Delete</a></li>
                                 {% endif %}
                             </ul>
