@@ -23,6 +23,12 @@ class Shop extends \Phalcon\Mvc\Model
 
 	/**
 	 *
+	 * @var int
+	 */
+	public $views;
+
+	/**
+	 *
 	 * @var datetime
 	 */
 	public $logo;
@@ -42,7 +48,8 @@ class Shop extends \Phalcon\Mvc\Model
 			'ik'         => 'ik',
 			'user_ik'    => 'user_ik',
 			'background' => 'background',
-			'logo'       => 'logo'
+			'logo'       => 'logo',
+			'views'      => 'views'
 		];
 	}
 
