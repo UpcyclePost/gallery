@@ -175,11 +175,18 @@ class User extends Model
 	 */
 	public $followers;
 
-	public function url()
+	public function url($secureIfHttps = \true)
 	{
 		$url = Phalcon\DI::getDefault()->get('url');
 
-		return $url->get('profile/view/') . $this->ik;
+		$thisUrl = $url->get('profile/view/') . $this->ik;
+
+		if (!$secureIfHttps)
+		{
+			$thisUrl = str_ireplace('https://', 'http://', $thisUrl);
+		}
+
+		return $thisUrl;
 	}
 
 	public function shopUrl()

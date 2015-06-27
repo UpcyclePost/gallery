@@ -169,7 +169,7 @@ class ProfileController extends ControllerBase
 						}
 					}
 
-					return $this->response->redirect('http://www.upcyclepost.com/profile/view/' . $this->auth[ 'ik' ], true);
+					return $this->response->redirect($profile->url(\false), \true);
 				}
 				else
 				{
