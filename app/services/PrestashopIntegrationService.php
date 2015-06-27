@@ -47,9 +47,15 @@ class PrestashopIntegrationService
 		{
 			if (($user = \User::findFirst(['email = ?0', 'bind' => [$r[ 'email' ]]])))
 			{
+				$shopThumbnail = \false;
+				if ($user->Shop)
+				{
+					$shopThumbnail = $user->Shop->backgroundThumbUrl();
+				}
+
 				$result[ ] = [
 					'url'       => $user->shopUrl(),
-					'thumbnail' => $user->backgroundThumbUrl(),
+					'thumbnail' => $shopThumbnail,
 					'title'     => $r['shop_name'],
 					'user'      => $user->ik,
 					'userName'  => $r['shop_name']

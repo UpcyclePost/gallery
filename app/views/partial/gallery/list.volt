@@ -61,7 +61,7 @@
                     <article class="gallery-post">
                         <a href="{{ url('gallery/' ~ post['categoryTitle']|url ~ '/' ~ post['title']|url ~ '-' ~ post['ik']) }}">
                             <div class="gallery-img">
-                                <img class="img-responsive" src="//i.upcyclepost.com/post/{{ post['id'] }}-{{ post['ik'] }}.small.png" alt="{{ post['title'] }}" />
+                                <img class="img-responsive" src="<?=Helpers::getImageUrl(sprintf('post/%s-%s.small.png', $post['id'], $post['ik']))?>" alt="{{ post['title'] }}" />
                             </div>
                         </a>
                         <div class="gallery-meta">

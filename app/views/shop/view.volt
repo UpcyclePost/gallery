@@ -1,7 +1,7 @@
-{% if custom_background is defined %}
+{% if profile.Shop.background is defined %}
     <style type="text/css">
         #page {
-            background: url('{{ profile.backgroundUrl() }}') #fff no-repeat center top fixed !important;
+            background: url('{{ profile.Shop.backgroundUrl() }}') #fff no-repeat center top fixed !important;
             -webkit-background-size: cover!important;
             -moz-background-size: cover!important;
             -o-background-size: cover!important;
@@ -38,7 +38,7 @@
             </div>
             <div class="login-panel-body">
                 <div class="row text-center profile-image circular">
-                    <img src="{{ profile.avatarUrl() }}" height="100" width="100">
+                    <img src="{{ profile.Shop.logoUrl() }}" height="100" width="100">
                 </div>
                 <div class="row">
                     {{ shopAbout }}

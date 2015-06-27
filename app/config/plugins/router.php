@@ -9,6 +9,9 @@ $di->set('router', function ()
 		return $slug;
 	});
 	$router->add('/shops', ['controller' => 'shop', 'action' => 'shops']);
+	$router->add('/shops/my/customize', ['controller' => 'shop', 'action' => 'customize']);
+	$router->add('/shops/my/customize/upload/logo', ['controller' => 'shop', 'action' => 'uploadLogo']);
+	$router->add('/shops/my/customize/upload/background', ['controller' => 'shop', 'action' => 'uploadBackground']);
 
 	$router->add('/profile/view/:params', ['controller' => 'profile', 'action' => 'view', 'params' => 1]);
 	$router->add('/profile/register/thankyou', ['controller' => 'profile', 'action' => 'registerThankYou']);

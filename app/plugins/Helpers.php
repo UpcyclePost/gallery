@@ -67,6 +67,13 @@ class Helpers {
         return strtolower(urlencode(preg_replace('/[^a-zA-Z0-9]/', '-', $argument)));
     }
 
+    public static function getImageUrl($path)
+    {
+        $url = \Phalcon\DI::getDefault()->get('imageUrl');
+
+        return $url->get($path);
+    }
+
     public static function createShortCode($argument)
     {
         $chars = "123456789bcdfghjkmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ";
