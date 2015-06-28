@@ -35,7 +35,7 @@
                 </div>
                 <div class="login-panel-footer">
                     <div class="text-center">
-                        <a class="btn btn-lg btn-blue" href="{{ url('shops/my/customize') }}?flow=shop"><i class="fa fa-edit"></i> Complete your Profile</a>
+                        <a class="btn btn-lg btn-blue" href="{{ url('shops/my/customize') }}?flow=create"><i class="fa fa-edit"></i> Complete your Profile</a>
                     </div>
                 </div>
             </div>
