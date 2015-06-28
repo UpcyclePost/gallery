@@ -14,7 +14,7 @@
                     <div id="logo-upload">
                         <fieldset class="upload-image upload-logo" id="logo-dropzone">
                             {% if profile.Shop.logo %}
-                                <img id="upload-profile-image-preview" src="{{ profile.Shop.logoUrl() }}" width="400" height="67" />
+                                <img id="upload-profile-image-preview" src="{{ profile.Shop.logoUrl() }}" width="244" />
                             {% endif %}
                         </fieldset>
                         <br />
