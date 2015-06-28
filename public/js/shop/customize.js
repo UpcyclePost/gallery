@@ -37,19 +37,19 @@ $(function() {
                         this.removeFile(file);
                     }
                 } else {
-                    $('#avatar-error').show();
-                    $('#avatar-error').html($('.dz-error-message span').html());
+                    $('#logo-error').show();
+                    $('#logo-error').html($('.dz-error-message span').html());
                     this.removeFile(file);
                 }
             });
 
             this.on('uploadprogress', function(file, progress) {
-                $('#avatar-dropzone').html('<p>Uploading your image, ' + Math.round(progress) + '%</p>');
+                $('#logo-dropzone').html('<p>Uploading your image, ' + Math.round(progress) + '%</p>');
             });
         },
 
         accept: function(file, done) {
-            $('#avatar-error').hide();
+            $('#logo-error').hide();
 
             file.acceptDimensions = done;
         }
