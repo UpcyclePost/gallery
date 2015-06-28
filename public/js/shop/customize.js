@@ -29,7 +29,7 @@ $(function() {
                     if (a.success) {
                         var img = new Image();
                         img.onload = function() {
-                            $('#logo-dropzone').html('<img id="upload-profile-image-preview" src="' + a.data.preview + '" /><input type="hidden" name="logo" value="'+ a.data.file+'">');
+                            $('#logo-dropzone').html('<img id="upload-profile-image-preview" src="' + a.data.preview + '" width="400" height="67" /><input type="hidden" name="logo" value="'+ a.data.file+'">');
                         };
                         img.src = a.data.preview;
                         dropzone.disable(); // Disable the dropzone on successful upload
