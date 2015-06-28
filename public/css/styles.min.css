@@ -3237,7 +3237,7 @@ header {
     margin: 0;
 }
 .upload-logo p {
-    margin: auto;
+    margin: auto!important;
 }
 .upload-background-image {
     width: 268px;
