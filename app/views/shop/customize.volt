@@ -12,7 +12,7 @@
                 <div class="col-xs-6 col-sm-5">
                     <div id="logo-error" style="display: none;"></div>
                     <div id="logo-upload">
-                        <fieldset class="upload-image upload-profile-image" id="logo-dropzone">
+                        <fieldset class="upload-image upload-logo" id="logo-dropzone">
                             {% if profile.Shop.logo %}
                                 <img id="upload-profile-image-preview" src="{{ profile.Shop.logoUrl() }}" width="100" height="100" />
                             {% endif %}
@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-5">
-                    Your shop logo will be resized and cropped to 100x100.
+                    Your shop logo will be resized and cropped to 400x100.
                 </div>
             </div>
             <div class="form-group">

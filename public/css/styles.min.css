@@ -3227,6 +3227,15 @@ header {
     max-height: 124px;
     margin: 0;
 }
+.upload-logo {
+    width: 268px;
+    height: 67px;
+    min-width: 268px;
+    max-width: 268px;
+    min-height: 67px;
+    max-height: 67px;
+    margin: 0;
+}
 .upload-background-image {
     width: 268px;
     min-width: 268px;

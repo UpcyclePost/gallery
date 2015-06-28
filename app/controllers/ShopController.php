@@ -97,7 +97,7 @@ class ShopController extends ControllerBase
 								// Create a thumbnail of the profile background
 								$imageProcessingService = new ImageProcessingService($permanentFile);
 
-								$imageProcessingService->createThumbnail($permanentFile, 100, 100, \true);
+								$imageProcessingService->createThumbnail($permanentFile, 400, 100, \true);
 
 								echo json_encode(['success' => true, 'data' => ['file' => $fileName, 'preview' => $this->imageUrl->get(sprintf('shop/logo/%s', $fileName))]]);
 
