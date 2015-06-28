@@ -60,20 +60,22 @@ class ShopController extends ControllerBase
 			{
 				$this->view->disable();
 
+				$shop = $profile->Shop;
+
 				if ($this->request->hasPost('logo'))
 				{
-					$profile->Shop->logo = $this->request->getPost('logo');
+					$shop->logo = $this->request->getPost('logo');
 				}
 
 				if ($this->request->hasPost('background'))
 				{
-					$profile->Shop->background = $this->request->getPost('background');
+					$shop->background = $this->request->getPost('background');
 				}
 
-				$profile->Shop->description = $this->request->getPost('description');
+				$shop->description = $this->request->getPost('description');
 
 				$profile->save();
-				$profile->Shop->save();
+				$shop->save();
 
 				$this->flash->success('Your shop has been saved.');
 
