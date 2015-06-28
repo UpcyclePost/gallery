@@ -6,6 +6,7 @@
             <h1>Customize Your Shop</h1>
         </div>
         <form class="form-horizontal" role="form" method="post" id="edit-form" enctype="multipart/form-data">
+        <input type="hidden" name="flow" value="{{ flow }}">
         <div class="login-panel-body">
             <div class="form-group">
                 <label class="col-xs-12 col-sm-2 control-label">Logo</label>

@@ -22,6 +22,23 @@ class ShopController extends ControllerBase
 	{
 		if (($profile = $this->__getProfile()) !== \false)
 		{
+			$this->view->flow = 'edit';
+			if ($this->request->has('flow'))
+			{
+				$this->view->flow = $this->request->get('flow');
+			}
+			else if ($this->request->hasPost('flow'))
+			{
+				$this->view->flow = $this->request->getPost('flow');
+			}
+
+			// If the variables were changed either through direct action or accident
+			// reset the flow to member.
+			if ($this->view->flow != 'edit' && $this->view->flow != 'create')
+			{
+				$this->view->flow = 'edit';
+			}
+
 			if (!$profile->Shop)
 			{
 				$shop = new \Up\Models\Shop();
@@ -59,6 +76,14 @@ class ShopController extends ControllerBase
 				$profile->Shop->save();
 
 				$this->flash->success('Your shop has been saved.');
+
+				if ($this->request->hasPost('flow'))
+				{
+					if ($this->request->getPost('flow') == 'create')
+					{
+						return $this->response->redirect('shop/module/marketplace/sellerrequest');
+					}
+				}
 
 				return $this->response->redirect($profile->shopUrl());
 			}
