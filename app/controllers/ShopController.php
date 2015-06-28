@@ -53,6 +53,8 @@ class ShopController extends ControllerBase
 					$profile->Shop->background = $this->request->getPost('background');
 				}
 
+				$profile->Shop->description = $this->request->getPost('description');
+
 				$profile->save();
 				$profile->Shop->save();
 
@@ -188,7 +190,7 @@ class ShopController extends ControllerBase
 			}
 			else
 			{
-				$user->Shop->views = ($user->Shop->views) ? $user->Shop->views++ : 1;
+				$user->Shop->views = ($user->Shop->views) ? $user->Shop->views + 1 : 1;
 				$user->save();
 				$user->Shop->save();
 			}

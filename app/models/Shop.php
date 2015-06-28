@@ -29,9 +29,15 @@ class Shop extends \Phalcon\Mvc\Model
 
 	/**
 	 *
-	 * @var datetime
+	 * @var string
 	 */
 	public $logo;
+
+	/**
+	 *
+	 * @var string
+	 */
+	public $description;
 
 	public function initialize()
 	{
@@ -45,11 +51,12 @@ class Shop extends \Phalcon\Mvc\Model
 	public function columnMap()
 	{
 		return [
-			'ik'         => 'ik',
-			'user_ik'    => 'user_ik',
-			'background' => 'background',
-			'logo'       => 'logo',
-			'views'      => 'views'
+			'ik'          => 'ik',
+			'user_ik'     => 'user_ik',
+			'background'  => 'background',
+			'logo'        => 'logo',
+			'description' => 'description',
+			'views'       => 'views'
 		];
 	}
 

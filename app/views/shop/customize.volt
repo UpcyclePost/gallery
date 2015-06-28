@@ -43,6 +43,13 @@
                     This high resolution image will fill the entire screen and should be a landscape, not a portrait, image if possible. Pick something that reflects what you love about upcycling, how you work, what you like to collect, etc.
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="description" class="col-sm-2 control-label">Shop Description</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="10" name="description" id="description" required maxlength="4096">{{ profile.Shop.description }}</textarea>
+                </div>
+            </div>
         </div>
         <div class="login-panel-footer text-right">
             <a class="btn btn-gray" href="{{ url('shops/my/customize') }}">Cancel</a> <button type="submit" class="btn btn-green"><i class="fa fa-check"></i> Save Changes</button>
