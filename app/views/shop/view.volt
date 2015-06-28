@@ -15,6 +15,13 @@
 {% endif %}
 
 <div class="content-container">
+    {% if profile.Shop.logo %}
+        <div class="text-center">
+            <img class="text-center" src="{{ profile.Shop.logoUrl() }}" width="400" height="100">
+        </div>
+        <br><br>
+    {% endif %}
+
     <div class="col-lg-9 col-md-8 col-sm-12">
         <div class="login-panel semi-opaque-7">
             <div class="login-panel-header">
@@ -37,9 +44,6 @@
                 <h1>About {{ shopName }}</h1>
             </div>
             <div class="login-panel-body">
-                <div class="row text-center profile-image circular">
-                    <img src="{{ profile.Shop.logoUrl() }}" height="100" width="100">
-                </div>
                 <div class="row">
                     {{ shopAbout }}
                 </div>
