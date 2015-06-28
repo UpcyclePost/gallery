@@ -60,7 +60,7 @@ class ShopController extends ControllerBase
 
 				$this->flash->success('Your shop has been saved.');
 
-				return $this->response->redirect('shops/my/customize');
+				return $this->response->redirect($profile->shopUrl());
 			}
 		}
 	}

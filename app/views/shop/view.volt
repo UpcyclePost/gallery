@@ -45,7 +45,7 @@
             </div>
             <div class="login-panel-body">
                 <div class="row">
-                    {{ shopAbout }}
+                    {{ profile.Shop.description }}
                 </div>
                 <div class="row">
 
