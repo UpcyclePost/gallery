@@ -44,7 +44,7 @@ $(function() {
             });
 
             this.on('uploadprogress', function(file, progress) {
-                $('#logo-dropzone').html('<p>Uploading your image, ' + Math.round(progress) + '%</p>');
+                $('#logo-dropzone').html('<p>Uploading your logo, ' + Math.round(progress) + '%</p>');
             });
         },
 

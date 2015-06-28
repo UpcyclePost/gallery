@@ -3236,6 +3236,9 @@ header {
     max-height: 86px;
     margin: 0;
 }
+.upload-logo p {
+    margin: auto;
+}
 .upload-background-image {
     width: 268px;
     min-width: 268px;
