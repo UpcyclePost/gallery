@@ -2,7 +2,7 @@
     <div id="{{ isodiv }}">
         {% if results is defined %}
             {% for item in results %}
-                <article class="gallery-post{% if item['shopName'] %} is-shop{% endif %}">
+                <article class="gallery-post{% if item['shopName'] is defined %} is-shop{% endif %}">
                     <a href="{{ item['url'] }}">
                         {% if item['thumbnail'] %}
                         <div class="gallery-img">
@@ -22,9 +22,11 @@
                         </div>
                         <ul class="gallery-engagement clearfix">
                             <li><i class="fa fa-eye"></i> {{ item['views']|pretty }}</li>
-                            <li><i class="fa fa-heart"></i> {{ item['followers']|pretty }}</li>
-                            {% if item['shopName'] %}
-                            <li><a href="{{ item['shopUrl'] }}">{{ item['shopName'] }}</a></li>
+                            {% if item['followers'] is defined %}
+                                <li><i class="fa fa-heart"></i> {{ item['followers']|pretty }}</li>
+                            {% endif %}
+                            {% if item['shopName'] is defined %}
+                                <li><a href="{{ item['shopUrl'] }}">{{ item['shopName'] }}</a></li>
                             {% endif %}
                         </ul>
                     </div>
