@@ -51,8 +51,19 @@ class PrestashopIntegrationService
 				$views = 0;
 				if ($user->Shop)
 				{
-					$shopThumbnail = $user->Shop->backgroundThumbUrl();
+					if ($user->Shop->background)
+					{
+						$shopThumbnail = $user->Shop->backgroundThumbUrl();
+					}
+					else
+					{
+						$shopThumbnail = $user->backgroundThumbUrl();
+					}
 					$views = $user->Shop->views;
+				}
+				else
+				{
+					$shopThumbnail = $user->backgroundThumbUrl();
 				}
 
 				$result[ ] = [

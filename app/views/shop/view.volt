@@ -12,6 +12,20 @@
             min-height: 700px;
         }
     </style>
+{% elseif custom_background is defined %}
+    <style type="text/css">
+        #page {
+            background: url('{{ profile.backgroundUrl() }}') #fff no-repeat center top fixed !important;
+            -webkit-background-size: cover!important;
+            -moz-background-size: cover!important;
+            -o-background-size: cover!important;
+            background-size: cover!important;
+        }
+
+        #content-main {
+            min-height: 700px;
+        }
+    </style>
 {% endif %}
 
 <div class="content-container">
@@ -48,7 +62,11 @@
                     <img src="{{ profile.avatarUrl() }}" height="100" width="100">
                 </div>
                 <div class="row">
-                    {{ profile.Shop.description }}
+                    {% if profile.Shop.description is defined and profile.Shop.description and profile.Shop.description|length > 0 %}
+                        {{ profile.Shop.description }}
+                    {% else %}
+                        {{ shopAbout }}
+                    {% endif %}
                 </div>
                 <div class="row">
 

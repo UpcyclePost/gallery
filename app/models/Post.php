@@ -233,13 +233,18 @@ class Post extends \Phalcon\Mvc\Model
         return $solr->update($update);
     }
 
-    public static function searchIndex($start = 0, $limit = 0, $category_ik = false, $user_ik = false, $term = false, $not = false, $sort = ['score' => 'desc', 'influence' => 'desc']) {
+    public static function searchIndex($start = 0, $limit = 0, $category_ik = false, $user_ik = false, $term = false, $not = false, $sort = ['score' => 'desc', 'influence' => 'desc'], $type = \false) {
         $solr = Phalcon\DI::getDefault()->get('solr');
 
         $query = $solr->createSelect();
         $query->setQuery('visible:1');
         if ($category_ik !== false) {
             $query->createFilterQuery('category')->setQuery('category:' . $category_ik);
+        }
+
+        if ($type !== false)
+        {
+            $query->createFilterQuery('type')->setQuery('type:' . $type);
         }
 
         if ($user_ik !== false) {
