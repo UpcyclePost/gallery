@@ -41,8 +41,8 @@ class SearchController extends ControllerBase
 					'title'     => $user->user_name,
 					'user'      => $user->ik,
 					'userName'  => $user->user_name,
-					'views'     => $user->views,
-					'followers' => $user->followers,
+					'views'     => $user->views ?: 0,
+					'followers' => $user->followers ?: 0,
 					'shopName'  => $prestashopService->getShopNameByEmail($user->email),
 					'shopUrl'   => $user->shopUrl()
 				];
