@@ -53,12 +53,60 @@ class RestController extends ControllerBase
                 $post->update();
             }
         }
+
+        $upCategories = Helpers::getCategoryList();
+        $categories = [];
+        foreach ($upCategories AS $category)
+        {
+            $categories[$category['title']] = $category['ik'];
+        }
+        /**
+         * Add PrestaShop Post ID (id)
+         */
+        $prestashopPosts = (new \Up\Services\PrestashopIntegrationService())->findRecentProducts(\false);
+        if (count($prestashopPosts) > 0)
+        {
+            $documents = [];
+            $update = $this->solr->createUpdate();
+
+            foreach ($prestashopPosts AS $post)
+            {
+                $document = $update->createDocument();
+                //Products will start with a 5, and be at least 9 digit numbers.
+                //@TODO: We need to make the IDs work with the Idea IDs to avoid collisions.
+                //@TODO: the "ik" field is unique.
+                $document->ik = (int)sprintf('5%s', str_pad($post['ik'], 8, '0', STR_PAD_LEFT));
+                $document->id = $post['ik'];
+                $document->type = 'market';
+                $document->category = (isset($categories[$post['categoryTitle']])) ? $categories[$post['categoryTitle']] : $post['categoryIk'];
+                $document->categoryTitle = $post['categoryTitle'];
+                $document->user = $post['user'];
+                $document->userName = $post['shopName'];
+                $document->tags = explode(',', $post['tags']);
+                $document->title = $post['title'];
+                $document->description = $post['description'];
+                $document->visible = 1;
+                $document->views = $post['views'];
+                $document->likes = 0;
+                $document->comments = 0;
+                $document->influence = 0;
+
+                $documents[] = $document;
+            }
+
+            $update->addDocuments($documents);
+            $update->addCommit();
+
+            $this->solr->update($update);
+        }
     }
 
     public function createThumbnailsAction()
     {
         $this->view->disable();
-
+        return;
+        die();
+        
         $users = User::find([
                        'conditions' => 'custom_background IS NOT NULL'
                    ]);
@@ -77,6 +125,36 @@ class RestController extends ControllerBase
 
                     $imageProcessingService->createThumbnail($thumbnailFile, ($width >= 244) ? 244 : $width);
                 }
+            }
+        }
+    }
+
+    public function setWebsitesAction()
+    {
+        $this->view->disable();
+        return;
+        die();
+
+        $users = User::find([
+            'conditions'    => 'websites is null and (facebook is not null or twitter is not null)'
+                            ]);
+
+        if ($users)
+        {
+            foreach ($users AS $user)
+            {
+                $websites = [];
+                if ($user->facebook)
+                {
+                    $websites[] = ['type' => 'facebook', 'url' => $user->facebook];
+                }
+                if ($user->twitter)
+                {
+                    $websites[] = ['type' => 'twitter', 'url' => $user->twitter];
+                }
+
+                $user->websites = json_encode($websites);
+                $user->save();
             }
         }
     }

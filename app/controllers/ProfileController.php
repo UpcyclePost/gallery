@@ -47,7 +47,6 @@ class ProfileController extends ControllerBase
 		}
 		else
 		{
-			die('here');
 			// How did we get here?
 			return $this->logoutAction();
 		}
@@ -103,7 +102,7 @@ class ProfileController extends ControllerBase
 				}
 				if ($this->request->has('location'))
 				{
-					$profile->location = strip_tags($this->request->getPost('location'));
+					$profile->location = substr(strip_tags($this->request->getPost('location')), 0, 35);
 				}
 				if ($this->request->has('about'))
 				{
@@ -170,7 +169,7 @@ class ProfileController extends ControllerBase
 						}
 					}
 
-					return $this->response->redirect('http://www.upcyclepost.com/profile/view/' . $this->auth[ 'ik' ], true);
+					return $this->response->redirect($profile->url(\false), \true);
 				}
 				else
 				{
@@ -222,7 +221,7 @@ class ProfileController extends ControllerBase
 								// Create a thumbnail of the profile background
 								$imageProcessingService = new ImageProcessingService($permanentFile);
 
-								$imageProcessingService->createThumbnail($permanentFile, 100, 100);
+								$imageProcessingService->createThumbnail($permanentFile, 100, 100, \true);
 
 								echo json_encode(['success' => true, 'data' => ['file' => $fileName, 'preview' => $this->imageUrl->get(sprintf('profile/avatar/%s', $fileName))]]);
 
@@ -544,7 +543,7 @@ class ProfileController extends ControllerBase
 			$this->view->og_description = $this->view->metaDescription;
 		}
 
-		$this->view->results = Post::searchIndex(0, 150, false, $user->ik);
+		$this->view->results = (new SearchService())->findPosts(\false, \false, 0, 150, $user->ik);
 		$this->view->shop_results = (new \Up\Services\PrestashopIntegrationService())->findRecentProducts(20, $user);
 
 		$subscriptionService = new SubscriptionService();

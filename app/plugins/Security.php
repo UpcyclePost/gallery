@@ -26,11 +26,11 @@ class Security extends Plugin
 		}
 
 		$privateResources = [
-			'post'    => ['post', 'remove'],
+			'post'    => ['post', 'remove', 'edit'],
 			'profile' => ['index', 'me', 'logout', 'settings', 'dashboard', 'edit', 'feed', 'uploadAvatar', 'uploadBackground', 'registerThankYou'],
 			'message' => ['inbox', 'sent', 'view', 'send'],
 			'buy'     => ['index', 'process', 'success'],
-			'shop'    => ['open', 'dashboard', 'balance', 'settings', 'survey', 'listings', 'stock', 'terms', 'getPaid', 'list', 'ship'],
+			'shop'    => ['customize', 'uploadLogo', 'uploadBackground'],
 			'listing' => ['upload', 'thumbnail', 'edit', 'delete', 'publish', 'submit', 'details'],
 			'follow'  => ['user', 'shop']
 		];

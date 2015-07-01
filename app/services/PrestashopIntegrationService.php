@@ -42,17 +42,26 @@ class PrestashopIntegrationService
 	{
 		$result = [];
 
-		$shopsResult = $this->__shopConnection->query('SELECT shop_name, email FROM upshop.up_marketplace_shop u INNER JOIN upshop.up_customer c ON c.id_customer = u.id_customer ORDER BY u.id DESC');
+		$shopsResult = $this->__shopConnection->query('SELECT shop_name, email FROM upshop.up_marketplace_shop u INNER JOIN upshop.up_customer c ON c.id_customer = u.id_customer WHERE u.is_active = 1 ORDER BY u.id DESC');
 		while ($r = $shopsResult->fetchArray())
 		{
 			if (($user = \User::findFirst(['email = ?0', 'bind' => [$r[ 'email' ]]])))
 			{
+				$shopThumbnail = \false;
+				$views = 0;
+				if ($user->Shop)
+				{
+					$shopThumbnail = $user->Shop->backgroundThumbUrl();
+					$views = $user->Shop->views;
+				}
+
 				$result[ ] = [
 					'url'       => $user->shopUrl(),
-					'thumbnail' => $user->backgroundThumbUrl(),
+					'thumbnail' => $shopThumbnail,
 					'title'     => $r['shop_name'],
 					'user'      => $user->ik,
-					'userName'  => $r['shop_name']
+					'userName'  => $r['shop_name'],
+				    'views'     => $views
 				];
 			}
 		}
@@ -133,6 +142,34 @@ class PrestashopIntegrationService
 		return $result;
 	}
 
+	public function findProductsByIds(Array $ids)
+	{
+		$result = [];
+		$users = [];
+
+		$categories = $this->findCategories();
+
+		$sql = sprintf("SELECT product.id_product, ps_customer.id_customer AS id_user, product_name, ps_customer.email, category.id_category, product_shop.price, lang.link_rewrite, shop_name,
+				if(lang.meta_description = '', if(lang.description = '', lang.description_short, lang.description), lang.meta_description) AS description,
+				ifnull((SELECT sum(counter) FROM upshop.up_page page INNER JOIN upshop.up_page_viewed viewed ON viewed.id_page = page.id_page WHERE id_page_type = 3 AND id_object = product.id_product), 0) AS counter,
+		        ifnull((SELECT group_concat(DISTINCT tag.name) AS tags FROM upshop.up_product_tag product_tag INNER JOIN upshop.up_tag tag ON tag.id_tag = product_tag.id_tag WHERE product_tag.id_product = product.id_product), '') AS tags,
+		        (SELECT id_image FROM upshop.up_image image WHERE image.id_product = product.id_product ORDER BY cover DESC LIMIT 1) AS id_image
+				  FROM upshop.up_marketplace_shop shop
+				  INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer
+				  INNER JOIN upshop.up_marketplace_shop_product product ON product.id_shop = shop.id
+				  INNER JOIN upshop.up_marketplace_seller_product seller_product ON seller_product.id = product.marketplace_seller_id_product
+				  INNER JOIN upshop.up_product_shop product_shop ON product_shop.id_product = product.id_product
+				  LEFT OUTER JOIN upshop.up_category_product category on category.id_product = product.id_product and category.id_category <> 2
+				  INNER JOIN upshop.up_product_lang lang on lang.id_product = product.id_product
+				  WHERE seller_product.quantity > 0 AND product.id_product IN(%s) GROUP BY product.id ORDER BY product.id DESC", implode(',', $ids));
+
+		$productsResult = $this->__shopConnection->query($sql);
+
+		$this->getProductsFromResult($productsResult, $result, $users, $categories);
+
+		return $result;
+	}
+
 	public function findFrontPageProducts()
 	{
 		$result = [];
@@ -140,23 +177,46 @@ class PrestashopIntegrationService
 
 		$categories = $this->findCategories();
 
-		foreach ($categories AS $id => $category)
+		$sortedCategories = [];
+		$sortOrder = ['Art', 'Fashion', 'Home', 'Metal', 'Furniture', 'Jewelry', 'Crafts', 'Vintage', 'Glass', 'Wood', 'Office', 'Holidays', 'Outdoors', 'Yard', 'Hardware', 'Plastic', 'Automotive', 'Electronics', 'Toys', 'Pets', 'Paper', 'Musical', 'Sporting Goods'];
+
+		foreach ($sortOrder AS $sortedCategory)
 		{
-			$sql = "SELECT product.id_product, ps_customer.id_customer AS id_user, product_name, ps_customer.email, category.id_category, product_shop.price, image.id_image, lang.link_rewrite, shop_name,
-				ifnull((SELECT sum(counter) FROM upshop.up_page page INNER JOIN upshop.up_page_viewed viewed ON viewed.id_page = page.id_page WHERE id_page_type = 3 AND id_object = product.id_product), 0) AS counter
+			if (($key = array_search($sortedCategory, array_column($categories, 'name', 'id'))) !== \false)
+			{
+				$sortedCategories[$key] = $categories[$key];
+			}
+		}
+
+		$foundIds = [];
+		foreach ($sortedCategories AS $id => $category)
+		{
+			$sql = "SELECT product.id_product, ps_customer.id_customer AS id_user, product_name, ps_customer.email, category.id_category, product_shop.price, lang.link_rewrite, shop_name,
+				if(lang.meta_description = '', if(lang.description = '', lang.description_short, lang.description), lang.meta_description) AS description,
+				ifnull((SELECT sum(counter) FROM upshop.up_page page INNER JOIN upshop.up_page_viewed viewed ON viewed.id_page = page.id_page WHERE id_page_type = 3 AND id_object = product.id_product), 0) AS counter,
+		        ifnull((SELECT group_concat(DISTINCT tag.name) AS tags FROM upshop.up_product_tag product_tag INNER JOIN upshop.up_tag tag ON tag.id_tag = product_tag.id_tag WHERE product_tag.id_product = product.id_product), '') AS tags,
+		        (SELECT id_image FROM upshop.up_image image WHERE image.id_product = product.id_product ORDER BY cover DESC LIMIT 1) AS id_image
 				  FROM upshop.up_marketplace_shop shop
 				  INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer
 				  INNER JOIN upshop.up_marketplace_shop_product product ON product.id_shop = shop.id
 				  INNER JOIN upshop.up_marketplace_seller_product seller_product ON seller_product.id = product.marketplace_seller_id_product
 				  INNER JOIN upshop.up_product_shop product_shop ON product_shop.id_product = product.id_product
 				  LEFT OUTER JOIN upshop.up_category_product category on category.id_product = product.id_product and category.id_category <> 2
-				  LEFT OUTER JOIN upshop.up_image image on image.id_product = product.id_product
 				  INNER JOIN upshop.up_product_lang lang on lang.id_product = product.id_product
-				  WHERE seller_product.quantity > 0 AND category.id_category = ? GROUP BY product.id ORDER BY product.id DESC LIMIT 1";
+				  WHERE seller_product.quantity > 0 AND category.id_category = ?";
+
+			if (!empty($foundIds))
+			{
+				$sql .= sprintf(" AND product.id_product NOT IN(%s)", implode(',', $foundIds));
+			}
+
+			$sql .= " GROUP BY product.id ORDER BY product.id DESC LIMIT 1";
 
 			$productsResult = $this->__shopConnection->query($sql, [$id]);
 
 			$this->getProductsFromResult($productsResult, $result, $users, $categories);
+
+			$foundIds[] = $result[count($result) - 1]['ik'];
 		}
 
 		return $result;
@@ -244,13 +304,16 @@ class PrestashopIntegrationService
 					'title'         => $productInformation[ 'product_name' ],
 					'categoryTitle' => $category[ 'name' ],
 					'categoryUrl'   => sprintf('%s/%s-%s', $this->__config->prestashop->get('baseUrl'), $category[ 'id' ], $category[ 'url' ]),
+					'categoryIk'    => $category['id'],
 					'image'         => ($hasImage) ? $imageUrl : 'http://www.upcyclepost.com/shop/img/p/en-default-home_default.jpg',
 					'user'          => $userIk,
 					'userName'      => $userName,
 					'shopName'      => $productInformation[ 'shop_name' ],
 					'price'         => money_format('%i', $productInformation[ 'price' ]),
 					'views'         => $productInformation[ 'counter' ],
-					'market'        => \true
+					'market'        => \true,
+				    'description'   => $productInformation['description'],
+				    'tags'          => $productInformation['tags']
 				];
 			}
 		}
@@ -273,15 +336,17 @@ class PrestashopIntegrationService
 		$categories = $this->findCategories();
 
 		// Build the query to find products
-		$sql = "SELECT product.id_product, ps_customer.id_customer AS id_user, product_name, ps_customer.email, category.id_category, product_shop.price, image.id_image, lang.link_rewrite, shop_name,
-				ifnull((SELECT sum(counter) FROM upshop.up_page page INNER JOIN upshop.up_page_viewed viewed ON viewed.id_page = page.id_page WHERE id_page_type = 3 AND id_object = product.id_product), 0) AS counter
+		$sql = "SELECT product.id_product, ps_customer.id_customer AS id_user, product_name, ps_customer.email, category.id_category, product_shop.price, lang.link_rewrite, shop_name,
+				if(lang.meta_description = '', if(lang.description = '', lang.description_short, lang.description), lang.meta_description) AS description,
+				ifnull((SELECT sum(counter) FROM upshop.up_page page INNER JOIN upshop.up_page_viewed viewed ON viewed.id_page = page.id_page WHERE id_page_type = 3 AND id_object = product.id_product), 0) AS counter,
+		        ifnull((SELECT group_concat(DISTINCT tag.name) AS tags FROM upshop.up_product_tag product_tag INNER JOIN upshop.up_tag tag ON tag.id_tag = product_tag.id_tag WHERE product_tag.id_product = product.id_product), '') AS tags,
+		        (SELECT id_image FROM upshop.up_image image WHERE image.id_product = product.id_product ORDER BY cover DESC LIMIT 1) AS id_image
 				  FROM upshop.up_marketplace_shop shop
 				  INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer
 				  INNER JOIN upshop.up_marketplace_shop_product product ON product.id_shop = shop.id
 				  INNER JOIN upshop.up_marketplace_seller_product seller_product ON seller_product.id = product.marketplace_seller_id_product
 				  INNER JOIN upshop.up_product_shop product_shop ON product_shop.id_product = product.id_product
 				  LEFT OUTER JOIN upshop.up_category_product category on category.id_product = product.id_product and category.id_category <> 2
-				  LEFT OUTER JOIN upshop.up_image image on image.id_product = product.id_product
 				  INNER JOIN upshop.up_product_lang lang on lang.id_product = product.id_product
 				  WHERE seller_product.quantity > 0";
 
@@ -387,8 +452,8 @@ class PrestashopIntegrationService
 			'secure_key'               => md5(time()),
 			'deleted'                  => 0,
 			'passwd'                   => md5($user->password),
-			'lastname'                 => $firstName,
-			'firstname'                => $lastName,
+			'lastname'                 => preg_replace('/[^A-Za-z\s]/', '', $firstName),
+			'firstname'                => preg_replace('/[^A-Za-z\s]/', '', $lastName),
 			'email'                    => $user->email,
 			'newsletter'               => $user->contact_for_marketplace == 1 ? 1 : 0,
 			'optin'                    => $user->contact_for_marketplace == 1 ? 1 : 0,

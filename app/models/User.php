@@ -175,11 +175,18 @@ class User extends Model
 	 */
 	public $followers;
 
-	public function url()
+	public function url($secureIfHttps = \true)
 	{
 		$url = Phalcon\DI::getDefault()->get('url');
 
-		return $url->get('profile/view/') . $this->ik;
+		$thisUrl = $url->get('profile/view/') . $this->ik;
+
+		if (!$secureIfHttps)
+		{
+			$thisUrl = str_ireplace('https://', 'http://', $thisUrl);
+		}
+
+		return $thisUrl;
 	}
 
 	public function shopUrl()
@@ -250,7 +257,8 @@ class User extends Model
 		$this->hasMany('ik', 'Sales', 'sold_to_user_ik');
 		$this->hasMany('ik', 'Post', 'user_ik');
 		$this->hasOne('ik', 'Referral', 'user_ik');
-		$this->hasOne('ik', 'Shop', 'user_ik', [
+		$this->hasOne('ik', 'Up\Models\Shop', 'user_ik', [
+			'alias' => 'Shop',
 			'foreignKey' => [
 				'action' => Relation::ACTION_CASCADE
 			]

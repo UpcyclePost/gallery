@@ -3219,13 +3219,23 @@ header {
      margin-bottom: 20px;
  }
 .upload-profile-image {
-    width: 104px;
-    height: 104px;
-    min-width: 104px;
-    max-width: 104px;
-    min-height: 104px;
-    max-height: 104px;
+    width: 124px;
+    height: 124px;
+    min-width: 124px;
+    max-width: 124px;
+    min-height: 124px;
+    max-height: 124px;
     margin: 0;
+}
+.upload-logo {
+    width: 268px;
+    min-width: 268px;
+    max-width: 268px;
+    min-height: 86px;
+    margin: 0;
+}
+.upload-logo p {
+    margin: auto!important;
 }
 .upload-background-image {
     width: 268px;

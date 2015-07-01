@@ -16,20 +16,28 @@ class ImageProcessingService
 	 * @param $thumbnailPath
 	 * @param $width
 	 * @param $height
+	 * @param $crop
 	 *
 	 * @return bool
 	 */
-	public function createThumbnail($thumbnailPath, $width, $height = \false)
+	public function createThumbnail($thumbnailPath, $width, $height = \false, $crop = \false)
 	{
 		$result = false;
 
 		$phpThumb = new PhpThumb_PhpThumb();
 		$phpThumb->setSourceData(file_get_contents($this->__sourceFile));
+		$phpThumb->setParameter('f', 'png');
 
 		$phpThumb->setParameter('w', $width);
 		if ($height !== \false)
 		{
 			$phpThumb->setParameter('h', $height);
+		}
+
+		if ($crop)
+		{
+			$phpThumb->setParameter('far', 'C');
+			$phpThumb->setParameter('zc', 'C');
 		}
 
 		if ($phpThumb->GenerateThumbnail()) {

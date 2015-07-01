@@ -1,7 +1,7 @@
-{% if custom_background is defined %}
+{% if profile.Shop.background is defined %}
     <style type="text/css">
         #page {
-            background: url('{{ profile.backgroundUrl() }}') #fff no-repeat center top fixed !important;
+            background: url('{{ profile.Shop.backgroundUrl() }}') #fff no-repeat center top fixed !important;
             -webkit-background-size: cover!important;
             -moz-background-size: cover!important;
             -o-background-size: cover!important;
@@ -15,6 +15,13 @@
 {% endif %}
 
 <div class="content-container">
+    {% if profile.Shop.logo %}
+        <div style="margin-left: 15px;">
+            <img src="{{ profile.Shop.logoUrl() }}" width="400" height="100">
+        </div>
+        <br><br>
+    {% endif %}
+
     <div class="col-lg-9 col-md-8 col-sm-12">
         <div class="login-panel semi-opaque-7">
             <div class="login-panel-header">
@@ -41,7 +48,7 @@
                     <img src="{{ profile.avatarUrl() }}" height="100" width="100">
                 </div>
                 <div class="row">
-                    {{ shopAbout }}
+                    {{ profile.Shop.description }}
                 </div>
                 <div class="row">
 

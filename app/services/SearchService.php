@@ -13,17 +13,43 @@ class SearchService
 	 * @param       $searchTerm
 	 * @param mixed $category
 	 * @param mixed $start
+	 * @param mixed $limit
+	 * @param mixed $userIk
 	 *
 	 * @return mixed
 	 */
-	public function findPosts($searchTerm, $category = \false, $start = \false)
+	public function findPosts($searchTerm, $category = \false, $start = \false, $limit = 50, $userIk = \false)
 	{
 		$term = $this->sanitize($searchTerm);
 		$term = ($term && strlen($term) > 0) ? $term : \false;
 
 		// When there is no search term, we want to only sort on "Influence"
-		$sort = ($term) ? ['score' => 'desc', 'influence' => 'desc'] : ['ik' => 'desc', 'influence' => 'desc'];
-		return Post::searchIndex($start, 50, $category, \false, $term, \false, $sort);
+		$sort = ($term) ? ['type' => 'desc', 'score' => 'desc', 'influence' => 'desc'] : ['type' => 'desc', 'ik' => 'desc', 'influence' => 'desc'];
+		$result = Post::searchIndex($start, $limit, $category, $userIk, $term, \false, $sort);
+
+		$posts = [];
+		$products = [];
+
+		$marketIk = [];
+		foreach ($result AS $post)
+		{
+			if ($post['type'] == 'market')
+			{
+				$marketIk[] = $post['id'];
+			}
+			else
+			{
+				$posts[] = $post;
+			}
+		}
+
+		if (count($marketIk) > 0)
+		{
+			$prestashopService = new \Up\Services\PrestashopIntegrationService();
+			$products = $prestashopService->findProductsByIds($marketIk);
+		}
+
+		return array_merge($products, $posts);
 	}
 
 	/**

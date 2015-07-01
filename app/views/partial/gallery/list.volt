@@ -61,7 +61,7 @@
                     <article class="gallery-post">
                         <a href="{{ url('gallery/' ~ post['categoryTitle']|url ~ '/' ~ post['title']|url ~ '-' ~ post['ik']) }}">
                             <div class="gallery-img">
-                                <img class="img-responsive" src="//i.upcyclepost.com/post/{{ post['id'] }}-{{ post['ik'] }}.small.png" alt="{{ post['title'] }}" />
+                                <img class="img-responsive" src="<?=Helpers::getImageUrl(sprintf('post/%s-%s.small.png', $post['id'], $post['ik']))?>" alt="{{ post['title'] }}" />
                             </div>
                         </a>
                         <div class="gallery-meta">
@@ -72,6 +72,7 @@
                                 <li><i class="fa fa-eye"></i> {{ post['views']|pretty }}</li>
                                 <li><i class="fa fa-heart"></i> {{ post['likes']|pretty }}</li>
                                 {% if isLoggedIn and post['user'] == auth['ik'] and deleteable is defined and deleteable === true %}
+                                    <li><i class="fa fa-pencil"></i> <a href="{{ url('post/edit/' ~ post['ik']) }}">Edit</a></li>
                                     <li><i class="fa fa-trash-o"></i> <a class="deletePost" data-url="{{ url('post/remove/' ~ post['ik']) }}">Delete</a></li>
                                 {% endif %}
                             </ul>

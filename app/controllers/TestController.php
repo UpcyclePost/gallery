@@ -5,7 +5,7 @@ class TestController extends ControllerBase
 
 	public function psAction()
 	{
-		$user = User::findFirst(['email = ?0', 'bind' => ['erinsapparel@gmail.com']]);
+		$user = User::findFirst(['email = ?0', 'bind' => ['rices3056@aol.com']]);
 
 		$psService = new \Up\Services\PrestashopIntegrationService();
 

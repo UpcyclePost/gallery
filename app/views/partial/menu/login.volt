@@ -27,6 +27,7 @@
                 <li><a href="/shop/module/marketplace/marketplaceaccount?shop={{ myShopId }}&l=3"><i class="fa fa-fw fa-list"></i> Product List</a></li>
                 <li><a href="/shop/module/marketplace/marketplaceaccount?shop={{ myShopId }}&l=4"><i class="fa fa-fw fa-tasks"></i> Orders{%if totalUnshippedItems > 0 %} <font class="items pull-right">{{ totalUnshippedItems|pretty }}</font>{% endif %}</a></li>
                 <li class="divider"></li>
+                <li><a href="{{ url('shops/my/customize') }}"><i class="fa fa-fw fa-pencil"></i> Customize Shop</a></li>
                 <li><a href="/shop/module/marketplace/marketplaceaccount?shop={{ myShopId }}&l=2&edit-profile=1"><i class="fa fa-fw fa-gears"></i> Shop Profile</a></li>
                 <li><a href="{{ url('shops/' ~ auth['ik']) }}"><i class="fa fa-fw fa-eye"></i> View Shop</a></li>
             </ul>

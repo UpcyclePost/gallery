@@ -73,7 +73,7 @@
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">Location</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="location" name="location" value="{{ profile.location }}">
+                        <input type="text" class="form-control" id="location" name="location" value="{{ profile.location }}" maxlength="35">
                     </div>
                 </div>
 
@@ -83,7 +83,7 @@
                         <div class="col-sm-10 input-group">
                             <font class="input-group-addon" style="width: 125px;">
                                 <div class="btn-group find-me-on" style="width: 100%;">
-                                    <input type="hidden" name="website[]" value>
+                                    <input type="hidden" name="website[]" value="{{ website['type'] }}">
                                     <button class="btn btn-sm dropdown-toggle find-me-dropdown" disabled="disabled" data-toggle="dropdown" style="padding: 4px; background-color: inherit; width:100%;">
                                       {% if website['type'] == 'twitter' %}
                                         <i class="fa fa-fw fa-twitter"></i> Twitter
