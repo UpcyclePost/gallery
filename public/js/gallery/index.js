@@ -1,5 +1,5 @@
 (function(window, document) {
-    var start = $('#more').attr('data-start');
+    var start = parseInt($('#more').attr('data-start'));
     var url = $('#more').attr('data-url');
     var term = $('#more').attr('data-search-term');
 
