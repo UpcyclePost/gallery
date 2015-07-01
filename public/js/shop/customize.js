@@ -29,7 +29,14 @@ $(function() {
                     if (a.success) {
                         var img = new Image();
                         img.onload = function() {
-                            $('#logo-dropzone').html('<img id="upload-profile-image-preview" src="' + a.data.preview + '" width="244" /><input type="hidden" name="logo" value="'+ a.data.file+'">');
+                            $('#logo-dropzone').html('<input type="hidden" name="cropped-logo" id="cropped-logo" value=""><img id="upload-logo-preview" src="' + a.data.preview + '" width="244" /><input type="hidden" name="logo" value="'+ a.data.file+'">');
+                            $('#upload-logo-preview').cropper({
+                                aspectRatio: 4/1,
+                                crop: function(data) {
+                                    // Output the result data for cropping image.
+                                    $('#cropped-logo').val($('#upload-logo-preview').cropper('getCroppedCanvas').toDataURL('image/png'));
+                                }
+                            });
                         };
                         img.src = a.data.preview;
                         dropzone.disable(); // Disable the dropzone on successful upload

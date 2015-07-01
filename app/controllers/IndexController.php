@@ -12,20 +12,20 @@ class IndexController extends ControllerBase
 		$this->view->category = 'New Inspirations';
 		$this->view->searchTerm = '';
 		$this->view->canonical_url = $this->url->get('');
-		/*$results = Post::searchIndex(0, 49, false, false, false, false, ['ik' => 'desc', 'influence' => 'desc']);
-		$_results = [];
 
-		$i = 0;
-		foreach ($results AS $result)
+		$prestashopIntegrationService = new \Up\Services\PrestashopIntegrationService();
+
+		/**
+		 * If Prestashop is not in catalogue mode, display products, otherwise display ideas on the front page.
+		 */
+		if ($prestashopIntegrationService->isPrestashopAvailable())
 		{
-			//if ($i == 6) {
-				//$_results[] = ['promotion' => true, 'url' => 'http://www.upcyclepost.com/blog/make-upcycled-holiday-contest/', 'thumbnail' => 'holidays.jpg', 'title' => 'Make It An Upcycled Holiday Contest'];
-			//}
-			$_results[ ] = $result;
-			$i++;
+			$this->view->results = $prestashopIntegrationService->findFrontPageProducts();
 		}
-		unset($results);*/
-		$this->view->results = (new \Up\Services\PrestashopIntegrationService())->findFrontPageProducts();
+		else
+		{
+			$this->view->results = Post::searchIndex(0, 49, false, false, false, false, ['ik' => 'desc', 'influence' => 'desc']);
+		}
 
 		$this->view->title = 'UpcyclePost: Discover Upcycled Products & Post Ideas';
 

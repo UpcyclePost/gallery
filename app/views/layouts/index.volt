@@ -10,6 +10,8 @@
                     <a href="{{ url('shops') }}" class="btn btn-green btn-lg btn-header"><i class="fa fa-camera"></i> Shop Gallery</a>
                     {% if !isLoggedIn %}
                         <a href="{{ url('profile/login') }}" class="btn btn-blue btn-lg btn-header"><i class="fa fa-user"></i> Create Account</a>
+                    {% else %}
+                        <a href="{{ url('shop/module/marketplace/sellerrequest') }}" class="btn btn-green btn-lg btn-header"><i class="fa up-shop-1"></i> Open a Shop</a>
                     {% endif %}
                 </div>
             </div>

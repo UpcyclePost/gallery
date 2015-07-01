@@ -3229,11 +3229,9 @@ header {
 }
 .upload-logo {
     width: 268px;
-    height: 86px;
     min-width: 268px;
     max-width: 268px;
     min-height: 86px;
-    max-height: 86px;
     margin: 0;
 }
 .upload-logo p {

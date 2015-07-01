@@ -54,7 +54,9 @@ class ShopController extends ControllerBase
 			if (!$this->request->isPost())
 			{
 				$this->assets->addJs('js/shop/customize.js')
-				             ->addJs('js/libraries/dropzone/dropzone.js');
+				             ->addJs('js/libraries/dropzone/dropzone.js')
+							 ->addJs('js/libraries/cropper/cropper.min.js')
+							 ->addCss('js/libraries/cropper/cropper.min.css');
 			}
 			else
 			{
@@ -62,9 +64,17 @@ class ShopController extends ControllerBase
 
 				$shop = $profile->Shop;
 
-				if ($this->request->hasPost('logo'))
+				if ($this->request->hasPost('cropped-logo'))
 				{
-					$shop->logo = $this->request->getPost('logo');
+					$fileName = sprintf('%s-%s-%s.png', $profile->ik, Helpers::createShortCode($profile->ik), time());
+					$permanentFile = $this->config->application->shopLogoDir . $fileName;
+					file_put_contents($permanentFile, base64_decode(str_replace('data:image/png;base64,', '', $this->request->getPost('cropped-logo'))));
+					// Resize the cropped logo
+					$imageProcessingService = new ImageProcessingService($permanentFile);
+
+					$imageProcessingService->createThumbnail($permanentFile, 400, 100, \true);
+
+					$shop->logo = $fileName;
 				}
 
 				if ($this->request->hasPost('background'))
@@ -123,10 +133,12 @@ class ShopController extends ControllerBase
 
 							if ($file->moveTo($permanentFile))
 							{
+								list($width, $height, $type, $attr) = @getimagesize($permanentFile);
+
 								// Create a thumbnail of the profile background
 								$imageProcessingService = new ImageProcessingService($permanentFile);
 
-								$imageProcessingService->createThumbnail($permanentFile, 400, 100, \true);
+								$imageProcessingService->createThumbnail($permanentFile, ($width > 800) ? 800 : $width);
 
 								echo json_encode(['success' => true, 'data' => ['file' => $fileName, 'preview' => $this->imageUrl->get(sprintf('shop/logo/%s', $fileName))]]);
 
