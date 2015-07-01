@@ -745,6 +745,10 @@ class ProfileController extends ControllerBase
 		{
 			$this->session->set('requested-resource', '/shop/quick-order');
 		}
+		else if ($this->request->get('back'))
+		{
+			$this->session->set('requested-resource', $this->request->get('back'));
+		}
 
 		$this->assets->addJs('js/libraries/validate/jquery.validate.min.js')
 		             ->addJs('js/profile/login.js');
@@ -774,7 +778,15 @@ class ProfileController extends ControllerBase
 
 				if ($redirect != false)
 				{
-					$path = substr($redirect, 1);
+					// Only substring (to remove leading slash) if the redirect starts with a slash.
+					if (substr($redirect, 0, 1) == '/')
+					{
+						$path = substr($redirect, 1);
+					}
+					else
+					{
+						$path = $redirect;
+					}
 					$this->session->remove('requested-resource');
 				}
 				else
