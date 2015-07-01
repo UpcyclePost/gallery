@@ -23,9 +23,13 @@ class SearchService
 		$term = $this->sanitize($searchTerm);
 		$term = ($term && strlen($term) > 0) ? $term : \false;
 
+		$prestashopService = new \Up\Services\PrestashopIntegrationService();
+		$isPrestashopAvailable = $prestashopService->isPrestashopAvailable();
+
 		// When there is no search term, we want to only sort on "Influence"
 		$sort = ($term) ? ['type' => 'desc', 'score' => 'desc', 'influence' => 'desc'] : ['type' => 'desc', 'ik' => 'desc', 'influence' => 'desc'];
-		$result = Post::searchIndex($start, $limit, $category, $userIk, $term, \false, $sort);
+		$type = ($isPrestashopAvailable) ? \false : 'idea';
+		$result = Post::searchIndex($start, $limit, $category, $userIk, $term, \false, $sort, $type);
 
 		$posts = [];
 		$products = [];
@@ -45,9 +49,7 @@ class SearchService
 
 		if (count($marketIk) > 0)
 		{
-			$prestashopService = new \Up\Services\PrestashopIntegrationService();
-
-			if ($prestashopService->isPrestashopAvailable())
+			if ($isPrestashopAvailable)
 			{
 				$products = $prestashopService->findProductsByIds($marketIk);
 			}
