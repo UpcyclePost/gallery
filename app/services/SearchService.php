@@ -46,7 +46,11 @@ class SearchService
 		if (count($marketIk) > 0)
 		{
 			$prestashopService = new \Up\Services\PrestashopIntegrationService();
-			$products = $prestashopService->findProductsByIds($marketIk);
+
+			if ($prestashopService->isPrestashopAvailable())
+			{
+				$products = $prestashopService->findProductsByIds($marketIk);
+			}
 		}
 
 		return array_merge($products, $posts);
