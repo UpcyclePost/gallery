@@ -227,7 +227,7 @@ class PrestashopIntegrationService
 				$sql .= sprintf(" AND ps_customer.id_customer NOT IN(%s)", implode(',', $foundUsers));
 			}
 
-			$sql .= " GROUP BY product.id ORDER BY product.id DESC LIMIT 1";
+			$sql .= " GROUP BY product.id ORDER BY rand() LIMIT 1";
 
 			$productsResult = $this->__shopConnection->query($sql, [$id]);
 
