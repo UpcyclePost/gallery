@@ -4,7 +4,7 @@
     var term = $('#more').attr('data-search-term');
 
     var loadMore = function() {
-        if($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if($(window).scrollTop() > ($(document).height() - $(window).height() - 10)) {
             var thisStart = start;
             $.post(url, {term: term, start: start}).done(function(data) {
                 if (!data || data == '') {
@@ -22,9 +22,9 @@
                         $container.isotope('layout');
                     });
 
-                    window.$container.imagesLoaded(function () {
+                    /*window.$container.imagesLoaded(function () {
                         window.$container.isotope('layout');
-                    });
+                    });*/
                 }
             });
 

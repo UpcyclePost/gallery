@@ -747,7 +747,15 @@ class ProfileController extends ControllerBase
 		}
 		else if ($this->request->get('back'))
 		{
-			$this->session->set('requested-resource', $this->request->get('back'));
+			$back = $this->request->get('back');
+			if (substr($back, 0, 4) == 'http')
+			{
+				$this->session->set('requested-resource', $back);
+			}
+			else
+			{
+				$this->session->set('requested-resource', sprintf('/shop/index.php?controller=%s', $back));
+			}
 		}
 
 		$this->assets->addJs('js/libraries/validate/jquery.validate.min.js')

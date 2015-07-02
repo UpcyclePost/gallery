@@ -195,11 +195,12 @@ class PrestashopIntegrationService
 		{
 			if (($key = array_search($sortedCategory, array_column($categories, 'name', 'id'))) !== \false)
 			{
-				$sortedCategories[$key] = $categories[$key];
+				$sortedCategories[ $key ] = $categories[ $key ];
 			}
 		}
 
 		$foundIds = [];
+		$foundUsers = [];
 		foreach ($sortedCategories AS $id => $category)
 		{
 			$sql = "SELECT product.id_product, ps_customer.id_customer AS id_user, product_name, ps_customer.email, category.id_category, product_shop.price, lang.link_rewrite, shop_name,
@@ -221,13 +222,19 @@ class PrestashopIntegrationService
 				$sql .= sprintf(" AND product.id_product NOT IN(%s)", implode(',', $foundIds));
 			}
 
+			if (!empty($foundUsers))
+			{
+				$sql .= sprintf(" AND ps_customer.id_customer NOT IN(%s)", implode(',', $foundUsers));
+			}
+
 			$sql .= " GROUP BY product.id ORDER BY product.id DESC LIMIT 1";
 
 			$productsResult = $this->__shopConnection->query($sql, [$id]);
 
 			$this->getProductsFromResult($productsResult, $result, $users, $categories);
 
-			$foundIds[] = $result[count($result) - 1]['ik'];
+			$foundIds[] = $result[ count($result) - 1 ][ 'ik' ];
+			$foundUsers[] = $result[ count($result) - 1 ][ 'id_user' ];
 		}
 
 		return $result;
@@ -310,12 +317,13 @@ class PrestashopIntegrationService
 				}
 
 				$result[] = [
+					'id_user'       => $productInformation[ 'id_user' ],
 					'ik'            => $productInformation[ 'id_product' ],
 					'url'           => sprintf('%s/%s/%s-%s.html', $this->__config->prestashop->get('baseUrl'), $category[ 'url' ], $productInformation[ 'id_product' ], $productInformation[ 'link_rewrite' ]),
 					'title'         => $productInformation[ 'product_name' ],
 					'categoryTitle' => $category[ 'name' ],
 					'categoryUrl'   => sprintf('%s/%s-%s', $this->__config->prestashop->get('baseUrl'), $category[ 'id' ], $category[ 'url' ]),
-					'categoryIk'    => $category['id'],
+					'categoryIk'    => $category[ 'id' ],
 					'image'         => ($hasImage) ? $imageUrl : 'http://www.upcyclepost.com/shop/img/p/en-default-home_default.jpg',
 					'user'          => $userIk,
 					'userName'      => $userName,
@@ -323,8 +331,8 @@ class PrestashopIntegrationService
 					'price'         => money_format('%i', $productInformation[ 'price' ]),
 					'views'         => $productInformation[ 'counter' ],
 					'market'        => \true,
-				    'description'   => $productInformation['description'],
-				    'tags'          => $productInformation['tags']
+					'description'   => $productInformation[ 'description' ],
+					'tags'          => $productInformation[ 'tags' ]
 				];
 			}
 		}
