@@ -1,13 +1,3 @@
-<style type="text/css">
-    #page {
-        background: url('{{ static_url('img/sign-up.jpg') }}') #fff no-repeat center top fixed;
-        background-size: cover;
-    }
-    #register-form {
-        opacity: .95;
-    }
-</style>
-
 <div class="login-container">
     <form method="post" id="register-form">
     <div class="login-panel">
