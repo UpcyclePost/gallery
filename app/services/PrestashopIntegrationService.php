@@ -227,14 +227,19 @@ class PrestashopIntegrationService
 				$sql .= sprintf(" AND ps_customer.id_customer NOT IN(%s)", implode(',', $foundUsers));
 			}
 
-			$sql .= " GROUP BY product.id ORDER BY rand() LIMIT 1";
+			$sql .= " GROUP BY product.id ORDER BY rand() LIMIT 3";
 
 			$productsResult = $this->__shopConnection->query($sql, [$id]);
 
-			$this->getProductsFromResult($productsResult, $result, $users, $categories);
+			$products = [];
+			$this->getProductsFromResult($productsResult, $products, $users, $categories);
 
-			$foundIds[] = $result[ count($result) - 1 ][ 'ik' ];
-			$foundUsers[] = $result[ count($result) - 1 ][ 'id_user' ];
+			foreach ($products AS $product)
+			{
+				$result[] = $product;
+				$foundIds[] = $product['ik'];
+				$foundUsers[] = $product['id_user'];
+			}
 		}
 
 		return $result;
