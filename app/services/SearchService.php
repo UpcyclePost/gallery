@@ -28,7 +28,7 @@ class SearchService
 		$isPrestashopAvailable = $prestashopService->isPrestashopAvailable();
 
 		// When there is no search term, we want to only sort on "Influence"
-		$sort = ($term) ? ['type' => 'desc', 'score' => 'desc', 'influence' => 'desc'] : ['type' => 'desc', 'ik' => 'desc', 'influence' => 'desc'];
+		$sort = ($term) ? ['type' => 'desc', 'score' => 'desc', 'posted' => 'desc', 'influence' => 'desc'] : ['posted' => 'desc', 'influence' => 'desc'];
 		$type = ($isPrestashopAvailable) ? \false : 'idea';
 		$result = Post::searchIndex($start, $limit, $category, $userIk, $term, $not, $sort, $type);
 

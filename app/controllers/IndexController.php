@@ -24,7 +24,7 @@ class IndexController extends ControllerBase
 		}
 		else
 		{
-			$this->view->results = Post::searchIndex(0, 49, false, false, false, false, ['ik' => 'desc'], 'idea');
+			$this->view->results = Post::searchIndex(0, 49, false, false, false, false, ['posted' => 'desc'], 'idea');
 		}
 
 		$this->view->title = 'UpcyclePost: Discover Upcycled Products & Post Ideas';
