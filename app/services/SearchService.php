@@ -33,18 +33,19 @@ class SearchService
 		$result = Post::searchIndex($start, $limit, $category, $userIk, $term, $not, $sort, $type);
 
 		$posts = [];
-		$products = [];
-
 		$marketIk = [];
-		foreach ($result AS $post)
+
+		foreach ($result AS $k => $post)
 		{
 			if ($post['type'] == 'market')
 			{
 				$marketIk[] = $post['id'];
+				// We use id instead of ik because ik is made up in Solr for products
+				$posts[$post['id']] = \false;
 			}
 			else
 			{
-				$posts[] = $post;
+				$posts[$post['ik']] = $post;
 			}
 		}
 
@@ -52,11 +53,25 @@ class SearchService
 		{
 			if ($isPrestashopAvailable)
 			{
-				$products = $prestashopService->findProductsByIds($marketIk);
+				$psResult = $prestashopService->findProductsByIds($marketIk);
+				foreach ($psResult AS $product)
+				{
+					// We use ik instead of id because this is the actual ik of the product
+					$posts[$product['ik']] = $product;
+				}
 			}
 		}
 
-		return array_merge($products, $posts);
+		$result = [];
+		foreach ($posts AS $k => $post)
+		{
+			if ($post !== \false)
+			{
+				$result[] = $post;
+			}
+		}
+
+		return $result;
 	}
 
 	/**
