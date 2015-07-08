@@ -15,10 +15,11 @@ class SearchService
 	 * @param mixed $start
 	 * @param mixed $limit
 	 * @param mixed $userIk
+	 * @param mixed $not
 	 *
 	 * @return mixed
 	 */
-	public function findPosts($searchTerm, $category = \false, $start = \false, $limit = 50, $userIk = \false)
+	public function findPosts($searchTerm, $category = \false, $start = \false, $limit = 50, $userIk = \false, $not = \false)
 	{
 		$term = $this->sanitize($searchTerm);
 		$term = ($term && strlen($term) > 0) ? $term : \false;
@@ -29,7 +30,7 @@ class SearchService
 		// When there is no search term, we want to only sort on "Influence"
 		$sort = ($term) ? ['type' => 'desc', 'score' => 'desc', 'influence' => 'desc'] : ['type' => 'desc', 'ik' => 'desc', 'influence' => 'desc'];
 		$type = ($isPrestashopAvailable) ? \false : 'idea';
-		$result = Post::searchIndex($start, $limit, $category, $userIk, $term, \false, $sort, $type);
+		$result = Post::searchIndex($start, $limit, $category, $userIk, $term, $not, $sort, $type);
 
 		$posts = [];
 		$products = [];

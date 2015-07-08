@@ -187,8 +187,8 @@ class GalleryController extends ControllerBase
 		$this->view->og_description = $this->view->metaDescription;
 
 		$this->view->category = $post->Category->title;
-		$this->view->results = Post::searchIndex(0, 150, false, $post->user_ik, false, $ik);
-		//Post::moreLikeThis(0, 25, $post->ik);
+		$searchService = new SearchService();
+		$this->view->results = $searchService->findPosts(\false, \false, 0, 150, $post->user_ik);
 
 		$this->view->post = $post;
 		$this->view->itemPrevLink = $post->previous();

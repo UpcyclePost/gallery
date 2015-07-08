@@ -50,6 +50,8 @@
                         <option value="Email">Email</option>
                         <option value="Nikola">Nikola (intern)</option>
                         <option value="Sean">Sean (intern)</option>
+                        <option value="Madison">Madison (intern)</option>
+                        <option value="Nick">Nick (intern)</option>
                         <option value="Tradeshow">Tradeshow</option>
                         <option value="Press Release">Press Release</option>
                         <option value="Blog">Blog</option>
