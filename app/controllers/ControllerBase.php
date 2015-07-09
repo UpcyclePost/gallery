@@ -55,7 +55,7 @@ class ControllerBase extends Controller
 		$sidebarBlock = $prestashopIntegrationService->getCMSBlock(21);
 		if ($sidebarBlock)
 		{
-			$this->view->sidebarCMSBlock = $sidebarBlock['content'];
+			$this->view->sidebarCMSBlock = $sidebarBlock;
 		}
 
 		$this->flash->output();
