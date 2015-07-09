@@ -59,6 +59,12 @@ class GalleryController extends ControllerBase
 			}
 		}
 
+		if ($this->view->category == 'Idea Gallery' && $this->view->searchTerm == '')
+		{
+			$psService = new \Up\Services\PrestashopIntegrationService();
+			$this->view->subtitle = $psService->getCMSBlock(17);
+		}
+
 		return $searchService->findPosts($searchTerm, $category, $start);
 	}
 
