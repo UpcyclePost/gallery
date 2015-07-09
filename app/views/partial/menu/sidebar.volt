@@ -20,7 +20,7 @@
 </div>
 
 {% if sidebarCMSBlock is defined %}
-    <div class="sidebar-panel">
+    <div class="sidebar-panel" style="margin-top: 35px;">
         <div class="sidebar-panel-header">
             <h5>{{ sidebarCMSBlock['title'] }}</h5>
         </div>
