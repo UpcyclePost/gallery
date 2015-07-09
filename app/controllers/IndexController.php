@@ -7,7 +7,8 @@ class IndexController extends ControllerBase
 		$this->view->setMainView('layouts/index');
 		$this->assets->addJs('js/gallery/layout.js')
 		             ->addJs('js/libraries/backstretch/backstretch.min.js')
-		             ->addJs('js/index/index.js');
+		             ->addJs('js/index/index.js')
+		;
 
 		$this->view->category = 'New Inspirations';
 		$this->view->searchTerm = '';
@@ -20,12 +21,37 @@ class IndexController extends ControllerBase
 		 */
 		if ($prestashopIntegrationService->isPrestashopAvailable())
 		{
-			$this->view->results = $prestashopIntegrationService->findFrontPageProducts();
+			$items = $prestashopIntegrationService->findFrontPageProducts();
 		}
 		else
 		{
-			$this->view->results = Post::searchIndex(0, 49, false, false, false, false, ['posted' => 'desc'], 'idea');
+			$items = Post::searchIndex(0, 49, false, false, false, false, ['posted' => 'desc'], 'idea');
 		}
+
+		$featuredProductBlock = $prestashopIntegrationService->getCMSBlock(18);
+		$featuredShopBlock = $prestashopIntegrationService->getCMSBlock(19);
+		$featuredProfileBlock = $prestashopIntegrationService->getCMSBlock(20);
+
+		$results = [];
+
+		if ($featuredProductBlock)
+		{
+			$results[] = ['cms' => \true, 'content' => $featuredProductBlock['content']];
+		}
+
+		for ($i = 0; $i < count($items); $i++)
+		{
+			if ($i == 6 && $featuredShopBlock)
+			{
+				$results[] = ['cms' => \true, 'content' => $featuredShopBlock['content']];
+			}
+			elseif ($i == 15 && $featuredProfileBlock)
+			{
+				$results[] = ['cms' => \true, 'content' => $featuredProfileBlock['content']];
+			}
+		}
+
+		$this->view->results = $results;
 
 		$this->view->title = 'UpcyclePost: Discover Upcycled Products & Post Ideas';
 
