@@ -62,7 +62,11 @@ class GalleryController extends ControllerBase
 		if ($this->view->category == 'Idea Gallery' && $this->view->searchTerm == '')
 		{
 			$psService = new \Up\Services\PrestashopIntegrationService();
-			$this->view->subtitle = $psService->getCMSBlock(17);
+			$cmsBlock = $psService->getCMSBlock(17);
+			if ($cmsBlock)
+			{
+				$this->view->subtitle = $cmsBlock['content'];
+			}
 		}
 
 		return $searchService->findPosts($searchTerm, $category, $start);
