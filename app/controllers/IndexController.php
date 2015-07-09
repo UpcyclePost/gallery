@@ -39,7 +39,8 @@ class IndexController extends ControllerBase
 			$results[] = ['cms' => \true, 'content' => $featuredProductBlock['content']];
 		}
 
-		for ($i = 0; $i < count($items); $i++)
+		$i = 0;
+		foreach ($items AS $item)
 		{
 			if ($i == 6 && $featuredShopBlock)
 			{
@@ -49,6 +50,10 @@ class IndexController extends ControllerBase
 			{
 				$results[] = ['cms' => \true, 'content' => $featuredProfileBlock['content']];
 			}
+
+			$results[] = $item;
+
+			$i++;
 		}
 
 		$this->view->results = $results;
