@@ -14,6 +14,12 @@
         </ul>
     </div>
 
+    {% if sidebarCMSBlock is defined %}
+    <div class="sidebar-panel-body clearfix">
+        {{ sidebarCMSBlock }}
+    </div>
+    {% endif %}
+
     <div class="sidebar-panel-header clearfix text-center">
         <a class="btn btn-green" href="{{ url('blog') }}"><i class="fa fa-rss"></i> Blog</a>
     </div>
