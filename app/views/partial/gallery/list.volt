@@ -23,7 +23,9 @@
         {% endif %}
         {% if results is defined %}
             {% for post in results %}
-                {% if post['promotion'] is defined %}
+                {% if post['cms'] is defined %}
+                    {{ post['content'] }}
+                {% elseif post['promotion'] is defined %}
                     <article class="gallery-post">
                         <a href="{{ post['url'] }}">
                             <div class="gallery-img">

@@ -1,13 +1,3 @@
-<style type="text/css">
-    #page {
-        background: url('{{ static_url('img/sign-up.jpg') }}') #fff no-repeat center top fixed;
-        background-size: cover;
-    }
-    #register-form {
-        opacity: .95;
-    }
-</style>
-
 <div class="login-container">
     <form method="post" id="register-form">
     <div class="login-panel">
@@ -50,6 +40,7 @@
                     <label for="source">How did you hear about UpcyclePost?</label>
                     <select name="source" class="form-control" tabindex="7" required>
                         <option value="">Please choose...</option>
+                        <option value="Mark">Mark the Founder</option>
                         <option value="Facebook">Facebook</option>
                         <option value="Twitter">Twitter</option>
                         <option value="Instagram">Instagram</option>
@@ -60,10 +51,13 @@
                         <option value="Email">Email</option>
                         <option value="Nikola">Nikola (intern)</option>
                         <option value="Sean">Sean (intern)</option>
+                        <option value="Madison">Madison (intern)</option>
+                        <option value="Nick">Nick (intern)</option>
                         <option value="Tradeshow">Tradeshow</option>
                         <option value="Press Release">Press Release</option>
                         <option value="Blog">Blog</option>
                         <option value="Word of Mouth">Word of Mouth</option>
+                        <option value="Online Advertisement">Online Advertisement</option>
                         <option value="Other">Other</option>
                     </select>
                 </div>

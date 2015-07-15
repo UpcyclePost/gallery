@@ -28,6 +28,7 @@ class RestController extends ControllerBase
                 $document->likes = $post->likes;
                 $document->comments = $post->comments;
                 $document->influence = $post->influence();
+                $document->posted = strtotime($post->created);
 
                 $documents[] = $document;
 

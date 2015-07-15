@@ -11,6 +11,9 @@ $searchCategory = ($category == 'New') ? '' : $category;
                 "{{ searchTerm }}" in {{ category }}
             {% endif %}
         </h1>
+        {% if subtitle is defined %}
+            <h4 style="text-align: center; margin-bottom: 30px; margin-top: 0px;">{{ subtitle }}</h4>
+        {% endif %}
     </div>
     {% if hideCategories is not defined %}
     <aside class="cat-sidebar" data-spy="affix" data-offset-top="{{ offsetTop }}">

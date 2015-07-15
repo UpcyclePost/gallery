@@ -15,10 +15,11 @@ class SearchService
 	 * @param mixed $start
 	 * @param mixed $limit
 	 * @param mixed $userIk
+	 * @param mixed $not
 	 *
 	 * @return mixed
 	 */
-	public function findPosts($searchTerm, $category = \false, $start = \false, $limit = 50, $userIk = \false)
+	public function findPosts($searchTerm, $category = \false, $start = \false, $limit = 50, $userIk = \false, $not = \false)
 	{
 		$term = $this->sanitize($searchTerm);
 		$term = ($term && strlen($term) > 0) ? $term : \false;
@@ -27,23 +28,24 @@ class SearchService
 		$isPrestashopAvailable = $prestashopService->isPrestashopAvailable();
 
 		// When there is no search term, we want to only sort on "Influence"
-		$sort = ($term) ? ['type' => 'desc', 'score' => 'desc', 'influence' => 'desc'] : ['type' => 'desc', 'ik' => 'desc', 'influence' => 'desc'];
+		$sort = ($term) ? ['score' => 'desc', 'posted' => 'desc', 'influence' => 'desc'] : ['posted' => 'desc', 'influence' => 'desc'];
 		$type = ($isPrestashopAvailable) ? \false : 'idea';
-		$result = Post::searchIndex($start, $limit, $category, $userIk, $term, \false, $sort, $type);
+		$result = Post::searchIndex($start, $limit, $category, $userIk, $term, $not, $sort, $type);
 
 		$posts = [];
-		$products = [];
-
 		$marketIk = [];
-		foreach ($result AS $post)
+
+		foreach ($result AS $k => $post)
 		{
 			if ($post['type'] == 'market')
 			{
 				$marketIk[] = $post['id'];
+				// We use id instead of ik because ik is made up in Solr for products
+				$posts[$post['id']] = \false;
 			}
 			else
 			{
-				$posts[] = $post;
+				$posts[$post['ik']] = $post;
 			}
 		}
 
@@ -51,11 +53,25 @@ class SearchService
 		{
 			if ($isPrestashopAvailable)
 			{
-				$products = $prestashopService->findProductsByIds($marketIk);
+				$psResult = $prestashopService->findProductsByIds($marketIk);
+				foreach ($psResult AS $product)
+				{
+					// We use ik instead of id because this is the actual ik of the product
+					$posts[$product['ik']] = $product;
+				}
 			}
 		}
 
-		return array_merge($products, $posts);
+		$result = [];
+		foreach ($posts AS $k => $post)
+		{
+			if ($post !== \false)
+			{
+				$result[] = $post;
+			}
+		}
+
+		return $result;
 	}
 
 	/**

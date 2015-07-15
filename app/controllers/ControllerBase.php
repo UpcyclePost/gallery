@@ -52,6 +52,12 @@ class ControllerBase extends Controller
 		$this->view->ps_Available = $prestashopIntegrationService->isPrestashopAvailable();
 		$this->view->unread = $unread;
 
+		$sidebarBlock = $prestashopIntegrationService->getCMSBlock(21);
+		if ($sidebarBlock)
+		{
+			$this->view->sidebarCMSBlock = $sidebarBlock;
+		}
+
 		$this->flash->output();
 	}
 

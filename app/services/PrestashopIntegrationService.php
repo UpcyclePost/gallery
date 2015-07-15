@@ -42,7 +42,7 @@ class PrestashopIntegrationService
 	{
 		$result = [];
 
-		$shopsResult = $this->__shopConnection->query('SELECT shop_name, email FROM upshop.up_marketplace_shop u INNER JOIN upshop.up_customer c ON c.id_customer = u.id_customer WHERE u.is_active = 1 ORDER BY u.id DESC');
+		$shopsResult = $this->__shopConnection->query('SELECT shop_name, email FROM upshop.up_marketplace_shop u INNER JOIN upshop.up_customer c ON c.id_customer = u.id_customer WHERE u.is_active = 1 ORDER BY rand()');
 		while ($r = $shopsResult->fetchArray())
 		{
 			if (($user = \User::findFirst(['email = ?0', 'bind' => [$r[ 'email' ]]])))
@@ -227,14 +227,19 @@ class PrestashopIntegrationService
 				$sql .= sprintf(" AND ps_customer.id_customer NOT IN(%s)", implode(',', $foundUsers));
 			}
 
-			$sql .= " GROUP BY product.id ORDER BY product.id DESC LIMIT 1";
+			$sql .= " GROUP BY product.id ORDER BY rand() LIMIT 3";
 
 			$productsResult = $this->__shopConnection->query($sql, [$id]);
 
-			$this->getProductsFromResult($productsResult, $result, $users, $categories);
+			$products = [];
+			$this->getProductsFromResult($productsResult, $products, $users, $categories);
 
-			$foundIds[] = $result[ count($result) - 1 ][ 'ik' ];
-			$foundUsers[] = $result[ count($result) - 1 ][ 'id_user' ];
+			foreach ($products AS $product)
+			{
+				$result[] = $product;
+				$foundIds[] = $product['ik'];
+				$foundUsers[] = $product['id_user'];
+			}
 		}
 
 		return $result;

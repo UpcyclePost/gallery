@@ -18,3 +18,14 @@
         <a class="btn btn-green" href="{{ url('blog') }}"><i class="fa fa-rss"></i> Blog</a>
     </div>
 </div>
+
+{% if sidebarCMSBlock is defined %}
+    <div class="sidebar-panel" style="margin-top: 35px;">
+        <div class="sidebar-panel-header">
+            <h5>{{ sidebarCMSBlock['title'] }}</h5>
+        </div>
+        <div class="sidebar-panel-body clearfix">
+            {{ sidebarCMSBlock['content'] }}
+        </div>
+    </div>
+{% endif %}
