@@ -15,7 +15,7 @@
             {
                 $.ajax($(event.target).attr('data-url')).done(function(d) {
                     var data = $.parseJSON(d);
-                    console.log(data);
+
                     if (data.hasChanged)
                     {
                         if (data.hasOwnProperty('text'))
