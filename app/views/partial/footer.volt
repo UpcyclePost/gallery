@@ -34,7 +34,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ static_url('js/libraries/bootstrap/bootstrap.min.js') }}"></script>
 <!-- ImagesLoaded -->
-<script src="{{ static_url('js/libraries/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ static_url('js/libraries/imagesloaded/imagesloaded.pkgd.js') }}"></script>
 <!-- Isotope -->
 <script src="{{ static_url('js/libraries/isotope/isotope.pkgd.min.js') }}"></script>
 <!-- Horizontal Dropdown Menu -->

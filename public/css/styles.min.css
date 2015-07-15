@@ -5618,3 +5618,16 @@ header .buttons font.items {
     border-color: white;
     color: #3b3938
 }
+@media (max-width: 1600px)
+{
+    #bg-slide .container {
+        width: auto;
+    }
+    #cta {
+        display: none;
+    }
+
+    header .buttons .btn-group {
+        display: none;
+    }
+}
