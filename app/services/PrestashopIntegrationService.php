@@ -164,7 +164,8 @@ class PrestashopIntegrationService
 				if(lang.meta_description = '', if(lang.description = '', lang.description_short, lang.description), lang.meta_description) AS description,
 				ifnull((SELECT sum(counter) FROM upshop.up_page page INNER JOIN upshop.up_page_viewed viewed ON viewed.id_page = page.id_page WHERE id_page_type = 3 AND id_object = product.id_product), 0) AS counter,
 		        ifnull((SELECT group_concat(DISTINCT tag.name) AS tags FROM upshop.up_product_tag product_tag INNER JOIN upshop.up_tag tag ON tag.id_tag = product_tag.id_tag WHERE product_tag.id_product = product.id_product), '') AS tags,
-		        (SELECT id_image FROM upshop.up_image image WHERE image.id_product = product.id_product ORDER BY cover DESC LIMIT 1) AS id_image
+		        (SELECT id_image FROM upshop.up_image image WHERE image.id_product = product.id_product ORDER BY cover DESC LIMIT 1) AS id_image,
+		        seller_product.date_add AS posted
 				  FROM upshop.up_marketplace_shop shop
 				  INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer
 				  INNER JOIN upshop.up_marketplace_shop_product product ON product.id_shop = shop.id
@@ -207,7 +208,8 @@ class PrestashopIntegrationService
 				if(lang.meta_description = '', if(lang.description = '', lang.description_short, lang.description), lang.meta_description) AS description,
 				ifnull((SELECT sum(counter) FROM upshop.up_page page INNER JOIN upshop.up_page_viewed viewed ON viewed.id_page = page.id_page WHERE id_page_type = 3 AND id_object = product.id_product), 0) AS counter,
 		        ifnull((SELECT group_concat(DISTINCT tag.name) AS tags FROM upshop.up_product_tag product_tag INNER JOIN upshop.up_tag tag ON tag.id_tag = product_tag.id_tag WHERE product_tag.id_product = product.id_product), '') AS tags,
-		        (SELECT id_image FROM upshop.up_image image WHERE image.id_product = product.id_product ORDER BY cover DESC LIMIT 1) AS id_image
+		        (SELECT id_image FROM upshop.up_image image WHERE image.id_product = product.id_product ORDER BY cover DESC LIMIT 1) AS id_image,
+		        seller_product.date_add AS posted
 				  FROM upshop.up_marketplace_shop shop
 				  INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer
 				  INNER JOIN upshop.up_marketplace_shop_product product ON product.id_shop = shop.id
@@ -255,9 +257,9 @@ class PrestashopIntegrationService
 
 		while ($productInformation = $productsResult->fetchArray())
 		{
-			$theCategory = (isset($productInformation[ 'id_category' ]) && !is_null($productInformation[ 'id_category' ])) ? $productInformation[ 'id_category' ] : 2;
-			$userId = $productInformation[ 'id_user' ];
-			$email = $productInformation[ 'email' ];
+			$theCategory = (isset($productInformation['id_category']) && !is_null($productInformation['id_category'])) ? $productInformation['id_category'] : 2;
+			$userId = $productInformation['id_user'];
+			$email = $productInformation['email'];
 
 			$userName = 'Unknown';
 			$userIk = 0;
@@ -265,7 +267,7 @@ class PrestashopIntegrationService
 			if (isset($categories[ $theCategory ]))
 			{
 				$category = $categories[ $theCategory ];
-				$hasImage = (isset($productInformation[ 'id_image' ]) && !is_null($productInformation[ 'id_image' ]));
+				$hasImage = (isset($productInformation['id_image']) && !is_null($productInformation['id_image']));
 
 				if (!isset($users[ $userId ]))
 				{
@@ -283,24 +285,24 @@ class PrestashopIntegrationService
 				}
 				else
 				{
-					$userIk = $users[ $userId ][ 'ik' ];
-					$userName = $users[ $userId ][ 'user_name' ];
+					$userIk = $users[ $userId ]['ik'];
+					$userName = $users[ $userId ]['user_name'];
 				}
 
 				// Create a thumbnail of the image
-				$imageName = sprintf('%s.jpg', $productInformation[ 'id_image' ]);
-				$imageUrl = sprintf('%s/%s/image.jpg', $this->__config->prestashop->get('baseUrl'), $productInformation[ 'id_image' ]);
+				$imageName = sprintf('%s.jpg', $productInformation['id_image']);
+				$imageUrl = sprintf('%s/%s/image.jpg', $this->__config->prestashop->get('baseUrl'), $productInformation['id_image']);
 
 				if ($hasImage)
 				{
 					$imagePath = $this->__config->prestashop->get('baseImagePath');
-					$len = strlen($productInformation[ 'id_image' ]);
+					$len = strlen($productInformation['id_image']);
 					for ($i = 0; $i < $len; $i++)
 					{
-						$imagePath = sprintf('%s/%s', $imagePath, $productInformation[ 'id_image' ][ $i ]);
+						$imagePath = sprintf('%s/%s', $imagePath, $productInformation['id_image'][ $i ]);
 					}
 
-					$imagePath = sprintf('%s/%s.jpg', $imagePath, $productInformation[ 'id_image' ]);
+					$imagePath = sprintf('%s/%s.jpg', $imagePath, $productInformation['id_image']);
 
 					$thumbnailImagePath = sprintf('%s%s', $this->__config->application->productThumbnailDir, $imageName);
 
@@ -322,22 +324,23 @@ class PrestashopIntegrationService
 				}
 
 				$result[] = [
-					'id_user'       => $productInformation[ 'id_user' ],
-					'ik'            => $productInformation[ 'id_product' ],
-					'url'           => sprintf('%s/%s/%s-%s.html', $this->__config->prestashop->get('baseUrl'), $category[ 'url' ], $productInformation[ 'id_product' ], $productInformation[ 'link_rewrite' ]),
-					'title'         => $productInformation[ 'product_name' ],
-					'categoryTitle' => $category[ 'name' ],
-					'categoryUrl'   => sprintf('%s/%s-%s', $this->__config->prestashop->get('baseUrl'), $category[ 'id' ], $category[ 'url' ]),
-					'categoryIk'    => $category[ 'id' ],
+					'id_user'       => $productInformation['id_user'],
+					'ik'            => $productInformation['id_product'],
+					'url'           => sprintf('%s/%s/%s-%s.html', $this->__config->prestashop->get('baseUrl'), $category['url'], $productInformation['id_product'], $productInformation['link_rewrite']),
+					'title'         => $productInformation['product_name'],
+					'categoryTitle' => $category['name'],
+					'categoryUrl'   => sprintf('%s/%s-%s', $this->__config->prestashop->get('baseUrl'), $category['id'], $category['url']),
+					'categoryIk'    => $category['id'],
 					'image'         => ($hasImage) ? $imageUrl : 'http://www.upcyclepost.com/shop/img/p/en-default-home_default.jpg',
 					'user'          => $userIk,
 					'userName'      => $userName,
-					'shopName'      => $productInformation[ 'shop_name' ],
-					'price'         => money_format('%i', $productInformation[ 'price' ]),
-					'views'         => $productInformation[ 'counter' ],
+					'shopName'      => $productInformation['shop_name'],
+					'price'         => money_format('%i', $productInformation['price']),
+					'views'         => $productInformation['counter'],
 					'market'        => \true,
-					'description'   => $productInformation[ 'description' ],
-					'tags'          => $productInformation[ 'tags' ]
+					'description'   => $productInformation['description'],
+					'tags'          => $productInformation['tags'],
+					'posted'        => $productInformation['posted']
 				];
 			}
 		}
@@ -364,7 +367,8 @@ class PrestashopIntegrationService
 				if(lang.meta_description = '', if(lang.description = '', lang.description_short, lang.description), lang.meta_description) AS description,
 				ifnull((SELECT sum(counter) FROM upshop.up_page page INNER JOIN upshop.up_page_viewed viewed ON viewed.id_page = page.id_page WHERE id_page_type = 3 AND id_object = product.id_product), 0) AS counter,
 		        ifnull((SELECT group_concat(DISTINCT tag.name) AS tags FROM upshop.up_product_tag product_tag INNER JOIN upshop.up_tag tag ON tag.id_tag = product_tag.id_tag WHERE product_tag.id_product = product.id_product), '') AS tags,
-		        (SELECT id_image FROM upshop.up_image image WHERE image.id_product = product.id_product ORDER BY cover DESC LIMIT 1) AS id_image
+		        (SELECT id_image FROM upshop.up_image image WHERE image.id_product = product.id_product ORDER BY cover DESC LIMIT 1) AS id_image,
+		        seller_product.date_add AS posted
 				  FROM upshop.up_marketplace_shop shop
 				  INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer
 				  INNER JOIN upshop.up_marketplace_shop_product product ON product.id_shop = shop.id

@@ -85,7 +85,8 @@ class RestController extends ControllerBase
                 $document->userName = $post['shopName'];
                 $document->tags = explode(',', $post['tags']);
                 $document->title = $post['title'];
-                $document->description = $post['description'];
+                $document->description = str_replace(chr(16), '', $post['description']);
+                $document->posted = strtotime($post['posted']);
                 $document->visible = 1;
                 $document->views = $post['views'];
                 $document->likes = 0;
