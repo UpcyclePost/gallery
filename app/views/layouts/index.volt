@@ -1,28 +1,30 @@
 {{ partial('partial/header') }}
     <!-- Slideshow -->
-    <section class="slideshow-wrapper">
-        <div id="bg-slide" class="slider">
-            <div class="container">
-                <div class="intro">
-                    <h1>Welcome to UpcyclePost
-                        your place to discover the world's
-                        greatest upcycled products</h1>
-                    <a href="{{ url('shops') }}" class="btn btn-green btn-lg btn-header"><i class="fa fa-camera"></i> Shop Gallery</a>
-                    {% if !isLoggedIn %}
-                        <a href="{{ url('profile/login') }}" class="btn btn-blue btn-lg btn-header"><i class="fa fa-user"></i> Create Account</a>
-                    {% else %}
-                        <a href="{{ url('shop/module/marketplace/sellerrequest') }}" class="btn btn-green btn-lg btn-header"><i class="fa up-shop-1"></i> Open a Shop</a>
-                    {% endif %}
+    <div class="content-container">
+        <div class="content-container">
+            <section class="slideshow-wrapper">
+                <div id="bg-slide" class="slider">
+                    <div class="container" style="min-height: 196px;">
+                        <div class="intro">
+                            <h1>Discover thousands of upcycled, recycled,<br>reclaimed & reused products & ideas</h1>
+                        </div>
+                        <div id="cta">
+                            <span id="arrow">
+                                <span class="caption">Discover!</span>
+                            </span>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
+    </div>
 
     <div class="content-wrapper">
         {% set offsetTop = 440 %}
         <div class="content-container">
             {% set isodiv = "iso" %}
             {{ partial('partial/gallery/layout') }}
+            <div class="text-center"><a href="{{ url('gallery') }}" class="btn btn-green btn-lg"><i class="fa fa-chevron-right"></i> Show Me More</a></div>
         </div>
     </div>
 

@@ -7,7 +7,7 @@ class IndexController extends ControllerBase
 		$this->view->setMainView('layouts/index');
 		$this->assets->addJs('js/gallery/layout.js')
 		             ->addJs('js/libraries/backstretch/backstretch.min.js')
-		             ->addJs('js/index/index.js')
+		             ->addJs('js/index/index.js?v=0.26.1')
 		;
 
 		$this->view->category = 'New Inspirations';
@@ -25,7 +25,7 @@ class IndexController extends ControllerBase
 		}
 		else
 		{
-			$items = Post::searchIndex(0, 49, false, false, false, false, ['posted' => 'desc'], 'idea');
+			$items = Post::searchIndex(0, 49, false, false, false, false, ['ik' => 'desc'], 'idea');
 		}
 
 		$featuredProductBlock = $prestashopIntegrationService->getCMSBlock(18);

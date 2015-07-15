@@ -40,6 +40,7 @@
                     <label for="source">How did you hear about UpcyclePost?</label>
                     <select name="source" class="form-control" tabindex="7" required>
                         <option value="">Please choose...</option>
+                        <option value="Mark">Mark the Founder</option>
                         <option value="Facebook">Facebook</option>
                         <option value="Twitter">Twitter</option>
                         <option value="Instagram">Instagram</option>
@@ -56,6 +57,7 @@
                         <option value="Press Release">Press Release</option>
                         <option value="Blog">Blog</option>
                         <option value="Word of Mouth">Word of Mouth</option>
+                        <option value="Online Advertisement">Online Advertisement</option>
                         <option value="Other">Other</option>
                     </select>
                 </div>
