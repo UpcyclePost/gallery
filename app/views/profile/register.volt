@@ -3,7 +3,6 @@
     <div class="login-panel">
         <div class="login-panel-header">
             <h1>Sign up and become an UpcyclePost Insider</h1>
-	    <h2 style="color:red">Currently performing site maintenance, please register later</h2>
         </div>
         <div class="upload-panel-body">
             {{ content() }}
