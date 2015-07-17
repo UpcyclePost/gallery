@@ -642,6 +642,7 @@ class ProfileController extends ControllerBase
 						$user->type = 'member';
 						$user->gender = 'Unspecified';
 						$user->registered = date('Y-m-d H:i:s');
+						$user->login = date('Y-m-d H:i:s');
 						$user->token = '';
 						$user->about = '';
 						$user->location = '';
