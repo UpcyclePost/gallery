@@ -17,7 +17,7 @@ class SearchController extends ControllerBase
 	public function usersAction()
 	{
 		$this->view->title = 'Profile Gallery | Upcycling Ideas, Articles and Products | UpcyclePost';
-		$this->assets->addJs('js/gallery/layout.js');
+		$this->assets->addJs('js/gallery/layout.js?v=0.26.3');
 
 		$term = \false;
 

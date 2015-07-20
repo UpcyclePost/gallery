@@ -503,7 +503,7 @@ class ProfileController extends ControllerBase
 
 	public function viewAction($userId = \false)
 	{
-		$this->assets->addJs('js/gallery/layout.js')
+		$this->assets->addJs('js/gallery/layout.js?v=0.26.3')
 		             ->addJs('js/social/follow.js')
 		             ->addJs('js/profile/view.js');
 
