@@ -141,7 +141,7 @@ class MessageController extends ControllerBase
 
 		// Set view variables
 		$this->assets->addJs('js/libraries/validate/jquery.validate.min.js')
-			->addJs('js/gallery/layout.js');
+			->addJs('js/gallery/layout.js?v=0.26.3');
 		$this->view->profile = $user;
 	}
 }

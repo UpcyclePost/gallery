@@ -17,8 +17,8 @@ $(function() {
                     $container.isotope('layout');
                     setTimeout(function() {
                         $container.isotope('layout');
-                    }, 1000);
-                }, 750);
+                    }, 10);
+                }, 10);
             }
             else
             {
