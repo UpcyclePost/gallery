@@ -190,7 +190,7 @@ class PrestashopIntegrationService
 		$categories = $this->findCategories();
 
 		$sortedCategories = [];
-		$sortOrder = ['Fashion', 'Home', 'Metal', 'Furniture', 'Jewelry', 'Crafts', 'Vintage', 'Art', 'Glass', 'Wood', 'Office', 'Holidays', 'Outdoors', 'Yard', 'Hardware', 'Plastic', 'Automotive', 'Electronics', 'Toys', 'Pets', 'Paper', 'Musical', 'Sporting Goods'];
+		$sortOrder = ['Furniture', 'Electronics', 'Home', 'Jewelry', 'Fashion', 'Art', 'Automotive', 'Crafts', 'Vintage', 'Glass', 'Wood', 'Office', 'Holidays', 'Outdoors', 'Yard', 'Hardware', 'Plastic', 'Metal', 'Toys', 'Pets', 'Paper', 'Musical', 'Sporting Goods'];
 
 		foreach ($sortOrder AS $sortedCategory)
 		{
@@ -229,7 +229,7 @@ class PrestashopIntegrationService
 				$sql .= sprintf(" AND ps_customer.id_customer NOT IN(%s)", implode(',', $foundUsers));
 			}
 
-			$sql .= " GROUP BY product.id ORDER BY rand() LIMIT 3";
+			$sql .= " GROUP BY product.id ORDER BY rand() LIMIT 2";
 
 			$productsResult = $this->__shopConnection->query($sql, [$id]);
 
