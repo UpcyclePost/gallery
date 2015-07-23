@@ -190,7 +190,7 @@ class PrestashopIntegrationService
 		$categories = $this->findCategories();
 
 		$sortedCategories = [];
-		$sortOrder = ['Art', 'Fashion', 'Home', 'Metal', 'Furniture', 'Jewelry', 'Crafts', 'Vintage', 'Glass', 'Wood', 'Office', 'Holidays', 'Outdoors', 'Yard', 'Hardware', 'Plastic', 'Automotive', 'Electronics', 'Toys', 'Pets', 'Paper', 'Musical', 'Sporting Goods'];
+		$sortOrder = ['Fashion', 'Home', 'Metal', 'Furniture', 'Jewelry', 'Crafts', 'Vintage', 'Art', 'Glass', 'Wood', 'Office', 'Holidays', 'Outdoors', 'Yard', 'Hardware', 'Plastic', 'Automotive', 'Electronics', 'Toys', 'Pets', 'Paper', 'Musical', 'Sporting Goods'];
 
 		foreach ($sortOrder AS $sortedCategory)
 		{
