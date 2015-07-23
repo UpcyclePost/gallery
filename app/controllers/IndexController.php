@@ -5,9 +5,9 @@ class IndexController extends ControllerBase
 	public function indexAction()
 	{
 		$this->view->setMainView('layouts/index');
-		$this->assets->addJs('js/gallery/layout.js?v=0.26.2')
+		$this->assets->addJs('js/gallery/layout.js?v=0.26.3')
 		             ->addJs('js/libraries/backstretch/backstretch.min.js')
-		             ->addJs('js/index/index.js?v=0.26.1')
+		             ->addJs('js/index/index.js?v=0.26.3')
 		;
 
 		$this->view->category = 'New Inspirations';

@@ -255,7 +255,7 @@ class ShopController extends ControllerBase
 			}
 		}
 
-		$this->assets->addJs('js/gallery/layout.js');
+		$this->assets->addJs('js/gallery/layout.js?v=0.26.3');
 	}
 
 	public function shopsAction()
@@ -263,7 +263,7 @@ class ShopController extends ControllerBase
 		$this->view->title = 'Shop Gallery | Upcycling Ideas, Articles and Products | UpcyclePost';
 		$prestashopService = new PrestashopIntegrationService();
 
-		$this->assets->addJs('js/gallery/layout.js');
+		$this->assets->addJs('js/gallery/layout.js?v=0.26.3');
 		$this->view->results = $prestashopService->findShops();
 	}
 }
