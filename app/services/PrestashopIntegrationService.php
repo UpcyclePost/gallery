@@ -42,7 +42,7 @@ class PrestashopIntegrationService
 	{
 		$result = [];
 
-		$shopsResult = $this->__shopConnection->query('SELECT shop_name, email FROM upshop.up_marketplace_shop u INNER JOIN upshop.up_customer c ON c.id_customer = u.id_customer WHERE u.is_active = 1 ORDER BY rand()');
+		$shopsResult = $this->__shopConnection->query('SELECT shop_name, email FROM upshop.up_marketplace_shop u INNER JOIN upshop.up_customer c ON c.id_customer = u.id_customer WHERE u.is_active = 1 AND (SELECT count(distinct product.id_product) FROM upshop.up_marketplace_shop shop INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer INNER JOIN upshop.up_marketplace_shop_product product ON product.id_shop = shop.id INNER JOIN upshop.up_marketplace_seller_product seller_product ON seller_product.id = product.marketplace_seller_id_product INNER JOIN upshop.up_product_shop product_shop ON product_shop.id_product = product.id_product WHERE ps_customer.email = c.email) >= 3 ORDER BY rand()');
 		while ($r = $shopsResult->fetchArray())
 		{
 			if (($user = \User::findFirst(['email = ?0', 'bind' => [$r[ 'email' ]]])))
