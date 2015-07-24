@@ -348,6 +348,29 @@ class PrestashopIntegrationService
 		return $result;
 	}
 
+	public function countProducts($user = \false)
+	{
+		$total = 0;
+
+		$sql = 'SELECT count(distinct product.id_product) AS total FROM upshop.up_marketplace_shop shop INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer INNER JOIN upshop.up_marketplace_shop_product product ON product.id_shop = shop.id INNER JOIN upshop.up_marketplace_seller_product seller_product ON seller_product.id = product.marketplace_seller_id_product INNER JOIN upshop.up_product_shop product_shop ON product_shop.id_product = product.id_product';
+		if ($user !== \false)
+		{
+			$sql .= ' WHERE ps_customer.email = ?';
+			$countResult = $this->__shopConnection->query($sql, [$user->email]);
+		}
+		else
+		{
+			$countResult = $this->__shopConnection->query($sql);
+		}
+
+		foreach ($countResult AS $result)
+		{
+			$total = $result['total'];
+		}
+
+		return $total;
+	}
+
 	/**
 	 * @param mixed $limit
 	 * @param bool  $user

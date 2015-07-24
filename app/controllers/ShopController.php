@@ -238,7 +238,10 @@ class ShopController extends ControllerBase
 
 			if (($shop_info = $prestashopService->getShopByEmail($user->email)) !== \false)
 			{
-				$this->view->results = $prestashopService->findRecentProducts(\false, $user);
+				$isOwnShop = ($this->view->isLoggedIn && $this->auth[ 'ik' ] == $user->ik);
+				$this->view->displayShopNotVisibleMessage = ($isOwnShop && $user->Shop->totalProducts() < 3);
+
+				$this->view->results = $user->Shop->activeProducts();
 				$this->view->shopName = $shop_info['shop_name'];
 				$this->view->title = sprintf('%s | Upcycling Ideas, Articles and Products | UpcyclePost', $user->user_name);
 				$this->view->profile = $user;
