@@ -8,6 +8,14 @@
         <form class="form-horizontal" role="form" method="post" id="edit-form" enctype="multipart/form-data">
         <input type="hidden" name="flow" value="{{ flow }}">
         <div class="login-panel-body">
+            {% if flow == 'create' %}
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        Your shop will appear in the <a href="{{ url('shops') }}">Shop Gallery</a> after you have loaded at least three products.
+                    </div>
+                </div>
+            {% endif %}
             <div class="form-group">
                 <label class="col-xs-12 col-sm-2 control-label">Logo</label>
                 <div class="col-xs-6 col-sm-5">

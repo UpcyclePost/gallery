@@ -172,4 +172,18 @@ class Helpers {
             return false;
         }
     }
+
+    public static function isRestrictedDomain($input)
+    {
+        if (substr($input, 0, 4) != 'http')
+        {
+            $parsedUrl = parse_url(sprintf('http://%s', $input), \PHP_URL_HOST);
+        }
+        else
+        {
+            $parsedUrl = parse_url($input, \PHP_URL_HOST);
+        }
+
+        return stripos($parsedUrl, 'etsy.com') !== false;
+    }
 }
