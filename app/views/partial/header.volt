@@ -16,7 +16,7 @@
     {% endif %}
 
     <!-- Bootstrap -->
-    <link href="{{ static_url('css/styles.min.css?v=0.26.2') }}" rel="stylesheet">
+    <link href="{{ static_url('css/styles.min.css?v=0.26.3') }}" rel="stylesheet">
 
     <!-- Google Web Fonts -->
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,600' rel='stylesheet' type='text/css'>
