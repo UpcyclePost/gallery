@@ -1,4 +1,6 @@
 $(function() {
+    $("#default-background-image").imagepicker();
+
     var dropzone = new Dropzone('fieldset#logo-dropzone', {
         url: '/shops/my/customize/upload/logo',
         paramName: "file", // The name that will be used to transfer the file

@@ -41,7 +41,7 @@
                     <div id="background-upload">
                         <fieldset class="upload-image upload-background-image" id="background-dropzone">
                             {% if profile.Shop.background %}
-                                <img id="upload-background-image-preview" src="{{ profile.Shop.backgroundThumbUrl() }}" />
+                                <img id="upload-background-image-preview" src="{{ profile.Shop.backgroundThumbUrl() }}" width="244" />
                             {% endif %}
                         </fieldset>
                         <br />
@@ -52,6 +52,25 @@
                     This high resolution image will fill the entire screen and should be a landscape, not a portrait, image if possible. Pick something that reflects what you love about upcycling, how you work, what you like to collect, etc.
                 </div>
             </div>
+
+
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-2 control-label"></label>
+                    <div class="col-xs-6 col-sm-5">
+                        Or choose a great background from our library.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 text-center">
+                        <select name="defaultBackground" id="default-background-image">
+                        <option value=""/>
+                        {% for val in 1..17 %}
+                            <option value="default-{{ val }}.jpg" data-img-src="http://i.beta.upcyclepost.com/shop/background/thumb-default-{{ val }}.jpg"/>
+                        {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
 
             <div class="form-group">
                 <label for="description" class="col-sm-2 control-label">Shop Description</label>
