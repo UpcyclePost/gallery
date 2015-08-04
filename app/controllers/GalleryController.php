@@ -77,7 +77,7 @@ class GalleryController extends ControllerBase
 		$this->session->set('redirectTo', $this->router->getRewriteUri());
 
 		$this->assets->addJs('js/gallery/layout.js?v=0.26.3')
-		             ->addJs('js/gallery/index.js?v=0.26.4');
+		             ->addJs('js/gallery/index.js?v=0.26.3');
 
 		$this->view->start = 50;
 
@@ -118,14 +118,14 @@ class GalleryController extends ControllerBase
 	}
 
 	public function viewAction($slug = false)
-	{
+	{:
 		$this->session->set('redirectTo', $this->router->getRewriteUri());
 
 		$this->view->setLayout('main');
 
 		$this->assets->addJs('js/gallery/view.js?v=0.26.3')
-		             ->addJs('js/gallery/layout.jsi?v=0.26.3')
-		             ->addJs('js/social/follow.js');
+		             ->addJs('js/gallery/layout.js?v=0.26.3')
+		             ->addJs('js/social/follow.js?v=0.26.3');
 
 		if (!is_numeric($slug))
 		{
@@ -168,7 +168,7 @@ class GalleryController extends ControllerBase
 
 			if ($this->auth[ 'role' ] == 'Admins')
 			{
-				$this->assets->addJs('js/admin/gallery/view.js');
+				$this->assets->addJs('js/admin/gallery/view.js?v=0.26.3');
 			}
 
 			// Check if the authenticated user is following the post's user
