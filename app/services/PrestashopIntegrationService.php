@@ -42,7 +42,7 @@ class PrestashopIntegrationService
 	{
 		$result = [];
 
-		$shopsResult = $this->__shopConnection->query('SELECT shop_name, email FROM upshop.up_marketplace_shop u INNER JOIN upshop.up_customer c ON c.id_customer = u.id_customer WHERE u.is_active = 1 ORDER BY rand()');
+		$shopsResult = $this->__shopConnection->query('SELECT shop_name, email FROM upshop.up_marketplace_shop u INNER JOIN upshop.up_customer c ON c.id_customer = u.id_customer WHERE u.is_active = 1 AND (SELECT count(*) AS total FROM upshop.up_marketplace_shop shop INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer INNER JOIN upshop.up_marketplace_seller_product product ON product.id_shop = shop.id WHERE deleted = 0 AND ps_customer.email = c.email) >= 3 ORDER BY rand()');
 		while ($r = $shopsResult->fetchArray())
 		{
 			if (($user = \User::findFirst(['email = ?0', 'bind' => [$r[ 'email' ]]])))
@@ -190,7 +190,7 @@ class PrestashopIntegrationService
 		$categories = $this->findCategories();
 
 		$sortedCategories = [];
-		$sortOrder = ['Fashion', 'Home', 'Metal', 'Furniture', 'Jewelry', 'Crafts', 'Vintage', 'Art', 'Glass', 'Wood', 'Office', 'Holidays', 'Outdoors', 'Yard', 'Hardware', 'Plastic', 'Automotive', 'Electronics', 'Toys', 'Pets', 'Paper', 'Musical', 'Sporting Goods'];
+		$sortOrder = ['Furniture', 'Electronics', 'Home', 'Jewelry', 'Fashion', 'Art', 'Automotive', 'Crafts', 'Vintage', 'Glass', 'Wood', 'Office', 'Holidays', 'Outdoors', 'Yard', 'Hardware', 'Plastic', 'Metal', 'Toys', 'Pets', 'Paper', 'Musical', 'Sporting Goods'];
 
 		foreach ($sortOrder AS $sortedCategory)
 		{
@@ -229,7 +229,7 @@ class PrestashopIntegrationService
 				$sql .= sprintf(" AND ps_customer.id_customer NOT IN(%s)", implode(',', $foundUsers));
 			}
 
-			$sql .= " GROUP BY product.id ORDER BY rand() LIMIT 3";
+			$sql .= " GROUP BY product.id ORDER BY rand() LIMIT 2";
 
 			$productsResult = $this->__shopConnection->query($sql, [$id]);
 
@@ -346,6 +346,30 @@ class PrestashopIntegrationService
 		}
 
 		return $result;
+	}
+
+	public function countProducts($user = \false)
+	{
+		$total = 0;
+
+		$sql = 'SELECT count(*) AS total FROM upshop.up_marketplace_shop shop INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer INNER JOIN upshop.up_marketplace_seller_product product ON product.id_shop = shop.id';
+
+		if ($user !== \false)
+		{
+			$sql .= ' WHERE ps_customer.email = ?';
+			$countResult = $this->__shopConnection->query($sql, [$user->email]);
+		}
+		else
+		{
+			$countResult = $this->__shopConnection->query($sql);
+		}
+
+		while ($result = $countResult->fetchArray())
+		{
+			$total = $result['total'];
+		}
+
+		return $total;
 	}
 
 	/**

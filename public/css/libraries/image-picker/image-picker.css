@@ -1,0 +1,52 @@
+#default-background-image
+{
+    visibility: hidden;
+}
+
+ul.thumbnails.image_picker_selector li {
+    display: inline-block;
+}
+
+ul.thumbnails.image_picker_selector {
+    overflow: auto;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    display: inline-block;
+    padding: 0px;
+    margin: auto;
+}
+
+ul.thumbnails.image_picker_selector ul {
+    overflow: auto;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+ul.thumbnails.image_picker_selector li.group_title {
+    float: none;
+}
+
+ul.thumbnails.image_picker_selector li {
+    margin: 5px;
+}
+
+ul.thumbnails.image_picker_selector li .thumbnail {
+    border: 1px solid rgba(0,0,0,0.1);
+    opacity: .5;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+ul.thumbnails.image_picker_selector li .thumbnail img {
+    -webkit-user-drag: none;
+}
+
+ul.thumbnails.image_picker_selector li .thumbnail.selected {
+    border: 1px solid #85c125;
+    opacity: 1;
+}

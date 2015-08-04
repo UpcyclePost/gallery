@@ -42,6 +42,10 @@
                 <h1>{{ shopName }}</h1>
             </div>
             <div class="login-panel-body">
+                {% if displayShopNotVisibleMessage %}
+                    <div class="alert alert-danger">Your shop will appear in the <a href="{{ url('shops') }}">Shop Gallery</a> after you have loaded at least three products.</div>
+                {% endif %}
+
                 {% set offsetTop = 88 %}
                 {% set isodiv = "iso" %}
                 {{ partial('partial/gallery/list') }}

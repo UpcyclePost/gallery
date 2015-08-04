@@ -20,6 +20,9 @@ class ShopController extends ControllerBase
 
 	public function customizeAction()
 	{
+		$this->assets->addJs('js/libraries/image-picker/image-picker.min.js')
+			->addCss('css/libraries/image-picker/image-picker.css');
+
 		if (($profile = $this->__getProfile()) !== \false)
 		{
 			$this->view->flow = 'edit';
@@ -80,6 +83,10 @@ class ShopController extends ControllerBase
 				if ($this->request->hasPost('background'))
 				{
 					$shop->background = $this->request->getPost('background');
+				}
+				else if ($this->request->hasPost('defaultBackground') && $this->request->getPost('defaultBackground') != '')
+				{
+					$shop->background = $this->request->getPost('defaultBackground');
 				}
 
 				$shop->description = $this->request->getPost('description');
@@ -238,7 +245,10 @@ class ShopController extends ControllerBase
 
 			if (($shop_info = $prestashopService->getShopByEmail($user->email)) !== \false)
 			{
-				$this->view->results = $prestashopService->findRecentProducts(\false, $user);
+				$isOwnShop = ($this->view->isLoggedIn && $this->auth[ 'ik' ] == $user->ik);
+				$this->view->displayShopNotVisibleMessage = ($isOwnShop && $user->Shop->totalProducts() < 3);
+
+				$this->view->results = $user->Shop->activeProducts();
 				$this->view->shopName = $shop_info['shop_name'];
 				$this->view->title = sprintf('%s | Upcycling Ideas, Articles and Products | UpcyclePost', $user->user_name);
 				$this->view->profile = $user;
