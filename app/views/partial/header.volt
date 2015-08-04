@@ -16,7 +16,7 @@
     {% endif %}
 
     <!-- Bootstrap -->
-    <link href="{{ static_url('css/styles.min.css?v=0.26.2') }}" rel="stylesheet">
+    <link href="{{ static_url('css/styles.min.css?') }}{{ _version }}" rel="stylesheet">
 
     <!-- Google Web Fonts -->
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,600' rel='stylesheet' type='text/css'>
@@ -68,7 +68,7 @@
 
             <div class="col-xs-6 col-md-5 search-container">
                 <form class="search-form form-inline" method="post" action="{{ url('gallery') }}">
-                    <input type="search" name="term" class="form-control search" placeholder="Find Inspiration">
+                    <input id="universal-search" type="search" name="term" class="form-control search" placeholder="Find Inspiration">
                     <button type="submit" class="search-icon"><img src="{{ static_url('img/icons/search-icon.png') }}"></button>
                 </form>
             </div>
