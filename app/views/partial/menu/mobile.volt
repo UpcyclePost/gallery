@@ -45,10 +45,7 @@
                 <li><a href="{{ url('search/users') }}"><i class="fa fa-fw fa-users"></i> Users</a></li>
             </ul>
         </li>
-        {% if !isLoggedIn %}
-            <li><a href="{{ url('profile/login') }}"><i class="fa fa-sign-in fa-fw"></i> Sign In</a></li>
-            <li><a href="{{ url('profile/register') }}"><i class="fa fa-sign-in fa-rotate-270 fa-fw"></i> Sign Up</a></li>
-        {% else %}
+        {% if isLoggedIn %}
             {% if myShopId is defined %}
                 <li><a href="{{ url('shops/' ~ auth['user_name']) }}"><i class="fa fa-fw fa-shopping-cart"></i>Your Shop</a>
                     <ul>
@@ -88,6 +85,9 @@
 
         {% if isLoggedIn %}
             <li><a href="{{ url('profile/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Sign Out</a></li>
+	{% else %}
+           <li><a href="{{ url('profile/login') }}"><i class="fa fa-sign-in fa-fw"></i> Sign In</a></li>
+           <li><a href="{{ url('profile/register') }}"><i class="fa fa-sign-in fa-rotate-270 fa-fw"></i> Sign Up</a></li>
         {% endif %}
     </ul>
 
