@@ -7,7 +7,7 @@
             <li><a href="{{ url('profile/login') }}"><i class="fa fa-sign-in fa-fw fa-rotate-270"></i><span>Sign Up</span></a></li>
         {% else %}
             {% if myShopId is defined %}
-                <li><a href="{{ url('shops/' ~ auth['user_name']) }}"><i class="fa fa-fw fa-shopping-cart"></i><span>View Your Shop</span></a>
+                <li><a href="{{ url('shops/' ~ auth['user_name']) }}"><i class="fa fa-fw fa-shopping-cart"></i><span>View your Shop</span></a>
                 </li>
             {% else %}
 		<li><a href="{{ url('profile/edit') }}"><i class="fa fa-fw fa-shopping-cart"></i><span>Create a Shop</span></a></li>
@@ -53,7 +53,7 @@
                         <li class="divider"></li>
                         <li><a href="/shop/module/marketplace/addproduct?shop={{ myShopId }}"><i class="fa fa-fw fa-plus"></i> Add Product</a></li>
                         <li><a href="/shop/module/marketplace/marketplaceaccount?shop={{ myShopId }}&l=3"><i class="fa fa-fw fa-list"></i> Product List</a></li>
-                        <li><a href="/shop/module/marketplace/marketplaceaccount?shop={{ myShopId }}&l=4"><i class="fa fa-fw fa-tasks"></i> Orders</a></li>
+                        <li><a href="/shop/module/marketplace/marketplaceaccount?shop={{ myShopId }}&l=4"><i class="fa fa-fw fa-tasks" {% if totalUnshippedItems > 0 %}style="color:orange"{% endif %}></i> Orders {% if totalUnshippedItems > 0 %}({{ totalUnshippedItems }}){% endif %}</a></li>
                         <li class="divider"></li>
                         <li><a href="{{ url('shops/my/customize') }}"><i class="fa fa-fw fa-pencil"></i> Customize Shop</a></li>
                         <li><a href="/shop/module/marketplace/marketplaceaccount?shop={{ myShopId }}&l=2&edit-profile=1"><i class="fa fa-fw fa-gears"></i> Shop Profile</a></li>
