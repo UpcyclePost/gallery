@@ -2873,7 +2873,7 @@ header {
 .mobile-footer ul li {
     float: left;
     color: #fff;
-    width: 25%;
+    width: 20%;
     text-align: center;
     border-right: 1px solid rgba(0, 0, 0, 0.4);
     -webkit-box-shadow: inset -1px 0 0 rgba(255, 255, 255, .15);
@@ -4812,7 +4812,7 @@ form div:last-child.form-group {
     color: rgba(255, 255, 255, 0.3);
 }
 .mm-menu .mm-list>li>a.mm-subopen:after, .mm-menu .mm-list>li>a.mm-subclose:before {
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.8);
 }
 .mm-menu .mm-list>li>a.mm-subopen:before {
     border-color: rgba(0, 0, 0, 0.15);
@@ -4970,9 +4970,9 @@ html.mm-top.mm-opening .mm-fixed-bottom {
         bottom: -880px;
     }
 }.mm-menu.mm-right {
-     width: 80%}
+     width: 60%}
 html.mm-right.mm-opening .mm-page, html.mm-right.mm-opening #mm-blocker, html.mm-right.mm-opening .mm-fixed-top, html.mm-right.mm-opening .mm-fixed-bottom {
-    right: 80%}
+    right: 60%}
 @media all and (max-width:175px) {
     .mm-menu.mm-right {
         width: 140px;
@@ -4982,10 +4982,10 @@ html.mm-right.mm-opening .mm-page, html.mm-right.mm-opening #mm-blocker, html.mm
     }
 }@media all and (min-width:550px) {
     .mm-menu.mm-right {
-        width: 440px;
+        width: 360px;
     }
     html.mm-right.mm-opening .mm-page, html.mm-right.mm-opening #mm-blocker, html.mm-right.mm-opening .mm-fixed-top, html.mm-right.mm-opening .mm-fixed-bottom {
-        right: 440px;
+        right: 360px;
     }
 }.mm-menu.mm-bottom {
      height: 80%}
