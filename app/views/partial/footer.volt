@@ -46,7 +46,13 @@
 
 <script src="{{ static_url('js/site.js') }}"></script>
 
-<?php $this->assets->outputJs() ?>
+<?php
+    foreach ($this->assets->collection('js') AS $resource)
+    {
+        echo \Phalcon\Tag::javascriptInclude(sprintf('%s?%s', $resource->getPath(), $_version));
+    }
+?>
+
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
