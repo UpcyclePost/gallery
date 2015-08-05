@@ -7,7 +7,7 @@
             <li><a href="{{ url('profile/login') }}"><i class="fa fa-sign-in fa-fw fa-rotate-270"></i><span>Sign Up</span></a></li>
         {% else %}
             {% if myShopId is defined %}
-                <li><a href="{{ url('shops/' ~ auth['user_name']) }}"><i class="fa fa-fw fa-shopping-cart"></i><span>View your Shop</span></a>
+                <li><a href="{{ url('shops/' ~ auth['user_name']) }}"><i class="fa fa-fw fa-shopping-cart"></i><span>View Shop</span></a>
                 </li>
             {% else %}
 		<li><a href="{{ url('profile/edit') }}"><i class="fa fa-fw fa-shopping-cart"></i><span>Create a Shop</span></a></li>
