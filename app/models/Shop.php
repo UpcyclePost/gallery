@@ -1,5 +1,7 @@
 <?php namespace Up\Models;
 
+use Up\Services\PrestashopIntegrationService;
+
 class Shop extends \Phalcon\Mvc\Model
 {
 
@@ -89,5 +91,17 @@ class Shop extends \Phalcon\Mvc\Model
 		}
 
 		return $url->get(sprintf('profile/avatar/person.png'));
+	}
+
+	public function totalProducts()
+	{
+		$prestashopService = new PrestashopIntegrationService();
+		return $prestashopService->countProducts($this->User);
+	}
+
+	public function activeProducts()
+	{
+		$prestashopService = new PrestashopIntegrationService();
+		return $prestashopService->findRecentProducts(\false, $this->User);
 	}
 }

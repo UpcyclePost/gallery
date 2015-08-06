@@ -146,6 +146,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        Some links may be restricted by the system and won't appear on your profile.
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">About me</label>
                     <div class="col-sm-10">
                         <textarea class="form-control" rows="10" name="about" required maxlength="4096">{{ profile.about }}</textarea>

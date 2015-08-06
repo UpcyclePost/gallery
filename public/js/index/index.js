@@ -1,10 +1,8 @@
 var __items = [
-	{ img: "img/p/Banner1.PNG", caption: "Take a Look!", link:"http://www.upcyclepost.com/shops/boris"},
-	{ img: "img/p/Banner2.PNG", caption: "Click Here!", link:"http://www.upcyclepost.com/shops/allan-young"},
-	{ img: "img/p/Banner3.PNG", caption: "Discover!", link:"http://www.upcyclepost.com/shops/ancagray"},
-	{ img: "img/p/Banner4.PNG", caption: "Take a Look!", link:"http://www.upcyclepost.com/shops/jay-lana"},
-	{ img: "img/p/Banner5.PNG", caption: "Click Here!", link:"http://www.upcyclepost.com/shops/shawnduboisart"},
-    { img: "img/p/BANNER RODNEY TRICE.PNG", caption: "Discover!", link:"http://www.upcyclepost.com/shops/rodneytrice"}
+	{ img: "img/p/AMY COUSIN.PNG", caption: "Take a Look!", link:"http://www.upcyclepost.com"},
+    { img: "img/p/ART BY HEART STUDIO 2.png", caption: "Take a Look!", link:"http://www.upcyclepost.com"},
+    { img: "img/p/ATOMICROCKET POP LAB.png", caption: "Take a Look!", link:"http://www.upcyclepost.com"},
+    { img: "img/p/ARTZWEAR.png", caption: "Take a Look!", link:"http://www.upcyclepost.com"},
 ]
 
 $("#bg-slide").backstretch($.map(__items, function(i) { return i.img; }), {duration: 5000, fade: 750});

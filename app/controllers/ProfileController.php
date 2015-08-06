@@ -114,13 +114,23 @@ class ProfileController extends ControllerBase
 					$websites = [];
 					$postWebsites = $this->request->getPost('website');
 					$postUrls = $this->request->getPost('website_url');
+					$displayedEtsyError = \false;
+
 					for ($i = 0; $i < count($postWebsites); $i++)
 					{
 						if (trim($postWebsites[ $i ]) != '')
 						{
 							if (isset($postUrls[ $i ]) && trim($postUrls[ $i ]) != '')
 							{
-								$websites[] = ['type' => $postWebsites[ $i ], 'url' => $postUrls[ $i ]];
+								if (!Helpers::isRestrictedDomain($postUrls[ $i ]))
+								{
+									$websites[] = [ 'type' => $postWebsites[ $i ], 'url' => $postUrls[ $i ] ];
+								}
+								else if (!$displayedEtsyError)
+								{
+									$this->flash->error('We apologize for any inconvenience, but linking to this site is not permissible within the UpcyclePost marketplace.');
+									$displayedEtsyError = \true;
+								}
 							}
 						}
 					}
@@ -533,7 +543,18 @@ class ProfileController extends ControllerBase
 
 		$this->view->profile = $user;
 
-		$this->view->websites = json_decode($user->websites, \true) ?: [];
+		$profileWebsites = json_decode($user->websites, \true) ?: [];
+		$websites = [];
+
+		foreach ($profileWebsites AS $website)
+		{
+			if (!Helpers::isRestrictedDomain($website['url']))
+			{
+				$websites[] = $website;
+			}
+		}
+
+		$this->view->websites = $websites;
 
 		if ($user->custom_background)
 		{

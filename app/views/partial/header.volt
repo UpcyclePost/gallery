@@ -16,7 +16,7 @@
     {% endif %}
 
     <!-- Bootstrap -->
-    <link href="{{ static_url('css/styles.min.css?v=0.26.2') }}" rel="stylesheet">
+    <link href="{{ static_url('css/styles.min.css?') }}{{ _version }}" rel="stylesheet">
 
     <!-- Google Web Fonts -->
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,600' rel='stylesheet' type='text/css'>
@@ -56,7 +56,9 @@
     /*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("//assets.zendesk.com/embeddable_framework/main.js","upcyclepost.zendesk.com");/*]]>*/
     </script>
     <!-- End of upcyclepost Zendesk Widget script -->
-
+    <!-- Google Site Verification-->
+    <meta name="google-site-verification" content="nSBkkqUb_O2hPBS0gkOgCydocQDi-M1xHG23fwhNIIo" />
+    <!-- End Google Site Verification -->
     <?php $this->assets->outputCss() ?>
 </head>
 <body>
@@ -68,7 +70,7 @@
 
             <div class="col-xs-6 col-md-5 search-container">
                 <form class="search-form form-inline" method="post" action="{{ url('gallery') }}">
-                    <input type="search" name="term" class="form-control search" placeholder="Find Inspiration">
+                    <input id="universal-search" type="search" name="term" class="form-control search" placeholder="Find Inspiration">
                     <button type="submit" class="search-icon"><img src="{{ static_url('img/icons/search-icon.png') }}"></button>
                 </form>
             </div>

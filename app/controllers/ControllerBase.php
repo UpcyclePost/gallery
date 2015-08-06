@@ -9,6 +9,7 @@ class ControllerBase extends Controller
 	protected function initialize()
 	{
 		$unread = 0;
+		$this->view->_version = $this->config->application->assetVersion;
 		$this->view->title = 'UpcyclePost';
 		$auth = $this->session->get('auth');
 		$this->view->isLoggedIn = ($auth && $auth !== false);
