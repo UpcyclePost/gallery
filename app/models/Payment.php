@@ -57,6 +57,9 @@ class Payment extends \Phalcon\Mvc\Model
 
 	public function initialize()
 	{
+		$this->setReadConnectionService('readDb');
+		$this->setWriteConnectionService('writeDb');
+
 		$this->belongsTo('post_ik', 'Market', 'post_ik');
 	}
 
