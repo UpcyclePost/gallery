@@ -18,8 +18,6 @@
                         <span class='st_googleplus'></span>
                         <span class='st_pinterest'></span>
                         <span class='st_stumbleupon'></span>
-                        <span class='st_email'></span>
-                        <span class='st_sharethis'></span>
                     </li>
                 </ol>
             </div>

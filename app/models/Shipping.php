@@ -33,6 +33,12 @@ class Shipping extends \Phalcon\Mvc\Model
 	 */
 	public $zip;
 
+	public function initialize()
+	{
+		$this->setReadConnectionService('readDb');
+		$this->setWriteConnectionService('writeDb');
+	}
+
 	/**
 	 * Independent Column Mapping.
 	 */

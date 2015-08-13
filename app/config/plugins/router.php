@@ -4,6 +4,11 @@ $di->set('router', function ()
 {
 	$router = new Phalcon\Mvc\Router();
 
+	$router->add('/search/quick/products', ['controller' => 'search', 'action' => 'countProducts']);
+	$router->add('/search/quick/users', ['controller' => 'search', 'action' => 'countUsers']);
+	$router->add('/search/quick/shops', ['controller' => 'search', 'action' => 'countShops']);
+	$router->add('/search/quick/ideas', ['controller' => 'search', 'action' => 'countIdeas']);
+
 	$router->add('/shops/:params', ['controller' => 'shop', 'action' => 'view', 'params' => 1]);
 	$router->add('/shops/{slug:[0-9]+}', ['controller' => 'shop', 'action' => 'redirect'])->convert('slug', function($slug) {
 		return $slug;

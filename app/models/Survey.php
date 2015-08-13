@@ -15,6 +15,12 @@ class Survey extends \Phalcon\Mvc\Model
 	 */
 	public $answer;
 
+	public function initialize()
+	{
+		$this->setReadConnectionService('readDb');
+		$this->setWriteConnectionService('writeDb');
+	}
+
 	/**
 	 * Independent Column Mapping.
 	 */
