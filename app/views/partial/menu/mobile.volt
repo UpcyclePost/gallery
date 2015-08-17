@@ -2,9 +2,9 @@
 <nav class="mobile-footer mm-fixed-bottom hidden-lg hidden-md">
     <ul class="clearfix">
         {% if !isLoggedIn %}
-            <li><a href="{{ url('profile/edit') }}"><i class="fa fa-fw fa-shopping-cart"></i><span>Create a Shop</span></a></li>
+            <li><a href="{{ url('profile/edit') }}"><i class="fa fa-sign-in"></i><span>Create a Shop</span></a></li>
             <li><a href="{{ url('profile/login') }}"><i class="fa fa-sign-in"></i><span>Sign In</span></a></li>
-            <li><a href="{{ url('profile/login') }}"><i class="fa fa-sign-in fa-fw fa-rotate-270"></i><span>Sign Up</span></a></li>
+            <li><a href="{{ url('profile/login') }}"><i class="fa fa-user"></i><span>Signup</span></a></li>
         {% else %}
             {% if myShopId is defined %}
                 <li><a href="{{ url('shops/' ~ auth['user_name']) }}"><i class="fa fa-fw fa-shopping-cart"></i><span>View Shop</span></a>
@@ -41,14 +41,14 @@
         <li><a href="{{ url('gallery') }}"><i class="fa fa-camera fa-fw"></i> Browse</a>
             <ul>
                 <li><a href="{{ url('shops') }}"><i class="fa up-shop-1"></i> Shops</a></li>
-                <li><a href="{{ url('gallery') }}"><i class="fa fa-fw fa-lightbulb-o"></i> Ideas</a></li>
+                <li><a href="{{ url('gallery') }}"><i class="fa fa-fw fa-lightbulb-o"></i> Products</a></li>
                 <li><a href="{{ url('search/users') }}"><i class="fa fa-fw fa-users"></i> Users</a></li>
             </ul>
         </li>
         {% if isLoggedIn %}
             {% if myShopId is defined %}
-                <li><a href="{{ url('shops/' ~ auth['user_name']) }}"><i class="fa fa-fw fa-shopping-cart"></i>Your Shop</a>
-                    <ul>
+		<li><a href="{{ url('shops/' ~ auth['user_name']) }}"><i class="fa fa-fw fa-shopping-cart"></i>Your Shop</a>
+			<ul>
                         <li><a href="/shop/module/marketplace/marketplaceaccount?shop={{ myShopId }}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
                         <li class="divider"></li>
                         <li><a href="/shop/module/marketplace/addproduct?shop={{ myShopId }}"><i class="fa fa-fw fa-plus"></i> Add Product</a></li>
@@ -57,9 +57,9 @@
                         <li class="divider"></li>
                         <li><a href="{{ url('shops/my/customize') }}"><i class="fa fa-fw fa-pencil"></i> Customize Shop</a></li>
                         <li><a href="/shop/module/marketplace/marketplaceaccount?shop={{ myShopId }}&l=2&edit-profile=1"><i class="fa fa-fw fa-gears"></i> Shop Profile</a></li>
-                        <li><a href="{{ url('shops/' ~ auth['ik']) }}"><i class="fa fa-fw fa-eye"></i> View Shop</a></li>
-                    </ul>
-                </li>
+                        <li><a href="{{ url('shops/' ~ auth['ik']) }}"><i class="fa fa-fw fa-eye"></i> View Shop</a></li>				
+			</ul>
+		</li>
             {% endif %}
             <li><a href="{{ url('profile/view/' ~ auth['ik']) }}"><i class="fa fa-user"></i>You</a>
                 <ul>
@@ -80,7 +80,7 @@
                 {% endfor %}
             </ul>
         </li>
-        <li><a href="{{ url('post/idea') }}"><i class="fa fa-camera fa-fw"></i> Post Ideas</a></li>
+	<li><a href="{{ url('post/idea') }}"><i class="fa fa-camera fa-fw"></i> Post Ideas</a></li>
         <li><a href="{{ url('blog') }}"><i class="fa fa-rss fa-fw"></i> Blog</a></li>
 
         {% if isLoggedIn %}
@@ -89,6 +89,6 @@
            <li><a href="{{ url('profile/login') }}"><i class="fa fa-sign-in fa-fw"></i> Sign In</a></li>
            <li><a href="{{ url('profile/register') }}"><i class="fa fa-sign-in fa-rotate-270 fa-fw"></i> Sign Up</a></li>
         {% endif %}
-    </ul>
+</ul>
 
 </nav>
