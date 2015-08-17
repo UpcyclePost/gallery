@@ -5635,4 +5635,10 @@ header .buttons font.items {
         display: none;
     }
 }
-       
+@media (max-width: 525px)
+{
+.arrow-next {
+    width: 18px;
+    height: 68px;
+    }
+}      
