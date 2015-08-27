@@ -12,16 +12,12 @@
                     <li><a target="_blank" href="http://www.linkedin.com/company/upcyclepost-com"><i class="fa fa-linkedin-square"></i></a></li>
                 </ul>
             </li>
-            <li><a href="{{ url('privacy') }}">Privacy Policy</a></li>
-            <li><a href="{{ url('terms') }}">Terms</a></li>
-            {% if !isLoggedIn %}
-                <li><a href="{{ url('profile/login') }}">Become a Member</a></li>
-            {% endif %}
+            <li><a href="{{ url('policy') }}">Policies</a></li>
             <li><a href="{{ url('contact') }}">Contact Us</a></li>
             <li><a href="{{ url('blog') }}">Blog</a></li>
-            <li><a href="{{ url('post/idea') }}">Post Ideas</a></li>
-            <li><a href="{{ url('gallery/') }}">Gallery</a></li>
+            <li><a href="{{ url('faq') }}">FAQ</a></li>
             <li><a href="{{ url('about') }}">About Us</a></li>
+            <li><a href="{{ url('post/idea') }}">Post Ideas</a></li>
         </nav>
     </div>
 </footer>
