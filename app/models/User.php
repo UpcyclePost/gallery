@@ -252,6 +252,9 @@ class User extends Model
 	 */
 	public function initialize()
 	{
+		$this->setReadConnectionService('readDb');
+		$this->setWriteConnectionService('writeDb');
+
 		$this->setSource('User');
 		$this->hasOne('ik', 'Shipping', 'user_ik');
 		$this->hasMany('ik', 'Sales', 'sold_to_user_ik');
