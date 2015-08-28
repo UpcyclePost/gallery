@@ -13,6 +13,9 @@ class Referral extends Model
 	 */
 	public function initialize()
 	{
+		$this->setReadConnectionService('readDb');
+		$this->setWriteConnectionService('writeDb');
+
 		$this->setSource('Referrals');
 		$this->hasOne('user_ik', 'User', 'ik');
 	}
