@@ -77,6 +77,9 @@ class Marketing extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
+        $this->setReadConnectionService('readDb');
+        $this->setWriteConnectionService('writeDb');
+
         $this->setSource('Marketing');
     }
 

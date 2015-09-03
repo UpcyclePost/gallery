@@ -59,6 +59,9 @@ class Feed extends \Phalcon\Mvc\Model
 
 	public function initialize()
 	{
+		$this->setReadConnectionService('readDb');
+		$this->setWriteConnectionService('writeDb');
+
 		$this->hasOne('item_ik', 'Post', 'ik');
 		$this->hasOne('sender_ik', 'User', 'ik', ['alias' => 'Sender']);
 		$this->hasOne('recipient_ik', 'User', 'ik', ['alias' => 'Recipient']);
