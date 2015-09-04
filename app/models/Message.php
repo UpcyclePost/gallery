@@ -53,9 +53,6 @@ class Message extends \Phalcon\Mvc\Model
 
 	public function initialize()
 	{
-		$this->setReadConnectionService('readDb');
-		$this->setWriteConnectionService('writeDb');
-
 		$this->belongsTo('from_user_ik', 'User', 'ik');
 		$this->belongsTo('to_user_ik', 'User', 'ik', ['alias' => 'Recipient']);
 	}

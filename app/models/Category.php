@@ -27,12 +27,6 @@ class Category extends \Phalcon\Mvc\Model
      */
     public $slug;
 
-    public function initialize()
-    {
-        $this->setReadConnectionService('readDb');
-        $this->setWriteConnectionService('writeDb');
-    }
-
     /**
      * Independent Column Mapping.
      */

@@ -107,9 +107,6 @@ class Sale extends \Phalcon\Mvc\Model
 
 	public function initialize()
 	{
-		$this->setReadConnectionService('readDb');
-		$this->setWriteConnectionService('writeDb');
-
 		$this->belongsTo('post_ik', 'Post', 'ik');
 		$this->belongsTo('sold_by_shop_ik', 'Shop', 'ik');
 		$this->belongsTo('sold_to_user_ik', 'User', 'ik');

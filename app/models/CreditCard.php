@@ -75,9 +75,6 @@ class CreditCard extends \Phalcon\Mvc\Model
 
 	public function initialize()
 	{
-		$this->setReadConnectionService('readDb');
-		$this->setWriteConnectionService('writeDb');
-
 		$this->hasOne('post_ik', 'Payment', 'post_ik');
 	}
 

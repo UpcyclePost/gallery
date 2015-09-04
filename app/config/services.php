@@ -18,7 +18,7 @@ $di->set('config', function () use ($config)
 /**
  * Database connection is created based in the parameters defined in the configuration file
  */
-/*$di->set('db', function () use ($config)
+$di->set('db', function () use ($config)
 {
     return new DbAdapter([
                              'host'     => $config->database->host,
@@ -26,7 +26,7 @@ $di->set('config', function () use ($config)
                              'password' => $config->database->password,
                              'dbname'   => $config->database->dbname
                          ]);
-});*/
+});
 
 $di->set('prestashopDb', function () use ($config)
 {
@@ -36,26 +36,6 @@ $di->set('prestashopDb', function () use ($config)
 		                     'password' => $config->prestashop->database->password,
 		                     'dbname'   => $config->prestashop->database->dbname
 	                     ]);
-});
-
-$di->set('readDb', function () use ($config)
-{
-    return new DbAdapter([
-        'host'     => $config->slave->host,
-        'username' => $config->slave->username,
-        'password' => $config->slave->password,
-        'dbname'   => $config->slave->dbname
-    ]);
-});
-
-$di->set('writeDb', function () use ($config)
-{
-    return new DbAdapter([
-        'host'     => $config->master->host,
-        'username' => $config->master->username,
-        'password' => $config->master->password,
-        'dbname'   => $config->master->dbname
-    ]);
 });
 
 /**

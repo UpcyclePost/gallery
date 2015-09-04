@@ -75,9 +75,6 @@ class Market extends \Phalcon\Mvc\Model
 
 	public function initialize()
 	{
-		$this->setReadConnectionService('readDb');
-		$this->setWriteConnectionService('writeDb');
-
 		$this->useDynamicUpdate(true);
 
 		$this->belongsTo('post_ik', 'Post', 'ik');
