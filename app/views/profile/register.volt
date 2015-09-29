@@ -1,10 +1,7 @@
 <div class="login-container">
     <form method="post" id="register-form">
     <div class="login-panel">
-        <div class="login-panel-header">
-            <h1>Sign up and become an UpcyclePost Insider</h1>
-        </div>
-        <div class="upload-panel-body">
+        <div class="login-panel-body">
             {{ content() }}
             <form role="form">
                 <div class="form-group">

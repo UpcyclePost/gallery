@@ -15,15 +15,7 @@ $searchCategory = ($category == 'New') ? '' : $category;
             <h4 style="text-align: center; margin-bottom: 30px; margin-top: 0px;">{{ subtitle }}</h4>
         {% endif %}
     </div>
-    {% if hideCategories is not defined %}
-    <aside class="cat-sidebar" data-spy="affix" data-offset-top="{{ offsetTop }}">
-        {{ partial('partial/menu/sidebar') }}
-    </aside>
-    {% endif %}
     <div class="content">
-        <div class="posts-container">
-            {% set isodiv = "iso" %}
-            {{ partial('partial/gallery/list') }}
-        </div>
+        {{ partial('partial/gallery/list') }}
     </div>
 </div>

@@ -1,61 +1,345 @@
+{% set isIndexPage = true %}
 {{ partial('partial/header') }}
-    <!-- Slideshow -->
-    <div class="content-container">
-        <div class="content-container">
-            <section class="slideshow-wrapper">
-                <div id="bg-slide" class="slider">
-                    <div class="container" style="min-height: 196px;">
-                        <div class="intro">
-                            <h1>Discover thousands of upcycled, recycled,<br>reclaimed & reused products & ideas</h1>
-                        </div>
-                        <div id="cta">
-                            <span id="arrow">
-                                <span class="caption">Discover!</span>
-                            </span>
+
+        <section class="product_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 promo">
+                        <div class="promo_icon">
+                            <ul>
+                                <li>
+                                    <img alt="" src="{{ static_url('upmod/img/shop.png') }}">
+
+                                    <h2>Shop</h2>
+                                </li>
+
+                                <li>
+                                    <img alt="" src="{{ static_url('upmod/img/sell.png') }}">
+
+                                    <h2>Sell</h2>
+                                </li>
+
+                                <li>
+                                    <img alt="" src="{{ static_url('upmod/img/share.png') }}">
+
+                                    <h2>Share</h2>
+                                </li>
+                            </ul>
+                            <p>Join the movement to shop, sell, and share upcycled products.</p>
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
-    </div>
+                <div class="row">
+                    {% for post in results %}
+                        {% if loop.index <= 8 %}
+                                <div class="col-lg-3 col-md-4 col-sm-4">
+                                    <article class="product_image thumbnail">
+                                        <a href="{{ post['url'] }}">
+                                            <div class="thumbnail-container">
+                                                <img alt="{{ post['title'] }}" src="{{ post['image'] }}" style="min-height:200px;min-width:273px">
+                                                <div class="product-icons">
+                                                    <div class="icon-circle">
+                                                        <i class="fa fa-heart"></i>
+                                                    </div>
+                                                    <div class="icon-circle">
+                                                        <i class="fa fa-share-square-o"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="overlay">
+                                                    <div class="btn-group like">
+                                                        <button class="btn btn-default" type="button"><i class="fa fa-heart"></i> Like</button>
+                                                    </div>
 
-    <div class="content-wrapper">
-        {% set offsetTop = 440 %}
-        <div class="content-container">
-            {% set isodiv = "iso" %}
-            {{ partial('partial/gallery/layout') }}
-            <div class="text-center"><a href="{{ url('gallery') }}" class="btn btn-green btn-lg"><i class="fa fa-chevron-right"></i> Show Me More</a></div>
-        </div>
-    </div>
+                                                    <div class="btn-group share">
+                                                        <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
 
-{% if !isLoggedIn and showSubscribe %}
-    <div id="myModal" class="modal fade subscribe">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <form id="newsletter-subscribe-form">
-                        <span class="email-icon hidden-xs">
-                          <i class="fa fa-envelope-o"></i>
-                        </span>
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Sign up to become an UpcyclePost Insider &#9786;</h4>
-                    <p>Join our community of upcyclers and receive monthly news, promotions, featured items &amp; special offers.</p>
+                                        <div class="caption">
+                                            <a href="{{ post['url'] }}">
+                                                <h2><?=Helpers::Truncate($post['title'], 28)?></h2>
+                                            </a>
 
-                    <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Enter Your Email Address" id="mc-email" required />
-                              <span class="input-group-btn">
-                                <button class="btn btn-green" type="submit"><i class="fa fa-paper-plane"></i> Subscribe</button>
-                              </span>
+                                            <div class="product-meta clearfix">
+                                                <a class="author" href="#">
+                                                    <a href="{{ url('shops/') ~ post['userName'] }}"><?=Helpers::Truncate($post['shopName'], 20)?></a>
+                                                </a>
+
+                                                <a class="price" href="{{ post['url'] }}">${{ post['price']|pretty }}</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    {% for i in 8..10 %}
+                        <div class="col-lg-4 col-md-4 visible-lg visible-md">
+                            <article class="product_image thumbnail wide">
+                                <a href="{{ results[i]['url'] }}">
+                                    <div class="thumbnail-container">
+                                        <img alt="{{ results[i]['title'] }}" src="{{ results[i]['image'] }}" style="min-height:238px;">
+                                        <div class="product-icons">
+                                            <div class="icon-circle">
+                                                <i class="fa fa-heart"></i>
+                                            </div>
+                                            <div class="icon-circle">
+                                                <i class="fa fa-share-square-o"></i>
+                                            </div>
+                                        </div>
+                                        <div class="overlay">
+                                            <div class="btn-group like">
+                                                <button class="btn btn-default" type="button"><i class="fa fa-heart"></i> Like</button>
+                                            </div>
+
+                                            <div class="btn-group share">
+                                                <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <div class="caption">
+                                    <a href="{{ results[i]['url'] }}">
+                                        <h2><?=Helpers::Truncate($results[$i]['title'], 38)?></h2>
+                                    </a>
+
+                                    <div class="product-meta clearfix">
+                                        <a class="author" href="{{ url('shops/') ~ results[i]['userName'] }}">
+                                            {{ results[i]['shopName'] }}
+                                        </a>
+
+                                        <a class="price" href="{{ results[i]['url'] }}">${{ results[i]['price']|pretty }}</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="more_button">
+                    <a class="btn btn-default shop_more" href="{{ url('browse/products') }}">Shop more products</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="unique_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="unik_text">
+                            <h2>We Love the upmod Artisans</h2>
+
+                            <p>Upcycling Artisans power our community. Join the movement and sell your creations!</p>
+                        </div>
                     </div>
-                    <!-- /input-group -->
-                    </form>
                 </div>
-                <div class="modal-footer">
-                    <p>UpcyclePost will never misuse your email, it will never be rented or sold, plus you can unsubscribe at any time.</p>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="heading">
+                            <h2>Great Shops</h2>
+                        </div>
+
+                        <div class="product_image thumbnail wide bot">
+                            <a href="http://www.upcyclepost.com/shops/alinescardboard">
+                                <div class="thumbnail-container">
+                                    <img alt="" src="{{ static_url('img/features/shop.png') }}" style="min-height:238px;">
+                                    <div class="product-icons">
+                                        <div class="icon-circle">
+                                            <i class="fa fa-heart"></i>
+                                        </div>
+                                        <div class="icon-circle">
+                                            <i class="fa fa-share-square-o"></i>
+                                        </div>
+                                    </div>
+                                    <div class="overlay">
+                                        <div class="btn-group like">
+                                            <button class="btn btn-default" type="button"><i class="fa fa-heart"></i> Like</button>
+                                        </div>
+
+                                        <div class="btn-group share">
+                                            <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="caption">
+                                <a href="http://www.upcyclepost.com/shops/alinescardboard">
+                                    <h2>Aline's Cardboard</h2>
+                                </a>
+
+                                <div class="product-meta clearfix">
+                                    <a class="author" href="http://www.upcyclepost.com/shops/alinescardboard">
+                                        Issaquah, WA
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="buton">
+                            <button class="btn btn-default shop_more unik">Create your shop</button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="heading">
+                            <h2>Unique Products</h2>
+                        </div>
+
+                        <div class="product_image thumbnail wide bot">
+                            <a href="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">
+                                <div class="thumbnail-container">
+                                    <img alt="" src="{{ static_url('img/features/product.png') }}" style="min-height:238px;">
+                                    <div class="product-icons">
+                                        <div class="icon-circle">
+                                            <i class="fa fa-heart"></i>
+                                        </div>
+                                        <div class="icon-circle">
+                                            <i class="fa fa-share-square-o"></i>
+                                        </div>
+                                    </div>
+                                    <div class="overlay">
+                                        <div class="btn-group like">
+                                            <button class="btn btn-default" type="button"><i class="fa fa-heart"></i> Like</button>
+                                        </div>
+
+                                        <div class="btn-group share">
+                                            <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="caption">
+                                <a href="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">
+                                    <h2>New 70's Stylin' Hubcap Celling Fixture</h2>
+                                </a>
+
+                                <div class="product-meta clearfix">
+                                    <a class="author" href="https://www.upcyclepost.com/shops/101790">
+                                        Refitting the Planet
+                                    </a>
+
+                                    <a class="price" href="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">$450.00</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="buton">
+                            <a class="btn btn-default shop_more unik" href="{{ url('browse/products') }}">Shop more products</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="heading">
+                            <h2>Avid Upcyclers</h2>
+                        </div>
+
+                        <div class="product_image thumbnail wide bot">
+                            <a href="http://www.upcyclepost.com/profile/view/156">
+                                <div class="thumbnail-container">
+                                    <img alt="" src="{{ static_url('img/features/profile.png') }}" style="min-height:238px;">
+                                    <div class="product-icons">
+                                        <div class="icon-circle">
+                                            <i class="fa fa-heart"></i>
+                                        </div>
+                                        <div class="icon-circle">
+                                            <i class="fa fa-share-square-o"></i>
+                                        </div>
+                                    </div>
+                                    <div class="overlay">
+                                        <div class="btn-group like">
+                                            <button class="btn btn-default" type="button"><i class="fa fa-heart"></i> Like</button>
+                                        </div>
+
+                                        <div class="btn-group share">
+                                            <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="caption">
+                                <a href="http://www.upcyclepost.com/profile/view/156">
+                                    <h2>Raymond Guest</h2>
+                                </a>
+
+                                <div class="product-meta clearfix">
+                                    <a class="author" href="http://www.upcyclepost.com/profile/view/156">
+                                        Longview, TX
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="buton">
+                            <button class="btn btn-default shop_more unik">Meet fellow upcyclers</button>
+                        </div>
+                    </div>
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-{% endif %}
+            </div>
+        </section>
+
+        <section class="info_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="info_text">
+                            <h2>How does it work?</h2>
+
+                            <p>Join and help power the community for upcycled hand-crafted products.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="work_sample pull-right">
+                            <img alt="" src="{{ static_url('upmod/img/shop.png') }}">
+
+                            <h2>Shop</h2>
+
+                            <p>Buy one-of-a-kind works made<br>
+                                by our upcycle artisans and<br>
+                                upcycle community healthy.</p>
+
+                            <h3><a href="{{ url('/up/shop') }}">Shop our wares</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="work_sample">
+                            <img alt="" src="{{ static_url('upmod/img/sell.png') }}">
+
+                            <h2>Sell</h2>
+
+                            <p>Are you an upcycle artisan?<br>
+                                Create your very own shop and<br>
+                                sell your upcyled pieces online.</p>
+
+                            <h3><a href="{{ url('/up/sell') }}">Create your shop</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="work_sample pull-left">
+                            <img alt="" src="{{ static_url('upmod/img/share.png') }}">
+
+                            <h2>Share</h2>
+
+                            <p>Join the upcyle community and<br>
+                                share inspirations with other<br>
+                                upcyclers. Spread the word!</p>
+
+                            <h3><a href="{{ url('/up/share') }}">Join the community</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 {{ partial('partial/footer') }}

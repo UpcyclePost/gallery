@@ -1,84 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-site-verification" content="lG-LmHDTKc0bi93c1EtfeDFk9Ee20h3BWHDg5x3_vNI" />
-    <meta name="p:domain_verify" content="213cc78d10ce6a40afaef000ecd7ad46"/>
-    <meta name="description" content="{{ metaDescription }}" />
-    <title>{{ title }}</title>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
 
-    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    {% if canonical_url is defined %}
-        <link rel="canonical" href="{{ canonical_url }}" />
-    {% endif %}
+<html class="no-js" lang="" xmlns="http://www.w3.org/1999/html">
+<!--<![endif]-->
 
-    <!-- Bootstrap -->
-    <link href="{{ static_url('css/styles.min.css?') }}{{ _version }}" rel="stylesheet">
+    <head>
+        <meta charset="utf-8">
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <title>Upmod</title>
+        <meta content="" name="description">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link href="apple-touch-icon.png" rel="apple-touch-icon">
+        <!-- <link href="{{ static_url('upmod/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ static_url('upmod/css/bootstrap-theme.min.css') }}" rel="stylesheet">
+        <link href="{{ static_url('upmod/css/main.css') }}" rel="stylesheet">
+        <link href="{{ static_url('upmod/style.css') }}" rel="stylesheet">
+        <link href="{{ static_url('upmod/responsive.css') }}" rel="stylesheet"> -->
 
-    <!-- Google Web Fonts -->
-    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,600' rel='stylesheet' type='text/css'>
+        <link href="{{ static_url('upmod/css/styles.css') }}?5" rel="stylesheet">
 
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="{{ static_url('upmod/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+    </head>
 
-    <!-- UpcyclePost Icons -->
-    <link href="{{ static_url('css/upcyclepost/css/upcyclepost.css') }}" rel="stylesheet">
+    <body>
 
-    <!-- mmenu -->
-    <link href="{{ static_url('css/libraries/mobile-slide-menu/jquery.mmenu.positioning.css') }}" rel="stylesheet">
+        <header class="header_area{% if isIndexPage is not defined %} subpages{% endif %}">
+            <nav class="mainmenu">
+                <div class="container">
+                    <div class="row">
+                        <a class="logo" href="{{ url('') }}"></a>
+                        <div class="search">
+                            <form>
+                                <input type="search" placeholder="Search the world's largest upcyle hand-crafted community" class="form-control" id="universal-search">
+                            </form>
+                        </div>
+                        <button class="hamburger-menu" id="hamburger">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <ul class="user-actions">
+                            <li><a href="{{ url('profile/login') }}">Sign in</a></li>
+                            <li><a href="{{ url('profile/register') }}" class="btn btn-default signup_btn">Sign up</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="main-dd-menu">
+                    <div class="container">
+                        <div class="row">
+                            <div class="column clearfix">
+                                <h3>Shop Categories</h3>
+                                <ul class="categories">
+                                    <?php $categories = Helpers::getCategoryList(); ?>
+                                    {% for _category in categories %}
+                                        <li><a href="{{ url('browse/products/' ~ _category['title']|url) }}">{{ _category['title'] }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="column clearfix">
+                                <div class="left-menu">
+                                    <h3>Share your ideas</h3>
+                                    <ul class="links">
+                                        <li><a href="{{ url('post/idea') }}">Upload your images</a></li>
+                                        <li><a href="{{ url('browse/members') }}">View member gallery</a></li>
+                                    </ul>
+                                </div>
+                                <div class="right-menu">
+                                    <h3>Sell your products</h3>
+                                    <ul class="links">
+                                        <li><a href="{{ url('shop/module/marketplace/sellerrequest') }}">Create your shop</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column clearfix">
+                                <h3>Upmod</h3>
+                                <ul class="links">
+                                    <li><a href="{{ url('about') }}">About us</a></li>
+                                    <li><a href="{{ url('blog') }}">Blog</a></li>
+                                    <li><a href="{{ url('contact') }}">Contact us</a></li>
+                                </ul>
+                                <div class="social-icons">
+                                    <a href="http://www.facebook.com/upcyclepost"><i class="fa fa-facebook-square"></i></a>
+                                    <a href="http://www.linkedin.com/company/upcyclepost-com"><i class="fa fa-linkedin-square"></i></a>
+                                    <a href="http://www.twitter.com/upcyclepost"><i class="fa fa-twitter-square"></i></a>
+                                    <a href="http://www.pinterest.com/upcyclepost"><i class="fa fa-pinterest-square"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            {% if isIndexPage is defined %}
+                <nav class="submenu">
+                    <div class="container hidden-xs">
+                        <div class="row">
+                            <div class="left_menu">
+                                <ul>
+                                    <li>
+                                        <a href="{{ url('browse/products/art') }}">Art</a>
+                                    </li>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+                                    <li>
+                                        <a href="{{ url('browse/products/fashion') }}">Fashion</a>
+                                    </li>
 
-    {% if og_img is defined %}
-        <meta property="og:image" content="{{ og_img }}" />
-    {% endif %}
-    {% if og_img_size is defined %}
-        <meta property="og:image:width" content="{{ og_img_size[0] }}" />
-        <meta property="og:image:height" content="{{ og_img_size[1] }}" />
-    {% endif %}
-    {% if og_description is defined %}
-        <meta property="og:description" content="{{ og_description }}" />
-    {% endif %}
-    {% if canonical_url is defined %}
-        <meta property="og:url" content="{{ canonical_url }}" />
-    {% endif %}
-    <meta property="og:title" content="{{ title }}" />
-    <!-- Start of upcyclepost Zendesk Widget script -->
-    <script>
-    /*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("//assets.zendesk.com/embeddable_framework/main.js","upcyclepost.zendesk.com");/*]]>*/
-    </script>
-    <!-- End of upcyclepost Zendesk Widget script -->
+                                    <li>
+                                        <a href="{{ url('browse/products/furniture') }}">Furniture</a>
+                                    </li>
 
-    <?php $this->assets->outputCss() ?>
-</head>
-<body>
-<div id="page">
-    <!-- Header -->
-    <header class="mm-fixed-top">
-        <div class="header-container clearfix">
-            <a id="mobile-menu" class="mobile-menu fa fa-bars visible-lg visible-md"></a>
+                                    <li>
+                                        <a href="{{ url('browse/products/home') }}">Home</a>
+                                    </li>
 
-            <div class="col-xs-6 col-md-5 search-container">
-                <form class="search-form form-inline" method="post" action="{{ url('gallery') }}">
-                    <input id="universal-search" type="search" name="term" class="form-control search" placeholder="Find Inspiration">
-                    <button type="submit" class="search-icon"><img src="{{ static_url('img/icons/search-icon.png') }}"></button>
-                </form>
+                                    <li>
+                                        <a href="{{ url('browse/products/jewelry') }}">Jewelry</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ url('browse/products/vintage') }}">Vintage</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="right_menu">
+                                <a class="menu-toggle">See all categories</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <section class="header_content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="head_text">
+                                <h1>Remaking Our World With Upcycled Products</h1>
+
+                                <div class="head_button">
+                                    <a class="btn btn-default prodct_btn" href="{{ url('browse/products') }}">Browse Products</a>
+                                    <a class="btn btn-default move_btn" href="{{ url('profile/register') }}">Join the Movement</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% else %}
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="page_title_text">
+                                {% if page_title_text is defined %}
+                                    {{ page_title_text }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+        </header>
+
+        {% if page_header_text is defined %}
+            <div class="content-container">
+                <div class="content-header">
+                    <h1>
+                        {{ page_header_text }}
+                    </h1>
+                </div>
             </div>
-
-            <div class="logo"><a href="{{ url('') }}"><img class="hidden-xs" src="{{ static_url('img/logo.jpg') }}" /><img class="visible-xs" src="{{ static_url('img/micro-logo.png') }}" /></a></div>
-            <div class="buttons hidden-xs hidden-sm">
-                {{ partial('partial/menu/login') }}
-            </div>
-            <a class="slide-menu fa fa-bars hidden-lg hidden-md" href="#mobile-slide-menu"></a>
-        </div>
-    </header>
-
-    {{ partial('partial/menu/header') }}
+        {% endif %}

@@ -43,6 +43,9 @@ class Shop extends \Phalcon\Mvc\Model
 
 	public function initialize()
 	{
+		$this->setReadConnectionService('readDb');
+		$this->setWriteConnectionService('writeDb');
+
 		$this->setSource('shops');
 		$this->belongsTo('user_ik', 'User', 'ik');
 	}
