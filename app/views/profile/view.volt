@@ -1,10 +1,11 @@
+<div class="content-container">
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "0919549b-9f77-444b-bd9a-4c8683b78c51", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 
 {% if profile.custom_background %}
     <style type="text/css">
-        #page {
-            background: url('{{ profile.backgroundUrl() }}') #fff no-repeat center top fixed !important;
+        .header_area.subpages {
+            background: url('{{ profile.backgroundUrl() }}')!important;
             -webkit-background-size: cover!important;
             -moz-background-size: cover!important;
             -o-background-size: cover!important;
@@ -160,15 +161,16 @@
         </div>
     {% endif %}
 </div>
-
+</div>
 <?php
 $has_results = (count($results) > 0);
 ?>
 {% if has_results %}
     <br clear="both">
-    <div class="login-panel full-screen profile-board">
-        <div class="login-panel-header">
-            <center><h1>{{ profile.user_name }}'s Board</h1></center>
+    <div class="unique_area">
+    <div class="content-container">
+        <div class="unik_text">
+            <h2>{{ profile.user_name }}'s Board</h2>
             {% if isLoggedIn and profile.ik == auth['ik'] %}
                 <div style="float: right; margin-top: -25px;" class="hidden-xs">
                     <a href="{{ url('post/idea') }}" class="btn btn-green"><i class="fa fa-camera"></i> Post Ideas</a>
@@ -182,5 +184,6 @@ $has_results = (count($results) > 0);
                 {{ partial('partial/gallery/list') }}
             </form>
         </div>
+    </div>
     </div>
 {% endif %}

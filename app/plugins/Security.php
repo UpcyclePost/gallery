@@ -43,6 +43,8 @@ class Security extends Plugin
 		$publicResources = [
 			'post'       => ['index', 'idea', 'render', 'details', 'upload', 'submit', 'like', 'report', 'send', 'share'],
 			'gallery'    => ['index', 'view', 'more'],
+			'browse'     => ['*'],
+			'page'       => ['*'],
 			'profile'    => ['login', 'register', 'forgotPassword', 'resetPassword', 'view'],
 			'contact'    => ['index'],
 			'error'      => ['*'],

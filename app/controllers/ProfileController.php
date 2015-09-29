@@ -540,6 +540,7 @@ class ProfileController extends ControllerBase
 		$this->view->title = sprintf('%s | Upcycling Ideas, Articles and Products | UpcyclePost', $user->user_name);
 		$this->view->metaDescription = sprintf("Discover the greatest upcycled products and post what inspires you. %s, %s : %s",
 		                                       $user->user_name, $user->location, str_replace('"', "'", Helpers::tokenTruncate($user->about, 65)));
+		$this->view->page_title_text = sprintf("%s'%s profile", $user->user_name, (substr(strrev(strtolower($user->user_name)), 0, 1) == 's') ? '' : 's');
 
 		$this->view->profile = $user;
 
@@ -590,6 +591,7 @@ class ProfileController extends ControllerBase
 		             ->addJs('js/profile/register.js');
 
 		$this->view->title = 'Sign Up | UpcyclePost';
+		$this->view->page_header_text = 'Sign up and become an UpcyclePost Insider';
 
 		if (isset($this->auth[ 'ik' ]))
 		{
@@ -753,6 +755,7 @@ class ProfileController extends ControllerBase
 	public function loginAction()
 	{
 		$this->view->title = 'Sign In | UpcyclePost';
+		$this->view->page_header_text = 'Sign in';
 
 		if ($auth = $this->session->get('auth'))
 		{

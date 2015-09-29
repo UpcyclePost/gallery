@@ -38,11 +38,18 @@ class PrestashopIntegrationService
 		return ['title' => '', 'content' => ''];
 	}
 
-	public function findShops()
+	public function findShops($term = \false)
 	{
 		$result = [];
 
-		$shopsResult = $this->__shopConnection->query('SELECT shop_name, email FROM upshop.up_marketplace_shop u INNER JOIN upshop.up_customer c ON c.id_customer = u.id_customer WHERE u.is_active = 1 AND (SELECT count(*) AS total FROM upshop.up_marketplace_shop shop INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer INNER JOIN upshop.up_marketplace_seller_product product ON product.id_shop = shop.id WHERE deleted = 0 AND ps_customer.email = c.email) >= 3 ORDER BY rand()');
+		if ($term)
+		{
+			$shopsResult = $this->__shopConnection->query('SELECT shop_name, email FROM upshop.up_marketplace_shop u INNER JOIN upshop.up_customer c ON c.id_customer = u.id_customer WHERE u.is_active = 1 AND (SELECT count(*) AS total FROM upshop.up_marketplace_shop shop INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer INNER JOIN upshop.up_marketplace_seller_product product ON product.id_shop = shop.id WHERE deleted = 0 AND ps_customer.email = c.email) >= 3 AND shop_name LIKE ? ORDER BY rand()', [sprintf('%s%s', $term, '%')]);
+		}
+		else
+		{
+			$shopsResult = $this->__shopConnection->query('SELECT shop_name, email FROM upshop.up_marketplace_shop u INNER JOIN upshop.up_customer c ON c.id_customer = u.id_customer WHERE u.is_active = 1 AND (SELECT count(*) AS total FROM upshop.up_marketplace_shop shop INNER JOIN upshop.up_customer ps_customer on ps_customer.id_customer = shop.id_customer INNER JOIN upshop.up_marketplace_seller_product product ON product.id_shop = shop.id WHERE deleted = 0 AND ps_customer.email = c.email) >= 3 ORDER BY rand()');
+		}
 		while ($r = $shopsResult->fetchArray())
 		{
 			if (($user = \User::findFirst(['email = ?0', 'bind' => [$r[ 'email' ]]])))
@@ -67,6 +74,7 @@ class PrestashopIntegrationService
 				}
 
 				$result[ ] = [
+					'_shop'     => \true,
 					'url'       => $user->shopUrl(),
 					'thumbnail' => $shopThumbnail,
 					'title'     => $r['shop_name'],
@@ -229,7 +237,7 @@ class PrestashopIntegrationService
 				$sql .= sprintf(" AND ps_customer.id_customer NOT IN(%s)", implode(',', $foundUsers));
 			}
 
-			$sql .= " GROUP BY product.id ORDER BY rand() LIMIT 2";
+			$sql .= " GROUP BY product.id ORDER BY rand() LIMIT 1";
 
 			$productsResult = $this->__shopConnection->query($sql, [$id]);
 
