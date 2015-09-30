@@ -39,5 +39,11 @@
         <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
         <script type="text/javascript">stLight.options({publisher: "0919549b-9f77-444b-bd9a-4c8683b78c51", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 
+        <?php
+            foreach ($this->assets->collection('js') AS $resource)
+            {
+                echo \Phalcon\Tag::javascriptInclude(sprintf('%s?%s', $resource->getPath(), $_version));
+            }
+        ?>
     </body>
 </html>

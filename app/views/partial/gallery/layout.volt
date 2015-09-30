@@ -1,5 +1,5 @@
 <?php
-$searchCategory = ($category == 'New') ? '' : $category;
+$searchCategory = (!isset($category) || $category == 'New') ? '' : $category;
 ?>
 <form id="more" data-start="{% if start is defined %}{{ start }}{% else %}50{% endif %}" data-url="{{ url('gallery/' ~ searchCategory|url) ~ '/more' }}" data-search-term="{% if searchTerm is defined %}{{ searchTerm }}{% endif %}"></form>
 <div class="content-container">

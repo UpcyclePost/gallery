@@ -1,11 +1,11 @@
 <div class="row">
-    {% if results is defined %}
-        {% for post in results %}
-            {% if post['_user'] is defined %}
+    <?php if (isset($results) && count($results) > 0) { ?>
+        {% for _post in results %}
+            {% if _post['_user'] is defined %}
                 {{ partial('partial/gallery/user') }}
-            {% elseif post['_shop'] is defined %}
+            {% elseif _post['_shop'] is defined %}
                 {{ partial('partial/gallery/shop') }}
-            {% elseif post['market'] is defined %}
+            {% elseif _post['market'] is defined %}
                 {{ partial('partial/gallery/product') }}
             {% else %}
                 {{ partial('partial/gallery/idea') }}
@@ -13,5 +13,5 @@
         {% else %}
 
         {% endfor %}
-    {% endif %}
+    <?php } ?>
 </div>

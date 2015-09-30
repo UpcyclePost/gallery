@@ -1,8 +1,8 @@
 <div class="col-lg-3 col-md-4 col-sm-4">
     <article class="product_image thumbnail">
-        <a href="{{ url('gallery/' ~ post['categoryTitle']|url ~ '/' ~ post['title']|url ~ '-' ~ post['ik']) }}">
+        <a href="{{ url('gallery/' ~ _post['categoryTitle']|url ~ '/' ~ _post['title']|url ~ '-' ~ _post['ik']) }}">
             <div class="thumbnail-container">
-                <img alt="{{ post['title'] }}" src="<?=Helpers::getImageUrl(sprintf('post/%s-%s.small.png', $post['id'], $post['ik']))?>" style="min-height:200px;min-width:273px">
+                <img alt="{{ _post['title'] }}" src="<?=Helpers::getImageUrl(sprintf('post/%s-%s.small.png', $_post['id'], $_post['ik']))?>" style="min-height:200px;min-width:273px">
                 <div class="product-icons">
                     <div class="icon-circle">
                         <i class="fa fa-heart"></i>
@@ -24,13 +24,13 @@
         </a>
 
         <div class="caption">
-            <a href="{{ url('gallery/' ~ post['categoryTitle']|url ~ '/' ~ post['title']|url ~ '-' ~ post['ik']) }}">
-                <h2><?=Helpers::tokenTruncate($post['title'], 22, true)?></h2>
+            <a href="{{ url('gallery/' ~ _post['categoryTitle']|url ~ '/' ~ _post['title']|url ~ '-' ~ _post['ik']) }}">
+                <h2><?=Helpers::tokenTruncate($_post['title'], 22, true)?></h2>
             </a>
 
             <div class="product-meta clearfix">
                 <a class="author" href="#">
-                    <a href="{{ url('profile/view/') ~ post['user'] }}"><?=Helpers::Truncate($post['userName'], 40)?></a>
+                    <a href="{{ url('profile/view/') ~ _post['user'] }}"><?=Helpers::Truncate($_post['userName'], 40)?></a>
                 </a>
             </div>
         </div>

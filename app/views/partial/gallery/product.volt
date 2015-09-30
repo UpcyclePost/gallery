@@ -1,8 +1,8 @@
 <div class="col-lg-3 col-md-4 col-sm-4">
     <article class="product_image thumbnail">
-        <a href="{{ post['url'] }}">
+        <a href="{{ _post['url'] }}">
             <div class="thumbnail-container">
-                <img alt="{{ post['title'] }}" src="{{ post['image'] }}" style="min-height:200px;min-width:273px">
+                <img alt="{{ _post['title'] }}" src="{{ _post['image'] }}" style="min-height:200px;min-width:273px">
                 <div class="product-icons">
                     <div class="icon-circle">
                         <i class="fa fa-heart"></i>
@@ -24,16 +24,16 @@
         </a>
 
         <div class="caption">
-            <a href="{{ post['url'] }}">
-                <h2><?=Helpers::tokenTruncate($post['title'], 22, true)?></h2>
+            <a href="{{ _post['url'] }}">
+                <h2><?=Helpers::tokenTruncate($_post['title'], 22, true)?></h2>
             </a>
 
             <div class="product-meta clearfix">
                 <a class="author" href="#">
-                    <a href="{{ url('shops/') ~ post['userName'] }}"><?=Helpers::Truncate($post['shopName'], 20)?></a>
+                    <a href="{{ url('shops/') ~ _post['userName'] }}"><?=Helpers::Truncate($_post['shopName'], 20)?></a>
                 </a>
 
-                <a class="price" href="{{ post['url'] }}">${{ post['price']|pretty }}</a>
+                <a class="price" href="{{ _post['url'] }}">${{ _post['price']|pretty }}</a>
             </div>
         </div>
     </article>
