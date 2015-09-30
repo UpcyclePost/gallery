@@ -27,9 +27,6 @@ class Likes extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setReadConnectionService('readDb');
-        $this->setWriteConnectionService('writeDb');
-
         $this->setSource('Likes');
         $this->hasOne('user_ik', 'User', 'ik');
     }
