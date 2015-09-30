@@ -83,55 +83,54 @@
                                     <li><a href="{{ url('contact') }}">Contact us</a></li>
                                 </ul>
                                 <div class="social-icons">
-                                    <a href="http://www.facebook.com/upcyclepost"><i class="fa fa-facebook-square"></i></a>
-                                    <a href="http://www.linkedin.com/company/upcyclepost-com"><i class="fa fa-linkedin-square"></i></a>
-                                    <a href="http://www.twitter.com/upcyclepost"><i class="fa fa-twitter-square"></i></a>
-                                    <a href="http://www.pinterest.com/upcyclepost"><i class="fa fa-pinterest-square"></i></a>
+                                    <a href="https://www.facebook.com/upmodinc" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                                    <a href="https://www.twitter.com/upmodinc" target="_blank"><i class="fa fa-twitter-square"></i></a>
+                                    <a href="https://www.pinterest.com/upmodinc" target="_blank"><i class="fa fa-pinterest-square"></i></a>
+                                    <a href="https://plus.google.com/+upmodinc" target="_blank"><i class="fa fa-google-plus-square"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </nav>
-            {% if isIndexPage is defined %}
-                <nav class="submenu">
-                    <div class="container hidden-xs">
-                        <div class="row">
-                            <div class="left_menu">
-                                <ul>
-                                    <li>
-                                        <a href="{{ url('browse/products/art') }}">Art</a>
-                                    </li>
+            <nav class="submenu">
+                <div class="container hidden-xs">
+                    <div class="row">
+                        <div class="left_menu">
+                            <ul>
+                                <li>
+                                    <a href="{{ url('browse/products/art') }}">Art</a>
+                                </li>
 
-                                    <li>
-                                        <a href="{{ url('browse/products/fashion') }}">Fashion</a>
-                                    </li>
+                                <li>
+                                    <a href="{{ url('browse/products/fashion') }}">Fashion</a>
+                                </li>
 
-                                    <li>
-                                        <a href="{{ url('browse/products/furniture') }}">Furniture</a>
-                                    </li>
+                                <li>
+                                    <a href="{{ url('browse/products/furniture') }}">Furniture</a>
+                                </li>
 
-                                    <li>
-                                        <a href="{{ url('browse/products/home') }}">Home</a>
-                                    </li>
+                                <li>
+                                    <a href="{{ url('browse/products/home') }}">Home</a>
+                                </li>
 
-                                    <li>
-                                        <a href="{{ url('browse/products/jewelry') }}">Jewelry</a>
-                                    </li>
+                                <li>
+                                    <a href="{{ url('browse/products/jewelry') }}">Jewelry</a>
+                                </li>
 
-                                    <li>
-                                        <a href="{{ url('browse/products/vintage') }}">Vintage</a>
-                                    </li>
-                                </ul>
-                            </div>
+                                <li>
+                                    <a href="{{ url('browse/products/vintage') }}">Vintage</a>
+                                </li>
+                            </ul>
+                        </div>
 
-                            <div class="right_menu">
-                                <a class="menu-toggle">See all categories</a>
-                            </div>
+                        <div class="right_menu">
+                            <a class="menu-toggle">See all categories</a>
                         </div>
                     </div>
-                </nav>
-
+                </div>
+            </nav>
+            {% if isIndexPage is defined %}
                 <section class="header_content">
                     <div class="container">
                         <div class="row">
@@ -146,14 +145,12 @@
                         </div>
                     </div>
                 </section>
-            {% else %}
+            {% elseif page_title_text is defined %}
                 <section>
                     <div class="container">
                         <div class="row">
                             <div class="page_title_text">
-                                {% if page_title_text is defined %}
-                                    {{ page_title_text }}
-                                {% endif %}
+                                {{ page_title_text }}
                             </div>
                         </div>
                     </div>

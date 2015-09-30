@@ -8,19 +8,19 @@
                         <div class="promo_icon">
                             <ul>
                                 <li>
-                                    <img alt="" src="{{ static_url('upmod/img/shop.png') }}">
+                                    <a href="{{ url('/up/shop') }}"><img alt="" src="{{ static_url('upmod/img/shop.png') }}"></a></a>
 
                                     <h2>Shop</h2>
                                 </li>
 
                                 <li>
-                                    <img alt="" src="{{ static_url('upmod/img/sell.png') }}">
+                                    <a href="{{ url('/up/sell') }}"><img alt="" src="{{ static_url('upmod/img/sell.png') }}"></a>
 
                                     <h2>Sell</h2>
                                 </li>
 
                                 <li>
-                                    <img alt="" src="{{ static_url('upmod/img/share.png') }}">
+                                    <a href="{{ url('/up/share') }}"><img alt="" src="{{ static_url('upmod/img/share.png') }}"></a>
 
                                     <h2>Share</h2>
                                 </li>
@@ -181,7 +181,7 @@
                         </div>
 
                         <div class="buton">
-                            <button class="btn btn-default shop_more unik">Create your shop</button>
+                            <a class="btn btn-default shop_more unik" href="{{ url('shop/module/marketplace/sellerrequest') }}">Create your shop</a>
                         </div>
                     </div>
 
@@ -277,7 +277,7 @@
                         </div>
 
                         <div class="buton">
-                            <button class="btn btn-default shop_more unik">Meet fellow upcyclers</button>
+                            <a class="btn btn-default shop_more unik" href="{{ url('browse/members') }}">Meet fellow upcyclers</a>
                         </div>
                     </div>
                 </div>
@@ -299,7 +299,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="work_sample pull-right">
-                            <img alt="" src="{{ static_url('upmod/img/shop.png') }}">
+                            <a href="{{ url('/up/shop') }}"><img alt="" src="{{ static_url('upmod/img/shop.png') }}"></a>
 
                             <h2>Shop</h2>
 
@@ -313,7 +313,7 @@
 
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="work_sample">
-                            <img alt="" src="{{ static_url('upmod/img/sell.png') }}">
+                            <a href="{{ url('/up/sell') }}"><img alt="" src="{{ static_url('upmod/img/sell.png') }}"></a>
 
                             <h2>Sell</h2>
 
@@ -327,7 +327,7 @@
 
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="work_sample pull-left">
-                            <img alt="" src="{{ static_url('upmod/img/share.png') }}">
+                            <a href="{{ url('/up/share') }}"><img alt="" src="{{ static_url('upmod/img/share.png') }}"></a>
 
                             <h2>Share</h2>
 

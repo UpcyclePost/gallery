@@ -10,10 +10,10 @@
                         <li><a href="{{ url('policy') }}">Policies</a></li>
                     </ul>
                     <div class="social-icons">
-                        <a href="http://www.facebook.com/upcyclepost"><i class="fa fa-facebook-square"></i></a>
-                        <a href="http://www.linkedin.com/company/upcyclepost-com"><i class="fa fa-linkedin-square"></i></a>
-                        <a href="http://www.twitter.com/upcyclepost"><i class="fa fa-twitter-square"></i></a>
-                        <a href="http://www.pinterest.com/upcyclepost"><i class="fa fa-pinterest-square"></i></a>
+                        <a href="https://www.facebook.com/upmodinc" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                        <a href="https://www.twitter.com/upmodinc" target="_blank"><i class="fa fa-twitter-square"></i></a>
+                        <a href="https://www.pinterest.com/upmodinc" target="_blank"><i class="fa fa-pinterest-square"></i></a>
+                        <a href="https://plus.google.com/+upmodinc" target="_blank"><i class="fa fa-google-plus-square"></i></a>
                     </div>
                     <div class="copyright">
                         &copy; <?=date('Y')?> Upmod. All Rights Reserved
