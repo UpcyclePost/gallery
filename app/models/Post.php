@@ -107,10 +107,8 @@ class Post extends \Phalcon\Mvc\Model
 
     public static $savedGalleryViews = false;
 
-    public function initialize() {
-        $this->setReadConnectionService('readDb');
-        $this->setWriteConnectionService('writeDb');
-
+    public function initialize()
+    {
         $this->hasOne('user_ik', 'User', 'ik');
         $this->hasOne('category_ik', 'Category', 'ik');
         $this->hasOne('ik', 'Market', 'post_ik');

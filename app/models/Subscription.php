@@ -40,9 +40,6 @@ class Subscription extends \Phalcon\Mvc\Model
 
 	public function initialize()
 	{
-		$this->setReadConnectionService('readDb');
-		$this->setWriteConnectionService('writeDb');
-
 		$this->useDynamicUpdate(true);
 
 		$this->hasOne('subscribed_user_ik', 'User', 'ik');

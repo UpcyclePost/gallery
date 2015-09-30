@@ -29,8 +29,7 @@ class Category extends \Phalcon\Mvc\Model
 
     public function initialize()
     {
-        $this->setReadConnectionService('readDb');
-        $this->setWriteConnectionService('writeDb');
+        
     }
 
     /**
