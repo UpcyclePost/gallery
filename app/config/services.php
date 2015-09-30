@@ -18,7 +18,7 @@ $di->set('config', function () use ($config)
 /**
  * Database connection is created based in the parameters defined in the configuration file
  */
-/*$di->set('db', function () use ($config)
+$di->set('db', function () use ($config)
 {
     return new DbAdapter([
                              'host'     => $config->database->host,
@@ -26,7 +26,7 @@ $di->set('config', function () use ($config)
                              'password' => $config->database->password,
                              'dbname'   => $config->database->dbname
                          ]);
-});*/
+});
 
 $di->set('prestashopDb', function () use ($config)
 {
@@ -38,7 +38,8 @@ $di->set('prestashopDb', function () use ($config)
 	                     ]);
 });
 
-$di->set('readDb', function () use ($config)
+// We would use these for separate read and write connections in the Models.
+/*$di->set('readDb', function () use ($config)
 {
     return new DbAdapter([
         'host'     => $config->slave->host,
@@ -56,7 +57,7 @@ $di->set('writeDb', function () use ($config)
         'password' => $config->master->password,
         'dbname'   => $config->master->dbname
     ]);
-});
+});*/
 
 /**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise
