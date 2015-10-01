@@ -31,7 +31,7 @@
 
         <div class="caption">
             <a href="{{ _post['url'] }}">
-                <h2><?=Helpers::Truncate($_post['title'], 35)?></h2>
+                <h2><?=Helpers::tokenTruncate($_post['title'], 28, \true)?></h2>
             </a>
         </div>
     </article>
