@@ -11,15 +11,11 @@
                 <ol class="breadcrumb">
                     <li><a href="{{ url('gallery') }}">Gallery</a></li>
                     <li><a href="{{ url('gallery/' ~ post.Category.title|url) }}">{{ post.Category.title }}</a></li>
-                    <li style="float: right" class="attr-content" data-content=" ">
+                    <li style="float: right;position:relative;bottom:10px;" class="attr-content" data-content=" ">
                         <span class='st_facebook'></span>
                         <span class='st_twitter'></span>
-                        <span class='st_linkedin'></span>
                         <span class='st_googleplus'></span>
                         <span class='st_pinterest'></span>
-                        <span class='st_stumbleupon'></span>
-                        <span class='st_email'></span>
-                        <span class='st_sharethis'></span>
                     </li>
                 </ol>
             </div>
