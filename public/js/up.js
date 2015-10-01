@@ -8,8 +8,28 @@
 	UP.prototype = {
 		init: function () {
 			this.search = new Search();
+			this.social = new Social();
 		}
 	};
+
+	function Social() {
+		this.init();
+	}
+
+	Social.prototype = {
+		init: function() {
+			$('.like button').click(function(event) {
+				event.preventDefault();
+
+				try {
+					$(event.target).parent().parent().parent().children('div.product-icons').children().first('i.fa-heart')[0].style.color = '#0187d0';
+					//$.ajax($(event.target).attr('data-url'));
+				} catch (e) {
+					
+				}
+			})
+		}
+	}
 
 	function Search() {
 		this.init();

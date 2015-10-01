@@ -6683,3 +6683,7 @@ nav.tabs li .btn {
   padding-right:5px;
   padding-bottom:5px;
 }
+
+.row-centered {
+  text-align:center;
+}
