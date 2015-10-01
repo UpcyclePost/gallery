@@ -1,7 +1,11 @@
 {% if profile.Shop.background is defined %}
     <style type="text/css">
-        #page {
-            background: url('{{ profile.Shop.backgroundUrl() }}') #fff no-repeat center top fixed !important;
+        .header_area.subpages {
+            background:transparent!important;
+        }
+
+        body {
+            background: url('{{ profile.backgroundUrl() }}')!important;
             -webkit-background-size: cover!important;
             -moz-background-size: cover!important;
             -o-background-size: cover!important;

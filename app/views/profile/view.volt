@@ -4,7 +4,11 @@
 
 {% if profile.custom_background %}
     <style type="text/css">
-        #content-main {
+        .header_area.subpages {
+            background:transparent!important;
+        }
+
+        body {
             background: url('{{ profile.backgroundUrl() }}')!important;
             -webkit-background-size: cover!important;
             -moz-background-size: cover!important;
