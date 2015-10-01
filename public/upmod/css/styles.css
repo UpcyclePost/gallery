@@ -4028,6 +4028,7 @@ button.close {
   -moz-border-radius: 3px;
   border-radius: 3px;
   color: #333;
+  z-index: 999999!important;
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
