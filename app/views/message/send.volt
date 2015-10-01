@@ -2,9 +2,6 @@
 
 <div class="account-settings-container">
     <div class="login-panel">
-        <div class="login-panel-header">
-            <h1>Message Center</h1>
-        </div>
         <div class="login-panel-header messages">
             <h4>Compose Message</h4>
             Write {{ profile.user_name }} a message.

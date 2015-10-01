@@ -9,6 +9,8 @@ class ProfileController extends ControllerBase
 
 	public function impersonateAction()
 	{
+		$this->view->page_header_text = 'Impersonate';
+
 		if ($this->auth[ 'role' ] == 'Moderators' || $this->auth[ 'role' ] == 'Admins')
 		{
 			if ($this->request->isPost() && $this->request->has('user'))
@@ -309,6 +311,8 @@ class ProfileController extends ControllerBase
 		             ->addJs('js/profile/settings.js');
 
 		$auth = $this->session->get('auth');
+
+		$this->view->page_header_text = 'Account Settings';
 
 		$profile = User::findFirst($auth[ 'ik' ]);
 
@@ -854,6 +858,8 @@ class ProfileController extends ControllerBase
 
 	public function feedAction($type = \false)
 	{
+		$this->view->page_header_text = 'Your Feed';
+
 		$profile = User::findFirst($this->auth[ 'ik' ]);
 
 		$actualType = \false;
