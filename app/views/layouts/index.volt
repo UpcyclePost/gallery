@@ -173,25 +173,25 @@
                                         </div>
 
                                         <div class="btn-group share">
-                                            <span class='st_facebook' st_url="http://www.upcyclepost.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
+                                            <span class='st_facebook' st_url="http://www.upmod.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
                                             <br>
-                                            <span class='st_twitter' st_url="http://www.upcyclepost.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
+                                            <span class='st_twitter' st_url="http://www.upmod.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
                                             <br>
-                                            <span class='st_googleplus' st_url="http://www.upcyclepost.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
+                                            <span class='st_googleplus' st_url="http://www.upmod.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
                                             <br>
-                                            <span class='st_pinterest' st_url="http://www.upcyclepost.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
+                                            <span class='st_pinterest' st_url="http://www.upmod.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
                                         </div>
                                     </div>
                                 </div>
                             </a>
 
                             <div class="caption">
-                                <a href="http://www.upcyclepost.com/shops/alinescardboard">
+                                <a href="http://www.upmod.com/shops/alinescardboard">
                                     <h2>Aline's Cardboard</h2>
                                 </a>
 
                                 <div class="product-meta clearfix">
-                                    <a class="author" href="http://www.upcyclepost.com/shops/alinescardboard">
+                                    <a class="author" href="http://www.upmod.com/shops/alinescardboard">
                                         Issaquah, WA
                                     </a>
                                 </div>
@@ -209,7 +209,7 @@
                         </div>
 
                         <div class="product_image thumbnail wide bot">
-                            <a href="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">
+                            <a href="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">
                                 <div class="thumbnail-container">
                                     <img alt="" src="{{ static_url('img/features/product.png') }}" style="min-height:238px;">
                                     <div class="product-icons">
@@ -226,29 +226,29 @@
                                         </div>
 
                                         <div class="btn-group share">
-                                            <span class='st_facebook' st_url="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
+                                            <span class='st_facebook' st_url="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
                                             <br>
-                                            <span class='st_twitter' st_url="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
+                                            <span class='st_twitter' st_url="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
                                             <br>
-                                            <span class='st_googleplus' st_url="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
+                                            <span class='st_googleplus' st_url="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
                                             <br>
-                                            <span class='st_pinterest' st_url="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
+                                            <span class='st_pinterest' st_url="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
                                         </div>
                                     </div>
                                 </div>
                             </a>
 
                             <div class="caption">
-                                <a href="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">
+                                <a href="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">
                                     <h2>New 70's Stylin' Hubcap Celling Fixture</h2>
                                 </a>
 
                                 <div class="product-meta clearfix">
-                                    <a class="author" href="https://www.upcyclepost.com/shops/101790">
+                                    <a class="author" href="https://www.upmod.com/shops/101790">
                                         Refitting the Planet
                                     </a>
 
-                                    <a class="price" href="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">$450.00</a>
+                                    <a class="price" href="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">$450.00</a>
                                 </div>
                             </div>
                         </div>
@@ -264,7 +264,7 @@
                         </div>
 
                         <div class="product_image thumbnail wide bot">
-                            <a href="http://www.upcyclepost.com/profile/view/156">
+                            <a href="http://www.upmod.com/profile/view/156">
                                 <div class="thumbnail-container">
                                     <img alt="" src="{{ static_url('img/features/profile.png') }}" style="min-height:238px;">
                                     <div class="product-icons">
@@ -281,25 +281,25 @@
                                         </div>
 
                                         <div class="btn-group share">
-                                            <span class='st_facebook' st_url="http://www.upcyclepost.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
+                                            <span class='st_facebook' st_url="http://www.upmod.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
                                             <br>
-                                            <span class='st_twitter' st_url="http://www.upcyclepost.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
+                                            <span class='st_twitter' st_url="http://www.upmod.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
                                             <br>
-                                            <span class='st_googleplus' st_url="http://www.upcyclepost.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
+                                            <span class='st_googleplus' st_url="http://www.upmod.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
                                             <br>
-                                            <span class='st_pinterest' st_url="http://www.upcyclepost.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
+                                            <span class='st_pinterest' st_url="http://www.upmod.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
                                         </div>
                                     </div>
                                 </div>
                             </a>
 
                             <div class="caption">
-                                <a href="http://www.upcyclepost.com/profile/view/156">
+                                <a href="http://www.upmod.com/profile/view/156">
                                     <h2>Raymond Guest</h2>
                                 </a>
 
                                 <div class="product-meta clearfix">
-                                    <a class="author" href="http://www.upcyclepost.com/profile/view/156">
+                                    <a class="author" href="http://www.upmod.com/profile/view/156">
                                         Longview, TX
                                     </a>
                                 </div>
