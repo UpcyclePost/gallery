@@ -4,9 +4,6 @@
     <div class="login-panel">
         <div class="login-panel-header">
             <div style="float: left;">
-                <h1>Message Center</h1>
-            </div>
-            <div style="float: left;">
                 <nav class="slug tabs clearfix feed-menu">
                     <li><a href="{{ url('profile/messages/sent') }}" class="btn {%if viewing == 'sent' %}btn-blue{% else %}btn-gray{% endif %}">Sent Messages</a></li>
                     <li><a href="{{ url('profile/messages') }}" class="btn {%if viewing == 'inbox' %}btn-blue{% else %}btn-gray{% endif %}">Inbox</a></li>

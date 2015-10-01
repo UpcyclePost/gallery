@@ -27,6 +27,11 @@ class Category extends \Phalcon\Mvc\Model
      */
     public $slug;
 
+    public function initialize()
+    {
+        
+    }
+
     /**
      * Independent Column Mapping.
      */

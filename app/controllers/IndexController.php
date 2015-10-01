@@ -25,7 +25,7 @@ class IndexController extends ControllerBase
 		}
 		else
 		{
-			$items = Post::searchIndex(0, 49, false, false, false, false, ['ik' => 'desc'], 'idea');
+			$items = Post::searchIndex(0, 11, false, false, false, false, ['ik' => 'desc'], 'idea');
 		}
 
 		$featuredProductBlock = $prestashopIntegrationService->getCMSBlock(18);
@@ -34,7 +34,12 @@ class IndexController extends ControllerBase
 
 		$results = [];
 
-		if ($featuredProductBlock)
+		foreach ($items AS $item)
+		{
+			$results[] = $item;
+		}
+
+		/*if ($featuredProductBlock)
 		{
 			$results[] = ['cms' => \true, 'content' => $featuredProductBlock['content']];
 		}
@@ -54,7 +59,7 @@ class IndexController extends ControllerBase
 			$results[] = $item;
 
 			$i++;
-		}
+		}*/
 
 		$this->view->results = $results;
 

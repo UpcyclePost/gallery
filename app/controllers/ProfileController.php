@@ -9,6 +9,8 @@ class ProfileController extends ControllerBase
 
 	public function impersonateAction()
 	{
+		$this->view->page_header_text = 'Impersonate';
+
 		if ($this->auth[ 'role' ] == 'Moderators' || $this->auth[ 'role' ] == 'Admins')
 		{
 			if ($this->request->isPost() && $this->request->has('user'))
@@ -128,7 +130,7 @@ class ProfileController extends ControllerBase
 								}
 								else if (!$displayedEtsyError)
 								{
-									$this->flash->error('We apologize for any inconvenience, but linking to this site is not permissible within the UpcyclePost marketplace.');
+									$this->flash->error('We apologize for any inconvenience, but linking to this site is not permissible within the upmod marketplace.');
 									$displayedEtsyError = \true;
 								}
 							}
@@ -310,6 +312,8 @@ class ProfileController extends ControllerBase
 
 		$auth = $this->session->get('auth');
 
+		$this->view->page_header_text = 'Account Settings';
+
 		$profile = User::findFirst($auth[ 'ik' ]);
 
 		if ($this->request->isPost())
@@ -408,7 +412,7 @@ class ProfileController extends ControllerBase
 
 	public function resetPasswordAction()
 	{
-		$this->view->title = 'Reset Password | UpcyclePost';
+		$this->view->title = 'Reset Password | upmod';
 		$this->assets->addJs('js/libraries/validate/jquery.validate.min.js')
 		             ->addJs('js/profile/reset-password.js');
 
@@ -467,7 +471,8 @@ class ProfileController extends ControllerBase
 
 	public function forgotPasswordAction()
 	{
-		$this->view->title = 'Forgot Password | UpcyclePost';
+		$this->view->title = 'Forgot Password | upmod';
+		$this->view->page_header_text = 'Forgot Password';
 
 		if ($this->request->isPost())
 		{
@@ -496,7 +501,7 @@ class ProfileController extends ControllerBase
 						$body = ob_get_contents();
 						ob_end_clean();
 
-						$success = Helpers::sendEmail($user->email, 'UpcyclePost password reset', $body);
+						$success = Helpers::sendEmail($user->email, 'upmod password reset', $body);
 
 						if ($success)
 						{
@@ -537,9 +542,10 @@ class ProfileController extends ControllerBase
 			return $this->response->redirect('gallery');
 		}
 
-		$this->view->title = sprintf('%s | Upcycling Ideas, Articles and Products | UpcyclePost', $user->user_name);
+		$this->view->title = sprintf('%s | Upcycling Ideas, Articles and Products | upmod', $user->user_name);
 		$this->view->metaDescription = sprintf("Discover the greatest upcycled products and post what inspires you. %s, %s : %s",
 		                                       $user->user_name, $user->location, str_replace('"', "'", Helpers::tokenTruncate($user->about, 65)));
+		$this->view->page_title_text = sprintf("%s'%s profile", $user->user_name, (substr(strrev(strtolower($user->user_name)), 0, 1) == 's') ? '' : 's');
 
 		$this->view->profile = $user;
 
@@ -589,7 +595,8 @@ class ProfileController extends ControllerBase
 		$this->assets->addJs('js/libraries/validate/jquery.validate.min.js')
 		             ->addJs('js/profile/register.js');
 
-		$this->view->title = 'Sign Up | UpcyclePost';
+		$this->view->title = 'Sign Up | upmod';
+		$this->view->page_header_text = 'Sign up and become an upmod Insider';
 
 		if (isset($this->auth[ 'ik' ]))
 		{
@@ -744,7 +751,7 @@ class ProfileController extends ControllerBase
 
 	public function registerThankYouAction()
 	{
-		$this->view->title = 'Thank You | UpcyclePost';
+		$this->view->title = 'Thank You | upmod';
 		$profile = $this->__getProfile();
 
 		$this->view->profile_url = $profile->url();
@@ -752,7 +759,8 @@ class ProfileController extends ControllerBase
 
 	public function loginAction()
 	{
-		$this->view->title = 'Sign In | UpcyclePost';
+		$this->view->title = 'Sign In | upmod';
+		$this->view->page_header_text = 'Sign in';
 
 		if ($auth = $this->session->get('auth'))
 		{
@@ -850,6 +858,8 @@ class ProfileController extends ControllerBase
 
 	public function feedAction($type = \false)
 	{
+		$this->view->page_header_text = 'Your Feed';
+
 		$profile = User::findFirst($this->auth[ 'ik' ]);
 
 		$actualType = \false;

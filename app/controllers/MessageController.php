@@ -4,6 +4,7 @@ class MessageController extends ControllerBase
 {
 	public function inboxAction()
 	{
+		$this->view->page_header_text = 'Message Center';
 		// Find all messages sent to this user.
 		// @TODO: We need to paginate this.
 		$messages = Message::find([
@@ -19,6 +20,7 @@ class MessageController extends ControllerBase
 
 	public function sentAction()
 	{
+		$this->view->page_header_text = 'Message Center';
 		// Find all messages sent by this user.
 		// @TODO: We need to paginate this.
 		$messages = Message::find([
@@ -39,6 +41,7 @@ class MessageController extends ControllerBase
 	 */
 	public function viewAction($messageIk)
 	{
+		$this->view->page_header_text = 'Message Center';
 		// Find the selected message.
 		$message = Message::findFirst([
 			                              'conditions' => 'ik = ?0 AND (to_user_ik = ?1 OR from_user_ik = ?1)',
@@ -69,6 +72,7 @@ class MessageController extends ControllerBase
 
 	public function sendAction($toUserIk)
 	{
+		$this->view->page_header_text = 'Message Center';
 		// Set the redirect location in case the user is not already logged in.
 		$this->session->set('redirectTo', $this->router->getRewriteUri());
 

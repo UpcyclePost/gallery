@@ -38,6 +38,27 @@ $di->set('prestashopDb', function () use ($config)
 	                     ]);
 });
 
+// We would use these for separate read and write connections in the Models.
+/*$di->set('readDb', function () use ($config)
+{
+    return new DbAdapter([
+        'host'     => $config->slave->host,
+        'username' => $config->slave->username,
+        'password' => $config->slave->password,
+        'dbname'   => $config->slave->dbname
+    ]);
+});
+
+$di->set('writeDb', function () use ($config)
+{
+    return new DbAdapter([
+        'host'     => $config->master->host,
+        'username' => $config->master->username,
+        'password' => $config->master->password,
+        'dbname'   => $config->master->dbname
+    ]);
+});*/
+
 /**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise
  */
