@@ -12,6 +12,22 @@
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
         <title>Upmod</title>
         <meta content="" name="description">
+
+        {% if og_img is defined %}
+            <meta property="og:image" content="{{ og_img }}" />
+        {% endif %}
+        {% if og_img_size is defined %}
+            <meta property="og:image:width" content="{{ og_img_size[0] }}" />
+            <meta property="og:image:height" content="{{ og_img_size[1] }}" />
+        {% endif %}
+        {% if og_description is defined %}
+            <meta property="og:description" content="{{ og_description }}" />
+        {% endif %}
+        {% if canonical_url is defined %}
+            <meta property="og:url" content="{{ canonical_url }}" />
+        {% endif %}
+        <meta property="og:title" content="{{ title }}" />
+
         <meta content="width=device-width, initial-scale=1" name="viewport">
         <link href="apple-touch-icon.png" rel="apple-touch-icon">
         <!-- <link href="{{ static_url('upmod/css/bootstrap.min.css') }}" rel="stylesheet">
