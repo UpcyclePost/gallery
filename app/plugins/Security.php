@@ -44,6 +44,7 @@ class Security extends Plugin
 			'post'       => ['index', 'idea', 'render', 'details', 'upload', 'submit', 'like', 'report', 'send', 'share'],
 			'gallery'    => ['index', 'view', 'more'],
 			'browse'     => ['*'],
+			'up'         => ['*'],
 			'page'       => ['*'],
 			'profile'    => ['login', 'register', 'forgotPassword', 'resetPassword', 'view'],
 			'contact'    => ['index'],
@@ -53,6 +54,8 @@ class Security extends Plugin
 			'about'      => ['*'],
 			'terms'      => ['*'],
 			'privacy'    => ['*'],
+			'policy'    => ['*'],
+			'faq'    => ['*'],
 			'newsletter' => ['subscribe'],
 			'shop'       => ['view', 'shops', 'redirect'],
 			'search'     => ['*']

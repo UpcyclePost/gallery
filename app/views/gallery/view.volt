@@ -11,24 +11,22 @@
                 <ol class="breadcrumb">
                     <li><a href="{{ url('gallery') }}">Gallery</a></li>
                     <li><a href="{{ url('gallery/' ~ post.Category.title|url) }}">{{ post.Category.title }}</a></li>
-                    <li style="float: right" class="attr-content" data-content=" ">
+                    <li style="float: right;position:relative;bottom:10px;" class="attr-content" data-content=" ">
                         <span class='st_facebook'></span>
                         <span class='st_twitter'></span>
-                        <span class='st_linkedin'></span>
                         <span class='st_googleplus'></span>
                         <span class='st_pinterest'></span>
-                        <span class='st_stumbleupon'></span>
                     </li>
                 </ol>
             </div>
             <div class="post-details-img-container" style="position:relative;">
                 <a href="{{ itemPrevLink }}">
-                    <img src="{{ static_url('img/left_sm.png') }}" style="position:absolute; left: 10px; z-index:99" alt="Previous Post" class="no-print arrow-next">
-                </a>
-                <a href="{{ itemNextLink }}">
-                    <img src="{{ static_url('img/right_sm.png') }}" style="float:right;position:relative; right: -10px; z-index:99" alt="Next Post" class="no-print arrow-next">
+                    <img src="{{ static_url('img/left.png') }}" style="position:absolute; left: 10px; z-index:99" alt="Previous Post">
                 </a>
                 <img src="<?=$post->thumbnail('big')?>" alt="{{ post.title }}" />
+                <a href="{{ itemNextLink }}">
+                    <img src="{{ static_url('img/right.png') }}" style="position:absolute; right: 10px; z-index:99" alt="Next Post">
+                </a>
             </div>
             <div class="post-details-description">
                 <h5>Description</h5>

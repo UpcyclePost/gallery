@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="source">How did you hear about UpcyclePost?</label>
+                    <label for="source">How did you hear about upmod?</label>
                     <select name="source" class="form-control" tabindex="7" required>
                         <option value="">Please choose...</option>
                         <option value="Mark">Mark the Founder</option>
@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="form-group subscribe">
-                    <h4>Sign me up to become an UpcyclePost Insider &#9786;</h4>
+                    <h4>Sign me up to become an upmod Insider &#9786;</h4>
                     <div style="float: left; width: 25px;"><input type="checkbox" name="mcRegister" id="mc-register" checked tabindex="8"> </div>
                     <div style="float: left; width: 400px;">
                     <p><label for="mc-register" style="font-weight: normal;">Join our community of upcyclers and receive monthly news, promotions, featured items &amp; special offers.</label></p>

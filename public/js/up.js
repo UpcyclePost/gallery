@@ -8,8 +8,32 @@
 	UP.prototype = {
 		init: function () {
 			this.search = new Search();
+			this.social = new Social();
 		}
 	};
+
+	function Social() {
+		this.init();
+	}
+
+	Social.prototype = {
+		init: function() {
+			$('.like button').click(function(event) {
+				event.preventDefault();
+
+				if ($(event.target).data('url') !== undefined)
+				{
+					try {
+						$(event.target).parent().parent().parent().children('div.product-icons').children().first('i.fa-heart')[0].style.color = '#0187d0';
+						$(event.target).children('i.fa-heart')[0].style.color = '#0187d0';
+						$.ajax($(event.target).attr('data-url'));
+					} catch (e) {
+
+					}
+				}
+			})
+		}
+	}
 
 	function Search() {
 		this.init();
@@ -33,9 +57,11 @@
 							return {
 								id: product.id,
 								query: product.query,
-								value: product.text,
+								value: product.value,
+								text: product.text,
 								key: product.value,
-								url: product.hasOwnProperty('url') ? product.url : ''
+								url: product.hasOwnProperty('url') ? product.url : '',
+								search: 'products'
 							};
 						});
 					}
@@ -58,9 +84,11 @@
 							return {
 								id: shop.id,
 								query: shop.query,
-								value: shop.text,
+								value: shop.value,
+								text: shop.text,
 								key: shop.value,
-								url: shop.hasOwnProperty('url') ? shop.url : ''
+								url: shop.hasOwnProperty('url') ? shop.url : '',
+								search: 'shops'
 							};
 						});
 					}
@@ -83,9 +111,11 @@
 							return {
 								id: idea.id,
 								query: idea.query,
-								value: idea.text,
+								value: idea.value,
+								text: idea.text,
 								key: idea.value,
-								url: idea.hasOwnProperty('url') ? idea.url : ''
+								url: idea.hasOwnProperty('url') ? idea.url : '',
+								search: 'ideas'
 							};
 						});
 					}
@@ -108,9 +138,11 @@
 							return {
 								id: user.id,
 								query: user.query,
-								value: user.text,
+								value: user.value,
+								text: user.text,
 								key: user.value,
-								url: user.hasOwnProperty('url') ? user.url : ''
+								url: user.hasOwnProperty('url') ? user.url : '',
+								search: 'members'
 							};
 						});
 					}
@@ -134,7 +166,7 @@
 					source: products.ttAdapter(),
 					templates: {
 						suggestion: function(data) {
-							return '<div>'+data.value+' <span style="font-weight:lighter;"> in Products</span></div>'
+							return '<div>'+data.text+' <span style="font-weight:lighter;"> in Products</span></div>'
 						}
 					}
 				},
@@ -145,7 +177,7 @@
 					source: shops.ttAdapter(),
 					templates: {
 						suggestion: function(data) {
-							return '<div>'+data.key+' <span style="font-weight:lighter;"> in Shops</span></div>'
+							return '<div>'+data.text+' <span style="font-weight:lighter;"> in Shops</span></div>'
 						}
 					}
 				},
@@ -156,7 +188,7 @@
 					source: ideas.ttAdapter(),
 					templates: {
 						suggestion: function(data) {
-							return '<div>'+data.value+' <span style="font-weight:lighter;"> in Ideas</span></div>'
+							return '<div>'+data.text+' <span style="font-weight:lighter;"> in Ideas</span></div>'
 						}
 					}
 				},
@@ -167,7 +199,7 @@
 					source: users.ttAdapter(),
 					templates: {
 						suggestion: function(data) {
-							return '<div>'+data.key+' <span style="font-weight:lighter;"> in Users</span></div>'
+							return '<div>'+data.text+' <span style="font-weight:lighter;"> in Members</span></div>'
 						}
 					}
 				}
@@ -177,6 +209,11 @@
 				if (data.hasOwnProperty('url') && data.url.length)
 				{
 					window.location = data.url;
+				}
+				else
+				{
+					$('#universal-search-form').prop('action', UPMOD_CONFIG.url + 'browse/' + data.search);
+					$('#universal-search-form').submit();
 				}
 			});
 		}

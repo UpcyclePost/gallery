@@ -5,6 +5,10 @@
 {% if profile.custom_background %}
     <style type="text/css">
         .header_area.subpages {
+            background:transparent!important;
+        }
+
+        body {
             background: url('{{ profile.backgroundUrl() }}')!important;
             -webkit-background-size: cover!important;
             -moz-background-size: cover!important;
@@ -25,7 +29,7 @@
 ?>
 
 <div class="account-settings-container profile-view-container">
-    <div class="col-sm-7 col-md-7 col-lg-4 col-xs-12">
+    <div class="col-sm-8 col-md-8 col-lg-6 col-xs-12">
         <div class="login-panel">
             <div class="login-panel-header">
                 <div class="row text-center profile-image circular">

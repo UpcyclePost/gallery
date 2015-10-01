@@ -4,9 +4,11 @@ $di->set('router', function ()
 {
 	$router = new Phalcon\Mvc\Router();
 
-	$router->add('/up/share', ['controller' => 'page', 'action' => 'share']);
+	$router->add('/share', ['controller' => 'page', 'action' => 'share']);
 	$router->add('/up/shop', ['controller' => 'page', 'action' => 'shop']);
-	$router->add('/up/sell', ['controller' => 'page', 'action' => 'sell']);
+	$router->add('/sell', ['controller' => 'page', 'action' => 'sell']);
+
+	$router->add('up/config', ['controller' => 'up', 'action' => 'config']);
 
 	$router->add('/search/quick/products', ['controller' => 'search', 'action' => 'countProducts']);
 	$router->add('/search/quick/users', ['controller' => 'search', 'action' => 'countUsers']);

@@ -2,9 +2,6 @@
 
 <div class="account-settings-container">
     <div class="login-panel">
-        <div class="login-panel-header">
-            <h1>Account Settings</h1>
-        </div>
         <form class="form-horizontal" role="form" method="post" id="account-settings-form">
             <div class="login-panel-body">
                 <div class="form-group">

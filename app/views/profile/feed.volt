@@ -4,9 +4,6 @@
     <div class="login-panel">
         <div class="login-panel-header">
             <div style="float: left;">
-                <h1>Your Feed</h1>
-            </div>
-            <div style="float: left;">
                 <nav class="slug tabs clearfix feed-menu">
                     <li><a href="{{ url('profile/feed/following') }}" class="btn {%if viewing == 'following' %}btn-blue{% else %}btn-gray{% endif %}">Following</a></li>
                     <li><a href="{{ url('profile/feed/followers') }}" class="btn {%if viewing == 'followers' %}btn-blue{% else %}btn-gray{% endif %}">Followers</a></li>

@@ -8,19 +8,19 @@
                         <div class="promo_icon">
                             <ul>
                                 <li>
-                                    <img alt="" src="{{ static_url('upmod/img/shop.png') }}">
+                                    <a href="{{ url('up/shop') }}"><img alt="" src="{{ static_url('upmod/img/shop.png') }}"></a></a>
 
                                     <h2>Shop</h2>
                                 </li>
 
                                 <li>
-                                    <img alt="" src="{{ static_url('upmod/img/sell.png') }}">
+                                    <a href="{{ url('sell') }}"><img alt="" src="{{ static_url('upmod/img/sell.png') }}"></a>
 
                                     <h2>Sell</h2>
                                 </li>
 
                                 <li>
-                                    <img alt="" src="{{ static_url('upmod/img/share.png') }}">
+                                    <a href="{{ url('share') }}"><img alt="" src="{{ static_url('upmod/img/share.png') }}"></a>
 
                                     <h2>Share</h2>
                                 </li>
@@ -51,7 +51,13 @@
                                                     </div>
 
                                                     <div class="btn-group share">
-                                                        <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                                        <span class='st_facebook' st_url="{{ post['url'] }}" st_title="{{ post['title'] }}" st_image="{{ post['image'] }}"></span>
+                                                        <br>
+                                                        <span class='st_twitter' st_url="{{ post['url'] }}" st_title="{{ post['title'] }}" st_image="{{ post['image'] }}"></span>
+                                                        <br>
+                                                        <span class='st_googleplus' st_url="{{ post['url'] }}" st_title="{{ post['title'] }}" st_image="{{ post['image'] }}"></span>
+                                                        <br>
+                                                        <span class='st_pinterest' st_url="{{ post['url'] }}" st_title="{{ post['title'] }}" st_image="{{ post['image'] }}"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -96,7 +102,13 @@
                                             </div>
 
                                             <div class="btn-group share">
-                                                <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                                <span class='st_facebook' st_url="{{ results[i]['url'] }}" st_title="{{ results[i]['title'] }}" st_image="{{ results[i]['image'] }}"></span>
+                                                <br>
+                                                <span class='st_twitter' st_url="{{ results[i]['url'] }}" st_title="{{ results[i]['title'] }}" st_image="{{ results[i]['image'] }}"></span>
+                                                <br>
+                                                <span class='st_googleplus' st_url="{{ results[i]['url'] }}" st_title="{{ results[i]['title'] }}" st_image="{{ results[i]['image'] }}"></span>
+                                                <br>
+                                                <span class='st_pinterest' st_url="{{ results[i]['url'] }}" st_title="{{ results[i]['title'] }}" st_image="{{ results[i]['image'] }}"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -161,19 +173,25 @@
                                         </div>
 
                                         <div class="btn-group share">
-                                            <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                            <span class='st_facebook' st_url="http://www.upmod.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
+                                            <br>
+                                            <span class='st_twitter' st_url="http://www.upmod.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
+                                            <br>
+                                            <span class='st_googleplus' st_url="http://www.upmod.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
+                                            <br>
+                                            <span class='st_pinterest' st_url="http://www.upmod.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
                                         </div>
                                     </div>
                                 </div>
                             </a>
 
                             <div class="caption">
-                                <a href="http://www.upcyclepost.com/shops/alinescardboard">
+                                <a href="http://www.upmod.com/shops/alinescardboard">
                                     <h2>Aline's Cardboard</h2>
                                 </a>
 
                                 <div class="product-meta clearfix">
-                                    <a class="author" href="http://www.upcyclepost.com/shops/alinescardboard">
+                                    <a class="author" href="http://www.upmod.com/shops/alinescardboard">
                                         Issaquah, WA
                                     </a>
                                 </div>
@@ -181,7 +199,7 @@
                         </div>
 
                         <div class="buton">
-                            <button class="btn btn-default shop_more unik">Create your shop</button>
+                            <a class="btn btn-default shop_more unik" href="{{ url('shop/module/marketplace/sellerrequest') }}">Create your shop</a>
                         </div>
                     </div>
 
@@ -191,7 +209,7 @@
                         </div>
 
                         <div class="product_image thumbnail wide bot">
-                            <a href="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">
+                            <a href="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">
                                 <div class="thumbnail-container">
                                     <img alt="" src="{{ static_url('img/features/product.png') }}" style="min-height:238px;">
                                     <div class="product-icons">
@@ -208,23 +226,29 @@
                                         </div>
 
                                         <div class="btn-group share">
-                                            <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                            <span class='st_facebook' st_url="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
+                                            <br>
+                                            <span class='st_twitter' st_url="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
+                                            <br>
+                                            <span class='st_googleplus' st_url="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
+                                            <br>
+                                            <span class='st_pinterest' st_url="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
                                         </div>
                                     </div>
                                 </div>
                             </a>
 
                             <div class="caption">
-                                <a href="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">
+                                <a href="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">
                                     <h2>New 70's Stylin' Hubcap Celling Fixture</h2>
                                 </a>
 
                                 <div class="product-meta clearfix">
-                                    <a class="author" href="https://www.upcyclepost.com/shops/101790">
+                                    <a class="author" href="https://www.upmod.com/shops/101790">
                                         Refitting the Planet
                                     </a>
 
-                                    <a class="price" href="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">$450.00</a>
+                                    <a class="price" href="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">$450.00</a>
                                 </div>
                             </div>
                         </div>
@@ -240,7 +264,7 @@
                         </div>
 
                         <div class="product_image thumbnail wide bot">
-                            <a href="http://www.upcyclepost.com/profile/view/156">
+                            <a href="http://www.upmod.com/profile/view/156">
                                 <div class="thumbnail-container">
                                     <img alt="" src="{{ static_url('img/features/profile.png') }}" style="min-height:238px;">
                                     <div class="product-icons">
@@ -257,19 +281,25 @@
                                         </div>
 
                                         <div class="btn-group share">
-                                            <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                            <span class='st_facebook' st_url="http://www.upmod.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
+                                            <br>
+                                            <span class='st_twitter' st_url="http://www.upmod.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
+                                            <br>
+                                            <span class='st_googleplus' st_url="http://www.upmod.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
+                                            <br>
+                                            <span class='st_pinterest' st_url="http://www.upmod.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
                                         </div>
                                     </div>
                                 </div>
                             </a>
 
                             <div class="caption">
-                                <a href="http://www.upcyclepost.com/profile/view/156">
+                                <a href="http://www.upmod.com/profile/view/156">
                                     <h2>Raymond Guest</h2>
                                 </a>
 
                                 <div class="product-meta clearfix">
-                                    <a class="author" href="http://www.upcyclepost.com/profile/view/156">
+                                    <a class="author" href="http://www.upmod.com/profile/view/156">
                                         Longview, TX
                                     </a>
                                 </div>
@@ -277,7 +307,7 @@
                         </div>
 
                         <div class="buton">
-                            <button class="btn btn-default shop_more unik">Meet fellow upcyclers</button>
+                            <a class="btn btn-default shop_more unik" href="{{ url('browse/members') }}">Meet fellow upcyclers</a>
                         </div>
                     </div>
                 </div>
@@ -299,7 +329,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="work_sample pull-right">
-                            <img alt="" src="{{ static_url('upmod/img/shop.png') }}">
+                            <a href="{{ url('up/shop') }}"><img alt="" src="{{ static_url('upmod/img/shop.png') }}"></a>
 
                             <h2>Shop</h2>
 
@@ -307,13 +337,13 @@
                                 by our upcycle artisans and<br>
                                 upcycle community healthy.</p>
 
-                            <h3><a href="{{ url('/up/shop') }}">Shop our wares</a></h3>
+                            <h3><a href="{{ url('up/shop') }}">Shop our wares</a></h3>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="work_sample">
-                            <img alt="" src="{{ static_url('upmod/img/sell.png') }}">
+                            <a href="{{ url('sell') }}"><img alt="" src="{{ static_url('upmod/img/sell.png') }}"></a>
 
                             <h2>Sell</h2>
 
@@ -321,13 +351,13 @@
                                 Create your very own shop and<br>
                                 sell your upcyled pieces online.</p>
 
-                            <h3><a href="{{ url('/up/sell') }}">Create your shop</a></h3>
+                            <h3><a href="{{ url('sell') }}">Create your shop</a></h3>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="work_sample pull-left">
-                            <img alt="" src="{{ static_url('upmod/img/share.png') }}">
+                            <a href="{{ url('share') }}"><img alt="" src="{{ static_url('upmod/img/share.png') }}"></a>
 
                             <h2>Share</h2>
 
@@ -335,7 +365,7 @@
                                 share inspirations with other<br>
                                 upcyclers. Spread the word!</p>
 
-                            <h3><a href="{{ url('/up/share') }}">Join the community</a></h3>
+                            <h3><a href="{{ url('share') }}">Join the community</a></h3>
                         </div>
                     </div>
                 </div>

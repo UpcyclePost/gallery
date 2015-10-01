@@ -31,7 +31,7 @@
                             <label for="phone">Message</label>
                             <textarea class="form-control" rows="3" name="message" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-md btn-green btn-collapse"><i class="fa fa-check"></i> Submit</button>
+                        <button type="submit" class="btn btn-blue btn-collapse"><i class="fa fa-check"></i> Submit</button>
                     </form>
 
                 </div>
@@ -42,22 +42,21 @@
                 <div class="col-sm-6 col-md-12">
                     <h4 class="green">Contact Info</h4>
                     <p>
-                        <strong>UpcyclePost, Inc.</strong>
+                        <strong>Upmod, Inc.</strong>
                     </p>
                     <p>
                         <strong>Location:</strong> Issaquah, WA
                         <br/>
-                        <strong>Email:</strong> info@upcyclepost.com
+                        <strong>Email:</strong> info@upmod.com
                     </p>
                 </div>
                 <div class="col-sm-6 col-md-12">
                     <h4 class="green">Connect With Us</h4>
-                    <p>
-                        <a href="http://www.facebook.com/upcyclepost" target="_blank">www.facebook.com/upcyclepost</a>
-                        <br/>
-                        <a href="http://www.twitter.com/upcyclepost" target="_blank">www.twitter.com/upcyclepost</a>
-                        <br/>
-                        <a href="http://www.linkedin.com/company/upcyclepost-com" target="_blank">http://www.linkedin.com/company/upcyclepost-com</a>
+                    <p style="font-size:20px;">
+                        <a target="blank" href="https://www.facebook.com/upmodinc"><i class="fa fa-facebook-square"></i></a>
+                        <a target="blank" href="https://www.twitter.com/upmodinc"><i class="fa fa-twitter-square"></i></a>
+                        <a target="blank" href="https://www.pinterest.com/upmodinc"><i class="fa fa-pinterest-square"></i></a>
+                        <a target="blank" href="https://plus.google.com/+upmodinc"><i class="fa fa-google-plus-square"></i></a>
                     </p>
                 </div>
             </div>

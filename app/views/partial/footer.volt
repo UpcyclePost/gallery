@@ -10,10 +10,10 @@
                         <li><a href="{{ url('policy') }}">Policies</a></li>
                     </ul>
                     <div class="social-icons">
-                        <a href="http://www.facebook.com/upcyclepost"><i class="fa fa-facebook-square"></i></a>
-                        <a href="http://www.linkedin.com/company/upcyclepost-com"><i class="fa fa-linkedin-square"></i></a>
-                        <a href="http://www.twitter.com/upcyclepost"><i class="fa fa-twitter-square"></i></a>
-                        <a href="http://www.pinterest.com/upcyclepost"><i class="fa fa-pinterest-square"></i></a>
+                        <a href="https://www.facebook.com/upmodinc" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                        <a href="https://www.twitter.com/upmodinc" target="_blank"><i class="fa fa-twitter-square"></i></a>
+                        <a href="https://www.pinterest.com/upmodinc" target="_blank"><i class="fa fa-pinterest-square"></i></a>
+                        <a href="https://plus.google.com/+upmodinc" target="_blank"><i class="fa fa-google-plus-square"></i></a>
                     </div>
                     <div class="copyright">
                         &copy; <?=date('Y')?> Upmod. All Rights Reserved
@@ -39,5 +39,11 @@
         <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
         <script type="text/javascript">stLight.options({publisher: "0919549b-9f77-444b-bd9a-4c8683b78c51", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 
+        <?php
+            foreach ($this->assets->collection('js') AS $resource)
+            {
+                echo \Phalcon\Tag::javascriptInclude(sprintf('%s?%s', $resource->getPath(), $_version));
+            }
+        ?>
     </body>
 </html>

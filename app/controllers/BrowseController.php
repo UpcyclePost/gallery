@@ -16,13 +16,31 @@ class BrowseController extends ControllerBase
 
 		$this->session->set('redirectTo', $this->router->getRewriteUri());
 		$this->__searchService = new SearchService();
+		$this->view->term = $this->__getSearchTerm();
 	}
 
 	public
 	function productsAction($category = \false)
 	{
+		$this->assets->addJs('js/browse/index.js');
+
+		$this->view->canLoadMoreItems = \true;
+		$this->view->loadMoreItemsSearchTerm = $this->view->term ?: '';
+		$this->view->loadMoreItemsUrl = $this->url->get('browse/products');
+
+		if ($category)
+		{
+			$this->view->loadMoreItemsUrl = $this->url->get('browse/products/' . $category);
+		}
+
 		$this->view->page_header_text = $this->__getCategoryName($category) ?: 'Products';
 		$this->view->results = $this->__searchService->findProducts($this->__getSearchTerm(), $this->__getCategoryId($category), $this->__getOffset(), BrowseController::ITEMS_PER_PAGE);
+
+		if ($this->request->has('more'))
+		{
+			$this->view->disable();
+			$this->view->partial('partial/gallery/list', ['results' => $this->view->results, 'isMore' => \true]);
+		}
 	}
 
 	public
@@ -31,14 +49,31 @@ class BrowseController extends ControllerBase
 		$this->view->page_header_text = 'Shops';
 		$prestashopService = new \Up\Services\PrestashopIntegrationService();
 
-		$this->view->results = $prestashopService->findShops();
+		$this->view->results = $prestashopService->findShops($this->__getSearchTerm());
 	}
 
 	public
 	function ideasAction($category = \false)
 	{
+		$this->assets->addJs('js/browse/index.js');
+
+		$this->view->canLoadMoreItems = \true;
+		$this->view->loadMoreItemsSearchTerm = $this->view->term ?: '';
+		$this->view->loadMoreItemsUrl = $this->url->get('browse/ideas');
+
+		if ($category)
+		{
+			$this->view->loadMoreItemsUrl = $this->url->get('browse/ideas/' . $category );
+		}
+
 		$this->view->page_header_text = $this->__getCategoryName($category) ?: 'Ideas';
 		$this->view->results = $this->__searchService->findIdeas($this->__getSearchTerm(), $this->__getCategoryId($category), $this->__getOffset(), BrowseController::ITEMS_PER_PAGE);
+
+		if ($this->request->has('more'))
+		{
+			$this->view->disable();
+			$this->view->partial('partial/gallery/list', ['results' => $this->view->results, 'isMore' => \true]);
+		}
 	}
 
 	public
