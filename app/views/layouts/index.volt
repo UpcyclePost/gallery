@@ -51,7 +51,13 @@
                                                     </div>
 
                                                     <div class="btn-group share">
-                                                        <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                                        <span class='st_facebook' st_url="{{ post['url'] }}" st_title="{{ post['title'] }}" st_image="{{ post['image'] }}"></span>
+                                                        <br>
+                                                        <span class='st_twitter' st_url="{{ post['url'] }}" st_title="{{ post['title'] }}" st_image="{{ post['image'] }}"></span>
+                                                        <br>
+                                                        <span class='st_googleplus' st_url="{{ post['url'] }}" st_title="{{ post['title'] }}" st_image="{{ post['image'] }}"></span>
+                                                        <br>
+                                                        <span class='st_pinterest' st_url="{{ post['url'] }}" st_title="{{ post['title'] }}" st_image="{{ post['image'] }}"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -96,7 +102,13 @@
                                             </div>
 
                                             <div class="btn-group share">
-                                                <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                                <span class='st_facebook' st_url="{{ results[i]['url'] }}" st_title="{{ results[i]['title'] }}" st_image="{{ results[i]['image'] }}"></span>
+                                                <br>
+                                                <span class='st_twitter' st_url="{{ results[i]['url'] }}" st_title="{{ results[i]['title'] }}" st_image="{{ results[i]['image'] }}"></span>
+                                                <br>
+                                                <span class='st_googleplus' st_url="{{ results[i]['url'] }}" st_title="{{ results[i]['title'] }}" st_image="{{ results[i]['image'] }}"></span>
+                                                <br>
+                                                <span class='st_pinterest' st_url="{{ results[i]['url'] }}" st_title="{{ results[i]['title'] }}" st_image="{{ results[i]['image'] }}"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -161,7 +173,13 @@
                                         </div>
 
                                         <div class="btn-group share">
-                                            <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                            <span class='st_facebook' st_url="http://www.upcyclepost.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
+                                            <br>
+                                            <span class='st_twitter' st_url="http://www.upcyclepost.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
+                                            <br>
+                                            <span class='st_googleplus' st_url="http://www.upcyclepost.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
+                                            <br>
+                                            <span class='st_pinterest' st_url="http://www.upcyclepost.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -208,8 +226,13 @@
                                         </div>
 
                                         <div class="btn-group share">
-
-                                            <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                            <span class='st_facebook' st_url="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
+                                            <br>
+                                            <span class='st_twitter' st_url="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
+                                            <br>
+                                            <span class='st_googleplus' st_url="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
+                                            <br>
+                                            <span class='st_pinterest' st_url="https://www.upcyclepost.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -258,7 +281,13 @@
                                         </div>
 
                                         <div class="btn-group share">
-                                            <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                                            <span class='st_facebook' st_url="http://www.upcyclepost.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
+                                            <br>
+                                            <span class='st_twitter' st_url="http://www.upcyclepost.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
+                                            <br>
+                                            <span class='st_googleplus' st_url="http://www.upcyclepost.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
+                                            <br>
+                                            <span class='st_pinterest' st_url="http://www.upcyclepost.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
                                         </div>
                                     </div>
                                 </div>

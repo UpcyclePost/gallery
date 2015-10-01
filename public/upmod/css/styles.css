@@ -6622,3 +6622,72 @@ nav.tabs li .btn {
 .profile-image {
   padding-bottom: 24px;
 }
+
+.stButton{
+  width : 24px !important;
+  height: 24px !important;
+  margin-left: 16px !important;
+}
+.chicklets{
+  width : 24px !important;
+  height: 24px !important;
+  padding-top:10px!important;
+}
+
+.stButton .chicklets {
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+.stButton .facebook {
+  background-image: none!important;
+  padding: 0;
+}
+
+.stButton .facebook:before {
+  font-family: FontAwesome;
+  font-size: 24px;
+  content: "\f082";
+  color: #0187d0;
+}
+.stButton .twitter {
+  background-image: none!important;
+  padding: 0;
+}
+
+.stButton .twitter:before {
+  font-family: FontAwesome;
+  font-size: 24px;
+  content: "\f081";
+  color: #0187d0;
+}
+.stButton .pinterest {
+  background-image: none!important;
+  padding: 0;
+}
+
+.stButton .pinterest:before {
+  font-family: FontAwesome;
+  font-size: 24px;
+  content: "\f0d3";
+  color: #0187d0;
+}
+.stButton .googleplus {
+  background-image: none!important;
+  padding: 0;
+}
+
+.stButton .googleplus:before {
+  font-family: FontAwesome;
+  font-size: 24px;
+  content: "\f0d4";
+  color: #0187d0;
+}
+
+.product_image .overlay .btn-group.share {
+  background-color:#fff;
+  border-radius:2px;
+  margin-top:10px;
+  padding-right:5px;
+  padding-bottom:5px;
+}

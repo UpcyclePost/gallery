@@ -7278,3 +7278,11 @@ header .buttons font.items {
 .tt-menu .tt-dataset:last-child div:last-child {
     border: none;
 }
+
+.product_image .overlay .btn-group.share {
+    background-color:#fff;
+    border-radius:2px;
+    margin-top:10px;
+    padding-right:5px;
+    padding-bottom:5px;
+}

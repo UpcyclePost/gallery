@@ -17,7 +17,13 @@
                     </div>
 
                     <div class="btn-group share">
-                        <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
+                        <span class='st_facebook' st_url="{{ _post['url'] }}" st_title="{{ _post['title'] }}" st_image="{{ _post['image'] }}"></span>
+                        <br>
+                        <span class='st_twitter' st_url="{{ _post['url'] }}" st_title="{{ _post['title'] }}" st_image="{{ _post['image'] }}"></span>
+                        <br>
+                        <span class='st_googleplus' st_url="{{ _post['url'] }}" st_title="{{ _post['title'] }}" st_image="{{ _post['image'] }}"></span>
+                        <br>
+                        <span class='st_pinterest' st_url="{{ _post['url'] }}" st_title="{{ _post['title'] }}" st_image="{{ _post['image'] }}"></span>
                     </div>
                 </div>
             </div>
