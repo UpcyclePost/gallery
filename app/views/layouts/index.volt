@@ -8,7 +8,7 @@
                         <div class="promo_icon">
                             <ul>
                                 <li>
-                                    <a href="{{ url('/up/shop') }}"><img alt="" src="{{ static_url('upmod/img/shop.png') }}"></a></a>
+                                    <a href="{{ url('up/shop') }}"><img alt="" src="{{ static_url('upmod/img/shop.png') }}"></a></a>
 
                                     <h2>Shop</h2>
                                 </li>
@@ -329,7 +329,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="work_sample pull-right">
-                            <a href="{{ url('/up/shop') }}"><img alt="" src="{{ static_url('upmod/img/shop.png') }}"></a>
+                            <a href="{{ url('up/shop') }}"><img alt="" src="{{ static_url('upmod/img/shop.png') }}"></a>
 
                             <h2>Shop</h2>
 
@@ -337,7 +337,7 @@
                                 by our upcycle artisans and<br>
                                 upcycle community healthy.</p>
 
-                            <h3><a href="{{ url('/up/shop') }}">Shop our wares</a></h3>
+                            <h3><a href="{{ url('up/shop') }}">Shop our wares</a></h3>
                         </div>
                     </div>
 
