@@ -200,10 +200,6 @@
                                 <li>
                                     <a href="{{ url('browse/products/jewelry') }}">Jewelry</a>
                                 </li>
-
-                                <li>
-                                    <a href="{{ url('browse/products/vintage') }}">Vintage</a>
-                                </li>
                             </ul>
                         </div>
 
