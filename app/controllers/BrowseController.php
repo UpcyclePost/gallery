@@ -30,7 +30,7 @@ class BrowseController extends ControllerBase
 
 		if ($category)
 		{
-			$this->view->loadMoreItemsUrl = $this->url->get('browse/ideas/' . $category);
+			$this->view->loadMoreItemsUrl = $this->url->get('browse/products/' . $category);
 		}
 
 		$this->view->page_header_text = $this->__getCategoryName($category) ?: 'Products';

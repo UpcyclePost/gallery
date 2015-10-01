@@ -3,7 +3,7 @@
     <h2>Sell</h2>
     <h3>Are you an upcycle artisan?  Create your very own<br>shop and sell your upcycled products online.</h3>
 
-    <a class="btn btn-blue" href="">Create your shop</a>
+    <a class="btn btn-blue" href="{{ url('shop/module/marketplace/sellerrequest') }}">Create your shop</a>
     </div>
     <div class="pull-right">
         <img src="{{ url('/upmod/img/selling.png') }}">
