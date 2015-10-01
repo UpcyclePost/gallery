@@ -65,13 +65,13 @@ class SearchController extends ControllerBase
 		    'limit'      => 1
 		]);
 
-		$result[] = ['id' => md5('4-0'), 'query' => sprintf('user:%s',$this->request->get('term')), 'text' => sprintf('Search for %s', $this->request->get('term')), 'value' => sprintf('Search for %s', $this->request->get('term'))];
+		$result[] = ['id' => md5('4-0'), 'query' => sprintf('user:%s',$this->request->get('term')), 'text' => sprintf('Search for %s', $this->request->get('term')), 'value' => $this->request->get('term')];
 
 		if ($users && count($users) > 0)
 		{
 			foreach ($users AS $k => $user)
 			{
-				$result[] = ['id' => md5($user->ik), 'query' => sprintf('user:%s', $user->ik), 'text' => sprintf('%s in Users', $user->user_name), 'value' => $user->user_name, 'url' => $user->url()];
+				$result[] = ['id' => md5($user->ik), 'query' => sprintf('user:%s', $user->ik), 'text' => $user->user_name, 'value' => $user->user_name, 'url' => $user->url()];
 			}
 		}
 
@@ -123,7 +123,7 @@ class SearchController extends ControllerBase
 		$this->view->disable();
 
 		$result = [];
-		$result[] = ['id' => md5('2-0'), 'query' => sprintf('shop:%s',$this->request->get('term')), 'text' => sprintf('%s in Shops', $this->request->get('term')), 'value' => sprintf('Search for %s', $this->request->get('term'))];
+		$result[] = ['id' => md5('2-0'), 'query' => sprintf('shop:%s',$this->request->get('term')), 'text' => sprintf('Search for %s', $this->request->get('term')), 'value' => $this->request->get('term')];
 
 		$prestashopService = new \Up\Services\PrestashopIntegrationService();
 		$shops = $prestashopService->findShops($this->request->get('term'));
@@ -132,7 +132,7 @@ class SearchController extends ControllerBase
 		{
 			foreach ($shops AS $k => $shop)
 			{
-				$result[] = ['id' => md5($shop['title']), 'query' => sprintf('shop:%s', $shop['title']), 'text' => sprintf('%s in Shops', $shop['title']), 'value' => $shop['title'], 'url' => $shop['url']];
+				$result[] = ['id' => md5($shop['title']), 'query' => sprintf('shop:%s', $shop['title']), 'text' => $shop['title'], 'value' => $shop['title'], 'url' => $shop['url']];
 			}
 		}
 

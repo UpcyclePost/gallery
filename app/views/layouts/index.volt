@@ -14,13 +14,13 @@
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('/up/sell') }}"><img alt="" src="{{ static_url('upmod/img/sell.png') }}"></a>
+                                    <a href="{{ url('sell') }}"><img alt="" src="{{ static_url('upmod/img/sell.png') }}"></a>
 
                                     <h2>Sell</h2>
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('/up/share') }}"><img alt="" src="{{ static_url('upmod/img/share.png') }}"></a>
+                                    <a href="{{ url('share') }}"><img alt="" src="{{ static_url('upmod/img/share.png') }}"></a>
 
                                     <h2>Share</h2>
                                 </li>
@@ -208,6 +208,7 @@
                                         </div>
 
                                         <div class="btn-group share">
+
                                             <button class="btn btn-default" type="button">Share <i class="fa fa-share-square-o"></i></button>
                                         </div>
                                     </div>
@@ -313,7 +314,7 @@
 
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="work_sample">
-                            <a href="{{ url('/up/sell') }}"><img alt="" src="{{ static_url('upmod/img/sell.png') }}"></a>
+                            <a href="{{ url('sell') }}"><img alt="" src="{{ static_url('upmod/img/sell.png') }}"></a>
 
                             <h2>Sell</h2>
 
@@ -321,13 +322,13 @@
                                 Create your very own shop and<br>
                                 sell your upcyled pieces online.</p>
 
-                            <h3><a href="{{ url('/up/sell') }}">Create your shop</a></h3>
+                            <h3><a href="{{ url('sell') }}">Create your shop</a></h3>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="work_sample pull-left">
-                            <a href="{{ url('/up/share') }}"><img alt="" src="{{ static_url('upmod/img/share.png') }}"></a>
+                            <a href="{{ url('share') }}"><img alt="" src="{{ static_url('upmod/img/share.png') }}"></a>
 
                             <h2>Share</h2>
 
@@ -335,7 +336,7 @@
                                 share inspirations with other<br>
                                 upcyclers. Spread the word!</p>
 
-                            <h3><a href="{{ url('/up/share') }}">Join the community</a></h3>
+                            <h3><a href="{{ url('share') }}">Join the community</a></h3>
                         </div>
                     </div>
                 </div>

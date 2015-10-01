@@ -25,6 +25,7 @@
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
         <script src="{{ static_url('upmod/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+        <script src="{{ url('up/config') }}" type="text/javascript"></script>
     </head>
 
     <body>
@@ -35,16 +36,20 @@
                     <div class="row">
                         <a class="logo" href="{{ url('') }}"></a>
                         <div class="search">
-                            <form>
-                                <input type="search" placeholder="Search the world's largest upcyle hand-crafted community" class="form-control" id="universal-search">
+                            <form method="post" id="universal-search-form">
+                                <input type="search" placeholder="Search the world's largest upcyle hand-crafted community" class="form-control" id="universal-search" name="term">
                             </form>
                         </div>
                         <button class="hamburger-menu" id="hamburger">
                             <i class="fa fa-bars"></i>
                         </button>
                         <ul class="user-actions">
-                            <li><a href="{{ url('profile/login') }}">Sign in</a></li>
-                            <li><a href="{{ url('profile/register') }}" class="btn btn-default signup_btn">Sign up</a></li>
+                            {% if !isLoggedIn %}
+                                <li><a href="{{ url('profile/login') }}">Sign in</a></li>
+                                <li><a href="{{ url('profile/register') }}" class="btn btn-default signup_btn">Sign up</a></li>
+                            {% else %}
+
+                            {% endif %}
                         </ul>
                     </div>
                 </div>

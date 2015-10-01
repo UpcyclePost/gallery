@@ -4912,6 +4912,10 @@ body {
   font-weight: 600;
 }
 
+.content-header h4 {
+  text-align: center;
+}
+
 .login-container {
   width: 552px;
   margin: auto;

@@ -16,6 +16,7 @@ class BrowseController extends ControllerBase
 
 		$this->session->set('redirectTo', $this->router->getRewriteUri());
 		$this->__searchService = new SearchService();
+		$this->view->term = $this->__getSearchTerm();
 	}
 
 	public
@@ -31,7 +32,7 @@ class BrowseController extends ControllerBase
 		$this->view->page_header_text = 'Shops';
 		$prestashopService = new \Up\Services\PrestashopIntegrationService();
 
-		$this->view->results = $prestashopService->findShops();
+		$this->view->results = $prestashopService->findShops($this->__getSearchTerm());
 	}
 
 	public

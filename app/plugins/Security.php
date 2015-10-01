@@ -44,6 +44,7 @@ class Security extends Plugin
 			'post'       => ['index', 'idea', 'render', 'details', 'upload', 'submit', 'like', 'report', 'send', 'share'],
 			'gallery'    => ['index', 'view', 'more'],
 			'browse'     => ['*'],
+			'up'         => ['*'],
 			'page'       => ['*'],
 			'profile'    => ['login', 'register', 'forgotPassword', 'resetPassword', 'view'],
 			'contact'    => ['index'],
