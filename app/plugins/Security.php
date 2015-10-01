@@ -54,6 +54,8 @@ class Security extends Plugin
 			'about'      => ['*'],
 			'terms'      => ['*'],
 			'privacy'    => ['*'],
+			'policy'    => ['*'],
+			'faq'    => ['*'],
 			'newsletter' => ['subscribe'],
 			'shop'       => ['view', 'shops', 'redirect'],
 			'search'     => ['*']

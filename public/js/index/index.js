@@ -1,8 +1,8 @@
 var __items = [
-	{ img: "img/p/AMY COUSIN.PNG", caption: "Take a Look!", link:"http://www.upcyclepost.com"},
-    { img: "img/p/ART BY HEART STUDIO 2.png", caption: "Take a Look!", link:"http://www.upcyclepost.com"},
-    { img: "img/p/ATOMICROCKET POP LAB.png", caption: "Take a Look!", link:"http://www.upcyclepost.com"},
-    { img: "img/p/ARTZWEAR.png", caption: "Take a Look!", link:"http://www.upcyclepost.com"},
+	{ img: "img/p/YE OLD DIAMOND ACRES EMPORIUM.PNG", caption: "Take a Look!", link:"http://www.upcyclepost.com"},
+    { img: "img/p/TWO BONES GLASS AND TILE.PNG", caption: "Take a Look!", link:"http://www.upcyclepost.com"},
+    { img: "img/p/TASHERA JEAN.PNG", caption: "Take a Look!", link:"http://www.upcyclepost.com"},
+    { img: "img/p/AMAZING GRAVES JEWELRY.PNG", caption: "Take a Look!", link:"http://www.upcyclepost.com"},
 ]
 
 $("#bg-slide").backstretch($.map(__items, function(i) { return i.img; }), {duration: 5000, fade: 750});
