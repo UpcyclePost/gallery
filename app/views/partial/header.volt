@@ -53,7 +53,9 @@
     </head>
 
     <body>
-
+        {% if canLoadMoreItems is defined And canLoadMoreItems %}
+            <form id="more" data-start="50" data-url="{{ loadMoreItemsUrl }}" data-search-term="{{ loadMoreItemsSearchTerm }}"></form>
+        {% endif %}
         <header class="header_area{% if isIndexPage is not defined %} subpages{% endif %}">
             <nav class="mainmenu">
                 <div class="container">

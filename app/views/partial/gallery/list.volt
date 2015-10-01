@@ -1,4 +1,7 @@
-<div class="row">
+{% if isMore is not defined %}
+    <div class="row" id="items-display-container">
+{% endif %}
+
     <?php if (isset($results) && count($results) > 0) { ?>
         {% for _post in results %}
             {% if _post['_user'] is defined %}
@@ -14,4 +17,7 @@
 
         {% endfor %}
     <?php } ?>
-</div>
+
+{% if isMore is not defined %}
+    </div>
+{% endif %}
