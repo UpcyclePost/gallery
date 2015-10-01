@@ -21,11 +21,15 @@
 			$('.like button').click(function(event) {
 				event.preventDefault();
 
-				try {
-					$(event.target).parent().parent().parent().children('div.product-icons').children().first('i.fa-heart')[0].style.color = '#0187d0';
-					//$.ajax($(event.target).attr('data-url'));
-				} catch (e) {
-					
+				if ($(event.target).data('url') !== undefined)
+				{
+					try {
+						$(event.target).parent().parent().parent().children('div.product-icons').children().first('i.fa-heart')[0].style.color = '#0187d0';
+						$(event.target).children('i.fa-heart')[0].style.color = '#0187d0';
+						$.ajax($(event.target).attr('data-url'));
+					} catch (e) {
+
+					}
 				}
 			})
 		}

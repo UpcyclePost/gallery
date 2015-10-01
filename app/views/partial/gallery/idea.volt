@@ -13,7 +13,7 @@
                 </div>
                 <div class="overlay">
                     <div class="btn-group like">
-                        <button class="btn btn-default" type="button"><i class="fa fa-heart"></i> Like</button>
+                        <button class="btn btn-default" type="button" data-url="{{ url('gallery/' ~ _post['categoryTitle']|url ~ '/' ~ _post['title']|url ~ '-' ~ _post['ik'] ~ '/up') }}"><i class="fa fa-heart"></i> Like</button>
                     </div>
 
                     <div class="btn-group share">
