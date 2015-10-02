@@ -18,7 +18,11 @@
     </style>
 {% elseif custom_background is defined %}
     <style type="text/css">
-        #page {
+        .header_area.subpages {
+            background:transparent!important;
+        }
+
+        body {
             background: url('{{ profile.backgroundUrl() }}') #fff no-repeat center top fixed !important;
             -webkit-background-size: cover!important;
             -moz-background-size: cover!important;
