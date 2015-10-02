@@ -4,7 +4,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <meta content="width=device-width" name="viewport">
 
-    <title>UpcyclePost | Reset Password</title>
+    <title>Upmod | Reset Password</title>
     <style type="text/css">
         /*<![CDATA[*/
         #outlook a {
@@ -191,7 +191,7 @@
                                 <table align="center" border="0" cellpadding="0" cellspacing="0" class="collapse-header center">
                                     <tr>
                                         <td height="40">
-                                            <a href="http://www.upcyclepost.com/"><img alt="" class="logo" height="38" src="{{ static_url('img/email/logo.png') }}" width="160"></a>
+                                            <a href="http://www.upmod.com/"><img alt="" class="logo" height="38" src="{{ static_url('img/email/logo.png') }}" width="160"></a>
                                         </td>
                                     </tr>
                                 </table>
@@ -294,7 +294,7 @@
                                                                                                             </tr>
 
                                                                                                             <tr>
-                                                                                                                <td>Someone requested a password change for your UpcyclePost account. If you didn't request this, or don't want to change your password, just ignore and delete this message.</td>
+                                                                                                                <td>Someone requested a password change for your Upmod account. If you didn't request this, or don't want to change your password, just ignore and delete this message.</td>
                                                                                                             </tr>
                                                                                                         </table>
                                                                                                     </td>
@@ -358,7 +358,7 @@
                                             <table align="left" border="0" cellpadding="0" cellspacing="0" class="collapse center">
                                                 <tr>
                                                     <td>
-                                                        <a href="http://www.upcyclepost.com/"><img alt="" class="logo" height="38" src="{{ static_url('img/email/logo.png') }}" width="160"></a>
+                                                        <a href="http://www.upmod.com/"><img alt="" class="logo" height="38" src="{{ static_url('img/email/logo.png') }}" width="160"></a>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -369,31 +369,25 @@
                                                         <table align="center" border="0" cellpadding="0" cellspacing="0">
                                                             <tr>
                                                                 <td align="center">
-                                                                    <a href="http://www.facebook.com/upcyclepost"><img height="24" src="{{ static_url('img/email/facebook.png') }}" style="display: block;" width="24"></a>
+                                                                    <a href="https://www.facebook.com/upmodinc"><img height="24" src="{{ static_url('img/email/facebook.png') }}" style="display: block;" width="24"></a>
                                                                 </td>
 
                                                                 <td align="center" width="6">&nbsp;</td>
 
                                                                 <td align="center">
-                                                                    <a href="http://www.twitter.com/upcyclepost"><img height="24" src="{{ static_url('img/email/twitter.png') }}" style="display: block;" width="24"></a>
+                                                                    <a href="https://www.twitter.com/upmodinc"><img height="24" src="{{ static_url('img/email/twitter.png') }}" style="display: block;" width="24"></a>
                                                                 </td>
 
                                                                 <td align="center" width="6">&nbsp;</td>
 
                                                                 <td align="center">
-                                                                    <a href="http://www.pinterest.com/upcyclepost"><img height="24" src="{{ static_url('img/email/pinterest.png') }}" style="display: block;" width="24"></a>
+                                                                    <a href="https://www.pinterest.com/upmodinc"><img height="24" src="{{ static_url('img/email/pinterest.png') }}" style="display: block;" width="24"></a>
                                                                 </td>
 
                                                                 <td align="center" width="6">&nbsp;</td>
 
                                                                 <td align="center">
-                                                                    <a href="http://www.linkedin.com/company/upcyclepost-com"><img height="24" src="{{ static_url('img/email/linkedin.png') }}" style="display: block;" width="24"></a>
-                                                                </td>
-
-                                                                <td align="center" width="6">&nbsp;</td>
-
-                                                                <td align="center">
-                                                                    <a href="https://plus.google.com/s/upcyclepost"><img height="24" src="{{ static_url('img/email/google.png') }}" style="display: block;" width="24"></a>
+                                                                    <a href="https://plus.google.com/s/upmodinc"><img height="24" src="{{ static_url('img/email/google.png') }}" style="display: block;" width="24"></a>
                                                                 </td>
                                                             </tr>
                                                         </table>
