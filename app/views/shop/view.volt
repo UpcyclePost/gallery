@@ -5,7 +5,7 @@
         }
 
         body {
-            background: url('{{ profile.backgroundUrl() }}')!important;
+            background: url('{{ profile.Shop.backgroundUrl() }}')!important;
             -webkit-background-size: cover!important;
             -moz-background-size: cover!important;
             -o-background-size: cover!important;
@@ -62,7 +62,7 @@
             <br clear="all">
         </div>
     </div>
-    
+
     <?php
     $has_results = (count($results) > 0);
     ?>
