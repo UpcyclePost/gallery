@@ -7,7 +7,8 @@ class ImageProcessingService
 	/**
 	 * @param $sourceFile
 	 */
-	public function __construct($sourceFile)
+	public
+	function __construct($sourceFile)
 	{
 		$this->__sourceFile = $sourceFile;
 	}
@@ -20,32 +21,53 @@ class ImageProcessingService
 	 *
 	 * @return bool
 	 */
-	public function createThumbnail($thumbnailPath, $width, $height = \false, $crop = \false)
+	public
+	function createThumbnail($thumbnailPath, $width, $height = \false, $crop = \false)
 	{
 		$result = false;
 
-		$phpThumb = new PhpThumb_PhpThumb();
-		$phpThumb->setSourceData(file_get_contents($this->__sourceFile));
-		$phpThumb->setParameter('f', 'png');
-
-		$phpThumb->setParameter('w', $width);
-		if ($height !== \false)
+		if (!$crop || $height === \false)
 		{
-			$phpThumb->setParameter('h', $height);
-		}
-
-		if ($crop)
-		{
+			$phpThumb = new PhpThumb_PhpThumb();
+			$phpThumb->setSourceData(file_get_contents($this->__sourceFile));
+			$phpThumb->setParameter('f', 'png');
 			$phpThumb->setParameter('far', 'C');
-			$phpThumb->setParameter('zc', 'C');
-		}
 
-		if ($phpThumb->GenerateThumbnail()) {
-			$phpThumb->RenderToFile($thumbnailPath);
-			$result = true;
-		}
+			$phpThumb->setParameter('w', $width);
+			if ($height !== \false)
+			{
+				$phpThumb->setParameter('h', $height);
+			}
 
-		$phpThumb->purgeTempFiles();
+			if ($crop)
+			{
+				$phpThumb->setParameter('far', 'C');
+				$phpThumb->setParameter('zc', 'C');
+			}
+
+			if ($phpThumb->GenerateThumbnail())
+			{
+				$phpThumb->RenderToFile($thumbnailPath);
+				$result = true;
+			}
+
+			$phpThumb->purgeTempFiles();
+		}
+		else
+		{
+			// If we're cropping the image, use stoj/crop
+
+			$cropper = new \stojg\crop\CropBalanced($this->__sourceFile);
+			/**
+			 * @var \Imagick
+			 */
+			if ($croppedImage = $cropper->resizeAndCrop($width, $height))
+			{
+				$croppedImage->setImageFormat('png');
+				$croppedImage->writeImage($thumbnailPath);
+				$result = \true;
+			}
+		}
 
 		return $result;
 	}
@@ -53,7 +75,8 @@ class ImageProcessingService
 	/**
 	 * @param $sourceFile
 	 */
-	public function setSourceFile($sourceFile)
+	public
+	function setSourceFile($sourceFile)
 	{
 		$this->__sourceFile = $sourceFile;
 	}
