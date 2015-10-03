@@ -38,6 +38,7 @@
 
 <div class="content-container">
     {% if profile.Shop.logo %}
+        <br><br>
         <div>
             <img src="{{ profile.Shop.logoUrl() }}" width="400" height="100">
         </div>
@@ -65,6 +66,12 @@
             </div>
             <br clear="all">
         </div>
+        <div class="login-panel-footer text-right">
+            <span class='st_facebook'></span>
+            <span class='st_twitter'></span>
+            <span class='st_googleplus'></span>
+            <span class='st_pinterest'></span>
+        </div>
     </div>
 
     <?php
@@ -72,9 +79,9 @@
     ?>
     {% if has_results %}
         <br clear="both">
-        <div class="unique_area semi-opaque-7">
+        <div class="unique_area semi-opaque-7" style="margin-top:0;padding-top:10px;padding-bottom:10px;">
         <div class="content-container">
-            <div class="unik_text">
+            <div class="unik_text" style="margin-bottom:0;">
                 <h2>Products</h2>
             </div>
             <div class="login-panel-body">

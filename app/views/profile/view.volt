@@ -1,7 +1,4 @@
 <div class="content-container">
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-    <script type="text/javascript">stLight.options({publisher: "0919549b-9f77-444b-bd9a-4c8683b78c51", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
-
     {% if profile.custom_background %}
         <style type="text/css">
             .header_area.subpages {
@@ -76,26 +73,10 @@
                     </form>
                 </div>
                 <div class="login-panel-footer text-right">
-                    <div class="hidden-xs hidden-sm">
-                        <span class='st_facebook_large'></span>
-                        <span class='st_twitter_large'></span>
-                        <span class='st_linkedin_large'></span>
-                        <span class='st_googleplus_large'></span>
-                        <span class='st_pinterest_large'></span>
-                        <span class='st_stumbleupon_large'></span>
-                        <span class='st_email_large'></span>
-                        <span class='st_sharethis_large'></span>
-                    </div>
-                    <div class="hidden-lg hidden-md">
-                        <span class='st_facebook'></span>
-                        <span class='st_twitter'></span>
-                        <span class='st_linkedin'></span>
-                        <span class='st_googleplus'></span>
-                        <span class='st_pinterest'></span>
-                        <span class='st_stumbleupon'></span>
-                        <span class='st_email'></span>
-                        <span class='st_sharethis'></span>
-                    </div>
+                    <span class='st_facebook'></span>
+                    <span class='st_twitter'></span>
+                    <span class='st_googleplus'></span>
+                    <span class='st_pinterest'></span>
                 </div>
             </div>
 
@@ -157,6 +138,7 @@
                                         </article>
                                     </div>
                                 {% endfor %}
+                                <br clear="all">
                             </div>
                         </div>
                     </div>
