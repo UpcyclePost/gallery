@@ -6687,3 +6687,15 @@ nav.tabs li .btn {
 .row-centered {
   text-align:center;
 }
+
+.mainmenu.logged_in .hamburger-menu {
+  margin-left: 10px;
+}
+
+.mainmenu.logged_in .user-actions li {
+  margin-right:10px;
+}
+
+.btn-user font.items {
+  padding-left:7px;
+}
