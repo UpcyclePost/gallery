@@ -158,6 +158,7 @@
                                     <h3>Sell your products</h3>
                                     <ul class="links">
                                         <li><a href="{{ url('shop/module/marketplace/sellerrequest') }}">Create your shop</a></li>
+                                        <li><a href="{{ url('browse/shops') }}">View shop gallery</a>
                                     </ul>
                                 </div>
                             </div>
