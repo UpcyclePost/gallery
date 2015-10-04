@@ -128,12 +128,12 @@
                     <div class="login-panel-header">
                         <h1><a href="{{ profile.shopUrl() }}">{{ profile.user_name }}'s shop</a></h1>
                     </div>
-                    <div class="login-panel-body">
+                    <div class="login-panel-body" style="padding:24px 15px 4px;">
                         <div id="shop-iso-container">
                             <div id="shop-iso">
                                 {% for item in shop_results %}
-                                    <div class="col-lg-4">
-                                        <article style="margin-bottom: 20px;">
+                                    <div class="col-lg-4 text-center">
+                                        <article style="margin-bottom:20px;">
                                             <a href="{{ item['url'] }}"><img border="0" src="{{ item['image'] }}" style="max-height: 60px; max-width: 80px;"></a>
                                         </article>
                                     </div>
