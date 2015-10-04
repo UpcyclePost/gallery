@@ -36,7 +36,7 @@
 
             <div class="product-meta clearfix">
                 <a class="author" href="#">
-                    <a href="{{ url('shops/') ~ _post['userName'] }}"><?=Helpers::Truncate($_post['shopName'], 20)?></a>
+                    <a href="{{ url('shops/') }}<?=Helpers::url($_post['userName'])?>"><?=Helpers::Truncate($_post['shopName'], 20)?></a>
                 </a>
 
                 <a class="price" href="{{ _post['url'] }}">${{ _post['price']|pretty }}</a>

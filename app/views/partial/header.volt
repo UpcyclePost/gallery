@@ -38,6 +38,9 @@
 
         <link href="{{ static_url('upmod/css/styles.css') }}?5" rel="stylesheet">
 
+        <!-- UpcyclePost Icons -->
+        <link href="{{ static_url('css/upcyclepost/css/upcyclepost.css') }}" rel="stylesheet">
+
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
         <script src="{{ static_url('upmod/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
@@ -57,7 +60,7 @@
             <form id="more" data-start="50" data-url="{{ loadMoreItemsUrl }}" data-search-term="{{ loadMoreItemsSearchTerm }}"></form>
         {% endif %}
         <header class="header_area{% if isIndexPage is not defined %} subpages{% endif %}">
-            <nav class="mainmenu">
+            <nav class="mainmenu{% if isLoggedIn %} logged_in{% endif %}">
                 <div class="container">
                     <div class="row">
                         <a class="logo" href="{{ url('') }}"></a>
@@ -78,7 +81,7 @@
                                     <li style="margin-top: 0;">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-user dropdown-toggle" data-toggle="dropdown">
-                                                <span>Your Shop{% if totalUnshippedItems > 0 %} <font class="items">{{ totalUnshippedItems|pretty }}</font>{% endif %}</span> <i class="fa up-shop-1"></i>
+                                                <span>Your Shop</span>{% if totalUnshippedItems > 0 %} <font class="items">{{ totalUnshippedItems|pretty }}</font>{% endif %}</i>
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-right" role="menu">
                                                 <li><a href="/shop/module/marketplace/marketplaceaccount?shop={{ myShopId }}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
@@ -155,6 +158,7 @@
                                     <h3>Sell your products</h3>
                                     <ul class="links">
                                         <li><a href="{{ url('shop/module/marketplace/sellerrequest') }}">Create your shop</a></li>
+                                        <li><a href="{{ url('browse/shops') }}">View shop gallery</a>
                                     </ul>
                                 </div>
                             </div>

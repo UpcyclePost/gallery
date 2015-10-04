@@ -5,7 +5,7 @@
         }
 
         body {
-            background: url('{{ profile.backgroundUrl() }}')!important;
+            background: url('{{ profile.Shop.backgroundUrl() }}')!important;
             -webkit-background-size: cover!important;
             -moz-background-size: cover!important;
             -o-background-size: cover!important;
@@ -18,7 +18,11 @@
     </style>
 {% elseif custom_background is defined %}
     <style type="text/css">
-        #page {
+        .header_area.subpages {
+            background:transparent!important;
+        }
+
+        body {
             background: url('{{ profile.backgroundUrl() }}') #fff no-repeat center top fixed !important;
             -webkit-background-size: cover!important;
             -moz-background-size: cover!important;
@@ -34,6 +38,7 @@
 
 <div class="content-container">
     {% if profile.Shop.logo %}
+        <br><br>
         <div>
             <img src="{{ profile.Shop.logoUrl() }}" width="400" height="100">
         </div>
@@ -61,16 +66,22 @@
             </div>
             <br clear="all">
         </div>
+        <div class="login-panel-footer text-right">
+            <span class='st_facebook'></span>
+            <span class='st_twitter'></span>
+            <span class='st_googleplus'></span>
+            <span class='st_pinterest'></span>
+        </div>
     </div>
-    
+
     <?php
     $has_results = (count($results) > 0);
     ?>
     {% if has_results %}
         <br clear="both">
-        <div class="unique_area semi-opaque-7">
+        <div class="unique_area semi-opaque-7" style="margin-top:0;padding-top:10px;padding-bottom:10px;">
         <div class="content-container">
-            <div class="unik_text">
+            <div class="unik_text" style="margin-bottom:0;">
                 <h2>Products</h2>
             </div>
             <div class="login-panel-body">

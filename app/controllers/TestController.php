@@ -20,5 +20,11 @@ class TestController extends ControllerBase
 		}
 	}
 
+	public function cropAction()
+	{
+		$imageService = new ImageProcessingService('/var/www/html/shop/img/p/4/0/0/1/4001.jpg');
+		$imageService->createThumbnail('/var/www/html/files/posts/thumbnails/products/TEST-IM-2.png', 372, 238, true);
+	}
+
 }
 

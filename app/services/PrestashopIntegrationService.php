@@ -324,7 +324,7 @@ class PrestashopIntegrationService
 
 						$imageProcessingService = new \ImageProcessingService($imagePath);
 
-						if ($imageProcessingService->createThumbnail($thumbnailImagePath, ($width >= 244) ? 244 : $width))
+						if ($imageProcessingService->createThumbnail($thumbnailImagePath, 372, 238, \true))
 						{
 							$imageUrl = $url->get(sprintf('post/products/%s', $imageName));
 						}
