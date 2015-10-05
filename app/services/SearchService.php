@@ -74,6 +74,76 @@ class SearchService
 		return $result;
 	}
 
+	public function findProducts($searchTerm, $category = \false, $start = \false, $limit = 50, $userIk = \false, $not = \false)
+	{
+		$term = $this->sanitize($searchTerm);
+		$term = ($term && strlen($term) > 0) ? $term : \false;
+
+		$prestashopService = new \Up\Services\PrestashopIntegrationService();
+		$isPrestashopAvailable = $prestashopService->isPrestashopAvailable();
+
+		if (!$isPrestashopAvailable)
+		{
+			return [];
+		}
+
+		// When there is no search term, we want to only sort on "Influence"
+		$sort = ($term) ? ['score' => 'desc', 'posted' => 'desc', 'influence' => 'desc'] : ['posted' => 'desc', 'influence' => 'desc'];
+		$result = Post::searchIndex($start, $limit, $category, $userIk, $term, $not, $sort, 'market');
+
+		$posts = [];
+		$marketIk = [];
+
+		foreach ($result AS $k => $post)
+		{
+			if ($post['type'] == 'market')
+			{
+				$marketIk[] = $post['id'];
+				// We use id instead of ik because ik is made up in Solr for products
+				$posts[$post['id']] = \false;
+			}
+			else
+			{
+				$posts[$post['ik']] = $post;
+			}
+		}
+
+		if (count($marketIk) > 0)
+		{
+			if ($isPrestashopAvailable)
+			{
+				$psResult = $prestashopService->findProductsByIds($marketIk);
+				foreach ($psResult AS $product)
+				{
+					// We use ik instead of id because this is the actual ik of the product
+					$posts[$product['ik']] = $product;
+				}
+			}
+		}
+
+		$result = [];
+		foreach ($posts AS $k => $post)
+		{
+			if ($post !== \false)
+			{
+				$result[] = $post;
+			}
+		}
+
+		return $result;
+	}
+
+	public function findIdeas($searchTerm, $category = \false, $start = \false, $limit = 50, $userIk = \false, $not = \false)
+	{
+		$term = $this->sanitize($searchTerm);
+		$term = ($term && strlen($term) > 0) ? $term : \false;
+
+		// When there is no search term, we want to only sort on "Influence"
+		$sort = ($term) ? ['score' => 'desc', 'posted' => 'desc', 'influence' => 'desc'] : ['posted' => 'desc', 'influence' => 'desc'];
+
+		return Post::searchIndex($start, $limit, $category, $userIk, $term, $not, $sort, 'idea');
+	}
+
 	/**
 	 * @param $searchTerm
 	 *
