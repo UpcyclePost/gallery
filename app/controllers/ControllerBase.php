@@ -11,6 +11,7 @@ class ControllerBase extends Controller
 		$unread = 0;
 		$this->view->_version = $this->config->application->assetVersion;
 		$this->view->_mixpanel_key = $this->config->application->mixpanelKey;
+		$this->view->_mixpanel_page = 'Home';
 		$this->view->title = 'UpcyclePost';
 		$auth = $this->session->get('auth');
 		$this->view->isLoggedIn = ($auth && $auth !== false);

@@ -9,7 +9,7 @@
 
 {% if term is defined and term %}
     <script type="text/javascript">
-        mixpanel.track('Idea Page', {
+        mixpanel.track('{{ _mixpanel_page }} Page', {
             'Search Type': '{{ mixpanelType }}',
             'Search Terms': '{{ term }}',
         });

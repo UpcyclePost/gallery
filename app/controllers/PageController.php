@@ -2,6 +2,13 @@
 
 class PageController extends ControllerBase
 {
+	public function initialize()
+	{
+		parent::initialize();
+
+		$this->view->_mixpanel_page = 'Tweenie';
+	}
+
 	public function shopAction()
 	{
 		$this->view->page_title_text = 'Find items that are one-of-a-kind.';
