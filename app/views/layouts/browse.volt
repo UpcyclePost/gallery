@@ -6,3 +6,21 @@
     </div>
 {% endif %}
 {{ partial('partial/gallery/layout') }}
+
+{% if term is defined and term %}
+    <script type="text/javascript">
+        mixpanel.track('Idea Page', {
+            'Search Type': '{{ mixpanelType }}',
+            'Search Terms': '{{ term }}',
+        });
+    </script>
+{% endif %}
+
+{% if categoryId is defined and categoryId and categoryName is defined and categoryName %}
+    <script type="text/javascript">
+        mixpanel.track('Idea Page', {
+            'Category Id': '{{ categoryId }}',
+            'Category Name': '{{ categoryName }}',
+        });
+    </script>
+{% endif %}

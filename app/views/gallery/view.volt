@@ -145,3 +145,11 @@
     {{ partial('partial/disqus') }}
 
 </section>
+
+<script type="text/javascript">
+    mixpanel.track('Idea Page', {
+        'Idea Id': '{{ post.ik }}',
+        'Idea Name': '{{ post.title }}',
+        'Category Name': '{{ post.Category.title }}'
+    });
+</script>

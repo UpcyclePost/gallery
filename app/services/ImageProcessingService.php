@@ -31,7 +31,6 @@ class ImageProcessingService
 			$phpThumb = new PhpThumb_PhpThumb();
 			$phpThumb->setSourceData(file_get_contents($this->__sourceFile));
 			$phpThumb->setParameter('f', 'png');
-			$phpThumb->setParameter('far', 'C');
 
 			$phpThumb->setParameter('w', $width);
 			if ($height !== \false)
