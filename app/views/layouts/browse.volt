@@ -18,7 +18,7 @@
 
 {% if categoryId is defined and categoryId and categoryName is defined and categoryName %}
     <script type="text/javascript">
-        mixpanel.track('Idea Page', {
+        mixpanel.track('Category Page', {
             'Category Id': '{{ categoryId }}',
             'Category Name': '{{ categoryName }}',
         });
