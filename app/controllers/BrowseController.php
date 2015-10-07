@@ -32,6 +32,8 @@ class BrowseController extends ControllerBase
 		$this->view->categoryName = $this->__getCategoryName($category);
 		$this->view->categoryId = $this->__getCategoryId($category);
 
+		$this->view->_mixpanel_page = ($this->view->term) ? 'Search' : 'Products';
+
 		if ($category)
 		{
 			$this->view->loadMoreItemsUrl = $this->url->get('browse/products/' . $category);
@@ -53,6 +55,7 @@ class BrowseController extends ControllerBase
 		$this->view->page_header_text = 'Shops';
 
 		$this->view->mixpanelType = 'Shops';
+		$this->view->_mixpanel_page = ($this->view->term) ? 'Search' : 'Shops';
 
 		$prestashopService = new \Up\Services\PrestashopIntegrationService();
 
@@ -69,6 +72,7 @@ class BrowseController extends ControllerBase
 		$this->view->loadMoreItemsUrl = $this->url->get('browse/ideas');
 
 		$this->view->mixpanelType = 'Ideas';
+		$this->view->_mixpanel_page = ($this->view->term) ? 'Search' : 'Ideas';
 		$this->view->categoryName = $this->__getCategoryName($category);
 		$this->view->categoryId = $this->__getCategoryId($category);
 
@@ -94,6 +98,7 @@ class BrowseController extends ControllerBase
 		$users = $this->__searchService->findUsers($this->__getSearchTerm());
 
 		$this->view->mixpanelType = 'Members';
+		$this->view->_mixpanel_page = ($this->view->term) ? 'Search' : 'Members';
 
 		$results = [];
 

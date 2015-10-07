@@ -2,6 +2,12 @@
 
 class PostController extends ControllerBase
 {
+	public function initialize()
+	{
+		parent::initialize();
+
+		$this->view->_mixpanel_page = 'Post Idea';
+	}
 
 	public function indexAction()
 	{

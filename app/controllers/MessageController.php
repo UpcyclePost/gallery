@@ -2,6 +2,13 @@
 
 class MessageController extends ControllerBase
 {
+	public function initialize()
+	{
+		parent::initialize();
+
+		$this->view->_mixpanel_page = 'Messages';
+	}
+
 	public function inboxAction()
 	{
 		$this->view->page_header_text = 'Message Center';

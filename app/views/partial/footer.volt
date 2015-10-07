@@ -49,9 +49,7 @@
 	</script>
 
 	<script type="text/javascript">
-        {literal}
-            mixpanel.track('Viewed Page', {'Page Name': 'Idea Page'});
-        {/literal}
+        mixpanel.track('Viewed Page', {'Page Name': '{{ _mixpanel_page }} Page'});
     </script>
 
     <?php

@@ -5,6 +5,7 @@ class ContactController extends ControllerBase
     public function indexAction()
     {
         $this->view->title = 'Contact | UpcyclePost';
+        $this->view->_mixpanel_page = 'Contact';
 
         if ($this->request->isPost())
         {
