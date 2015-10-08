@@ -81,6 +81,8 @@ class GalleryController extends ControllerBase
 
 		$this->view->start = 50;
 
+		$this->view->_mixpanel_page = 'Idea';
+
 		if (!$this->request->isPost())
 		{
 			$this->view->canonical_url = $this->url->get(substr($this->router->getRewriteUri(), 1));

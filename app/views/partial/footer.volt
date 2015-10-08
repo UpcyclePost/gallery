@@ -46,14 +46,17 @@
 
 	  ga('create', 'UA-51510786-2', 'auto');
 	  ga('send', 'pageview');
-
 	</script>
 
-        <?php
-            foreach ($this->assets->collection('js') AS $resource)
-            {
-                echo \Phalcon\Tag::javascriptInclude(sprintf('%s?%s', $resource->getPath(), $_version));
-            }
-        ?>
+	<script type="text/javascript">
+        mixpanel.track('Viewed Page', {'Page Name': '{{ _mixpanel_page }} Page'});
+    </script>
+
+    <?php
+        foreach ($this->assets->collection('js') AS $resource)
+        {
+            echo \Phalcon\Tag::javascriptInclude(sprintf('%s?%s', $resource->getPath(), $_version));
+        }
+    ?>
     </body>
 </html>

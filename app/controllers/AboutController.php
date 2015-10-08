@@ -11,6 +11,8 @@ class AboutController extends ControllerBase
         $this->view->title = sprintf('%s | upmod', $result['title']);
         $this->view->content = $result['content'];
         $this->view->pageTitle = $result['title'];
+
+        $this->view->_mixpanel_page = 'About';
     }
 
 }

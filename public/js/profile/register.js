@@ -47,6 +47,23 @@ $(function () {
                 validUsername: true,
                 minlength:5
             }
+        },
+        submitHandler: function(form) {
+            mixpanel.track('Sign Up',
+                {
+                    'Member Name': $('#user-name').val(),
+                    'Email': $('#email').val()
+                });
+	    /*
+            mixpanel.alias($('#email').val());
+            mixpanel.people.set(
+                {
+                    'Member Name': $('#user-name').val(),
+                    '$Email': $('#email').val(),
+                    'Sign up Date': new Date()
+                });
+	    */
+            form.submit();
         }
     });
 });

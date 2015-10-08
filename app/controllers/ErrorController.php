@@ -9,6 +9,7 @@ class ErrorController extends ControllerBase
         $this->response->setHeader(404, 'Not Found');
         $this->view->pick('error/404');
         $this->view->title = 'Error | UpcyclePost';
+        $this->view->_mixpanel_page = 'Error';
     }
 
     public function show404Action()

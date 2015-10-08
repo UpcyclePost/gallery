@@ -4,6 +4,13 @@ use Up\Services\PrestashopIntegrationService;
 
 class ShopController extends ControllerBase
 {
+	public function initialize()
+	{
+		parent::initialize();
+
+		$this->view->_mixpanel_page = 'Shop';
+	}
+
 	public function redirectAction($userIk)
 	{
 		$user = \User::findFirst((int)$userIk);
@@ -22,6 +29,8 @@ class ShopController extends ControllerBase
 	{
 		$this->assets->addJs('js/libraries/image-picker/image-picker.min.js')
 			->addCss('css/libraries/image-picker/image-picker.css');
+
+		$this->view->_mixpanel_page = 'Shop Customize';
 
 		if (($profile = $this->__getProfile()) !== \false)
 		{
@@ -270,10 +279,6 @@ class ShopController extends ControllerBase
 
 	public function shopsAction()
 	{
-		$this->view->title = 'Shop Gallery | Upcycling Ideas, Articles and Products | UpcyclePost';
-		$prestashopService = new PrestashopIntegrationService();
-
-		$this->assets->addJs('js/gallery/layout.js?v=0.26.3');
-		$this->view->results = $prestashopService->findShops();
+		return $this->response->redirect('browse/shops');
 	}
 }

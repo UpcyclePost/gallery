@@ -2,6 +2,13 @@
 
 class ProfileController extends ControllerBase
 {
+	public function initialize()
+	{
+		parent::initialize();
+
+		$this->view->_mixpanel_page = 'Profile';
+	}
+
 	public function indexAction()
 	{
 
@@ -60,6 +67,8 @@ class ProfileController extends ControllerBase
 		             ->addJs('js/profile/edit.js')
 		             ->addJs('js/libraries/jquery/jquery.blockUI.js')
 		             ->addJs('js/libraries/dropzone/dropzone.js');
+
+		$this->view->_mixpanel_page = 'Profile Edit';
 
 		$this->view->flow = 'member';
 		if ($this->request->has('flow'))
@@ -312,6 +321,8 @@ class ProfileController extends ControllerBase
 
 		$auth = $this->session->get('auth');
 
+		$this->view->_mixpanel_page = 'Account Settings';
+
 		$this->view->page_header_text = 'Account Settings';
 
 		$profile = User::findFirst($auth[ 'ik' ]);
@@ -416,6 +427,8 @@ class ProfileController extends ControllerBase
 		$this->assets->addJs('js/libraries/validate/jquery.validate.min.js')
 		             ->addJs('js/profile/reset-password.js');
 
+		$this->view->_mixpanel_page = 'Reset Password';
+
 		$token = '';
 		if (count($_GET) > 0 && isset($_GET[ 'r' ]))
 		{
@@ -473,6 +486,7 @@ class ProfileController extends ControllerBase
 	{
 		$this->view->title = 'Forgot Password | upmod';
 		$this->view->page_header_text = 'Forgot Password';
+		$this->view->_mixpanel_page = 'Forgot Password';
 
 		if ($this->request->isPost())
 		{
@@ -594,6 +608,8 @@ class ProfileController extends ControllerBase
 	{
 		$this->assets->addJs('js/libraries/validate/jquery.validate.min.js')
 		             ->addJs('js/profile/register.js');
+
+		$this->view->_mixpanel_page = 'Sign Up';
 
 		$this->view->title = 'Sign Up | upmod';
 		$this->view->page_header_text = 'Sign up and become an upmod Insider';
@@ -761,6 +777,7 @@ class ProfileController extends ControllerBase
 	{
 		$this->view->title = 'Sign In | upmod';
 		$this->view->page_header_text = 'Sign in';
+		$this->view->_mixpanel_page = 'Sign In';
 
 		if ($auth = $this->session->get('auth'))
 		{
@@ -859,6 +876,7 @@ class ProfileController extends ControllerBase
 	public function feedAction($type = \false)
 	{
 		$this->view->page_header_text = 'Your Feed';
+		$this->view->_mixpanel_page = 'Feed';
 
 		$profile = User::findFirst($this->auth[ 'ik' ]);
 
