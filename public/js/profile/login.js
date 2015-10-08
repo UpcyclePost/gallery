@@ -18,13 +18,14 @@ $(function() {
                 {
                     'Email': $('#email').val()
                 });
+	    /*
             mixpanel.identify($('#email').val());
             mixpanel.people.set(
                 {
                     '$Email': $('#email').val(),
                     'Last Sign In': new Date()
                 });
-
+	    */
             form.submit();
         }
     })
