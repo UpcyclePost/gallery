@@ -5,7 +5,7 @@
 
     <a class="btn btn-blue" href="">Become a member</a>
     </div>
-    <div class="pull-right">
+    <div class="pull-right hidden-xs">
         <img src="{{ url('/upmod/img/sharing.png') }}">
     </div>
 </div>
