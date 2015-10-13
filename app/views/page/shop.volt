@@ -5,7 +5,7 @@
 
     <a class="btn btn-blue" href="{{ url('/browse/products') }}">Shop our products</a>
     </div>
-    <div class="pull-right">
+    <div class="pull-right hidden-xs">
         <img src="{{ url('/upmod/img/shopping.png') }}">
     </div>
 </div>

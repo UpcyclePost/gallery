@@ -4,12 +4,17 @@
     <h3>Are you an upcycle artisan?  Create your very own<br>shop and sell your upcycled products online.</h3>
 
     <a class="btn btn-blue" href="{{ url('shop/module/marketplace/sellerrequest') }}">Create your shop</a>
+	
     </div>
-    <div class="pull-right">
+    <div class="pull-right hidden-xs">
         <img src="{{ url('/upmod/img/selling.png') }}">
     </div>
 </div>
-
+<div class="container tweenie">
+    <div class="text-center">
+    <h4>&#8220;I really, really, appreciate a selling platform such as yours.<br> It is nice to have notice of, and respect for those of us that<br> are so passionate about recycling, reducing, and recreating&#8221;<br> - Erin Bass</h4>
+    </div>
+</div>
 <div class="tweenie-content">
     <div class="container">
         <div class="text-center">
