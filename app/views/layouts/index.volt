@@ -369,6 +369,9 @@
                         </div>
                     </div>
                 </div>
+		<div class="row pull-left hidden-xs hidden-sm">
+		<a href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
+		</div>
             </div>
         </section>
 
