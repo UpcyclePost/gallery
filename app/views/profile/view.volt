@@ -7,10 +7,10 @@
 
             body {
                 background: url('{{ profile.backgroundUrl() }}')!important;
-                -webkit-background-size: cover!important;
-                -moz-background-size: cover!important;
-                -o-background-size: cover!important;
                 background-size: cover!important;
+                background-attachment: fixed!important;
+                background-repeat: no-repeat!important;
+                background-position: center center!important;
             }
 
             #content-main {
