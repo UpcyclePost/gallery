@@ -9,8 +9,8 @@
             </div>
             <div class="post-details-crumbs">
                 <ol class="breadcrumb">
-                    <li><a href="{{ url('gallery') }}">Gallery</a></li>
-                    <li><a href="{{ url('gallery/' ~ post.Category.title|url) }}">{{ post.Category.title }}</a></li>
+                    <li><a href="{{ url('browse/ideas') }}">Gallery</a></li>
+                    <li><a href="{{ url('browse/ideas/' ~ post.Category.title|url) }}">{{ post.Category.title }}</a></li>
                     <li style="float: right;position:relative;bottom:10px;" class="attr-content" data-content=" ">
                         <span class='st_facebook'></span>
                         <span class='st_twitter'></span>
