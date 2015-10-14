@@ -216,6 +216,12 @@
 					$('#universal-search-form').submit();
 				}
 			});
+
+			$('input.tt-input').keypress(function (e) {
+				if (e.which == 13) {
+					$(".tt-suggestion").first().trigger('click');
+				}
+			});
 		}
 	}
 
