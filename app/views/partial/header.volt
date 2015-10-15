@@ -10,8 +10,8 @@
     <head>
         <meta charset="utf-8">
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-        <title>Upmod</title>
-        <meta content="" name="description">
+        <title>Buy and sell upcycled products at Upmod</title>
+        <meta content="Upmod is your new marketplace and community where you can buy and sell upcycled products" name="description">
 
         {% if og_img is defined %}
             <meta property="og:image" content="{{ og_img }}" />

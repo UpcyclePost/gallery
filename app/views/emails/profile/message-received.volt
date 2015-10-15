@@ -393,7 +393,7 @@
                                                                 <td align="center" width="6">&nbsp;</td>
 
                                                                 <td align="center">
-                                                                    <a href="https://plus.google.com/s/upmod"><img height="24" src="{{ static_url('img/email/google.png') }}" style="display: block;" width="24"></a>
+                                                                    <a href="https://plus.google.com/+upmodinc"><img height="24" src="{{ static_url('img/email/google.png') }}" style="display: block;" width="24"></a>
                                                                 </td>
                                                             </tr>
                                                         </table>
