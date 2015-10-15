@@ -3,7 +3,7 @@
     <h2>Share</h2>
     <h3>Join the upcycle movement and share inspirations with<br>other upcyclers in your favorite social media networks.</h3>
 
-    <a class="btn btn-blue" href="">Become a member</a>
+    <a class="btn btn-blue" href="{{ url('profile/register') }}">Become a member</a>
     </div>
     <div class="pull-right hidden-xs">
         <img src="{{ url('/upmod/img/sharing.png') }}">
