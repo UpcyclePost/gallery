@@ -136,7 +136,7 @@ class MessageController extends ControllerBase
 					ob_end_clean();
 
 					//Send
-					Helpers::sendEmail($user->email, sprintf('%s sent you a message on UpcyclePost', $this->auth[ 'user_name' ]), $body, 'UpcyclePost', 'noreply@upcyclepost.com');
+					Helpers::sendEmail($user->email, sprintf('%s sent you a message on Upmod', $this->auth[ 'user_name' ]), $body, 'Upmod', 'noreply@upmod.com');
 				}
 				catch (Exception $e)
 				{
