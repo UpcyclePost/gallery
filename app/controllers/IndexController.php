@@ -63,7 +63,7 @@ class IndexController extends ControllerBase
 
 		$this->view->results = $results;
 
-		$this->view->title = 'Buy and sell upcycled products at Upmod';
+		$this->view->title = 'Buy and sell upcycled and recycled products at Upmod';
 
 		$showedSubscribe = $this->session->get('showedSubscribe');
 		$this->view->showSubscribe = false;

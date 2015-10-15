@@ -10,8 +10,8 @@
     <head>
         <meta charset="utf-8">
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-        <title>Buy and sell upcycled products at Upmod</title>
-        <meta content="Upmod is your new marketplace and community where you can buy and sell upcycled products" name="description">
+        <title>Buy and sell upcycled and recycled products at Upmod</title>
+        <meta content="Upmod is your new marketplace and community where you can buy and sell upcycled, recycled, repurposed, reused and salvaged products, join the upcycling movement today" name="description">
 
         {% if og_img is defined %}
             <meta property="og:image" content="{{ og_img }}" />
@@ -146,7 +146,7 @@
                                 <ul class="categories">
                                     <?php $categories = Helpers::getCategoryList(); ?>
                                     {% for _category in categories %}
-                                        <li><a href="{{ url('browse/products/' ~ _category['title']|url) }}">{{ _category['title'] }}</a></li>
+                                        <li><a href="{{ url('browse/products/' ~ _category['title']|url) }}" title="{{ _category['title'] }}">{{ _category['title'] }}</a></li>
                                     {% endfor %}
                                 </ul>
                             </div>
@@ -154,24 +154,24 @@
                                 <div class="left-menu">
                                     <h3>Share your ideas</h3>
                                     <ul class="links">
-                                        <li><a href="{{ url('post/idea') }}">Upload your images</a></li>
-                                        <li><a href="{{ url('browse/members') }}">View member gallery</a></li>
+                                        <li><a href="{{ url('post/idea') }}" title="Upload your images">Upload your images</a></li>
+                                        <li><a href="{{ url('browse/members') }}" title="View member gallery">View member gallery</a></li>
                                     </ul>
                                 </div>
                                 <div class="right-menu">
                                     <h3>Sell your products</h3>
                                     <ul class="links">
-                                        <li><a href="{{ url('shop/module/marketplace/sellerrequest') }}">Create your shop</a></li>
-                                        <li><a href="{{ url('browse/shops') }}">View shop gallery</a>
+                                        <li><a href="{{ url('shop/module/marketplace/sellerrequest') }}" title="Create your shop">Create your shop</a></li>
+                                        <li><a href="{{ url('browse/shops') }}" title="View shop gallery">View shop gallery</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column clearfix">
                                 <h3>Upmod</h3>
                                 <ul class="links">
-                                    <li><a href="{{ url('about') }}">About us</a></li>
-                                    <li><a href="{{ url('blog') }}">Blog</a></li>
-                                    <li><a href="{{ url('contact') }}">Contact us</a></li>
+                                    <li><a href="{{ url('about') }}" title="About us">About us</a></li>
+                                    <li><a href="{{ url('blog') }}" title="Blog">Blog</a></li>
+                                    <li><a href="{{ url('contact') }}" title="Contact us">Contact us</a></li>
                                 </ul>
                                 <div class="social-icons">
                                     <a href="https://www.facebook.com/upmodinc" target="_blank"><i class="fa fa-facebook-square"></i></a>
@@ -190,23 +190,23 @@
                         <div class="left_menu">
                             <ul>
                                 <li>
-                                    <a href="{{ url('browse/products/art') }}">Art</a>
+                                    <a href="{{ url('browse/products/art') }}" title="Art">Art</a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('browse/products/fashion') }}">Fashion</a>
+                                    <a href="{{ url('browse/products/fashion') }}" title="Fashion">Fashion</a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('browse/products/furniture') }}">Furniture</a>
+                                    <a href="{{ url('browse/products/furniture') }}" title="Furniture">Furniture</a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('browse/products/home') }}">Home</a>
+                                    <a href="{{ url('browse/products/home') }}" title="Home">Home</a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('browse/products/jewelry') }}">Jewelry</a>
+                                    <a href="{{ url('browse/products/jewelry') }}" title="Jewelry">Jewelry</a>
                                 </li>
                             </ul>
                         </div>
