@@ -121,7 +121,7 @@ class Helpers {
         return $foundMaterials;
     }
 
-    public static function sendEmail($to, $subject, $body, $fromName = 'UpcyclePost', $fromAddress = 'up@upcyclepost.com') {
+    public static function sendEmail($to, $subject, $body, $fromName = 'Upmod', $fromAddress = 'up@upmod.com') {
         $config = Phalcon\DI::getDefault()->get('config');
 
         $mail = new PHPMailer();

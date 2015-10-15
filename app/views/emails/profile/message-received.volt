@@ -4,7 +4,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <meta content="width=device-width" name="viewport">
 
-    <title>UpcyclePost | New Message</title>
+    <title>Upmod | New Message</title>
     <style type="text/css">
         /*<![CDATA[*/
         #outlook a {
@@ -191,7 +191,7 @@
                                 <table align="center" border="0" cellpadding="0" cellspacing="0" class="collapse-header center">
                                     <tr>
                                         <td height="40">
-                                            <a href="http://www.upcyclepost.com/"><img alt="" class="logo" height="38" src="{{ static_url('img/email/logo.png') }}" width="160"></a>
+                                            <a href="http://www.upmod.com/"><img alt="" class="logo" height="38" src="{{ static_url('img/email/logo-active.png') }}" width="150"></a>
                                         </td>
                                     </tr>
                                 </table>
@@ -276,7 +276,7 @@
                                                                             <td align="center" class="column" valign="top" width="280">
                                                                                 <table border="0" cellpadding="6" cellspacing="0" class="collapse" style="border-collapse: separate !important; mso-table-lspace:0pt; mso-table-rspace:0pt; background-color: #ffffff; border: 1px solid #dddddd; border-radius: 6px; box-shadow: 0 1px 1px #ECEBEA;" width="100%">
                                                                                     <tr>
-                                                                                        <td style="background-color: #FBFBFB; border-bottom: 1px solid #dddddd; border-top-left-radius: 6px; border-top-right-radius: 6px; color: #0187d0; font-size: 16px; line-height: normal; padding: 16px 20px 13px 20px" valign="top"><strong>New Message on UpcyclePost</strong></td>
+                                                                                        <td style="background-color: #FBFBFB; border-bottom: 1px solid #dddddd; border-top-left-radius: 6px; border-top-right-radius: 6px; color: #0187d0; font-size: 16px; line-height: normal; padding: 16px 20px 13px 20px" valign="top"><strong>New Message on Upmod</strong></td>
                                                                                     </tr>
 
                                                                                     <tr>
@@ -313,7 +313,7 @@
                                                                                         <td align="center" style="background-color: #fff; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border-top: 1px solid #dddddd; padding: 16px 20px 16px 20px" valign="top">
                                                                                             <table border="0" cellpadding="10" cellspacing="0" width="200">
                                                                                                 <tr>
-                                                                                                    <td align="center" style="background-color: #77AE22; border-radius: 4px">
+                                                                                                    <td align="center" style="background-color: #0187d0; border-radius: 4px">
                                                                                                         <a href="{{ url('profile/messages') }}" style="text-decoration: none; color: #fff;"><strong>Message Center</strong></a>
                                                                                                     </td>
                                                                                                 </tr>
@@ -364,7 +364,7 @@
                                             <table align="left" border="0" cellpadding="0" cellspacing="0" class="collapse center">
                                                 <tr>
                                                     <td>
-                                                        <a href="http://www.upcyclepost.com/"><img alt="" class="logo" height="38" src="{{ static_url('img/email/logo.png') }}" width="160"></a>
+                                                        <a href="http://www.upmod.com/"><img alt="" class="logo" height="38" src="{{ static_url('img/email/logo-active.png') }}" width="150"></a>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -375,31 +375,25 @@
                                                         <table align="center" border="0" cellpadding="0" cellspacing="0">
                                                             <tr>
                                                                 <td align="center">
-                                                                    <a href="http://www.facebook.com/upcyclepost"><img height="24" src="{{ static_url('img/email/facebook.png') }}" style="display: block;" width="24"></a>
+                                                                    <a href="https://www.facebook.com/upmodinc"><img height="24" src="{{ static_url('img/email/facebook.png') }}" style="display: block;" width="24"></a>
                                                                 </td>
 
                                                                 <td align="center" width="6">&nbsp;</td>
 
                                                                 <td align="center">
-                                                                    <a href="http://www.twitter.com/upcyclepost"><img height="24" src="{{ static_url('img/email/twitter.png') }}" style="display: block;" width="24"></a>
+                                                                    <a href="https://www.twitter.com/upmodinc"><img height="24" src="{{ static_url('img/email/twitter.png') }}" style="display: block;" width="24"></a>
                                                                 </td>
 
                                                                 <td align="center" width="6">&nbsp;</td>
 
                                                                 <td align="center">
-                                                                    <a href="http://www.pinterest.com/upcyclepost"><img height="24" src="{{ static_url('img/email/pinterest.png') }}" style="display: block;" width="24"></a>
+                                                                    <a href="http://www.pinterest.com/upmodinc"><img height="24" src="{{ static_url('img/email/pinterest.png') }}" style="display: block;" width="24"></a>
                                                                 </td>
 
                                                                 <td align="center" width="6">&nbsp;</td>
 
                                                                 <td align="center">
-                                                                    <a href="http://www.linkedin.com/company/upcyclepost-com"><img height="24" src="{{ static_url('img/email/linkedin.png') }}" style="display: block;" width="24"></a>
-                                                                </td>
-
-                                                                <td align="center" width="6">&nbsp;</td>
-
-                                                                <td align="center">
-                                                                    <a href="https://plus.google.com/s/upcyclepost"><img height="24" src="{{ static_url('img/email/google.png') }}" style="display: block;" width="24"></a>
+                                                                    <a href="https://plus.google.com/s/upmod"><img height="24" src="{{ static_url('img/email/google.png') }}" style="display: block;" width="24"></a>
                                                                 </td>
                                                             </tr>
                                                         </table>
