@@ -142,7 +142,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <div class="unik_text">
-                            <h2>We Love the upmod Artisans</h2>
+                            <h2>We Love the Upmod Artisans</h2>
 
                             <p>Upcycling Artisans power our community. Join the movement and sell your creations!</p>
                         </div>
