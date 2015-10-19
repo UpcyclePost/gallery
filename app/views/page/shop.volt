@@ -6,7 +6,7 @@
     <a class="btn btn-blue" href="{{ url('/browse/products') }}">Shop our products</a>
     </div>
     <div class="pull-right hidden-xs">
-        <img src="{{ url('/upmod/img/shopping.png') }}">
+        <img alt="Shop upcycled and recycled products at Upmod" src="{{ url('/upmod/img/shopping.png') }}">
     </div>
 </div>
 
@@ -17,7 +17,7 @@
         </div>
         <div class="col-lg-4 col-md-12 text-center">
             <div class="tweenie-content-image">
-                <img src="{{ url('upmod/img/stores.png') }}">
+                <img alt="Shops" src="{{ url('upmod/img/stores.png') }}">
             </div>
             <h2>Shops</h2>
             <h3>Visit the Shop Gallery and<br>choose your starting point.</h3>
@@ -26,7 +26,7 @@
 
         <div class="col-lg-4 col-md-12 text-center">
             <div class="tweenie-content-image">
-                <img src="{{ url('upmod/img/products.png') }}">
+                <img alt="Products" src="{{ url('upmod/img/products.png') }}">
             </div>
             <h2>Products</h2>
             <h3>Visit the Products Gallery<br>look for what inspires you.</h3>
@@ -35,7 +35,7 @@
 
         <div class="col-lg-4 col-md-12 text-center">
             <div class="tweenie-content-image">
-                <img src="{{ url('upmod/img/categories.png') }}">
+                <img alt="Categories" src="{{ url('upmod/img/categories.png') }}">
             </div>
             <h2>Categories</h2>
             <h3>Shop by Category and find<br>what you need instantly.</h3>

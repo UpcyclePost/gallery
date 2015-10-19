@@ -7,7 +7,7 @@
 	
     </div>
     <div class="pull-right hidden-xs">
-        <img src="{{ url('/upmod/img/selling.png') }}">
+        <img alt="Sell upcycled and recycled products at Upmod" src="{{ url('/upmod/img/selling.png') }}">
     </div>
 </div>
 <div class="container tweenie">
@@ -22,7 +22,7 @@
         </div>
         <div class="col-lg-4 col-md-12 text-center">
             <div class="tweenie-content-image">
-                <img src="{{ url('upmod/img/glue.png') }}">
+                <img alt="What can I sell?" src="{{ url('upmod/img/glue.png') }}">
             </div>
             <h2>What can I sell?</h2>
             <h3>Upcycled products need to be made from<br>51% recycled raw materials.</h3>
@@ -30,7 +30,7 @@
 
         <div class="col-lg-4 col-md-12 text-center">
             <div class="tweenie-content-image">
-                <img src="{{ url('upmod/img/earth.png') }}">
+                <img alt="Why sell my work?" src="{{ url('upmod/img/earth.png') }}">
             </div>
             <h2>Why sell my work?</h2>
             <h3>Buyers are looking for upcycled,<br>sustainable guilt-free products.</h3>
@@ -38,7 +38,7 @@
 
         <div class="col-lg-4 col-md-12 text-center">
             <div class="tweenie-content-image">
-                <img src="{{ url('upmod/img/cost.png') }}">
+                <img alt="What will it cost?" src="{{ url('upmod/img/cost.png') }}">
             </div>
             <h2>What will it cost?</h2>
             <h3><strong>6% transaction fee.</strong><br>$.30 listing fee - waived thru 2015.</h3>
