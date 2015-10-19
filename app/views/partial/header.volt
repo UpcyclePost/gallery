@@ -11,7 +11,7 @@
         <meta charset="utf-8">
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
         <title>Buy and sell upcycled and recycled products at Upmod</title>
-        <meta content="Upmod is your new marketplace and community where you can buy and sell upcycled, recycled, repurposed, reused and salvaged products, join the upcycling movement today" name="description">
+        <meta content="Upmod is your new marketplace and community where you can buy and sell upcycled, recycled, repurposed and salvaged products, join the upcycling movement today" name="description">
 
         {% if og_img is defined %}
             <meta property="og:image" content="{{ og_img }}" />

@@ -6,7 +6,7 @@
     <a class="btn btn-blue" href="{{ url('profile/register') }}">Become a member</a>
     </div>
     <div class="pull-right hidden-xs">
-        <img src="{{ url('/upmod/img/sharing.png') }}">
+        <img alt="Share upcycled and recycled products at Upmod" src="{{ url('/upmod/img/sharing.png') }}">
     </div>
 </div>
 
@@ -17,7 +17,7 @@
         </div>
         <div class="col-lg-4 col-md-12 text-center">
             <div class="tweenie-content-image">
-                <img src="{{ url('upmod/img/ideas.png') }}">
+                <img alt="Ideas" src="{{ url('upmod/img/ideas.png') }}">
             </div>
             <h2>Ideas</h2>
             <h3>Share your own upcycling ideas<br>with a hungry group of users.</h3>
@@ -25,7 +25,7 @@
 
         <div class="col-lg-4 col-md-12 text-center">
             <div class="tweenie-content-image">
-                <img src="{{ url('upmod/img/purchases.png') }}">
+                <img alt="Purchases" src="{{ url('upmod/img/purchases.png') }}">
             </div>
             <h2>Purchases</h2>
             <h3>Share your favorite purchases<br>with friends &amp; loved ones.</h3>
@@ -33,7 +33,7 @@
 
         <div class="col-lg-4 col-md-12 text-center">
             <div class="tweenie-content-image">
-                <img src="{{ url('upmod/img/profiles.png') }}">
+                <img alt="Profiles" src="{{ url('upmod/img/profiles.png') }}">
             </div>
             <h2>Profiles</h2>
             <h3>Share artisan and user profiles<br>and help grow the movement.</h3>

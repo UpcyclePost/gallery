@@ -8,19 +8,19 @@
                         <div class="promo_icon">
                             <ul>
                                 <li>
-                                    <a href="{{ url('up/shop') }}"><img alt="" src="{{ static_url('upmod/img/shop.png') }}"></a></a>
+                                    <a href="{{ url('up/shop') }}"><img alt="Shop upcycled and recycled products at Upmod" src="{{ static_url('upmod/img/shop.png') }}"></a></a>
 
                                     <h2>Shop</h2>
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('sell') }}"><img alt="" src="{{ static_url('upmod/img/sell.png') }}"></a>
+                                    <a href="{{ url('sell') }}"><img alt="Sell upcycled and recycled products at Upmod" src="{{ static_url('upmod/img/sell.png') }}"></a>
 
                                     <h2>Sell</h2>
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('share') }}"><img alt="" src="{{ static_url('upmod/img/share.png') }}"></a>
+                                    <a href="{{ url('share') }}"><img alt="Share upcycled and recycled products at Upmod" src="{{ static_url('upmod/img/share.png') }}"></a>
 
                                     <h2>Share</h2>
                                 </li>
@@ -158,7 +158,7 @@
                         <div class="product_image thumbnail wide bot">
                             <a href="http://www.upcyclepost.com/shops/alinescardboard">
                                 <div class="thumbnail-container">
-                                    <img alt="" src="{{ static_url('img/features/shop.png') }}" style="min-height:238px;">
+                                    <img alt="Aline's Cardboard" src="{{ static_url('img/features/shop.png') }}" style="min-height:238px;">
                                     <div class="product-icons">
                                         <div class="icon-circle">
                                             <i class="fa fa-heart"></i>
@@ -211,7 +211,7 @@
                         <div class="product_image thumbnail wide bot">
                             <a href="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">
                                 <div class="thumbnail-container">
-                                    <img alt="" src="{{ static_url('img/features/product.png') }}" style="min-height:238px;">
+                                    <img alt="New 70's Stylin' Hubcap Celling Fixture" src="{{ static_url('img/features/product.png') }}" style="min-height:238px;">
                                     <div class="product-icons">
                                         <div class="icon-circle">
                                             <i class="fa fa-heart"></i>
@@ -266,7 +266,7 @@
                         <div class="product_image thumbnail wide bot">
                             <a href="http://www.upmod.com/profile/view/156">
                                 <div class="thumbnail-container">
-                                    <img alt="" src="{{ static_url('img/features/profile.png') }}" style="min-height:238px;">
+                                    <img alt="Raymond Guest" src="{{ static_url('img/features/profile.png') }}" style="min-height:238px;">
                                     <div class="product-icons">
                                         <div class="icon-circle">
                                             <i class="fa fa-heart"></i>
@@ -329,7 +329,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="work_sample pull-right">
-                            <a href="{{ url('up/shop') }}"><img alt="" src="{{ static_url('upmod/img/shop.png') }}"></a>
+                            <a href="{{ url('up/shop') }}"><img alt="Shop upcycled and recycled products at Upmod" src="{{ static_url('upmod/img/shop.png') }}"></a>
 
                             <h2>Shop</h2>
 
@@ -343,7 +343,7 @@
 
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="work_sample">
-                            <a href="{{ url('sell') }}"><img alt="" src="{{ static_url('upmod/img/sell.png') }}"></a>
+                            <a href="{{ url('sell') }}"><img alt="Sell upcycled and recycled products at Upmod" src="{{ static_url('upmod/img/sell.png') }}"></a>
 
                             <h2>Sell</h2>
 
@@ -357,7 +357,7 @@
 
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="work_sample pull-left">
-                            <a href="{{ url('share') }}"><img alt="" src="{{ static_url('upmod/img/share.png') }}"></a>
+                            <a href="{{ url('share') }}"><img alt="Share upcycled and recycled products at Upmod" src="{{ static_url('upmod/img/share.png') }}"></a>
 
                             <h2>Share</h2>
 
