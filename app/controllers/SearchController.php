@@ -107,7 +107,7 @@ class SearchController extends ControllerBase
 			$result[] = ['id' => md5('1-1'), 'query' => $this->request->get('term'), 'text' => sprintf('%s and More', implode('', $images)), 'value' => $this->request->get('term')];
 			foreach ($categories AS $categoryIk => $categoryTitle)
 			{
-				$result[] = ['id' => md5($categoryIk), 'query' => $categoryTitle, 'text' => sprintf('Browse %s', $categoryTitle), 'value' => $categoryTitle, 'url' => sprintf('http://test.upcyclepost.com/browse/products/%s', strtolower($categoryTitle))];
+				$result[] = ['id' => md5($categoryIk), 'query' => $categoryTitle, 'text' => sprintf('Browse %s', $categoryTitle), 'value' => $categoryTitle, 'url' => sprintf('http://www.upmod.com/browse/products/%s', strtolower($categoryTitle))];
 			}
 		}
 		else
