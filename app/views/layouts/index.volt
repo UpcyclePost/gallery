@@ -263,7 +263,7 @@
                         </div>
 
                         <div class="product_image thumbnail wide bot">
-                            <a href="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Artisan">
+                            <a href="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Seller">
                                 <div class="thumbnail-container">
                                     <img alt="Tami MacDonald Brinker" src="{{ static_url('img/features/FeaturedSeller2.png') }}" style="min-height:238px;">
                                     <div class="product-icons">
@@ -280,25 +280,25 @@
                                         </div>
 
                                         <div class="btn-group share">
-                                            <span class='st_facebook' st_url="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Artisan" st_title="Tami MacDonald Brinker" st_image="{{ url('img/features/FeaturedSeller2.png') }}"></span>
+                                            <span class='st_facebook' st_url="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Seller" st_title="Tami MacDonald Brinker" st_image="{{ url('img/features/FeaturedSeller2.png') }}"></span>
                                             <br>
-                                            <span class='st_twitter' st_via='Upmodinc' st_url="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Artisan" st_title="Tami MacDonald Brinker" st_image="{{ url('img/features/FeaturedSeller2.png') }}"></span>
+                                            <span class='st_twitter' st_via='Upmodinc' st_url="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Seller" st_title="Tami MacDonald Brinker" st_image="{{ url('img/features/FeaturedSeller2.png') }}"></span>
                                             <br>
-                                            <span class='st_googleplus' st_url="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Artisan" st_title="Tami MacDonald Brinker" st_image="{{ url('img/features/FeaturedSeller2.png') }}"></span>
+                                            <span class='st_googleplus' st_url="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Seller" st_title="Tami MacDonald Brinker" st_image="{{ url('img/features/FeaturedSeller2.png') }}"></span>
                                             <br>
-                                            <span class='st_pinterest' st_url="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Artisan" st_title="Tami MacDonald Brinker" st_image="{{ url('img/features/FeaturedSeller2.png') }}"></span>
+                                            <span class='st_pinterest' st_url="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Seller" st_title="Tami MacDonald Brinker" st_image="{{ url('img/features/FeaturedSeller2.png') }}"></span>
                                         </div>
                                     </div>
                                 </div>
                             </a>
 
                             <div class="caption">
-                                <a href="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Artisan">
+                                <a href="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Seller">
                                     <h2>Tami MacDonald Brinker</h2>
                                 </a>
 
                                 <div class="product-meta clearfix">
-                                    <a class="author" href="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Artisan">
+                                    <a class="author" href="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Seller">
                                         Michigan
                                     </a>
                                 </div>
