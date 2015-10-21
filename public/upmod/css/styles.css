@@ -3861,7 +3861,7 @@ button.close {
   }
 }
 .header_area {
-  background: rgba(0, 0, 0, 0) url("../img/banners/CROC PLANTERS.png") no-repeat scroll center center / cover;
+  background: rgba(0, 0, 0, 0) url("../img/banners/Bottles.png") no-repeat scroll center center / cover;
 }
 .head_text {
   margin: 90px 0;
@@ -3877,6 +3877,7 @@ button.close {
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 35px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 @media (max-width: 767px) {
   .head_text h1 {
@@ -5077,6 +5078,17 @@ footer.subpages {
 
 .tweenie-content a {
   font-weight:bold;
+}
+
+.testimonial{
+    background-color: #f8f8f8;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    border-radius: 8px;
+    padding: 15px;
+    font-style: italic;
+    font-size: 16px !important;
 }
 
 .breadcrumb {
