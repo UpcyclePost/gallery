@@ -19,7 +19,7 @@
                     <div class="btn-group share">
                         <span class='st_facebook' st_url="{{ _post['url'] }}" st_title="{{ _post['title'] }}" st_image="{{ _post['thumbnail'] }}"></span>
                         <br>
-                        <span class='st_twitter' st_url="{{ _post['url'] }}" st_title="{{ _post['title'] }}" st_image="{{ _post['thumbnail'] }}"></span>
+                        <span class='st_twitter' st_via='Upmodinc' st_url="{{ _post['url'] }}" st_title="{{ _post['title'] }}" st_image="{{ _post['thumbnail'] }}"></span>
                         <br>
                         <span class='st_googleplus' st_url="{{ _post['url'] }}" st_title="{{ _post['title'] }}" st_image="{{ _post['thumbnail'] }}"></span>
                         <br>

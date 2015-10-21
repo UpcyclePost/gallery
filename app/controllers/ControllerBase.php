@@ -12,7 +12,7 @@ class ControllerBase extends Controller
 		$this->view->_version = $this->config->application->assetVersion;
 		$this->view->_mixpanel_key = $this->config->application->mixpanelKey;
 		$this->view->_mixpanel_page = 'Home';
-		$this->view->title = 'UpcyclePost';
+		$this->view->title = 'Upmod';
 		$auth = $this->session->get('auth');
 		$this->view->isLoggedIn = ($auth && $auth !== false);
 		$this->view->metaDescription = "Your place to discover the world's greatest upcycled products and to post what inspires you.";

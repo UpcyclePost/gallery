@@ -31,7 +31,7 @@
                     <h1>Become a Seller</h1>
                 </div>
                 <div class="upload-panel-body" style="height:300px;">
-                    <h4>To become a seller on UpcyclePost, please complete your Enhanced Member Profile and follow the instructions to Open a Shop.</h4>
+                    <h4>To become a seller on Upmod, please complete your Enhanced Member Profile and follow the instructions to Open a Shop.</h4>
                 </div>
                 <div class="login-panel-footer">
                     <div class="text-center">
@@ -62,7 +62,7 @@
     </div>
 </div>
 
-<!-- Facebook Conversion Code for Registrations - UpcyclePost 1 -->
+<!-- Facebook Conversion Code for Registrations - Upmod 1 -->
 <script>(function() { var _fbq = window._fbq || (window._fbq = []); if (!_fbq.loaded) { var fbds = document.createElement('script'); fbds.async = true; fbds.src = '//connect.facebook.net/en_US/fbds.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(fbds, s); _fbq.loaded = true; } })(); window._fbq = window._fbq || []; window._fbq.push(['track', '6025947566399', {'value':'0.01','currency':'USD'}]); </script> <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6025947566399&amp;cd[value]=0.01&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
 
 <!-- Google Code for Become a Member Conversion Page -->

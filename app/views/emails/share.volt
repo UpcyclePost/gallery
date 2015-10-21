@@ -4,7 +4,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <meta content="width=device-width" name="viewport">
 
-    <title>UpcyclePost | Shared Image</title>
+    <title>Upmod | Shared Image</title>
     <style type="text/css">
         /*<![CDATA[*/
         #outlook a {

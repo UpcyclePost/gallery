@@ -53,7 +53,7 @@
                                                     <div class="btn-group share">
                                                         <span class='st_facebook' st_url="{{ post['url'] }}" st_title="{{ post['title'] }}" st_image="{{ post['image'] }}"></span>
                                                         <br>
-                                                        <span class='st_twitter' st_url="{{ post['url'] }}" st_title="{{ post['title'] }}" st_image="{{ post['image'] }}"></span>
+                                                        <span class='st_twitter' st_via='Upmodinc' st_url="{{ post['url'] }}" st_title="{{ post['title'] }}" st_image="{{ post['image'] }}"></span>
                                                         <br>
                                                         <span class='st_googleplus' st_url="{{ post['url'] }}" st_title="{{ post['title'] }}" st_image="{{ post['image'] }}"></span>
                                                         <br>
@@ -104,7 +104,7 @@
                                             <div class="btn-group share">
                                                 <span class='st_facebook' st_url="{{ results[i]['url'] }}" st_title="{{ results[i]['title'] }}" st_image="{{ results[i]['image'] }}"></span>
                                                 <br>
-                                                <span class='st_twitter' st_url="{{ results[i]['url'] }}" st_title="{{ results[i]['title'] }}" st_image="{{ results[i]['image'] }}"></span>
+                                                <span class='st_twitter' st_via='Upmodinc' st_url="{{ results[i]['url'] }}" st_title="{{ results[i]['title'] }}" st_image="{{ results[i]['image'] }}"></span>
                                                 <br>
                                                 <span class='st_googleplus' st_url="{{ results[i]['url'] }}" st_title="{{ results[i]['title'] }}" st_image="{{ results[i]['image'] }}"></span>
                                                 <br>
@@ -156,9 +156,9 @@
                         </div>
 
                         <div class="product_image thumbnail wide bot">
-                            <a href="http://www.upcyclepost.com/shops/alinescardboard">
+                            <a href="https://www.upmod.com/shops/wilmotartworks?utm_source=upmod&utm_medium=Featured&utm_content=WilmotArtWorks&utm_campaign=Featured%20Shop">
                                 <div class="thumbnail-container">
-                                    <img alt="Aline's Cardboard" src="{{ static_url('img/features/shop.png') }}" style="min-height:238px;">
+                                    <img alt="WilmotArtWorks" src="{{ static_url('img/features/FeaturedShop2.png') }}" style="min-height:238px;">
                                     <div class="product-icons">
                                         <div class="icon-circle">
                                             <i class="fa fa-heart"></i>
@@ -173,31 +173,30 @@
                                         </div>
 
                                         <div class="btn-group share">
-                                            <span class='st_facebook' st_url="http://www.upmod.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
+                                            <span class='st_facebook' st_url="https://www.upmod.com/shops/wilmotartworks?utm_source=upmod&utm_medium=Featured&utm_content=WilmotArtWorks&utm_campaign=Featured%20Shop" st_title="WilmotArtWorks" st_image="{{ url('img/features/FeaturedShop2.png') }}"></span>
                                             <br>
-                                            <span class='st_twitter' st_url="http://www.upmod.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
+                                            <span class='st_twitter' st_via='Upmodinc' st_url="https://www.upmod.com/shops/wilmotartworks?utm_source=upmod&utm_medium=Featured&utm_content=WilmotArtWorks&utm_campaign=Featured%20Shop" st_title="WilmotArtWorks" st_image="{{ url('img/features/FeaturedShop2.png') }}"></span>
                                             <br>
-                                            <span class='st_googleplus' st_url="http://www.upmod.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
+                                            <span class='st_googleplus' st_url="https://www.upmod.com/shops/wilmotartworks?utm_source=upmod&utm_medium=Featured&utm_content=WilmotArtWorks&utm_campaign=Featured%20Shop" st_title="WilmotArtWorks" st_image="{{ url('img/features/FeaturedShop2.png') }}"></span>
                                             <br>
-                                            <span class='st_pinterest' st_url="http://www.upmod.com/shops/alinescardboard" st_title="Aline's Cardboard" st_image="{{ url('img/features/shop.png') }}"></span>
+                                            <span class='st_pinterest' st_url="https://www.upmod.com/shops/wilmotartworks?utm_source=upmod&utm_medium=Featured&utm_content=WilmotArtWorks&utm_campaign=Featured%20Shop" st_title="WilmotArtWorks" st_image="{{ url('img/features/FeaturedShop2.png') }}"></span>
                                         </div>
                                     </div>
                                 </div>
                             </a>
 
                             <div class="caption">
-                                <a href="http://www.upmod.com/shops/alinescardboard">
-                                    <h2>Aline's Cardboard</h2>
+                                <a href="https://www.upmod.com/shops/wilmotartworks?utm_source=upmod&utm_medium=Featured&utm_content=WilmotArtWorks&utm_campaign=Featured%20Shop">
+                                    <h2>WilmotArtWorks</h2>
                                 </a>
 
                                 <div class="product-meta clearfix">
-                                    <a class="author" href="http://www.upmod.com/shops/alinescardboard">
-                                        Issaquah, WA
+                                    <a class="author" href="https://www.upmod.com/shops/wilmotartworks?utm_source=upmod&utm_medium=Featured&utm_content=WilmotArtWorks&utm_campaign=Featured%20Shop">
+                                        East Millstone, NJ
                                     </a>
                                 </div>
                             </div>
                         </div>
-
                         <div class="buton">
                             <a class="btn btn-default shop_more unik" href="{{ url('shop/module/marketplace/sellerrequest') }}">Create your shop</a>
                         </div>
@@ -209,9 +208,9 @@
                         </div>
 
                         <div class="product_image thumbnail wide bot">
-                            <a href="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">
+                            <a href="https://www.upmod.com/shop/furniture/1899-industrial-reclaimed-wood-and-chain-coffee-table.html?utm_source=upmod&utm_medium=Featured&utm_content=Industrial%20Reclaimed%20wood%20and%20chain%20coffee%20table%20&utm_campaign=Featured%20Product">
                                 <div class="thumbnail-container">
-                                    <img alt="New 70's Stylin' Hubcap Celling Fixture" src="{{ static_url('img/features/product.png') }}" style="min-height:238px;">
+                                    <img alt="Industrial Reclaimed wood and chain coffee table" src="{{ static_url('img/features/FeaturedProduct2.jpg') }}" style="min-height:238px;">
                                     <div class="product-icons">
                                         <div class="icon-circle">
                                             <i class="fa fa-heart"></i>
@@ -226,29 +225,29 @@
                                         </div>
 
                                         <div class="btn-group share">
-                                            <span class='st_facebook' st_url="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
+                                            <span class='st_facebook' st_url="https://www.upmod.com/shop/furniture/1899-industrial-reclaimed-wood-and-chain-coffee-table.html?utm_source=upmod&utm_medium=Featured&utm_content=Industrial%20Reclaimed%20wood%20and%20chain%20coffee%20table%20&utm_campaign=Featured%20Product" st_title="Industrial Reclaimed wood and chain coffee table" st_image="{{ url('img/features/FeaturedProduct2.jpg') }}"></span>
                                             <br>
-                                            <span class='st_twitter' st_url="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
+                                            <span class='st_twitter' st_via='Upmodinc' st_url="https://www.upmod.com/shop/furniture/1899-industrial-reclaimed-wood-and-chain-coffee-table.html?utm_source=upmod&utm_medium=Featured&utm_content=Industrial%20Reclaimed%20wood%20and%20chain%20coffee%20table%20&utm_campaign=Featured%20Product" st_title="Industrial Reclaimed wood and chain coffee table" st_image="{{ url('img/features/FeaturedProduct2.jpg') }}"></span>
                                             <br>
-                                            <span class='st_googleplus' st_url="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
+                                            <span class='st_googleplus' st_url="https://www.upmod.com/shop/furniture/1899-industrial-reclaimed-wood-and-chain-coffee-table.html?utm_source=upmod&utm_medium=Featured&utm_content=Industrial%20Reclaimed%20wood%20and%20chain%20coffee%20table%20&utm_campaign=Featured%20Product" st_title="Industrial Reclaimed wood and chain coffee table" st_image="{{ url('img/features/FeaturedProduct2.jpg') }}"></span>
                                             <br>
-                                            <span class='st_pinterest' st_url="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html" st_title="New 70's Stylin' Hubcap Celling Fixture" st_image="{{ url('img/features/product.png') }}"></span>
+                                            <span class='st_pinterest' st_url="https://www.upmod.com/shop/furniture/1899-industrial-reclaimed-wood-and-chain-coffee-table.html?utm_source=upmod&utm_medium=Featured&utm_content=Industrial%20Reclaimed%20wood%20and%20chain%20coffee%20table%20&utm_campaign=Featured%20Product" st_title="Industrial Reclaimed wood and chain coffee table" st_image="{{ url('img/features/FeaturedProduct2.jpg') }}"></span>
                                         </div>
                                     </div>
                                 </div>
                             </a>
 
                             <div class="caption">
-                                <a href="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">
-                                    <h2>New 70's Stylin' Hubcap Celling Fixture</h2>
+                                <a href="https://www.upmod.com/shop/furniture/1899-industrial-reclaimed-wood-and-chain-coffee-table.html?utm_source=upmod&utm_medium=Featured&utm_content=Industrial%20Reclaimed%20wood%20and%20chain%20coffee%20table%20&utm_campaign=Featured%20Product">
+                                    <h2>Reclaimed wood and chain coffee table</h2>
                                 </a>
 
                                 <div class="product-meta clearfix">
-                                    <a class="author" href="https://www.upmod.com/shops/101790">
-                                        Refitting the Planet
+                                    <a class="author" href="https://www.upmod.com/shops/twistedarc">
+                                        Twisted Arc Metal Works LLC.
                                     </a>
 
-                                    <a class="price" href="https://www.upmod.com/shop/automotive/620-new-70-s-stylin-hubcap-celling-fixture.html">$450.00</a>
+                                    <a class="price" href="https://www.upmod.com/shop/furniture/1899-industrial-reclaimed-wood-and-chain-coffee-table.html?utm_source=upmod&utm_medium=Featured&utm_content=Industrial%20Reclaimed%20wood%20and%20chain%20coffee%20table%20&utm_campaign=Featured%20Product">$3,500.00</a>
                                 </div>
                             </div>
                         </div>
@@ -264,9 +263,9 @@
                         </div>
 
                         <div class="product_image thumbnail wide bot">
-                            <a href="http://www.upmod.com/profile/view/156">
+                            <a href="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Artisan">
                                 <div class="thumbnail-container">
-                                    <img alt="Raymond Guest" src="{{ static_url('img/features/profile.png') }}" style="min-height:238px;">
+                                    <img alt="Tami MacDonald Brinker" src="{{ static_url('img/features/FeaturedSeller2.png') }}" style="min-height:238px;">
                                     <div class="product-icons">
                                         <div class="icon-circle">
                                             <i class="fa fa-heart"></i>
@@ -281,26 +280,26 @@
                                         </div>
 
                                         <div class="btn-group share">
-                                            <span class='st_facebook' st_url="http://www.upmod.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
+                                            <span class='st_facebook' st_url="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Artisan" st_title="Tami MacDonald Brinker" st_image="{{ url('img/features/FeaturedSeller2.png') }}"></span>
                                             <br>
-                                            <span class='st_twitter' st_url="http://www.upmod.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
+                                            <span class='st_twitter' st_via='Upmodinc' st_url="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Artisan" st_title="Tami MacDonald Brinker" st_image="{{ url('img/features/FeaturedSeller2.png') }}"></span>
                                             <br>
-                                            <span class='st_googleplus' st_url="http://www.upmod.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
+                                            <span class='st_googleplus' st_url="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Artisan" st_title="Tami MacDonald Brinker" st_image="{{ url('img/features/FeaturedSeller2.png') }}"></span>
                                             <br>
-                                            <span class='st_pinterest' st_url="http://www.upmod.com/profile/view/156" st_title="Raymond Guest" st_image="{{ url('img/features/profile.png') }}"></span>
+                                            <span class='st_pinterest' st_url="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Artisan" st_title="Tami MacDonald Brinker" st_image="{{ url('img/features/FeaturedSeller2.png') }}"></span>
                                         </div>
                                     </div>
                                 </div>
                             </a>
 
                             <div class="caption">
-                                <a href="http://www.upmod.com/profile/view/156">
-                                    <h2>Raymond Guest</h2>
+                                <a href="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Artisan">
+                                    <h2>Tami MacDonald Brinker</h2>
                                 </a>
 
                                 <div class="product-meta clearfix">
-                                    <a class="author" href="http://www.upmod.com/profile/view/156">
-                                        Longview, TX
+                                    <a class="author" href="http://www.upmod.com/profile/view/103256?utm_source=upmod&utm_medium=Featured&utm_content=Tami%20MacDonald%20Brinker&utm_campaign=Featured%20Artisan">
+                                        Michigan
                                     </a>
                                 </div>
                             </div>

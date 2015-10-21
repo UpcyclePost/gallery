@@ -259,7 +259,7 @@ class ShopController extends ControllerBase
 
 				$this->view->results = $user->Shop->activeProducts();
 				$this->view->shopName = $shop_info['shop_name'];
-				$this->view->title = sprintf('%s | Upcycling Ideas, Articles and Products | UpcyclePost', $user->user_name);
+				$this->view->title = sprintf('%s | Upcycling Ideas, Articles and Products | Upmod', $user->user_name);
 				$this->view->profile = $user;
 				$this->view->shopAbout = $shop_info['shop_about'];
 
