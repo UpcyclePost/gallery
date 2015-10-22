@@ -10,13 +10,13 @@ class SearchController extends ControllerBase
 	public function initialize()
 	{
 		parent::initialize();
-		$this->view->title = 'Search | UpcyclePost';
+		$this->view->title = 'Search | Upmod';
 		$this->__searchService = new SearchService();
 	}
 
 	public function usersAction()
 	{
-		$this->view->title = 'Profile Gallery | Upcycling Ideas, Articles and Products | UpcyclePost';
+		$this->view->title = 'Profile Gallery | Upcycling Ideas, Articles and Products | Upmod';
 		$this->assets->addJs('js/gallery/layout.js?v=0.26.3');
 
 		$term = \false;

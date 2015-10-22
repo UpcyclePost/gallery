@@ -4,7 +4,7 @@ class ContactController extends ControllerBase
 {
     public function indexAction()
     {
-        $this->view->title = 'Contact | UpcyclePost';
+        $this->view->title = 'Contact | Upmod';
         $this->view->_mixpanel_page = 'Contact';
 
         if ($this->request->isPost())
@@ -16,7 +16,7 @@ class ContactController extends ControllerBase
 	            $this->request->getPost('phone'),
 	            $this->request->getPost('message'));
 
-            Helpers::sendEmail('info@upcyclepost.com', 'Contact Request', $message);
+            Helpers::sendEmail('info@upmod.com', 'Contact Request', $message);
 
             $this->flash->success('Your message has been sent.');
 

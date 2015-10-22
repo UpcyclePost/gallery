@@ -5,7 +5,7 @@ class GalleryController extends ControllerBase
 	public function initialize()
 	{
 		parent::initialize();
-		$this->view->title = 'Gallery | UpcyclePost';
+		$this->view->title = 'Gallery | Upmod';
 	}
 
 	private function Posts($slug = false, $start = 0)
@@ -20,7 +20,7 @@ class GalleryController extends ControllerBase
 				$category = $categories[ $slug ][ 'ik' ];
 				$this->view->category = $categories[ $slug ][ 'title' ];
 
-				$this->view->title = $categories[ $slug ][ 'title' ] . ' | Upcycling Ideas, Articles and Products | UpcyclePost';
+				$this->view->title = $categories[ $slug ][ 'title' ] . ' | Upcycling Ideas, Articles and Products | Upmod';
 				$this->view->metaDescription = sprintf("Your place to discover the world's greatest upcycled products and post what inspires you. %s", $categories[ $slug ][ 'title' ]);
 				$this->view->og_description = $this->view->metaDescription;
 			}
@@ -39,7 +39,7 @@ class GalleryController extends ControllerBase
 			{
 				$users = $searchService->findUsers($searchTerm);
 
-				$this->view->title = sprintf('Gallery %s | UpcyclePost', str_replace('"', "'", $searchTerm));
+				$this->view->title = sprintf('Gallery %s | Upmod', str_replace('"', "'", $searchTerm));
 				$this->view->metaDescription = sprintf("Your place to discover the world's greatest upcycled products and post what inspires you. %s", str_replace('"', "'", $searchTerm));
 				$this->view->og_description = $this->view->metaDescription;
 			}
@@ -190,7 +190,7 @@ class GalleryController extends ControllerBase
 		$post->indexed = 0;
 		$post->Update();
 
-		$this->view->title = sprintf('%s %s | UpcyclePost', str_replace('"', "'", substr($post->title, 0, 50)), $post->Category->title);
+		$this->view->title = sprintf('%s %s | Upmod', str_replace('"', "'", substr($post->title, 0, 50)), $post->Category->title);
 		$this->view->metaDescription = sprintf('%s %s', 'Discover the greatest upcycled products and post what inspires you.', str_replace('"', "'", Helpers::tokenTruncate($post->description, 150)));
 
 		$this->view->og_img = $post->thumbnail('big');

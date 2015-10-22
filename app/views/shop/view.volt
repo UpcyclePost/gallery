@@ -68,7 +68,7 @@
         </div>
         <div class="login-panel-footer text-right">
             <span class='st_facebook'></span>
-            <span class='st_twitter'></span>
+            <span class='st_twitter' st_via='Upmodinc'></span>
             <span class='st_googleplus'></span>
             <span class='st_pinterest'></span>
         </div>

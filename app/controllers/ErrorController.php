@@ -8,7 +8,7 @@ class ErrorController extends ControllerBase
         $this->tag->setTitle('Error');
         $this->response->setHeader(404, 'Not Found');
         $this->view->pick('error/404');
-        $this->view->title = 'Error | UpcyclePost';
+        $this->view->title = 'Error | Upmod';
         $this->view->_mixpanel_page = 'Error';
     }
 

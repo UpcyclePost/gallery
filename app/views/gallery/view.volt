@@ -13,7 +13,7 @@
                     <li><a href="{{ url('browse/ideas/' ~ post.Category.title|url) }}">{{ post.Category.title }}</a></li>
                     <li style="float: right;position:relative;bottom:10px;" class="attr-content" data-content=" ">
                         <span class='st_facebook'></span>
-                        <span class='st_twitter'></span>
+                        <span class='st_twitter' st_via='Upmodinc'></span>
                         <span class='st_googleplus'></span>
                         <span class='st_pinterest'></span>
                     </li>

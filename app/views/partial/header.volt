@@ -38,7 +38,7 @@
 
         <link href="{{ static_url('upmod/css/styles.css') }}?5" rel="stylesheet">
 
-        <!-- UpcyclePost Icons -->
+        <!-- Upmod Icons -->
         <link href="{{ static_url('css/upcyclepost/css/upcyclepost.css') }}" rel="stylesheet">
 
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
@@ -156,6 +156,7 @@
                                     <ul class="links">
                                         <li><a href="{{ url('post/idea') }}" title="Upload your images">Upload your images</a></li>
                                         <li><a href="{{ url('browse/members') }}" title="View member gallery">View member gallery</a></li>
+                                        <li><a href="{{ url('browse/ideas') }}" title="Browse ideas">Browse ideas</a></li>
                                     </ul>
                                 </div>
                                 <div class="right-menu">

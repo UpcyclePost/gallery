@@ -21,7 +21,7 @@ class PostController extends ControllerBase
 			$this->session->remove('editing');
 		}
 
-		$this->view->title = 'Post Idea | UpcyclePost';
+		$this->view->title = 'Post Idea | Upmod';
 
 		$this->assets->addJs('js/libraries/dropzone/dropzone.js')
 		             ->addJs('js/post/idea.js');
